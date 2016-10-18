@@ -10,7 +10,7 @@ module Atrium
     def make_request(method, endpoint, body = {}, headers = {})
       headers = default_headers.merge(headers)
       url = "#{::Atrium::BASE_URL}#{endpoint}"
-      response = http_client.request(method, url, ::JSON.dump(body), headers)
+      response = http_client.public_send(method, url, ::JSON.dump(body), headers)
 
       handle_response(response)
     end
@@ -24,18 +24,19 @@ module Atrium
     def default_headers
       {
         "Accept" => "application/vnd.mx.atrium.v1+json",
+        "Content-Type" => "application/json",
         "MX-API-KEY" => mx_api_key,
         "MX-CLIENT-ID" => mx_client_id
       }
     end
 
     def handle_response(response)
-      # Handle 200 OK or 204 No Content as acceptable
-      if response.status != 200 || response.status != 204
+      # Handle 200-206 responses as acceptable
+      unless response.status.between?(200, 206)
         fail ::Atrium::Error, "#{response.status}: #{response.body}"
       end
 
-      ::JSON.parse(response.body)
+      ::JSON.parse(response.body) unless response.body.empty?
     end
   end
 end

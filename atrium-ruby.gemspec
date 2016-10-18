@@ -4,14 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'atrium/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "mx-atrium-ruby"
+  spec.name          = "atrium-ruby"
   spec.version       = ::Atrium::VERSION
   spec.authors       = ["Jon Carstens"]
   spec.email         = ["jon.carstens@mx.com"]
 
   spec.summary       = "Ruby wrapper for the Atrium API by MX"
   spec.description   = "Ruby wrapper for the Atrium API by MX"
-  spec.homepage      = "http://github.com/mxenabled/mx-atrium-ruby"
+  spec.homepage      = "http://github.com/mxenabled/atrium-ruby"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.

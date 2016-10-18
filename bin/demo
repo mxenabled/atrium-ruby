@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+require "bundler/setup"
+require "atrium"
+require "pry"
+
+::Atrium.configure do |config|
+  config.mx_client_id = client_id
+  config.mx_api_key = api_key
+end
+
+puts "Creating user with identifier: 'Howdy' ¬"
+user = ::Atrium::User.create("asdfjahseir")
+
+puts "Updating user identifier to: 'Wazzup!' ¬"
+::Atrium::User.update(user["user"]["guid"], "Wazzup!")
+
+puts "Reading user data ¬"
+read = ::Atrium::User.read(user["user"]["guid"])
+read["user"].each { |key,val| puts "#{key}: #{val}" }
+
+puts "Deleting user"
+::Atrium::User.delete(user["user"]["guid"])

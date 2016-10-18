@@ -1,15 +1,21 @@
-# Mx::Atrium::Ruby
+# Atrium-Ruby
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mx/atrium/ruby`. To experiment with that code, run `bin/console` for an interactive prompt.
+A Ruby wrapper for use with the [MX Atrium API](https://atrium.mx.com). In order to make requests, you will need to [sign up for MX Atrium API](https://atrium.mx.com/developers/sign_up) and get a `MX-API-KEY` and `MX-CLIENT-ID`. Then, configure your instance with:
+```ruby
+Atrium.configure do |config|
+  config.mx_api_key = YOUR_API_KEY
+  config.mx_client_id = YOUR_CLIENT_ID
+end
+```
 
-TODO: Delete this and the text above, and describe your gem
+From there, you can start using some basic class methods to make calls for data. See our [full documentation](https://atrium.mx.com/documentation) for more details.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'mx-atrium-ruby'
+gem 'atrium-ruby'
 ```
 
 And then execute:
@@ -18,19 +24,12 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install mx-atrium-ruby
-
-## Usage
-
-TODO: Write usage instructions here
+    $ gem install atrium-ruby
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Suggested implementation flow can be found in `bin/demo` comments. You can also use that as an executable for managing the settings and creating your own test flow to handle the requests and data with `./bin/demo`
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/mx-atrium-ruby.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/mxenabled/atrium-ruby.

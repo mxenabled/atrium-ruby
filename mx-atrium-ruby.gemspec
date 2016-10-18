@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'mx/atrium/ruby/version'
+require 'atrium/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "mx-atrium-ruby"
-  spec.version       = Mx::Atrium::Ruby::VERSION
+  spec.version       = ::Atrium::VERSION
   spec.authors       = ["Jon Carstens"]
   spec.email         = ["jon.carstens@mx.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "Ruby wrapper for the Atrium API by MX"
+  spec.description   = "Ruby wrapper for the Atrium API by MX"
+  spec.homepage      = "http://github.com/mxenabled/mx-atrium-ruby"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -25,9 +25,10 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-  
-  spec.add_runtime_dependency "http_client"
+
+  spec.add_runtime_dependency "httpclient"
 
   spec.add_development_dependency "bundler", "~> 1.12"
+  spec.add_development_dependency "pry"
   spec.add_development_dependency "rake", "~> 10.0"
 end

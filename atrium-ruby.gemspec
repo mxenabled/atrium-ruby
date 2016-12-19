@@ -26,9 +26,9 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "activemodel", "~> 4.2", ">= 4.2.6"
+  spec.add_runtime_dependency "active_attr"
   spec.add_runtime_dependency "httpclient"
-  
+
   spec.add_development_dependency "bundler", "~> 1.12"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "rake", "~> 10.0"

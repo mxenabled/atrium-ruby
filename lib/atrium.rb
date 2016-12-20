@@ -2,6 +2,7 @@ require "atrium/client"
 require "atrium/error"
 require "atrium/institution"
 require "atrium/member"
+require "atrium/transaction"
 require "atrium/user"
 require "atrium/version"
 

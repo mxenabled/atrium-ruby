@@ -1,7 +1,11 @@
 require "spec_helper"
 
 describe ::Atrium::Transaction do
-  it "can test" do
-    expect(1).to eq(1)
+  describe ".list" do
+    it "gets a list of transactions"
+  end
+
+  describe ".read" do
+    it "gets one transaction"
   end
 end

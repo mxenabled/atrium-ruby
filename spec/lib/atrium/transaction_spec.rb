@@ -1,8 +1,6 @@
 require "spec_helper"
 
 describe ::Atrium::Transaction do
-  let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
-  let(:transaction_guid) { "TRN-265abee9-889b-af6a-c69b-25157db2bdd9" }
   let(:raw_transaction) { ::JSON.parse(raw_transaction_response) }
   let(:raw_transactions) { ::JSON.parse(raw_transactions_response) }
   let(:raw_transaction_attributes) {
@@ -47,6 +45,8 @@ describe ::Atrium::Transaction do
       :transactions => [raw_transaction_attributes, raw_transaction_attributes]
     }.to_json
   }
+  let(:transaction_guid) { "TRN-265abee9-889b-af6a-c69b-25157db2bdd9" }
+  let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 
   describe ".list" do
     before { allow(::Atrium.client).to receive(:make_request).and_return(raw_transactions) }

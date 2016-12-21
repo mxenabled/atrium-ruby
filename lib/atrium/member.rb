@@ -77,6 +77,9 @@ module Atrium
     end
 
     def resume
+      # TODO: Pull in user_guid
+      endpoint = "/users/#{user_guid}/members/#{member_guid}/resume"
+      ::Atrium.client.make_request(:get, endpoint)
     end
 
     ##

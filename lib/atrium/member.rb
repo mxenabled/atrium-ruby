@@ -65,7 +65,14 @@ module Atrium
       ::Atrium.client.make_request(:get, endpoint)
     end
 
-    def transactions
+    def transactions(member_guid)
+      # TODO: Pull in user_guid
+      endpoint = "users/#{user_guid}/members/#{member_guid}/transactions"
+      transactions_response = ::Atrium.client.make_request(:post, endpoint)
+
+      transactions = transactions_response["transactions"].map do |transaction|
+        ::Atrium::Transaction.new(transaction)
+      end
     end
 
     private

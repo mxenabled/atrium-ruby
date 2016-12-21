@@ -1,5 +1,17 @@
 module Atrium
   class Member
+    include ::ActiveAttr::Model
+    include ::ActiveAttr::Attributes
+
+    attribute :aggregated_at
+    attribute :guid
+    attribute :identifier
+    attribute :institution_code
+    attribute :metadata
+    attribute :name
+    attribute :status
+    attribute :successfully_aggregated_at
+    attribute :user_guid
     ##
     # POST /users/:user_guid/members
     #

@@ -13,7 +13,14 @@ module Atrium
     attribute :successfully_aggregated_at
     attribute :user_guid
 
-    def aggregate
+    def aggregate(member_guid)
+      # TODO: Pull in user_guid
+      endpoint = "users/#{user_guid}/members/#{member_guid}/aggregate"
+      member_response = ::Atrium.client.make_request(:post, endpoint)
+
+      member_params = member_response["member"]
+      
+      ::Atrium::Member.new(member_params)
     end
 
     def accounts

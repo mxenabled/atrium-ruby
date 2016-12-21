@@ -28,6 +28,13 @@ module Atrium
     end
 
     def accounts
+      # TODO: Pull in user_guid
+      endpoint = "users/#{user_guid}/members/#{member_guid}/account"
+      account_response = ::Atrium.client.make_request(:post, endpoint)
+
+      account = account_response["account"].map do |account|
+        ::Atrium::Transaction.new(account)
+      end
     end
 
     ##

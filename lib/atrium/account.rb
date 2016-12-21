@@ -34,7 +34,7 @@ module Atrium
     attribute :user_guid
 
     # ::Atrium::Account.list(:user_guid => user_guid)
-    def self.list(user_guid)
+    def self.list(user_guid:)
       endpoint = "/users/#{user_guid}/accounts"
       accounts_response = ::Atrium.client.make_request(:get, endpoint)
 

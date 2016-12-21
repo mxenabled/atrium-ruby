@@ -12,6 +12,12 @@ module Atrium
     attribute :status
     attribute :successfully_aggregated_at
     attribute :user_guid
+
+    def aggregate
+    end
+
+    def accounts
+    end
     ##
     # POST /users/:user_guid/members
     #
@@ -21,6 +27,24 @@ module Atrium
       ::Atrium.client.make_request(:post, endpoint, body)
     end
 
+    def delete
+    end
+
+    def challenges
+    end
+
+    def list
+    end
+
+    def update
+    end
+
+    def read_account(account_guid)
+    end
+
+    def resume
+    end
+
     ##
     # GET /users/:user_guid/members/:member_guid/status
     #
@@ -28,6 +52,11 @@ module Atrium
       endpoint = "/users/#{user_guid}/members/#{member_guid}/status"
       ::Atrium.client.make_request(:get, endpoint)
     end
+
+    def transactions
+    end
+
+    private
 
     def self.member_body(params)
       {

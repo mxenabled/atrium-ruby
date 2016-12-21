@@ -1,3 +1,7 @@
+require "active_attr"
+require "httpclient"
+require "json"
+
 require "atrium/client"
 require "atrium/error"
 require "atrium/institution"
@@ -5,9 +9,6 @@ require "atrium/member"
 require "atrium/transaction"
 require "atrium/user"
 require "atrium/version"
-
-require "httpclient"
-require "json"
 
 module Atrium
   BASE_URL = "https://vestibule.mx.com".freeze

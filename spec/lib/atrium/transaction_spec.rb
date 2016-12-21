@@ -2,6 +2,8 @@ require "spec_helper"
 
 describe ::Atrium::Transaction do
   let(:raw_transaction) { ::JSON.parse(raw_transaction_response) }
+  let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
+  let(:transaction_guid) { "TRN-265abee9-889b-af6a-c69b-25157db2bdd9" }
 	let(:raw_transaction_response) {
     %q(
       {
@@ -46,6 +48,12 @@ describe ::Atrium::Transaction do
   describe ".read" do
     before { allow(::Atrium.client).to receive(:make_request).and_return(raw_transaction) }
 
-    it "gets one transaction"
+    it "gets one transaction" do
+      response = described_class.read(:user_guid => user_guid, :transaction_guid =>transaction_guid)
+
+      expect(response).to be_kind_of(::Atrium::Transaction)
+      expect(response.account_guid).to eq("ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1")
+      expect(response.amount).to eq(61.11)
+    end
   end
 end

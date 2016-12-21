@@ -39,7 +39,8 @@ module Atrium
       accounts_response = ::Atrium.client.make_request(:get, endpoint)
 
       accounts = accounts_response.map do |account|
-        ::Atrium::Account.new(account)
+        acount_hash = acount["account"]
+        ::Atrium::Account.new(acount_hash)
       end
     end
 
@@ -48,6 +49,7 @@ module Atrium
       endpoint = "/users/#{user_guid}/accounts/#{account_guid}"
       account_response = ::Atrium.client.make_request(:get, endpoint)
 
-      ::Atrium::Account.new(account_response)
+      account_params = account_response["account"]
+      ::Atrium::Account.new(account_params)
   end
 end

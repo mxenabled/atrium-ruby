@@ -47,6 +47,8 @@ module Atrium
     end
 
     def delete
+      endpoint = "/users/#{user_guid}/members/#{member_guid}"
+      ::Atrium.client.make_request(:delete, endpoint)
     end
 
     def challenges

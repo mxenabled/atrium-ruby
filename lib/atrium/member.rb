@@ -65,6 +65,9 @@ module Atrium
     end
 
     def update
+      # TODO: Pull in user_guid
+      endpoint = "/users/#{user_guid}/members/#{member_guid}"
+      ::Atrium.client.make_request(:put, endpoint)
     end
 
     def read_account(account_guid)

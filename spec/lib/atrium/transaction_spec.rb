@@ -36,14 +36,10 @@ describe ::Atrium::Transaction do
     }
   }
   let(:raw_transaction_response) {
-    {
-      :transaction => raw_transaction_attributes
-    }.to_json
+    { :transaction => raw_transaction_attributes }.to_json
   }
   let(:raw_transactions_response) {
-    {
-      :transactions => [raw_transaction_attributes, raw_transaction_attributes]
-    }.to_json
+    { :transactions => [raw_transaction_attributes, raw_transaction_attributes] }.to_json
   }
   let(:transaction_guid) { "TRN-265abee9-889b-af6a-c69b-25157db2bdd9" }
   let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
@@ -55,6 +51,7 @@ describe ::Atrium::Transaction do
       response = described_class.list(:user_guid => user_guid)
 
       expect(response).to be_kind_of(::Array)
+      expect(response.length).to eq(2)
       expect(response.first).to be_kind_of(::Atrium::Transaction)
 
       expect(response.first.account_guid).to eq("ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1")

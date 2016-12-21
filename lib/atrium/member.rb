@@ -47,16 +47,21 @@ module Atrium
     end
 
     def delete
+      # TODO: Pull in user_guid
       endpoint = "/users/#{user_guid}/members/#{member_guid}"
       ::Atrium.client.make_request(:delete, endpoint)
     end
 
     def challenges
+      # TODO: Pull in user_guid
       endpoint = "/users/#{user_guid}/members/#{member_guid}/challenges"
       ::Atrium.client.make_request(:get, endpoint)
     end
 
     def list
+      # TODO: Pull in user_guid
+      endpoint = "/users/#{user_guid}/members"
+      ::Atrium.client.make_request(:get, endpoint)
     end
 
     def update

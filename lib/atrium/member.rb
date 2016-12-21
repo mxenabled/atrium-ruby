@@ -13,11 +13,10 @@ module Atrium
     attribute :successfully_aggregated_at
     attribute :user_guid
 
-
     ##
-    # POST /users/:user_guid/members/:member_guid/aggregate
+    # POST /users/:user_guid/members/member_guid:/aggregate
     #
-    def aggregate(member_guid)
+    def aggregate(member_guid:, user_guid:)
       # TODO: Pull in user_guid
       endpoint = "users/#{user_guid}/members/#{member_guid}/aggregate"
       member_response = ::Atrium.client.make_request(:post, endpoint)
@@ -27,8 +26,10 @@ module Atrium
       ::Atrium::Member.new(member_params)
     end
 
-    def accounts
-      # TODO: Pull in user_guid
+    ##
+    # POST /users/:user_guid/members/:member_guid/accounts
+    #
+    def accounts(member_guid:, user_guid:)
       endpoint = "users/#{user_guid}/members/#{member_guid}/account"
       account_response = ::Atrium.client.make_request(:post, endpoint)
 
@@ -46,31 +47,31 @@ module Atrium
       ::Atrium.client.make_request(:post, endpoint, body)
     end
 
-    def delete
-      # TODO: Pull in user_guid
+    def delete(member_guid:, user_guid:)
       endpoint = "/users/#{user_guid}/members/#{member_guid}"
       ::Atrium.client.make_request(:delete, endpoint)
     end
 
-    def challenges
-      # TODO: Pull in user_guid
+    def challenges(member_guid:, user_guid:)
       endpoint = "/users/#{user_guid}/members/#{member_guid}/challenges"
       ::Atrium.client.make_request(:get, endpoint)
     end
 
-    def list
-      # TODO: Pull in user_guid
+    def self.list(user_guid:)
       endpoint = "/users/#{user_guid}/members"
-      ::Atrium.client.make_request(:get, endpoint)
+      members_response = ::Atrium.client.make_request(:get, endpoint)
+
+      members = members_response["members"].map do |member|
+        ::Atrium::Member.new(member)
+      end
     end
 
-    def update
-      # TODO: Pull in user_guid
+    def update(member_guid:, user_guid:)
       endpoint = "/users/#{user_guid}/members/#{member_guid}"
       ::Atrium.client.make_request(:put, endpoint)
     end
 
-    def read_account(account_guid)
+    def read_account(account_guid:)
       # TODO: Pull in user_guid
       endpoint = "/users/#{user_guid}/members/#{member_guid}/accounts"
       ::Atrium.client.make_request(:get, endpoint)
@@ -83,14 +84,14 @@ module Atrium
     end
 
     ##
-    # GET /users/:user_guid/members/:member_guid/status
+    # GET /users/:user_guid/members/member_guid:/status
     #
-    def self.status(user_guid, member_guid)
+    def self.status(user_guid:, member_guid:)
       endpoint = "/users/#{user_guid}/members/#{member_guid}/status"
       ::Atrium.client.make_request(:get, endpoint)
     end
 
-    def transactions(member_guid)
+    def transactions(user_guid:, member_guid:)
       # TODO: Pull in user_guid
       endpoint = "users/#{user_guid}/members/#{member_guid}/transactions"
       transactions_response = ::Atrium.client.make_request(:post, endpoint)

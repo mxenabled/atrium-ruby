@@ -71,6 +71,9 @@ module Atrium
     end
 
     def read_account(account_guid)
+      # TODO: Pull in user_guid
+      endpoint = "/users/#{user_guid}/members/#{member_guid}/accounts"
+      ::Atrium.client.make_request(:get, endpoint)
     end
 
     def resume

@@ -52,6 +52,8 @@ module Atrium
     end
 
     def challenges
+      endpoint = "/users/#{user_guid}/members/#{member_guid}/challenges"
+      ::Atrium.client.make_request(:get, endpoint)
     end
 
     def list

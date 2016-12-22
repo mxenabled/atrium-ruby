@@ -17,7 +17,6 @@ module Atrium
     # POST /users/:user_guid/members/member_guid:/aggregate
     #
     def aggregate(member_guid:, user_guid:)
-      # TODO: Pull in user_guid
       endpoint = "users/#{user_guid}/members/#{member_guid}/aggregate"
       member_response = ::Atrium.client.make_request(:post, endpoint)
 

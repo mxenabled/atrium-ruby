@@ -33,7 +33,8 @@ module Atrium
       member_response = ::Atrium.client.make_request(:post, endpoint)
 
       member_params = member_response["member"]
-      ::Atrium::Member.new(member_params)
+      self.assign_attributes(member_params)
+      self
     end
 
     ##

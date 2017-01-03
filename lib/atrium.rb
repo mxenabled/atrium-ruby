@@ -2,6 +2,7 @@ require "active_attr"
 require "httpclient"
 require "json"
 
+require "atrium/account"
 require "atrium/client"
 require "atrium/error"
 require "atrium/institution"

@@ -18,9 +18,9 @@ module Atrium
     #
     def accounts
       endpoint = "users/#{self.user_guid}/members/#{self.guid}/account"
-      account_response = ::Atrium.client.make_request(:get, endpoint)
+      accounts_response = ::Atrium.client.make_request(:get, endpoint)
 
-      account = account_response["account"].map do |account|
+      account = accounts_response["accounts"].map do |account|
         ::Atrium::Account.new(account)
       end
     end

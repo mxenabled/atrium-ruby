@@ -27,7 +27,6 @@ describe ::Atrium::Member do
   let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 
   describe "#accounts" do
-    let(:account_response) { ::JSON.parse(raw_account_response)}
     let(:accounts_response) { ::JSON.parse(raw_accounts_response)}
     let(:account_attributes) do
       {
@@ -65,7 +64,7 @@ describe ::Atrium::Member do
       { :accounts => [account_attributes, account_attributes]}.to_json
     }
 
-    before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
+    before { allow(::Atrium.client).to receive(:make_request).and_return(accounts_response) }
 
     it "should return accounts for member" do
       response = member.accounts

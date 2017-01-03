@@ -1,7 +1,6 @@
 module Atrium
   class Account
     include ::ActiveAttr::Model
-    include ::ActiveAttr::Attributes
 
     # ATTRIBUTES
     attribute :apr
@@ -50,5 +49,6 @@ module Atrium
 
       account_params = account_response["account"]
       ::Atrium::Account.new(account_params)
+    end
   end
 end

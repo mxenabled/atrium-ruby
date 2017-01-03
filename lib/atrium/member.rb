@@ -13,9 +13,6 @@ module Atrium
     attribute :successfully_aggregated_at
     attribute :user_guid
 
-    ##
-    # POST /users/:user_guid/members/:member_guid/accounts
-    #
     def accounts
       endpoint = "users/#{self.user_guid}/members/#{self.guid}/account"
       accounts_response = ::Atrium.client.make_request(:get, endpoint)
@@ -25,9 +22,6 @@ module Atrium
       end
     end
 
-    ##
-    # POST /users/:user_guid/members/member_guid:/aggregate
-    #
     def aggregate
       endpoint = "users/#{self.user_guid}/members/#{self.guid}/aggregate"
       member_response = ::Atrium.client.make_request(:post, endpoint)
@@ -37,9 +31,6 @@ module Atrium
       self
     end
 
-    ##
-    # POST /users/:user_guid/members
-    #
     def self.create(params)
       endpoint = "/users/#{params[:user_guid]}/members"
       body = member_body(params)

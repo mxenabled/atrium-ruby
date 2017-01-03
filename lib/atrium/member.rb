@@ -16,12 +16,11 @@ module Atrium
     ##
     # POST /users/:user_guid/members/member_guid:/aggregate
     #
-    def aggregate(member_guid:, user_guid:)
-      endpoint = "users/#{user_guid}/members/#{member_guid}/aggregate"
+    def aggregate
+      endpoint = "users/#{self.user_guid}/members/#{self.guid}/aggregate"
       member_response = ::Atrium.client.make_request(:post, endpoint)
 
       member_params = member_response["member"]
-
       ::Atrium::Member.new(member_params)
     end
 

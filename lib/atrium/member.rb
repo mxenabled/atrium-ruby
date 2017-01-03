@@ -64,11 +64,6 @@ module Atrium
       ::Atrium::Member.new(member_params)
     end
 
-    def update(member_guid:, user_guid:)
-      endpoint = "/users/#{user_guid}/members/#{member_guid}"
-      ::Atrium.client.make_request(:put, endpoint)
-    end
-
     def read_account(account_guid:)
       endpoint = "/users/#{self.user_guid}/members/#{self.guid}/accounts/#{account_guid}"
       account_response = ::Atrium.client.make_request(:get, endpoint)
@@ -91,6 +86,16 @@ module Atrium
       ::Atrium.client.make_request(:get, endpoint)
     end
 
+    def update(params)
+      endpoint = "/users/#{self.user_guid}/members/#{self.member_guid}"
+      body = member_body(params)
+      member_response = ::Atrium.client.make_request(:put, endpoint, body)
+
+      member_params = member_response["member"]
+      self.assign_attributes(member_params)
+      self
+    end
+
     def transactions
       endpoint = "users/#{self.user_guid}/members/#{self.guid}/transactions"
       transactions_response = ::Atrium.client.make_request(:post, endpoint)
@@ -101,6 +106,17 @@ module Atrium
     end
 
     private
+
+    def member_body(params)
+      {
+        :member => {
+          :credentials => params[:credentials],
+          :identifier => params[:identifier],
+          :institution_code => params[:institution_code],
+          :metadata => params[:metadata]
+        }
+      }
+    end
 
     def self.member_body(params)
       {

@@ -32,7 +32,6 @@ module Atrium
     attribute :updated_at
     attribute :user_guid
 
-    # ::Atrium::Account.list(:user_guid => user_guid)
     def self.list(user_guid:)
       endpoint = "/users/#{user_guid}/accounts"
       accounts_response = ::Atrium.client.make_request(:get, endpoint)
@@ -42,7 +41,6 @@ module Atrium
       end
     end
 
-    # ::Atrium::Account.read(:user_guid => user_guid, :account_guid => account_guid)
     def self.read(user_guid:, account_guid:)
       endpoint = "/users/#{user_guid}/accounts/#{account_guid}"
       account_response = ::Atrium.client.make_request(:get, endpoint)
@@ -51,7 +49,6 @@ module Atrium
       ::Atrium::Account.new(account_params)
     end
 
-    # account.transactions
     def transactions
       endpoint = "/users/#{self.user_guid}/accounts/#{self.guid}/transactions"
       account_transactions_response = ::Atrium.client.make_request(:get, endpoint)

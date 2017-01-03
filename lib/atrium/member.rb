@@ -78,9 +78,11 @@ module Atrium
     end
 
     def read_account(account_guid:)
-      # TODO: Pull in user_guid
-      endpoint = "/users/#{user_guid}/members/#{member_guid}/accounts"
-      ::Atrium.client.make_request(:get, endpoint)
+      endpoint = "/users/#{self.user_guid}/members/#{self.guid}/accounts/#{account_guid}"
+      account_response = ::Atrium.client.make_request(:get, endpoint)
+
+      account_params = account_response["account"]
+      ::Atrium::Account.new(account_params)
     end
 
     def resume

@@ -14,6 +14,18 @@ module Atrium
     attribute :user_guid
 
     ##
+    # POST /users/:user_guid/members/:member_guid/accounts
+    #
+    def accounts
+      endpoint = "users/#{self.user_guid}/members/#{self.guid}/account"
+      account_response = ::Atrium.client.make_request(:get, endpoint)
+
+      account = account_response["account"].map do |account|
+        ::Atrium::Account.new(account)
+      end
+    end
+
+    ##
     # POST /users/:user_guid/members/member_guid:/aggregate
     #
     def aggregate
@@ -22,18 +34,6 @@ module Atrium
 
       member_params = member_response["member"]
       ::Atrium::Member.new(member_params)
-    end
-
-    ##
-    # POST /users/:user_guid/members/:member_guid/accounts
-    #
-    def accounts(member_guid:, user_guid:)
-      endpoint = "users/#{user_guid}/members/#{member_guid}/account"
-      account_response = ::Atrium.client.make_request(:post, endpoint)
-
-      account = account_response["account"].map do |account|
-        ::Atrium::Transaction.new(account)
-      end
     end
 
     ##

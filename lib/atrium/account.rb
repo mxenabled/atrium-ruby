@@ -50,5 +50,15 @@ module Atrium
       account_params = account_response["account"]
       ::Atrium::Account.new(account_params)
     end
+
+    # account.transactions
+    def transactions
+      endpoint = "/users/#{self.user_guid}/accounts/#{self.guid}/transactions"
+      account_transactions_response = ::Atrium.client.make_request(:get, endpoint)
+
+      transactions = account_transactions_response["transactions"].map do |transaction|
+        ::Atrium::Transaction.new(transaction)
+      end
+    end
   end
 end

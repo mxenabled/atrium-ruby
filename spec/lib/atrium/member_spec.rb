@@ -1,6 +1,12 @@
 require "spec_helper"
 
 describe ::Atrium::Member do
+  let(:credentials) {
+    [
+      { :guid => "CRD-123", :value => "user_name" },
+      { :guid => "CRD-456", :value => "password" }
+    ]
+  }
   let(:member) { ::Atrium::Member.new(member_attributes) }
   let(:member_response) { ::JSON.parse(raw_member_response)}
   let(:members_response) { ::JSON.parse(raw_members_response)}
@@ -29,15 +35,9 @@ describe ::Atrium::Member do
   describe ".create" do
     before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
     let(:institution_code) { "chase" }
-    let(:credentials_array) {
-      [
-        { :guid => "CRD-123", :value => "user_name" },
-        { :guid => "CRD-456", :value => "password" }
-      ]
-    }
 
     it "should create a new member" do
-      response = ::Atrium::Member.create(:user_guid => member_attributes[:user_guid], :institution_code => institution_code, :credentials => credentials_array)
+      response = ::Atrium::Member.create(:user_guid => member_attributes[:user_guid], :institution_code => institution_code, :credentials => credentials)
 
       expect(response).to be_kind_of(::Object)
       expect(response).to be_kind_of(::Atrium::Member)
@@ -229,6 +229,39 @@ describe ::Atrium::Member do
 
       expect(response).to be_kind_of(::Object)
       expect(response).to be_kind_of(::Atrium::Member)
+
+      expect(response.aggregated_at).to eq(member_attributes[:aggregated_at])
+      expect(response.guid).to eq(member_attributes[:guid])
+      expect(response.identifier).to eq(member_attributes[:identifier])
+      expect(response.institution_code).to eq(member_attributes[:institution_code])
+      expect(response.metadata).to eq(member_attributes[:metadata])
+      expect(response.name).to eq(member_attributes[:name])
+      expect(response.status).to eq(member_attributes[:status])
+      expect(response.successfully_aggregated_at).to eq(member_attributes[:successfully_aggregated_at])
+      expect(response.user_guid).to eq(member_attributes[:user_guid])
+    end
+  end
+
+  describe "resume" do
+    let(:challenged_member_params) {
+      {
+        :aggregated_at => "2016-10-13T18:07:57+00:00",
+        :guid => "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b",
+        :identifier => "unique_id",
+        :institution_code => "chase",
+        :metadata => "{\"credentials_last_refreshed_at\": \"2015-10-15\"}",
+        :name => "Chase Bank",
+        :status => "CHALLENGED",
+        :successfully_aggregated_at => "2016-10-13T17:57:38+00:00",
+        :user_guid => "USR-fa7537f3-48aa-a683-a02a-b18940482f54"
+      }
+    }
+    let(:challenged_member) { ::Atrium::Member.new(challenged_member_params) }
+
+    before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
+
+    it "should return updated member" do
+      response = challenged_member.resume(credentials)
 
       expect(response.aggregated_at).to eq(member_attributes[:aggregated_at])
       expect(response.guid).to eq(member_attributes[:guid])

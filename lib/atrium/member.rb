@@ -105,7 +105,7 @@ module Atrium
     end
 
     def update(params)
-      endpoint = "/users/#{self.user_guid}/members/#{self.member_guid}"
+      endpoint = "/users/#{self.user_guid}/members/#{self.guid}"
       body = member_body(params)
       member_response = ::Atrium.client.make_request(:put, endpoint, body)
 

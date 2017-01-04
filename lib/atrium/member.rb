@@ -63,9 +63,22 @@ module Atrium
       self
     end
 
-    def challenges(member_guid:, user_guid:)
-      endpoint = "/users/#{user_guid}/members/#{member_guid}/challenges"
-      ::Atrium.client.make_request(:get, endpoint)
+    def aggregation_status
+      endpoint = "/users/#{self.user_guid}/members/#{self.guid}/status"
+      member_response = ::Atrium.client.make_request(:get, endpoint)
+
+      member_params = member_response["member"]
+      self.assign_attributes(member_params)
+      self
+    end
+
+    def challenges
+      endpoint = "/users/#{self.user_guid}/members/#{self.guid}/challenges"
+      member_response = ::Atrium.client.make_request(:get, endpoint)
+
+      member_params = member_response["member"]
+      self.assign_attributes(member_params)
+      self
     end
 
     def delete
@@ -85,15 +98,6 @@ module Atrium
       endpoint = "/users/#{self.user_guid}/members/#{self.guid}/resume"
       body = resume_params(challenge_credentials)
       member_response = ::Atrium.client.make_request(:get, endpoint, body)
-
-      member_params = member_response["member"]
-      self.assign_attributes(member_params)
-      self
-    end
-
-    def aggregation_status
-      endpoint = "/users/#{self.user_guid}/members/#{self.guid}/status"
-      member_response = ::Atrium.client.make_request(:get, endpoint)
 
       member_params = member_response["member"]
       self.assign_attributes(member_params)

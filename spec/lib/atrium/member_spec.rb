@@ -26,6 +26,34 @@ describe ::Atrium::Member do
   }
   let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 
+  describe ".create" do
+    before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
+    let(:institution_code) { "chase" }
+    let(:credentials_array) {
+      [
+        { :guid => "CRD-123", :value => "user_name" },
+        { :guid => "CRD-456", :value => "password" }
+      ]
+    }
+
+    it "should create a new member" do
+      response = ::Atrium::Member.create(:user_guid => member_attributes[:user_guid], :institution_code => institution_code, :credentials => credentials_array)
+
+      expect(response).to be_kind_of(::Object)
+      expect(response).to be_kind_of(::Atrium::Member)
+
+      expect(response.aggregated_at).to eq(member_attributes[:aggregated_at])
+      expect(response.guid).to eq(member_attributes[:guid])
+      expect(response.identifier).to eq(member_attributes[:identifier])
+      expect(response.institution_code).to eq(member_attributes[:institution_code])
+      expect(response.metadata).to eq(member_attributes[:metadata])
+      expect(response.name).to eq(member_attributes[:name])
+      expect(response.status).to eq(member_attributes[:status])
+      expect(response.successfully_aggregated_at).to eq(member_attributes[:successfully_aggregated_at])
+      expect(response.user_guid).to eq(member_attributes[:user_guid])
+    end
+  end
+
   describe "member accounts" do
     let(:account_attributes) do
       {

@@ -82,8 +82,10 @@ module Atrium
     end
 
     def delete
-      endpoint = "/users/#{user_guid}/members/#{member_guid}"
+      endpoint = "/users/#{self.user_guid}/members/#{self.guid}"
       ::Atrium.client.make_request(:delete, endpoint)
+
+      self
     end
 
     def read_account(account_guid:)

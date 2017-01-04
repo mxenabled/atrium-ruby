@@ -319,7 +319,56 @@ describe ::Atrium::Member do
     end
   end
 
-  describe "transactions" do
+  describe "#update" do
+    before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
+
+    let(:member_attributes) do
+      {
+        :aggregated_at => "",
+        :guid => "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b",
+        :identifier => "PIZZA",
+        :institution_code => "chase",
+        :metadata => "{\"credentials_last_refreshed_at\": \"2015-10-15\"}",
+        :name => "Chase Bank",
+        :status => "CHALLENGED",
+        :successfully_aggregated_at => "2016-10-13T17:57:38+00:00",
+        :user_guid => "USR-fa7537f3-48aa-a683-a02a-b18940482f54"
+      }
+    end
+    let(:member_attributes_for_update) do
+      {
+        :aggregated_at => "2016-10-13T18:07:57+00:00",
+        :guid => "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b",
+        :identifier => "unique_id",
+        :institution_code => "chase",
+        :metadata => "{\"credentials_last_refreshed_at\": \"2015-10-15\"}",
+        :name => "Chase Bank",
+        :status => "COMPLETED",
+        :successfully_aggregated_at => "2016-10-13T17:57:38+00:00",
+        :user_guid => "USR-fa7537f3-48aa-a683-a02a-b18940482f54"
+      }
+    end
+    let(:member_for_update) { ::Atrium::Member.new(member_attributes) }
+
+    it "should update a member" do
+      response = member_for_update.update(member_attributes_for_update)
+
+      expect(response).to be_kind_of(::Object)
+      expect(response).to be_kind_of(::Atrium::Member)
+
+      expect(response.aggregated_at).to eq(member_attributes[:aggregated_at])
+      expect(response.guid).to eq(member_attributes[:guid])
+      expect(response.identifier).to eq(member_attributes[:identifier])
+      expect(response.institution_code).to eq(member_attributes[:institution_code])
+      expect(response.metadata).to eq(member_attributes[:metadata])
+      expect(response.name).to eq(member_attributes[:name])
+      expect(response.status).to eq(member_attributes[:status])
+      expect(response.successfully_aggregated_at).to eq(member_attributes[:successfully_aggregated_at])
+      expect(response.user_guid).to eq(member_attributes[:user_guid])
+    end
+  end
+
+  describe "#transactions" do
     let(:member_transactions_response) { ::JSON.parse(raw_member_transactions_response) }
     let(:transaction_attributes) do
       {

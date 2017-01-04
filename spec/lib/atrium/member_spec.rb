@@ -275,6 +275,28 @@ describe ::Atrium::Member do
     end
   end
 
+  describe "#aggregation_status" do
+    let(:new_member) { ::Atrium::Member.new(member_attributes) }
+    before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
+
+    it "should return member" do
+      response = new_member.aggregation_status
+
+      expect(response).to be_kind_of(::Object)
+      expect(response).to be_kind_of(::Atrium::Member)
+
+      expect(response.aggregated_at).to eq(member_attributes[:aggregated_at])
+      expect(response.guid).to eq(member_attributes[:guid])
+      expect(response.identifier).to eq(member_attributes[:identifier])
+      expect(response.institution_code).to eq(member_attributes[:institution_code])
+      expect(response.metadata).to eq(member_attributes[:metadata])
+      expect(response.name).to eq(member_attributes[:name])
+      expect(response.status).to eq(member_attributes[:status])
+      expect(response.successfully_aggregated_at).to eq(member_attributes[:successfully_aggregated_at])
+      expect(response.user_guid).to eq(member_attributes[:user_guid])
+    end
+  end
+
   describe "transactions" do
     let(:member_transactions_response) { ::JSON.parse(raw_member_transactions_response) }
     let(:transaction_attributes) do

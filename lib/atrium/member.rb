@@ -42,11 +42,6 @@ module Atrium
       ::Atrium::Member.new(member_params)
     end
 
-    def self.status(user_guid:, member_guid:)
-      endpoint = "/users/#{user_guid}/members/#{member_guid}/status"
-      ::Atrium.client.make_request(:get, endpoint)
-    end
-
     ##
     # INSTANCE METHODS
     #
@@ -90,6 +85,15 @@ module Atrium
       endpoint = "/users/#{self.user_guid}/members/#{self.guid}/resume"
       body = resume_params(challenge_credentials)
       member_response = ::Atrium.client.make_request(:get, endpoint, body)
+
+      member_params = member_response["member"]
+      self.assign_attributes(member_params)
+      self
+    end
+
+    def aggregation_status
+      endpoint = "/users/#{self.user_guid}/members/#{self.guid}/status"
+      member_response = ::Atrium.client.make_request(:get, endpoint)
 
       member_params = member_response["member"]
       self.assign_attributes(member_params)

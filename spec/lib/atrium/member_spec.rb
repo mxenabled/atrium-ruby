@@ -319,6 +319,27 @@ describe ::Atrium::Member do
     end
   end
 
+  describe "#delete" do
+    before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
+
+    it "should return deleted member" do
+      response = member.delete
+
+      expect(response).to be_kind_of(::Object)
+      expect(response).to be_kind_of(::Atrium::Member)
+
+      expect(response.aggregated_at).to eq(member_attributes[:aggregated_at])
+      expect(response.guid).to eq(member_attributes[:guid])
+      expect(response.identifier).to eq(member_attributes[:identifier])
+      expect(response.institution_code).to eq(member_attributes[:institution_code])
+      expect(response.metadata).to eq(member_attributes[:metadata])
+      expect(response.name).to eq(member_attributes[:name])
+      expect(response.status).to eq(member_attributes[:status])
+      expect(response.successfully_aggregated_at).to eq(member_attributes[:successfully_aggregated_at])
+      expect(response.user_guid).to eq(member_attributes[:user_guid])
+    end
+  end
+
   describe "#update" do
     before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
 

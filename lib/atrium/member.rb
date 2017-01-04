@@ -86,10 +86,14 @@ module Atrium
       ::Atrium::Account.new(account_params)
     end
 
-    def resume
-      # TODO: Pull in user_guid
-      endpoint = "/users/#{user_guid}/members/#{member_guid}/resume"
-      ::Atrium.client.make_request(:get, endpoint)
+    def resume(challenge_credentials)
+      endpoint = "/users/#{self.user_guid}/members/#{self.guid}/resume"
+      body = resume_params(challenge_credentials)
+      member_response = ::Atrium.client.make_request(:get, endpoint, body)
+
+      member_params = member_response["member"]
+      self.assign_attributes(member_params)
+      self
     end
 
     def update(params)
@@ -148,5 +152,14 @@ module Atrium
         }
       }
     end
+
+    def resume_params(challenge_credentials)
+      {
+        :member => {
+          :credentials => challenge_credentials
+        }
+      }
+    end
+
   end
 end

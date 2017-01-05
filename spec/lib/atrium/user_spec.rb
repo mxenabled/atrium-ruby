@@ -148,6 +148,23 @@ describe ::Atrium::User do
     end
   end
 
+  describe "delete" do
+    before { allow(::Atrium.client).to receive(:make_request).and_return(users_response) }
+
+    it "should return user" do
+      response = user.delete
+
+      expect(response).to be_kind_of(::Object)
+      expect(response).to be_kind_of(::Atrium::User)
+
+      expect(response.guid).to eq(user_attributes[:guid])
+      expect(response.identifier).to eq(user_attributes[:identifier])
+      expect(response.is_disabled).to eq(user_attributes[:is_disabled])
+      expect(response.metadata).to eq(user_attributes[:metadata])
+    end
+  end
+
+
   describe "user transactions" do
     let(:transaction_response) { ::JSON.parse(raw_transaction_response)}
     let(:transactions_response) { ::JSON.parse(raw_transactions_response)}

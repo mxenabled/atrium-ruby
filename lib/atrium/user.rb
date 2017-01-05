@@ -9,13 +9,12 @@ module Atrium
     attribute :metadata
 
     ##
-    # POST /users
+    # CLASS METHODS
     #
-    def self.create(identifier = "", is_disabled = false, metadata = nil)
+    def self.create(identifier:, is_disabled:, metadata:)
       endpoint = "/users"
       body = user_body(identifier, is_disabled, metadata)
-      ::Atrium.client.make_request(:post, endpoint, body)
-    end
+      response = ::Atrium.client.make_request(:post, endpoint, body)
 
     ##
     # DELETE /users/:guid

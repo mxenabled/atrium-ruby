@@ -29,7 +29,7 @@ module Atrium
       end
     end
 
-    def self.read(guid)
+    def self.read(guid:)
       endpoint = "/users/#{guid}"
       response = ::Atrium.client.make_request(:get, endpoint)
 

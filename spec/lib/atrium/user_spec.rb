@@ -51,4 +51,20 @@ describe ::Atrium::User do
       expect(response.first.metadata).to eq(user_attributes[:metadata])
     end
   end
+
+  describe ".read" do
+    before { allow(::Atrium.client).to receive(:make_request).and_return(user_response) }
+
+    it "should return a users" do
+      response = described_class.read(:guid => user_guid)
+
+      expect(response).to be_kind_of(::Object)
+      expect(response).to be_kind_of(::Atrium::User)
+
+      expect(response.guid).to eq(user_attributes[:guid])
+      expect(response.identifier).to eq(user_attributes[:identifier])
+      expect(response.is_disabled).to eq(user_attributes[:is_disabled])
+      expect(response.metadata).to eq(user_attributes[:metadata])
+    end
+  end
 end

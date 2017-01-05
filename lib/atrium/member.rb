@@ -147,7 +147,7 @@ module Atrium
         }
       }
     end
-    private_class_method :create_params, :member_body,
+    private_class_method :create_params, :member_body
 
     private
 

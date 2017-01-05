@@ -29,7 +29,7 @@ module Atrium
       endpoint = "/users/#{user_guid}/members"
       members_response = ::Atrium.client.make_request(:get, endpoint)
 
-      members = members_response["members"].map do |member|
+      members_response["members"].map do |member|
         ::Atrium::Member.new(member)
       end
     end
@@ -49,7 +49,7 @@ module Atrium
       endpoint = "users/#{self.user_guid}/members/#{self.guid}/account"
       accounts_response = ::Atrium.client.make_request(:get, endpoint)
 
-      account = accounts_response["accounts"].map do |account|
+      accounts_response["accounts"].map do |account|
         ::Atrium::Account.new(account)
       end
     end
@@ -120,7 +120,7 @@ module Atrium
       endpoint = "users/#{self.user_guid}/members/#{self.guid}/transactions"
       transactions_response = ::Atrium.client.make_request(:post, endpoint)
 
-      transactions = transactions_response["transactions"].map do |transaction|
+      transactions_response["transactions"].map do |transaction|
         ::Atrium::Transaction.new(transaction)
       end
     end

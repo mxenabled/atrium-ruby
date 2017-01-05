@@ -36,5 +36,19 @@ describe ::Atrium::User do
     end
   end
 
+  describe ".list" do
+    before { allow(::Atrium.client).to receive(:make_request).and_return(users_response) }
+
+    it "should return list of users" do
+      response = described_class.list
+
+      expect(response.length).to eq(2)
+      expect(response.first).to be_kind_of(::Atrium::User)
+
+      expect(response.first.guid).to eq(user_attributes[:guid])
+      expect(response.first.identifier).to eq(user_attributes[:identifier])
+      expect(response.first.is_disabled).to eq(user_attributes[:is_disabled])
+      expect(response.first.metadata).to eq(user_attributes[:metadata])
+    end
   end
 end

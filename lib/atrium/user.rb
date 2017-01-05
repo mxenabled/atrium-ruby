@@ -99,7 +99,5 @@ module Atrium
         }
       }
     end
-
-
   end
 end

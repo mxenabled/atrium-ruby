@@ -52,6 +52,8 @@ module Atrium
     def delete
       endpoint = "/users/#{self.guid}"
       response = ::Atrium.client.make_request(:delete, endpoint)
+
+      self
     end
 
     def members

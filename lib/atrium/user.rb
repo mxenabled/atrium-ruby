@@ -1,12 +1,12 @@
 module Atrium
   class User
-    ##
-    # GET /users/:user_guid/members
-    #
-    def self.accounts(user_guid)
-      endpoint = "/users/#{user_guid}/accounts"
-      ::Atrium.client.make_request(:get, endpoint)
-    end
+    include ::ActiveAttr::Model
+
+    # ATTRIBUTES
+    attribute :guid
+    attribute :identifier
+    attribute :is_disabled
+    attribute :metadata
 
     ##
     # POST /users

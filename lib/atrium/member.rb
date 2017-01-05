@@ -125,7 +125,6 @@ module Atrium
       end
     end
 
-    private
     ##
     # PRIVATE CLASS METHODS
     #
@@ -148,6 +147,9 @@ module Atrium
         }
       }
     end
+    private_class_method :create_params, :member_body,
+
+    private
 
     ##
     # PRIVATE INSTANCE METHODS

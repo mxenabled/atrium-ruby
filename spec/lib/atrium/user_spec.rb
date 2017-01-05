@@ -231,4 +231,33 @@ describe ::Atrium::User do
     end
   end
 
+  describe "#update" do
+    let(:raw_user_response) {
+      { :user => user_attributes.merge(update_params) }.to_json
+    }
+    let(:update_params) {
+      {
+        :guid => user_guid,
+        :identifier => "PIZZZAAA",
+        :is_disabled => is_disabled,
+        :metadata => metadata
+      }
+    }
+    let(:updated_user_response) { ::JSON.parse(raw_user_response) }
+
+    before { allow(::Atrium.client).to receive(:make_request).and_return(updated_user_response) }
+
+    it "should return updated user" do
+      response = user.update(update_params)
+
+      expect(response).to be_kind_of(::Object)
+      expect(response).to be_kind_of(::Atrium::User)
+
+      expect(response.guid).to eq(update_params[:guid])
+      expect(response.identifier).to eq(update_params[:identifier])
+      expect(response.is_disabled).to eq(update_params[:is_disabled])
+      expect(response.metadata).to eq(update_params[:metadata])
+    end
+  end
+
 end

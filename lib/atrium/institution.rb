@@ -20,13 +20,24 @@ module Atrium
       ::Atrium.client.make_request(:get, endpoint)
     end
 
+    def self.format_endpoint(endpoint_name, options = nil)
+      if options.present?
+        endpoint + pagination_params(options)
+      else
+        endpoint
+      end
     end
-    
-    ##
-    # GET /institutions
-    #
-    def self.list
-      ::Atrium.client.make_request(:get, "/institutions")
+
+    def self.query_params(options)
+      query_params = ""
+
+      options.each do |param_name, value|
+        format_query = "&#{param_name.to_s}=#{value.to_s}"
+        query_params += format_query
+      end
+
+      query_params
     end
+    private_class_method :format_endpoint, :pagination_params
   end
 end

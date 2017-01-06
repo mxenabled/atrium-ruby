@@ -33,7 +33,7 @@ module Atrium
       endpoint = "/users/#{guid}"
       response = ::Atrium.client.make_request(:get, endpoint)
 
-      user_params = response["user"]
+      response["user"]
       ::Atrium::User.new(user_params)
     end
 
@@ -51,7 +51,7 @@ module Atrium
 
     def delete
       endpoint = "/users/#{self.guid}"
-      response = ::Atrium.client.make_request(:delete, endpoint)
+      ::Atrium.client.make_request(:delete, endpoint)
 
       self
     end

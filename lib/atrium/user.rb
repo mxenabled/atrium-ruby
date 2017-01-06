@@ -24,7 +24,7 @@ module Atrium
       endpoint = "/users"
       users_response = ::Atrium.client.make_request(:get, endpoint)
 
-      users = users_response["users"].map do |user|
+      users_response["users"].map do |user|
         ::Atrium::User.new(user)
       end
     end
@@ -33,7 +33,7 @@ module Atrium
       endpoint = "/users/#{guid}"
       response = ::Atrium.client.make_request(:get, endpoint)
 
-      response["user"]
+      user_params = response["user"]
       ::Atrium::User.new(user_params)
     end
 

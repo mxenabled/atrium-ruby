@@ -1,8 +1,11 @@
 module Atrium
   class Institution
-    ##
-    # GET /institutions/:institution_code/credentials
-    #
+    include ::ActiveAttr::Model
+
+    attribute :code
+    attribute :name
+    attribute :url
+
     def self.credentials(institution_code)
       ::Atrium.client.make_request(:get, "/institutions/#{institution_code}/credentials")
     end

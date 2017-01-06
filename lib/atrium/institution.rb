@@ -15,6 +15,11 @@ module Atrium
       end
     end
 
+    def self.list(options = nil)
+      endpoint = format_endpoint("institutions", options)
+      ::Atrium.client.make_request(:get, endpoint)
+    end
+
     end
     
     ##

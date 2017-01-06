@@ -17,12 +17,16 @@ module Atrium
 
     def self.list(options = nil)
       endpoint = format_endpoint("institutions", options)
-      ::Atrium.client.make_request(:get, endpoint)
+      response = ::Atrium.client.make_request(:get, endpoint)
+
+      response["institutions"].map do |institution|
+        ::Atrium::Institution.new(institution)
+      end
     end
 
-    def self.format_endpoint(endpoint_name, options = nil)
+    def self.format_endpoint(endpoint, options = nil)
       if options.present?
-        endpoint + pagination_params(options)
+        endpoint + query_params(options)
       else
         endpoint
       end
@@ -38,6 +42,6 @@ module Atrium
 
       query_params
     end
-    private_class_method :format_endpoint, :pagination_params
+    private_class_method :format_endpoint, :query_params
   end
 end

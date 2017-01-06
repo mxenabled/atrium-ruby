@@ -17,7 +17,6 @@ describe ::Atrium::Institution do
       :url => "https://www.chase.com",
     }
   end
-
   let(:raw_institution_response) {
     { :institution => institution_attributes }.to_json
   }
@@ -29,7 +28,7 @@ describe ::Atrium::Institution do
   describe ".list" do
     before { allow(::Atrium.client).to receive(:make_request).and_return(institutions_response) }
 
-    it "shoul return an array of institutions" do
+    it "should return an array of institutions" do
       response = ::Atrium::Institution.list
 
       expect(response).to be_kind_of(::Array)

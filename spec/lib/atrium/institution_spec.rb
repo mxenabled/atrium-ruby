@@ -71,4 +71,30 @@ describe ::Atrium::Institution do
       expect(response.first.value).to eq(credential_attributes[:value])
     end
   end
+
+  describe "#format_endpoint" do
+    let(:endpoint) { "institutions" }
+    let(:options) {
+      { :name => "chase", :code => "chase", :page => 1, :records_per_page => 50 }
+    }
+    let(:options_response) { ::URI.encode_www_form(options) }
+
+    context "with options" do
+      let(:expected_response) { endpoint + "?" + options_response }
+
+      it "should return endpoint with url query params" do
+        formatted_endpoint = ::Atrium::Institution.format_endpoint(endpoint, options)
+        expect(formatted_endpoint).to eq(expected_response)
+      end
+    end
+
+    context "without options" do
+      let(:expected_response) { endpoint }
+
+      it "should return only the endpoint" do
+        formatted_endpoint = ::Atrium::Institution.format_endpoint(endpoint)
+        expect(formatted_endpoint).to eq(endpoint)
+      end
+    end
+  end
 end

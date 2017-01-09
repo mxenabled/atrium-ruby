@@ -28,22 +28,10 @@ module Atrium
 
     def self.format_endpoint(endpoint, options = nil)
       if options.present?
-        endpoint + query_params(options)
+        endpoint + "?" + URI.encode_www_form(options)
       else
         endpoint
       end
     end
-
-    def self.query_params(options)
-      query_params = ""
-
-      options.each do |param_name, value|
-        format_query = "&#{param_name.to_s}=#{value.to_s}"
-        query_params += format_query
-      end
-
-      query_params
-    end
-    private_class_method :format_endpoint, :query_params
   end
 end

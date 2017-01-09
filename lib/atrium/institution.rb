@@ -1,3 +1,5 @@
+require "URI"
+
 module Atrium
   class Institution
     include ::ActiveAttr::Model

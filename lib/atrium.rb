@@ -4,6 +4,7 @@ require "json"
 
 require "atrium/account"
 require "atrium/client"
+require "atrium/credential"
 require "atrium/error"
 require "atrium/institution"
 require "atrium/member"

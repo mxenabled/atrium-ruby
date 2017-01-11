@@ -16,14 +16,6 @@ module Atrium
       end
     end
 
-    def self.format_endpoint(endpoint, options = nil)
-      if options.present?
-        endpoint + "?" + URI.encode_www_form(options)
-      else
-        endpoint
-      end
-    end
-
     def self.list(query_params = nil)
       paginate_endpoint(query_params)
     end

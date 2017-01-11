@@ -24,8 +24,8 @@ module Atrium
       end
     end
 
-    def self.list(options = nil)
-      paginate_endpoint(options)
+    def self.list(query_params = nil)
+      paginate_endpoint(query_params)
     end
   end
 end

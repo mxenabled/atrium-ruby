@@ -30,12 +30,6 @@ module Atrium
       list
     end
 
-    def response_list(response)
-      response["#{klass_name}"].map do |params|
-        self.new(params)
-      end
-    end
-
     def set_pagination_fields(response)
       pagination = response["pagination"]
       @current_page  = pagination["current_page"] || DEFAULT_PAGE

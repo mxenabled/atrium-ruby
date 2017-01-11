@@ -9,7 +9,7 @@ module Atrium
     attr_accessor :current_page, :endpoint, :klass_name, :per_page, :total_pages
 
     def endpoint_name(query_params = nil)
-      set_klass_name
+      klass_name
 
       if query_params.present?
         @endpoint = klass_name + "?" + URI.encode_www_form(query_params) + "&"
@@ -17,6 +17,10 @@ module Atrium
         @endpoint = klass_name + "?"
       end
     end
+
+    def klass_name
+      @klass_name ||= self.name.gsub("Atrium::", "").downcase.pluralize
+    end    
 
     def paginate_endpoint(query_params = nil)
       endpoint_name(query_params)
@@ -38,10 +42,6 @@ module Atrium
         @current_page += 1
       end
       list
-    end
-
-    def set_klass_name
-      @klass_name ||= self.name.gsub("Atrium::", "").downcase.pluralize
     end
 
     def set_pagination_fields

@@ -6,20 +6,30 @@ module Atrium
     DEFAULT_RECORDS_PER_PAGE = 25
     DEFAULT_TOTAL_PAGES = 1
 
-    attr_accessor :current_page, :klass_name, :per_page, :total_pages
+    attr_accessor :current_page, :endpoint, :klass_name, :per_page, :total_pages
 
-    def endpoint_name
-      @klass_name ||= self.name.gsub("Atrium::", "").downcase.pluralize
+    def endpoint_name(query_params = nil)
+      set_klass_name
+
+      if query_params.present?
+        @endpoint = klass_name + "?" + URI.encode_www_form(query_params) + "&"
+      else
+        @endpoint = klass_name + "?"
+      end
     end
 
-    def paginate_endpoint(options = nil)
-      endpoint_name
-      set_pagination_fields_from_initial_request(endpoint_name, options)
+    def paginate_endpoint(query_params = nil)
+      endpoint_name(query_params)
+      set_pagination_fields
+      response_list
+    end
+
+    def response_list
       list = []
 
       until current_page > total_pages
-        endpoint = "#{klass_name}?page=#{current_page}&records_per_page=#{per_page}"
-        response = ::Atrium.client.make_request(:get, endpoint)
+        paginated_endpoint =  endpoint + "page=#{current_page}&records_per_page=#{per_page}"
+        response = ::Atrium.client.make_request(:get, paginated_endpoint)
 
         # Add new objects to the list
         response["#{klass_name}"].map do |params|
@@ -30,17 +40,17 @@ module Atrium
       list
     end
 
-    def set_pagination_fields(response)
+    def set_klass_name
+      @klass_name ||= self.name.gsub("Atrium::", "").downcase.pluralize
+    end
+
+    def set_pagination_fields
+      response = ::Atrium.client.make_request(:get, klass_name)
+
       pagination = response["pagination"]
       @current_page  = pagination["current_page"] || DEFAULT_PAGE
       @per_page  = pagination["per_page"] || DEFAULT_RECORDS_PER_PAGE
       @total_pages  = pagination["total_pages"] || DEFAULT_TOTAL_PAGES
-    end
-
-    # TODO: add options for this!
-    def set_pagination_fields_from_initial_request(endpoint, options = nil)
-      response = ::Atrium.client.make_request(:get, endpoint)
-      set_pagination_fields(response)
     end
   end
 end

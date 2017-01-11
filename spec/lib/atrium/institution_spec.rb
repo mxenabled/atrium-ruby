@@ -1,6 +1,17 @@
 require "spec_helper"
 
 describe ::Atrium::Institution do
+  let(:pagination) {
+    {
+      :pagination =>
+        {
+          :current_page => 1,
+          :per_page => 25,
+          :total_entries => 50,
+          :total_pages => 2
+        }
+    }
+  }
   let(:credentials) {
     [
       { :guid => "CRD-123", :value => "user_name" },
@@ -19,10 +30,10 @@ describe ::Atrium::Institution do
     }
   end
   let(:raw_institution_response) {
-    { :institution => institution_attributes }.to_json
+    { :institution => institution_attributes }.merge(pagination).to_json
   }
   let(:raw_institutions_response) {
-    { :institutions => [institution_attributes, institution_attributes]}.to_json
+    { :institutions => [institution_attributes, institution_attributes]}.merge(pagination).to_json
   }
   let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 
@@ -33,7 +44,7 @@ describe ::Atrium::Institution do
       response = ::Atrium::Institution.list
 
       expect(response).to be_kind_of(::Array)
-      expect(response.length).to eq(2)
+      expect(response.length).to eq(4)
       expect(response.first).to be_kind_of(::Atrium::Institution)
 
       expect(response.first.code).to eq(institution_attributes[:code])

@@ -8,7 +8,7 @@ module Atrium
 
     attr_accessor :current_page, :klass_name, :per_page, :total_pages
 
-    def endpoint_name # (klass)
+    def endpoint_name
       @klass_name ||= self.name.gsub("Atrium::", "").downcase.pluralize
     end
 

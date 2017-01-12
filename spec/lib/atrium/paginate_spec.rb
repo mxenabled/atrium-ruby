@@ -79,4 +79,14 @@ describe "::Atrium::Paginate" do
       end
     end
   end
+
+  describe "#paginate_endpoint_in_batches" do
+    context "no block passed" do
+      let(:response_message) { "method requires block to be passed" }
+      it "should return message that block is required" do
+        response = test_class.paginate_endpoint_in_batches
+        expect(response).to eq(response_message)
+      end
+    end
+  end
 end

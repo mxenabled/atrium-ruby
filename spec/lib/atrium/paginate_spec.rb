@@ -12,9 +12,9 @@ describe "::Atrium::Paginate" do
         {
           "institutions" =>
             [
-              {"code" => "chase", "name" => "Chase Bank", "url" => "https://chase.com/"},
-              {"code" => "68944", "name" => "Chase Credit Cards", "url" => "None"},
-              {"code" => "68702", "name" => "INTBG OFX CHASE CARD INST", "url" => "https://www.chase.com"}
+              {"code" => "batman", "name" => "Batman Bank", "url" => "https://batman.com/"},
+              {"code" => "batman", "name" => "Batman CC", "url" => "None"},
+              {"code" => "batman", "name" => "Batman WBC", "url" => "https://www.batman.com"}
             ],
             "pagination" =>
               {
@@ -22,7 +22,7 @@ describe "::Atrium::Paginate" do
               }
           }
       }
-      let(:query_params) { { "name" => "chase" } }
+      let(:query_params) { { "name" => "batman" } }
 
       before do
         allow(::Atrium.client).to receive(:make_request).and_return(institutions_response)
@@ -50,9 +50,9 @@ describe "::Atrium::Paginate" do
       }
       let(:institution_attributes) do
         {
-          "code" => "chase",
-          "name" => "Chase Bank",
-          "url" => "https://www.chase.com",
+          "code" => "batman",
+          "name" => "Batman Bank",
+          "url" => "https://www.batman.com",
         }
       end
       let(:institutions_response) { { "institutions" => [institution_attributes, institution_attributes ] }.merge(pagination) }
@@ -86,6 +86,40 @@ describe "::Atrium::Paginate" do
       it "should return message that block is required" do
         response = test_class.paginate_endpoint_in_batches
         expect(response).to eq(response_message)
+      end
+    end
+
+    context "block passed" do
+      let(:batch_of_institutions) do
+        institutions_response["institutions"].map do |institution|
+          ::Atrium::Institution.new(institution)
+        end
+      end
+      let(:institutions_response) {
+        {
+          "institutions" =>
+            [
+              {"code" => "batman", "name" => "Batman Bank", "url" => "https://batman.com/"},
+              {"code" => "batman", "name" => "Batman CC", "url" => "None"},
+              {"code" => "batman", "name" => "Batman WB", "url" => "https://www.batman.com"}
+            ],
+            "pagination" =>
+              {
+                "current_page" => 1, "per_page" => 25, "total_entries" => 3, "total_pages" => 1
+              }
+          }
+      }
+      let(:list_from_batch) { [ ] }
+
+      before do
+        allow(::Atrium.client).to receive(:make_request).and_return(institutions_response)
+      end
+
+      it "should pass batches to block" do
+        response = test_class.list_in_batches { |list| list_from_batch << list }
+
+        expect(list_from_batch.first.size).to eq(3)
+        expect(list_from_batch.first).to eq(batch_of_institutions)
       end
     end
   end

@@ -22,14 +22,14 @@ describe "::Atrium::Paginate" do
               }
           }
       }
-      let(:query_params) { { :name => "chase" } }
+      let(:query_params) { { "name" => "chase" } }
 
       before do
         allow(::Atrium.client).to receive(:make_request).and_return(institutions_response)
       end
 
       it "should return list from test params" do
-        paginated_results = test_class.paginate_endpoint(query_params)
+        paginated_results = test_class.paginate_endpoint(:query_params => query_params)
         expect(paginated_results).to eq(expected_response)
       end
     end

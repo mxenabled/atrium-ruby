@@ -4,23 +4,20 @@ module Atrium
   module Paginate
     DEFAULT_PAGE = 1
     DEFAULT_RECORDS_PER_PAGE = 25
-    DEFAULT_TOTAL_PAGES = 1
 
-    attr_accessor :current_page, :endpoint, :klass_name, :per_page, :total_pages
+    attr_accessor :current_page, :endpoint, :total_entries, :total_pages
 
-    def endpoint_name(query_params = nil)
-      klass_name
-
-      if query_params.present?
-        @endpoint = klass_name + "?" + URI.encode_www_form(query_params) + "&"
+    def endpoint_name(query_params: nil)
+      @endpoint = if query_params.present?
+         klass_name + "?" + URI.encode_www_form(query_params) + "&"
       else
-        @endpoint = klass_name + "?"
+        klass_name + "?"
       end
     end
 
     def klass_name
       @klass_name ||= self.name.gsub("Atrium::", "").downcase.pluralize
-    end    
+    end
 
     def paginate_endpoint(query_params = nil)
       endpoint_name(query_params)

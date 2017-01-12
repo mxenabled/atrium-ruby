@@ -19,21 +19,26 @@ module Atrium
       @klass_name ||= self.name.gsub("Atrium::", "").downcase.pluralize
     end
 
-    def paginate_endpoint(query_params = nil)
-      endpoint_name(query_params)
+    def paginate_endpoint(query_params: nil, limit: nil)
+      endpoint_name(query_params: query_params)
       set_pagination_fields
-      response_list
+      response_list(limit: limit)
     end
 
-    def response_list
+    def records_per_page
+      @records_per_page ||= DEFAULT_RECORDS_PER_PAGE
+    end
+
+    def response_list(limit: nil)
+      @total_pages = limit / records_per_page if limit.present? && total_pages > 1
       list = []
 
       until current_page > total_pages
-        paginated_endpoint =  endpoint + "page=#{current_page}&records_per_page=#{per_page}"
+        paginated_endpoint =  endpoint + "page=#{current_page}&records_per_page=#{records_per_page}"
         response = ::Atrium.client.make_request(:get, paginated_endpoint)
 
         # Add new objects to the list
-        response["#{klass_name}"].map do |params|
+        response["#{klass_name}"].each do |params|
           list << self.new(params)
         end
         @current_page += 1
@@ -42,12 +47,12 @@ module Atrium
     end
 
     def set_pagination_fields
-      response = ::Atrium.client.make_request(:get, klass_name)
+      @current_page = DEFAULT_PAGE
+      paginated_endpoint = endpoint + "page=#{current_page}&records_per_page=#{records_per_page}"
+      response = ::Atrium.client.make_request(:get, paginated_endpoint)
 
       pagination = response["pagination"]
-      @current_page  = pagination["current_page"] || DEFAULT_PAGE
-      @per_page  = pagination["per_page"] || DEFAULT_RECORDS_PER_PAGE
-      @total_pages  = pagination["total_pages"] || DEFAULT_TOTAL_PAGES
+      @total_pages  = pagination["total_pages"]
     end
   end
 end

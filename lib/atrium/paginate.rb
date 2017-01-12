@@ -2,10 +2,10 @@ require "URI"
 
 module Atrium
   module Paginate
-    DEFAULT_PAGE = 1
     DEFAULT_RECORDS_PER_PAGE = 25
+    INITIAL_PAGE = 1
 
-    attr_accessor :current_page, :endpoint, :total_entries, :total_pages
+    attr_accessor :current_page, :endpoint, :total_pages
 
     def endpoint_name(query_params: nil)
       @endpoint = if query_params.present?
@@ -15,13 +15,23 @@ module Atrium
       end
     end
 
+    def get_total_pages
+      @current_page = INITIAL_PAGE
+
+      paginated_endpoint = endpoint + "page=#{current_page}&records_per_page=#{records_per_page}"
+      response = ::Atrium.client.make_request(:get, paginated_endpoint)
+
+      pagination = response["pagination"]
+      @total_pages  = pagination["total_pages"]
+    end
+
     def klass_name
       @klass_name ||= self.name.gsub("Atrium::", "").downcase.pluralize
     end
 
     def paginate_endpoint(query_params: nil, limit: nil)
       endpoint_name(query_params: query_params)
-      set_pagination_fields
+      get_total_pages
       response_list(limit: limit)
     end
 
@@ -29,7 +39,7 @@ module Atrium
       return "method requires block to be passed" unless block_given?
 
       endpoint_name(query_params: query_params)
-      set_pagination_fields
+      get_total_pages
       response_list_in_batches(limit: limit, &block)
     end
 
@@ -70,15 +80,6 @@ module Atrium
         @current_page += 1
         yield list
       end
-    end
-
-    def set_pagination_fields
-      @current_page = DEFAULT_PAGE
-      paginated_endpoint = endpoint + "page=#{current_page}&records_per_page=#{records_per_page}"
-      response = ::Atrium.client.make_request(:get, paginated_endpoint)
-
-      pagination = response["pagination"]
-      @total_pages  = pagination["total_pages"]
     end
   end
 end

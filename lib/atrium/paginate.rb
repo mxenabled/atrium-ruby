@@ -26,6 +26,8 @@ module Atrium
     end
 
     def paginate_endpoint_in_batches(query_params: nil, limit: nil, &block)
+      return "method requires block to be passed" unless block_given?
+
       endpoint_name(query_params: query_params)
       set_pagination_fields
       response_list_in_batches(limit: limit, &block)

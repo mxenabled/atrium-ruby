@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'atrium/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "atrium-ruby"
+  spec.name          = "atrium"
   spec.version       = ::Atrium::VERSION
   spec.authors       = ["Jon Carstens, Dan Jones, Zach Toolson"]
   spec.email         = ["jon.carstens@mx.com, dan.jones@mx.com, zach.toolson@mx.com"]

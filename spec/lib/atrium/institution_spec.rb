@@ -1,6 +1,17 @@
 require "spec_helper"
 
 describe ::Atrium::Institution do
+  let(:pagination) {
+    {
+      :pagination =>
+        {
+          :current_page => 1,
+          :per_page => 2,
+          :total_entries => 4,
+          :total_pages => 2
+        }
+    }
+  }
   let(:credentials) {
     [
       { :guid => "CRD-123", :value => "user_name" },
@@ -19,10 +30,10 @@ describe ::Atrium::Institution do
     }
   end
   let(:raw_institution_response) {
-    { :institution => institution_attributes }.to_json
+    { :institution => institution_attributes }.merge(pagination).to_json
   }
   let(:raw_institutions_response) {
-    { :institutions => [institution_attributes, institution_attributes]}.to_json
+    { :institutions => [institution_attributes, institution_attributes]}.merge(pagination).to_json
   }
   let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 
@@ -33,7 +44,7 @@ describe ::Atrium::Institution do
       response = ::Atrium::Institution.list
 
       expect(response).to be_kind_of(::Array)
-      expect(response.length).to eq(2)
+      expect(response.length).to eq(4)
       expect(response.first).to be_kind_of(::Atrium::Institution)
 
       expect(response.first.code).to eq(institution_attributes[:code])
@@ -69,32 +80,6 @@ describe ::Atrium::Institution do
 
       expect(response.first.guid).to eq(credential_attributes[:guid])
       expect(response.first.value).to eq(credential_attributes[:value])
-    end
-  end
-
-  describe "#format_endpoint" do
-    let(:endpoint) { "institutions" }
-    let(:options) {
-      { :name => "chase", :code => "chase", :page => 1, :records_per_page => 50 }
-    }
-    let(:options_response) { ::URI.encode_www_form(options) }
-
-    context "with options" do
-      let(:expected_response) { endpoint + "?" + options_response }
-
-      it "should return endpoint with url query params" do
-        formatted_endpoint = ::Atrium::Institution.format_endpoint(endpoint, options)
-        expect(formatted_endpoint).to eq(expected_response)
-      end
-    end
-
-    context "without options" do
-      let(:expected_response) { endpoint }
-
-      it "should return only the endpoint" do
-        formatted_endpoint = ::Atrium::Institution.format_endpoint(endpoint)
-        expect(formatted_endpoint).to eq(endpoint)
-      end
     end
   end
 end

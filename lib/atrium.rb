@@ -1,6 +1,7 @@
 require "active_attr"
 require "httpclient"
 require "json"
+require "atrium/paginate"
 
 require "atrium/account"
 require "atrium/client"

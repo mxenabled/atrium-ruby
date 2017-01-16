@@ -8,7 +8,6 @@ Gem::Specification.new do |spec|
   spec.version       = ::Atrium::VERSION
   spec.authors       = ["Jon Carstens, Dan Jones, Zach Toolson"]
   spec.email         = ["jon.carstens@mx.com, dan.jones@mx.com, zach.toolson@mx.com"]
-
   spec.summary       = "Ruby wrapper for the Atrium API by MX"
   spec.description   = "Ruby wrapper for the Atrium API by MX"
   spec.homepage      = "http://github.com/mxenabled/atrium-ruby"

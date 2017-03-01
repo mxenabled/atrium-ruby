@@ -30,7 +30,7 @@ module MX
       attr_reader :client
 
       def configure
-        @client = ::Atrium::Client.new
+        @client = ::MX::Atrium::Client.new
         yield @client
       end
     end

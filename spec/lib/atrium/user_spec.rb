@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe ::Atrium::User do
+describe ::MX::Atrium::User do
   let(:identifier) { "DAB_ALL_DAY" }
   let(:is_disabled) { false }
   let(:metadata) { "{\"first_name\": \"Steven\", \"favorite_color\": \"BLUE\"}" }
@@ -18,17 +18,17 @@ describe ::Atrium::User do
       :metadata => metadata
     }
   end
-  let(:user) { ::Atrium::User.new(user_attributes) }
+  let(:user) { ::MX::Atrium::User.new(user_attributes) }
   let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 
   describe ".create" do
-    before { allow(::Atrium.client).to receive(:make_request).and_return(user_response) }
+    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(user_response) }
 
     it "should return valid user object with attributes" do
       response = described_class.create(:identifier => identifier, :metadata => metadata, :is_disabled => is_disabled )
 
       expect(response).to be_kind_of(::Object)
-      expect(response).to be_kind_of(::Atrium::User)
+      expect(response).to be_kind_of(::MX::Atrium::User)
 
       expect(response.guid).to eq(user_attributes[:guid])
       expect(response.identifier).to eq(user_attributes[:identifier])
@@ -38,13 +38,13 @@ describe ::Atrium::User do
   end
 
   describe ".list" do
-    before { allow(::Atrium.client).to receive(:make_request).and_return(users_response) }
+    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(users_response) }
 
     it "should return list of users" do
       response = described_class.list
 
       expect(response.length).to eq(2)
-      expect(response.first).to be_kind_of(::Atrium::User)
+      expect(response.first).to be_kind_of(::MX::Atrium::User)
 
       expect(response.first.guid).to eq(user_attributes[:guid])
       expect(response.first.identifier).to eq(user_attributes[:identifier])
@@ -54,13 +54,13 @@ describe ::Atrium::User do
   end
 
   describe ".read" do
-    before { allow(::Atrium.client).to receive(:make_request).and_return(user_response) }
+    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(user_response) }
 
     it "should return a users" do
       response = described_class.read(:guid => user_guid)
 
       expect(response).to be_kind_of(::Object)
-      expect(response).to be_kind_of(::Atrium::User)
+      expect(response).to be_kind_of(::MX::Atrium::User)
 
       expect(response.guid).to eq(user_attributes[:guid])
       expect(response.identifier).to eq(user_attributes[:identifier])
@@ -108,14 +108,14 @@ describe ::Atrium::User do
       { :accounts => [account_attributes, account_attributes]}.to_json
     }
 
-    before { allow(::Atrium.client).to receive(:make_request).and_return(accounts_response) }
+    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(accounts_response) }
 
     it "should return accounts for user" do
       response = user.accounts
 
       expect(response).to be_kind_of(::Array)
       expect(response.length).to eq(2)
-      expect(response.first).to be_kind_of(::Atrium::Account)
+      expect(response.first).to be_kind_of(::MX::Atrium::Account)
 
       expect(response.first.apr).to eq(account_attributes[:apr])
       expect(response.first.apy).to eq(account_attributes[:apy])
@@ -149,13 +149,13 @@ describe ::Atrium::User do
   end
 
   describe "delete" do
-    before { allow(::Atrium.client).to receive(:make_request).and_return(users_response) }
+    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(users_response) }
 
     it "should return user" do
       response = user.delete
 
       expect(response).to be_kind_of(::Object)
-      expect(response).to be_kind_of(::Atrium::User)
+      expect(response).to be_kind_of(::MX::Atrium::User)
 
       expect(response.guid).to eq(user_attributes[:guid])
       expect(response.identifier).to eq(user_attributes[:identifier])
@@ -207,14 +207,14 @@ describe ::Atrium::User do
       { :transactions => [transaction_attributes, transaction_attributes]}.to_json
     }
     context "transactions" do
-      before { allow(::Atrium.client).to receive(:make_request).and_return(transactions_response) }
+      before { allow(::MX::Atrium.client).to receive(:make_request).and_return(transactions_response) }
 
       it "should return a users transactions" do
         response = user.transactions
 
         expect(response).to be_kind_of(::Array)
         expect(response.length).to eq(2)
-        expect(response.first).to be_kind_of(::Atrium::Transaction)
+        expect(response.first).to be_kind_of(::MX::Atrium::Transaction)
 
         expect(response.first.account_guid).to eq(transaction_attributes[:account_guid])
         expect(response.first.amount).to eq(transaction_attributes[:amount])
@@ -262,13 +262,13 @@ describe ::Atrium::User do
     }
     let(:updated_user_response) { ::JSON.parse(raw_user_response) }
 
-    before { allow(::Atrium.client).to receive(:make_request).and_return(updated_user_response) }
+    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(updated_user_response) }
 
     it "should return updated user" do
       response = user.update(update_params)
 
       expect(response).to be_kind_of(::Object)
-      expect(response).to be_kind_of(::Atrium::User)
+      expect(response).to be_kind_of(::MX::Atrium::User)
 
       expect(response.guid).to eq(update_params[:guid])
       expect(response.identifier).to eq(update_params[:identifier])

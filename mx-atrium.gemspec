@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'atrium/version'
+require 'mx/atrium/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "atrium-ruby"
-  spec.version       = ::Atrium::VERSION
+  spec.name          = "mx-atrium"
+  spec.version       = ::MX::Atrium::VERSION
   spec.authors       = ["Jon Carstens, Dan Jones, Zach Toolson"]
   spec.email         = ["jon.carstens@mx.com, dan.jones@mx.com, zach.toolson@mx.com"]
   spec.summary       = "Ruby wrapper for the Atrium API by MX"

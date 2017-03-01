@@ -1,12 +1,12 @@
 require "spec_helper"
 
-describe "::Atrium::Paginate" do
-  let(:test_class) { ::Atrium::Institution }
+describe "::MX::Atrium::Paginate" do
+  let(:test_class) { ::MX::Atrium::Institution }
 
   describe "paginate_endpoint" do
     context "with query_params" do
       let(:expected_response) {
-        institutions_response["institutions"].map { |institution| ::Atrium::Institution.new(institution) }
+        institutions_response["institutions"].map { |institution| ::MX::Atrium::Institution.new(institution) }
       }
       let(:institutions_response) {
         {
@@ -25,7 +25,7 @@ describe "::Atrium::Paginate" do
       let(:query_params) { { "name" => "batman" } }
 
       before do
-        allow(::Atrium.client).to receive(:make_request).and_return(institutions_response)
+        allow(::MX::Atrium.client).to receive(:make_request).and_return(institutions_response)
       end
 
       it "should return list from test params" do
@@ -46,7 +46,7 @@ describe "::Atrium::Paginate" do
             ] }.merge(pagination)
       }
       let(:expected_result) {
-        expected_response["institutions"].map { |institution| ::Atrium::Institution.new(institution) }
+        expected_response["institutions"].map { |institution| ::MX::Atrium::Institution.new(institution) }
       }
       let(:institution_attributes) do
         {
@@ -68,7 +68,7 @@ describe "::Atrium::Paginate" do
         }
       }
       before do
-        allow(::Atrium.client).to receive(:make_request).and_return(institutions_response)
+        allow(::MX::Atrium.client).to receive(:make_request).and_return(institutions_response)
       end
 
       it "will return paginated list of results" do
@@ -92,7 +92,7 @@ describe "::Atrium::Paginate" do
     context "block passed" do
       let(:batch_of_institutions) do
         institutions_response["institutions"].map do |institution|
-          ::Atrium::Institution.new(institution)
+          ::MX::Atrium::Institution.new(institution)
         end
       end
       let(:institutions_response) {
@@ -112,7 +112,7 @@ describe "::Atrium::Paginate" do
       let(:list_from_batch) { [ ] }
 
       before do
-        allow(::Atrium.client).to receive(:make_request).and_return(institutions_response)
+        allow(::MX::Atrium.client).to receive(:make_request).and_return(institutions_response)
       end
 
       it "should pass batches to block" do

@@ -20,27 +20,27 @@ module MX
       def self.create(user_guid:, institution_code:, credentials:)
         endpoint = "/users/#{user_guid}/members"
         body = create_params(institution_code, credentials)
-        member_response = ::Atrium.client.make_request(:post, endpoint, body)
+        member_response = ::MX::Atrium.client.make_request(:post, endpoint, body)
 
         member_params = member_response["member"]
-        ::Atrium::Member.new(member_params)
+        ::MX::Atrium::Member.new(member_params)
       end
 
       def self.list(user_guid:)
         endpoint = "/users/#{user_guid}/members"
-        members_response = ::Atrium.client.make_request(:get, endpoint)
+        members_response = ::MX::Atrium.client.make_request(:get, endpoint)
 
         members_response["members"].map do |member|
-          ::Atrium::Member.new(member)
+          ::MX::Atrium::Member.new(member)
         end
       end
 
       def self.read(user_guid:, member_guid:)
         endpoint = "/users/#{user_guid}/members/#{member_guid}"
-        member_response = ::Atrium.client.make_request(:get, endpoint)
+        member_response = ::MX::Atrium.client.make_request(:get, endpoint)
 
         member_params = member_response["member"]
-        ::Atrium::Member.new(member_params)
+        ::MX::Atrium::Member.new(member_params)
       end
 
       ##
@@ -48,16 +48,16 @@ module MX
       #
       def accounts
         endpoint = "users/#{self.user_guid}/members/#{self.guid}/account"
-        accounts_response = ::Atrium.client.make_request(:get, endpoint)
+        accounts_response = ::MX::Atrium.client.make_request(:get, endpoint)
 
         accounts_response["accounts"].map do |account|
-          ::Atrium::Account.new(account)
+          ::MX::Atrium::Account.new(account)
         end
       end
 
       def aggregate
         endpoint = "users/#{self.user_guid}/members/#{self.guid}/aggregate"
-        member_response = ::Atrium.client.make_request(:post, endpoint)
+        member_response = ::MX::Atrium.client.make_request(:post, endpoint)
 
         member_params = member_response["member"]
         self.assign_attributes(member_params)
@@ -66,7 +66,7 @@ module MX
 
       def aggregation_status
         endpoint = "/users/#{self.user_guid}/members/#{self.guid}/status"
-        member_response = ::Atrium.client.make_request(:get, endpoint)
+        member_response = ::MX::Atrium.client.make_request(:get, endpoint)
 
         member_params = member_response["member"]
         self.assign_attributes(member_params)
@@ -75,7 +75,7 @@ module MX
 
       def challenges
         endpoint = "/users/#{self.user_guid}/members/#{self.guid}/challenges"
-        member_response = ::Atrium.client.make_request(:get, endpoint)
+        member_response = ::MX::Atrium.client.make_request(:get, endpoint)
 
         member_params = member_response["member"]
         self.assign_attributes(member_params)
@@ -84,23 +84,23 @@ module MX
 
       def delete
         endpoint = "/users/#{self.user_guid}/members/#{self.guid}"
-        ::Atrium.client.make_request(:delete, endpoint)
+        ::MX::Atrium.client.make_request(:delete, endpoint)
 
         self
       end
 
       def read_account(account_guid:)
         endpoint = "/users/#{self.user_guid}/members/#{self.guid}/accounts/#{account_guid}"
-        account_response = ::Atrium.client.make_request(:get, endpoint)
+        account_response = ::MX::Atrium.client.make_request(:get, endpoint)
 
         account_params = account_response["account"]
-        ::Atrium::Account.new(account_params)
+        ::MX::Atrium::Account.new(account_params)
       end
 
       def resume(challenge_credentials)
         endpoint = "/users/#{self.user_guid}/members/#{self.guid}/resume"
         body = resume_params(challenge_credentials)
-        member_response = ::Atrium.client.make_request(:get, endpoint, body)
+        member_response = ::MX::Atrium.client.make_request(:get, endpoint, body)
 
         member_params = member_response["member"]
         self.assign_attributes(member_params)
@@ -110,7 +110,7 @@ module MX
       def update(params)
         endpoint = "/users/#{self.user_guid}/members/#{self.guid}"
         body = member_body(params)
-        member_response = ::Atrium.client.make_request(:put, endpoint, body)
+        member_response = ::MX::Atrium.client.make_request(:put, endpoint, body)
 
         member_params = member_response["member"]
         self.assign_attributes(member_params)
@@ -119,10 +119,10 @@ module MX
 
       def transactions
         endpoint = "users/#{self.user_guid}/members/#{self.guid}/transactions"
-        transactions_response = ::Atrium.client.make_request(:post, endpoint)
+        transactions_response = ::MX::Atrium.client.make_request(:post, endpoint)
 
         transactions_response["transactions"].map do |transaction|
-          ::Atrium::Transaction.new(transaction)
+          ::MX::Atrium::Transaction.new(transaction)
         end
       end
 

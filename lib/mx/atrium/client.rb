@@ -10,7 +10,7 @@ module MX
 
       def make_request(method, endpoint, body = {}, headers = {})
         headers = default_headers.merge(headers)
-        url = "#{::Atrium::BASE_URL}/#{endpoint}"
+        url = "#{::MX::Atrium::BASE_URL}/#{endpoint}"
         response = http_client.public_send(method, url, ::JSON.dump(body), headers)
 
         handle_response(response)
@@ -34,7 +34,7 @@ module MX
       def handle_response(response)
         # Handle 200-206 responses as acceptable
         unless response.status.between?(200, 206)
-          fail ::Atrium::Error, "#{response.status}: #{response.body}"
+          fail ::MX::Atrium::Error, "#{response.status}: #{response.body}"
         end
 
         ::JSON.parse(response.body) unless response.body.empty?

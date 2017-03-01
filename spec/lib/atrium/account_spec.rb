@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe ::Atrium::Account do
+describe ::MX::Atrium::Account do
   let(:account_response) { ::JSON.parse(raw_account_response)}
   let(:accounts_response) { ::JSON.parse(raw_accounts_response)}
   let(:account_attributes) do
@@ -45,14 +45,14 @@ describe ::Atrium::Account do
   let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 
   describe ".list" do
-    before { allow(::Atrium.client).to receive(:make_request).and_return(accounts_response) }
+    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(accounts_response) }
 
     it "should return list of accounts" do
       response = described_class.list(:user_guid => user_guid)
 
       expect(response).to be_kind_of(::Array)
       expect(response.length).to eq(2)
-      expect(response.first).to be_kind_of(::Atrium::Account)
+      expect(response.first).to be_kind_of(::MX::Atrium::Account)
 
       expect(response.first.apr).to eq(account_attributes[:apr])
       expect(response.first.apy).to eq(account_attributes[:apy])
@@ -86,13 +86,13 @@ describe ::Atrium::Account do
   end
 
   describe ".read" do
-    before { allow(::Atrium.client).to receive(:make_request).and_return(account_response) }
+    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(account_response) }
 
     it "should return account" do
       response = described_class.read(:user_guid => user_guid, :account_guid => account_attributes[:guid])
 
       expect(response).to be_kind_of(::Object)
-      expect(response).to be_kind_of(::Atrium::Account)
+      expect(response).to be_kind_of(::MX::Atrium::Account)
 
       expect(response.apr).to eq(account_attributes[:apr])
       expect(response.apy).to eq(account_attributes[:apy])
@@ -126,7 +126,7 @@ describe ::Atrium::Account do
   end
 
   describe "transactions" do
-    let(:account) { ::Atrium::Account.new(account_attributes) }
+    let(:account) { ::MX::Atrium::Account.new(account_attributes) }
     let(:account_transactions_response) { ::JSON.parse(raw_account_transactions_response) }
     let(:transaction_attributes) do
       {
@@ -166,7 +166,7 @@ describe ::Atrium::Account do
     }
 
     before {
-      allow(::Atrium.client).to receive(:make_request).and_return(account_transactions_response)
+      allow(::MX::Atrium.client).to receive(:make_request).and_return(account_transactions_response)
     }
 
     it "returns list of transactions for account" do
@@ -174,7 +174,7 @@ describe ::Atrium::Account do
 
       expect(response).to be_kind_of(::Array)
       expect(response.length).to eq(2)
-      expect(response.first).to be_kind_of(::Atrium::Transaction)
+      expect(response.first).to be_kind_of(::MX::Atrium::Transaction)
 
       expect(response.first.account_guid).to eq(transaction_attributes[:account_guid])
       expect(response.first.amount).to eq(transaction_attributes[:amount])

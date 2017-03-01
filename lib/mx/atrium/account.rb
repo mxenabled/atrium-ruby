@@ -35,27 +35,27 @@ module MX
 
       def self.list(user_guid:)
         endpoint = "/users/#{user_guid}/accounts"
-        accounts_response = ::Atrium.client.make_request(:get, endpoint)
+        accounts_response = ::MX::Atrium.client.make_request(:get, endpoint)
 
         accounts = accounts_response["accounts"].map do |account|
-          ::Atrium::Account.new(account)
+          ::MX::Atrium::Account.new(account)
         end
       end
 
       def self.read(user_guid:, account_guid:)
         endpoint = "/users/#{user_guid}/accounts/#{account_guid}"
-        account_response = ::Atrium.client.make_request(:get, endpoint)
+        account_response = ::MX::Atrium.client.make_request(:get, endpoint)
 
         account_params = account_response["account"]
-        ::Atrium::Account.new(account_params)
+        ::MX::Atrium::Account.new(account_params)
       end
 
       def transactions
         endpoint = "/users/#{self.user_guid}/accounts/#{self.guid}/transactions"
-        account_transactions_response = ::Atrium.client.make_request(:get, endpoint)
+        account_transactions_response = ::MX::Atrium.client.make_request(:get, endpoint)
 
         transactions = account_transactions_response["transactions"].map do |transaction|
-          ::Atrium::Transaction.new(transaction)
+          ::MX::Atrium::Transaction.new(transaction)
         end
       end
     end

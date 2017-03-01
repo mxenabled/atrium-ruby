@@ -20,7 +20,7 @@ module MX
         @current_page = INITIAL_PAGE
 
         paginated_endpoint = endpoint + "page=#{current_page}&records_per_page=#{records_per_page}"
-        response = ::Atrium.client.make_request(:get, paginated_endpoint)
+        response = ::MX::Atrium.client.make_request(:get, paginated_endpoint)
 
         pagination = response["pagination"]
         @total_pages  = pagination["total_pages"]
@@ -55,7 +55,7 @@ module MX
 
         until current_page > total_pages
           paginated_endpoint =  endpoint + "page=#{current_page}&records_per_page=#{records_per_page}"
-          response = ::Atrium.client.make_request(:get, paginated_endpoint)
+          response = ::MX::Atrium.client.make_request(:get, paginated_endpoint)
 
           # Add new objects to the list
           response["#{klass_name}"].each do |params|
@@ -72,7 +72,7 @@ module MX
 
         until current_page > total_pages
           paginated_endpoint =  endpoint + "page=#{current_page}&records_per_page=#{records_per_page}"
-          response = ::Atrium.client.make_request(:get, paginated_endpoint)
+          response = ::MX::Atrium.client.make_request(:get, paginated_endpoint)
           list = []
 
           response["#{klass_name}"].each do |params|

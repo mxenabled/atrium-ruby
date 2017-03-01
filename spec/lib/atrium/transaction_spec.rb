@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe ::Atrium::Transaction do
+describe ::MX::Atrium::Transaction do
   let(:raw_transaction) { ::JSON.parse(raw_transaction_response) }
   let(:raw_transactions) { ::JSON.parse(raw_transactions_response) }
   let(:raw_transaction_attributes) {
@@ -45,14 +45,14 @@ describe ::Atrium::Transaction do
   let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 
   describe ".list" do
-    before { allow(::Atrium.client).to receive(:make_request).and_return(raw_transactions) }
+    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(raw_transactions) }
 
     it "gets a list of transactions" do
       response = described_class.list(:user_guid => user_guid)
 
       expect(response).to be_kind_of(::Array)
       expect(response.length).to eq(2)
-      expect(response.first).to be_kind_of(::Atrium::Transaction)
+      expect(response.first).to be_kind_of(::MX::Atrium::Transaction)
 
       expect(response.first.account_guid).to eq(raw_transaction_attributes[:account_guid])
       expect(response.first.amount).to eq(raw_transaction_attributes[:amount])
@@ -86,12 +86,12 @@ describe ::Atrium::Transaction do
   end
 
   describe ".read" do
-    before { allow(::Atrium.client).to receive(:make_request).and_return(raw_transaction) }
+    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(raw_transaction) }
 
     it "gets one transaction" do
       response = described_class.read(:user_guid => user_guid, :transaction_guid =>transaction_guid)
 
-      expect(response).to be_kind_of(::Atrium::Transaction)
+      expect(response).to be_kind_of(::MX::Atrium::Transaction)
 
       expect(response.account_guid).to eq(raw_transaction_attributes[:account_guid])
       expect(response.amount).to eq(raw_transaction_attributes[:amount])

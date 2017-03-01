@@ -1,7 +1,7 @@
 module MX
   module Atrium
     class Institution
-      extend ::Atrium::Paginate
+      extend ::MX::Atrium::Paginate
       include ::ActiveAttr::Model
 
       attribute :code
@@ -10,10 +10,10 @@ module MX
 
       def self.credentials(institution_code)
         endpoint = "/institutions/#{institution_code}/credentials"
-        response = ::Atrium.client.make_request(:get, endpoint)
+        response = ::MX::Atrium.client.make_request(:get, endpoint)
 
         response["credentials"].map do |credential|
-          ::Atrium::Credential.new(credential)
+          ::MX::Atrium::Credential.new(credential)
         end
       end
 

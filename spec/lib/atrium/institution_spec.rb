@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe ::MX::Atrium::Institution do
+describe ::Atrium::Institution do
   let(:pagination) {
     {
       :pagination =>
@@ -18,7 +18,7 @@ describe ::MX::Atrium::Institution do
       { :guid => "CRD-456", :value => "password" }
     ]
   }
-  let(:institution) { ::MX::Atrium::Member.new(institution_attributes) }
+  let(:institution) { ::Atrium::Member.new(institution_attributes) }
   let(:institution_code) { institution_attributes["code"] }
   let(:institution_response) { ::JSON.parse(raw_institution_response)}
   let(:institutions_response) { ::JSON.parse(raw_institutions_response)}
@@ -38,14 +38,14 @@ describe ::MX::Atrium::Institution do
   let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 
   describe ".list" do
-    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(institutions_response) }
+    before { allow(::Atrium.client).to receive(:make_request).and_return(institutions_response) }
 
     it "should return an array of institutions" do
-      response = ::MX::Atrium::Institution.list
+      response = ::Atrium::Institution.list
 
       expect(response).to be_kind_of(::Array)
       expect(response.length).to eq(4)
-      expect(response.first).to be_kind_of(::MX::Atrium::Institution)
+      expect(response.first).to be_kind_of(::Atrium::Institution)
 
       expect(response.first.code).to eq(institution_attributes[:code])
       expect(response.first.name).to eq(institution_attributes[:name])
@@ -69,14 +69,14 @@ describe ::MX::Atrium::Institution do
       { :credentials => [credential_attributes, credential_attributes]}.to_json
     }
 
-    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(credentials_response) }
+    before { allow(::Atrium.client).to receive(:make_request).and_return(credentials_response) }
 
     it "should return credentials for institution" do
-      response = ::MX::Atrium::Institution.credentials(institution_code)
+      response = ::Atrium::Institution.credentials(institution_code)
 
       expect(response).to be_kind_of(::Array)
       expect(response.length).to eq(2)
-      expect(response.first).to be_kind_of(::MX::Atrium::Credential)
+      expect(response.first).to be_kind_of(::Atrium::Credential)
 
       expect(response.first.guid).to eq(credential_attributes[:guid])
       expect(response.first.value).to eq(credential_attributes[:value])

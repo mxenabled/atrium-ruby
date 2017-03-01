@@ -1,7 +1,7 @@
 require "rubygems"
 require "bundler"
 require "active_attr/rspec"
-require "mx/atrium"
+require "atrium"
 
 ::Bundler.require(:default, :development, :test)
 

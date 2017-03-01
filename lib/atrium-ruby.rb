@@ -13,6 +13,14 @@ require "atrium/transaction"
 require "atrium/user"
 require "atrium/version"
 
+puts "*" * 90
+puts "*" * 90
+puts "*" * 90
+puts "*" * 90
+puts "*" * 90
+puts "*" * 90
+puts "*" * 90
+
 module Atrium
   BASE_URL = "https://vestibule.mx.com".freeze
   ##

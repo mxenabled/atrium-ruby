@@ -27,7 +27,7 @@ module MX
       end
 
       def klass_name
-        @klass_name ||= self.name.gsub("Atrium::", "").downcase.pluralize
+        @klass_name ||= self.name.gsub("MX::Atrium::", "").downcase.pluralize
       end
 
       def paginate_endpoint(query_params: nil, limit: nil)

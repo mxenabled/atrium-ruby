@@ -1,8 +1,8 @@
-# MX Atrium
+# Atrium-Ruby
 
 A Ruby wrapper for use with the [MX Atrium API](https://atrium.mx.com). In order to make requests, you will need to [sign up for MX Atrium API](https://atrium.mx.com/developers/sign_up) and get a `MX-API-KEY` and `MX-CLIENT-ID`. Then, configure your instance with:
 ```ruby
-MX::Atrium.configure do |config|
+Atrium.configure do |config|
   config.mx_api_key = YOUR_API_KEY
   config.mx_client_id = YOUR_CLIENT_ID
 end
@@ -15,7 +15,7 @@ From there, you can start using some basic class methods to make calls for data.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'mx-atrium'
+gem 'atrium-ruby'
 ```
 
 And then execute:
@@ -24,7 +24,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install mx-atrium 
+    $ gem install atrium-ruby
 
 ## Development
 

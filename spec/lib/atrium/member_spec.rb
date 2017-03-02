@@ -1,13 +1,13 @@
 require "spec_helper"
 
-describe ::MX::Atrium::Member do
+describe ::Atrium::Member do
   let(:credentials) {
     [
       { :guid => "CRD-123", :value => "user_name" },
       { :guid => "CRD-456", :value => "password" }
     ]
   }
-  let(:member) { ::MX::Atrium::Member.new(member_attributes) }
+  let(:member) { ::Atrium::Member.new(member_attributes) }
   let(:member_response) { ::JSON.parse(raw_member_response)}
   let(:members_response) { ::JSON.parse(raw_members_response)}
   let(:member_attributes) do
@@ -33,14 +33,14 @@ describe ::MX::Atrium::Member do
   let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 
   describe ".create" do
-    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(member_response) }
+    before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
     let(:institution_code) { "chase" }
 
     it "should create a new member" do
-      response = ::MX::Atrium::Member.create(:user_guid => member_attributes[:user_guid], :institution_code => institution_code, :credentials => credentials)
+      response = ::Atrium::Member.create(:user_guid => member_attributes[:user_guid], :institution_code => institution_code, :credentials => credentials)
 
       expect(response).to be_kind_of(::Object)
-      expect(response).to be_kind_of(::MX::Atrium::Member)
+      expect(response).to be_kind_of(::Atrium::Member)
 
       expect(response.aggregated_at).to eq(member_attributes[:aggregated_at])
       expect(response.guid).to eq(member_attributes[:guid])
@@ -97,14 +97,14 @@ describe ::MX::Atrium::Member do
     }
 
     context "#accounts" do
-      before { allow(::MX::Atrium.client).to receive(:make_request).and_return(accounts_response) }
+      before { allow(::Atrium.client).to receive(:make_request).and_return(accounts_response) }
 
       it "should return accounts for member" do
         response = member.accounts
 
         expect(response).to be_kind_of(::Array)
         expect(response.length).to eq(2)
-        expect(response.first).to be_kind_of(::MX::Atrium::Account)
+        expect(response.first).to be_kind_of(::Atrium::Account)
 
         expect(response.first.apr).to eq(account_attributes[:apr])
         expect(response.first.apy).to eq(account_attributes[:apy])
@@ -138,13 +138,13 @@ describe ::MX::Atrium::Member do
     end
 
     context "#read_account" do
-      before { allow(::MX::Atrium.client).to receive(:make_request).and_return(account_response) }
+      before { allow(::Atrium.client).to receive(:make_request).and_return(account_response) }
 
       it "should return account for member" do
         response = member.read_account(:account_guid => account_attributes[:guid])
 
         expect(response).to be_kind_of(::Object)
-        expect(response).to be_kind_of(::MX::Atrium::Account)
+        expect(response).to be_kind_of(::Atrium::Account)
 
         expect(response.apr).to eq(account_attributes[:apr])
         expect(response.apy).to eq(account_attributes[:apy])
@@ -179,13 +179,13 @@ describe ::MX::Atrium::Member do
   end
 
   describe "#aggregate" do
-    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(member_response) }
+    before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
 
     it "should aggregate & return a member" do
       response = member.aggregate
 
       expect(response).to be_kind_of(::Object)
-      expect(response).to be_kind_of(::MX::Atrium::Member)
+      expect(response).to be_kind_of(::Atrium::Member)
 
       expect(response.aggregated_at).to eq(member_attributes[:aggregated_at])
       expect(response.guid).to eq(member_attributes[:guid])
@@ -200,14 +200,14 @@ describe ::MX::Atrium::Member do
   end
 
   describe ".list" do
-    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(members_response) }
+    before { allow(::Atrium.client).to receive(:make_request).and_return(members_response) }
 
     it "should return list of members" do
       response = described_class.list(:user_guid => user_guid)
 
       expect(response).to be_kind_of(::Array)
       expect(response.length).to eq(2)
-      expect(response.first).to be_kind_of(::MX::Atrium::Member)
+      expect(response.first).to be_kind_of(::Atrium::Member)
 
       expect(response.first.aggregated_at).to eq(member_attributes[:aggregated_at])
       expect(response.first.guid).to eq(member_attributes[:guid])
@@ -222,13 +222,13 @@ describe ::MX::Atrium::Member do
   end
 
   describe ".read" do
-    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(member_response) }
+    before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
 
     it "should return member" do
       response = described_class.read(:user_guid => user_guid, :member_guid => member_attributes[:guid])
 
       expect(response).to be_kind_of(::Object)
-      expect(response).to be_kind_of(::MX::Atrium::Member)
+      expect(response).to be_kind_of(::Atrium::Member)
 
       expect(response.aggregated_at).to eq(member_attributes[:aggregated_at])
       expect(response.guid).to eq(member_attributes[:guid])
@@ -256,9 +256,9 @@ describe ::MX::Atrium::Member do
         :user_guid => "USR-fa7537f3-48aa-a683-a02a-b18940482f54"
       }
     }
-    let(:challenged_member) { ::MX::Atrium::Member.new(challenged_member_params) }
+    let(:challenged_member) { ::Atrium::Member.new(challenged_member_params) }
 
-    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(member_response) }
+    before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
 
     it "should return updated member" do
       response = challenged_member.resume(credentials)
@@ -276,14 +276,14 @@ describe ::MX::Atrium::Member do
   end
 
   describe "#aggregation_status" do
-    let(:new_member) { ::MX::Atrium::Member.new(member_attributes) }
-    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(member_response) }
+    let(:new_member) { ::Atrium::Member.new(member_attributes) }
+    before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
 
     it "should return member" do
       response = new_member.aggregation_status
 
       expect(response).to be_kind_of(::Object)
-      expect(response).to be_kind_of(::MX::Atrium::Member)
+      expect(response).to be_kind_of(::Atrium::Member)
 
       expect(response.aggregated_at).to eq(member_attributes[:aggregated_at])
       expect(response.guid).to eq(member_attributes[:guid])
@@ -298,14 +298,14 @@ describe ::MX::Atrium::Member do
   end
 
   describe "#challenges" do
-    let(:new_member) { ::MX::Atrium::Member.new(member_attributes) }
-    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(member_response) }
+    let(:new_member) { ::Atrium::Member.new(member_attributes) }
+    before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
 
     it "should return member" do
       response = new_member.challenges
 
       expect(response).to be_kind_of(::Object)
-      expect(response).to be_kind_of(::MX::Atrium::Member)
+      expect(response).to be_kind_of(::Atrium::Member)
 
       expect(response.aggregated_at).to eq(member_attributes[:aggregated_at])
       expect(response.guid).to eq(member_attributes[:guid])
@@ -320,13 +320,13 @@ describe ::MX::Atrium::Member do
   end
 
   describe "#delete" do
-    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(member_response) }
+    before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
 
     it "should return deleted member" do
       response = member.delete
 
       expect(response).to be_kind_of(::Object)
-      expect(response).to be_kind_of(::MX::Atrium::Member)
+      expect(response).to be_kind_of(::Atrium::Member)
 
       expect(response.aggregated_at).to eq(member_attributes[:aggregated_at])
       expect(response.guid).to eq(member_attributes[:guid])
@@ -341,7 +341,7 @@ describe ::MX::Atrium::Member do
   end
 
   describe "#update" do
-    before { allow(::MX::Atrium.client).to receive(:make_request).and_return(member_response) }
+    before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
 
     let(:member_attributes) do
       {
@@ -369,13 +369,13 @@ describe ::MX::Atrium::Member do
         :user_guid => "USR-fa7537f3-48aa-a683-a02a-b18940482f54"
       }
     end
-    let(:member_for_update) { ::MX::Atrium::Member.new(member_attributes) }
+    let(:member_for_update) { ::Atrium::Member.new(member_attributes) }
 
     it "should update a member" do
       response = member_for_update.update(member_attributes_for_update)
 
       expect(response).to be_kind_of(::Object)
-      expect(response).to be_kind_of(::MX::Atrium::Member)
+      expect(response).to be_kind_of(::Atrium::Member)
 
       expect(response.aggregated_at).to eq(member_attributes[:aggregated_at])
       expect(response.guid).to eq(member_attributes[:guid])
@@ -429,7 +429,7 @@ describe ::MX::Atrium::Member do
     }
 
     before {
-      allow(::MX::Atrium.client).to receive(:make_request).and_return(member_transactions_response)
+      allow(::Atrium.client).to receive(:make_request).and_return(member_transactions_response)
     }
 
     it "returns list of transactions for member" do
@@ -437,7 +437,7 @@ describe ::MX::Atrium::Member do
 
       expect(response).to be_kind_of(::Array)
       expect(response.length).to eq(2)
-      expect(response.first).to be_kind_of(::MX::Atrium::Transaction)
+      expect(response.first).to be_kind_of(::Atrium::Transaction)
 
       expect(response.first.member_guid).to eq(transaction_attributes[:member_guid])
       expect(response.first.amount).to eq(transaction_attributes[:amount])

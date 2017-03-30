@@ -118,7 +118,7 @@ module Atrium
 
     def transactions
       endpoint = "users/#{self.user_guid}/members/#{self.guid}/transactions"
-      transactions_response = ::Atrium.client.make_request(:post, endpoint)
+      transactions_response = ::Atrium.client.make_request(:get, endpoint)
 
       transactions_response["transactions"].map do |transaction|
         ::Atrium::Transaction.new(transaction)

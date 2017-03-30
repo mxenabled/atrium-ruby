@@ -46,7 +46,7 @@ module Atrium
     # INSTANCE METHODS
     #
     def accounts
-      endpoint = "users/#{self.user_guid}/members/#{self.guid}/account"
+      endpoint = "users/#{self.user_guid}/members/#{self.guid}/accounts"
       accounts_response = ::Atrium.client.make_request(:get, endpoint)
 
       accounts_response["accounts"].map do |account|

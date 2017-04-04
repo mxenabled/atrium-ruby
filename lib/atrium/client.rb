@@ -10,7 +10,8 @@ module Atrium
 
     def make_request(method, endpoint, body = {}, headers = {})
       headers = default_headers.merge(headers)
-      url = "#{self.base_url}/#{endpoint}"
+      url = "#{self.base_url}#{endpoint}"
+
       response = http_client.public_send(method, url, ::JSON.dump(body), headers)
 
       handle_response(response)

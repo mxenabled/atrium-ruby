@@ -46,7 +46,7 @@ module Atrium
     # INSTANCE METHODS
     #
     def accounts
-      endpoint = "users/#{self.user_guid}/members/#{self.guid}/accounts"
+      endpoint = "/users/#{self.user_guid}/members/#{self.guid}/accounts"
       accounts_response = ::Atrium.client.make_request(:get, endpoint)
 
       accounts_response["accounts"].map do |account|
@@ -55,7 +55,7 @@ module Atrium
     end
 
     def aggregate
-      endpoint = "users/#{self.user_guid}/members/#{self.guid}/aggregate"
+      endpoint = "/users/#{self.user_guid}/members/#{self.guid}/aggregate"
       member_response = ::Atrium.client.make_request(:post, endpoint)
 
       member_params = member_response["member"]
@@ -117,7 +117,7 @@ module Atrium
     end
 
     def transactions
-      endpoint = "users/#{self.user_guid}/members/#{self.guid}/transactions"
+      endpoint = "/users/#{self.user_guid}/members/#{self.guid}/transactions"
       transactions_response = ::Atrium.client.make_request(:get, endpoint)
 
       transactions_response["transactions"].map do |transaction|

@@ -13,6 +13,7 @@ module Atrium
     attribute :successfully_aggregated_at
     attribute :user_guid
 
+
     ##
     # CLASS METHODS
     #
@@ -76,9 +77,12 @@ module Atrium
       endpoint = "/users/#{self.user_guid}/members/#{self.guid}/challenges"
       member_response = ::Atrium.client.make_request(:get, endpoint)
 
-      member_params = member_response["member"]
-      self.assign_attributes(member_params)
-      self
+      member_params = member_response["challenges"]
+      challenges = member_params.map do |ch|
+        ch[:member_guid] = self.guid
+        ::Atrium::Challenge.new(ch)
+      end
+      challenges
     end
 
     def delete
@@ -99,7 +103,7 @@ module Atrium
     def resume(challenge_credentials)
       endpoint = "/users/#{self.user_guid}/members/#{self.guid}/resume"
       body = resume_params(challenge_credentials)
-      member_response = ::Atrium.client.make_request(:get, endpoint, body)
+      member_response = ::Atrium.client.make_request(:put, endpoint, body)
 
       member_params = member_response["member"]
       self.assign_attributes(member_params)
@@ -168,7 +172,7 @@ module Atrium
     def resume_params(challenge_credentials)
       {
         :member => {
-          :credentials => challenge_credentials
+          :challenges => challenge_credentials
         }
       }
     end

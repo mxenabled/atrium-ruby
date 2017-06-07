@@ -9,7 +9,5 @@ module Atrium
     attribute :type
     attribute :image_data
     attribute :options
-    attribute :member_guid
-
   end
 end

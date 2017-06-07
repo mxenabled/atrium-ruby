@@ -9,9 +9,9 @@ module Atrium
 
     def endpoint_name(query_params: nil)
       @endpoint = if query_params.present?
-         klass_name + "?" + URI.encode_www_form(query_params) + "&"
+        "/" + klass_name + "?" + URI.encode_www_form(query_params) + "&"
       else
-        klass_name + "?"
+        "/" + klass_name + "?"
       end
     end
 

@@ -78,9 +78,9 @@ module Atrium
       member_response = ::Atrium.client.make_request(:get, endpoint)
 
       member_params = member_response["challenges"]
-      challenges = member_params.map do |ch|
-        ch[:member_guid] = self.guid
-        ::Atrium::Challenge.new(ch)
+      challenges = member_params.map do |challenge|
+        challenge[:member_guid] = self.guid
+        ::Atrium::Challenge.new(challenge)
       end
       challenges
     end

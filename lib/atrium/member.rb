@@ -75,14 +75,15 @@ module Atrium
 
     def challenges
       endpoint = "/users/#{self.user_guid}/members/#{self.guid}/challenges"
-      member_response = ::Atrium.client.make_request(:get, endpoint)
+      challenge_response = ::Atrium.client.make_request(:get, endpoint)
 
-      member_params = member_response["challenges"]
-      challenges = member_params.map do |challenge|
-        challenge[:member_guid] = self.guid
+      return nil if challenge_response.nil?
+
+      challenge_params = challenge_response["challenges"]
+
+      challenge_params.map do |challenge|
         ::Atrium::Challenge.new(challenge)
       end
-      challenges
     end
 
     def delete

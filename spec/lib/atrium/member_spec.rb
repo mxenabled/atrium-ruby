@@ -7,6 +7,15 @@ describe ::Atrium::Member do
       { :guid => "CRD-456", :value => "password" }
     ]
   }
+  let(:challenge_attributes) do
+    {
+      :field_name => "What city were you born in?",
+      :guid => "CRD-123",
+      :label => "What city were you born in?",
+      :type => "TEXT"
+    }
+  end
+  let(:challenges_response) { ::JSON.parse(raw_challenges_response) }
   let(:member) { ::Atrium::Member.new(member_attributes) }
   let(:member_response) { ::JSON.parse(raw_member_response)}
   let(:members_response) { ::JSON.parse(raw_members_response)}
@@ -24,6 +33,9 @@ describe ::Atrium::Member do
     }
   end
 
+  let(:raw_challenges_response) {
+    { :challenges => [challenge_attributes] }.to_json
+  }
   let(:raw_member_response) {
     { :member => member_attributes }.to_json
   }
@@ -299,23 +311,32 @@ describe ::Atrium::Member do
 
   describe "#challenges" do
     let(:new_member) { ::Atrium::Member.new(member_attributes) }
-    before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
 
-    it "should return member" do
-      response = new_member.challenges
+    context "member does not have any challenges" do
+      before { allow(::Atrium.client).to receive(:make_request).and_return(nil) }
 
-      expect(response).to be_kind_of(::Object)
-      expect(response).to be_kind_of(::Atrium::Member)
+      it "does not return challenges" do
+        response = new_member.challenges
 
-      expect(response.aggregated_at).to eq(member_attributes[:aggregated_at])
-      expect(response.guid).to eq(member_attributes[:guid])
-      expect(response.identifier).to eq(member_attributes[:identifier])
-      expect(response.institution_code).to eq(member_attributes[:institution_code])
-      expect(response.metadata).to eq(member_attributes[:metadata])
-      expect(response.name).to eq(member_attributes[:name])
-      expect(response.status).to eq(member_attributes[:status])
-      expect(response.successfully_aggregated_at).to eq(member_attributes[:successfully_aggregated_at])
-      expect(response.user_guid).to eq(member_attributes[:user_guid])
+        expect(response).to eq(nil)
+      end
+    end
+
+    context "member has challenges" do
+      before { allow(::Atrium.client).to receive(:make_request).and_return(challenges_response) }
+
+      it "should return challenges" do
+        response = new_member.challenges
+
+        expect(response).to be_kind_of(::Array)
+
+        challenge = response.first
+        expect(challenge).to be_kind_of(::Atrium::Challenge)
+        expect(challenge.field_name). to eq(challenge_attributes[:field_name])
+        expect(challenge.guid). to eq(challenge_attributes[:guid])
+        expect(challenge.label). to eq(challenge_attributes[:label])
+        expect(challenge.type). to eq(challenge_attributes[:type])
+      end
     end
   end
 

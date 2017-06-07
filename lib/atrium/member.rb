@@ -80,11 +80,10 @@ module Atrium
       return nil if challenge_response.nil?
 
       challenge_params = challenge_response["challenges"]
-      challenges = challenge_params.map do |challenge|
+
+      challenge_params.map do |challenge|
         ::Atrium::Challenge.new(challenge)
       end
-
-      challenges
     end
 
     def delete

@@ -62,7 +62,12 @@ module Atrium
         end
         @current_page += 1
       end
-      list
+
+      if limit.present?
+        list.first(limit)
+      else
+        list
+      end
     end
 
     def response_list_in_batches(limit: nil, &block)

@@ -2,7 +2,7 @@ module Atrium
   class Client
     attr_accessor :mx_api_key, :mx_client_id, :base_url
 
-    def initialize(api_key = nil, client_id = nil, base_url = "https://vestibule.mx.com")
+    def initialize(api_key = nil, client_id = nil, base_url = 'https://vestibule.mx.com')
       @mx_api_key = api_key
       @mx_client_id = client_id
       @base_url = base_url
@@ -10,7 +10,7 @@ module Atrium
 
     def make_request(method, endpoint, body = {}, headers = {})
       headers = default_headers.merge(headers)
-      url = "#{self.base_url}#{endpoint}"
+      url = "#{base_url}#{endpoint}"
 
       response = http_client.public_send(method, url, ::JSON.dump(body), headers)
 
@@ -21,21 +21,21 @@ module Atrium
       @http_client ||= ::HTTPClient.new
     end
 
-  private
+    private
 
     def default_headers
       {
-        "Accept" => "application/vnd.mx.atrium.v1+json",
-        "Content-Type" => "application/json",
-        "MX-API-KEY" => mx_api_key,
-        "MX-CLIENT-ID" => mx_client_id
+        'Accept' => 'application/vnd.mx.atrium.v1+json',
+        'Content-Type' => 'application/json',
+        'MX-API-KEY' => mx_api_key,
+        'MX-CLIENT-ID' => mx_client_id
       }
     end
 
     def handle_response(response)
       # Handle 200-206 responses as acceptable
       unless response.status.between?(200, 206)
-        fail ::Atrium::Error, "#{response.status}: #{response.body}"
+        raise ::Atrium::Error, "#{response.status}: #{response.body}"
       end
 
       ::JSON.parse(response.body) unless response.body.empty?

@@ -1,4 +1,4 @@
-# Atrium-Ruby
+# Atrium-Ruby [![Build Status](https://travis-ci.org/mxenabled/atrium-ruby.svg?branch=master)](https://travis-ci.org/mxenabled/atrium-ruby)
 
 A Ruby wrapper for use with the [MX Atrium API](https://atrium.mx.com). In order to make requests, you will need to [sign up for MX Atrium API](https://atrium.mx.com/developers/sign_up) and get a `MX-API-KEY` and `MX-CLIENT-ID`. Then, configure your instance with:
 ```ruby

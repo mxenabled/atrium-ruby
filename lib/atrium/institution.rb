@@ -13,7 +13,7 @@ module Atrium
       endpoint = "/institutions/#{institution_code}/credentials"
       response = ::Atrium.client.make_request(:get, endpoint)
 
-      response["credentials"].map do |credential|
+      response['credentials'].map do |credential|
         ::Atrium::Credential.new(credential)
       end
     end

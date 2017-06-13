@@ -36,7 +36,7 @@ module Atrium
       endpoint = "/users/#{user_guid}/accounts"
       accounts_response = ::Atrium.client.make_request(:get, endpoint)
 
-      accounts = accounts_response["accounts"].map do |account|
+      accounts = accounts_response['accounts'].map do |account|
         ::Atrium::Account.new(account)
       end
     end
@@ -45,15 +45,15 @@ module Atrium
       endpoint = "/users/#{user_guid}/accounts/#{account_guid}"
       account_response = ::Atrium.client.make_request(:get, endpoint)
 
-      account_params = account_response["account"]
+      account_params = account_response['account']
       ::Atrium::Account.new(account_params)
     end
 
     def transactions
-      endpoint = "/users/#{self.user_guid}/accounts/#{self.guid}/transactions"
+      endpoint = "/users/#{user_guid}/accounts/#{guid}/transactions"
       account_transactions_response = ::Atrium.client.make_request(:get, endpoint)
 
-      transactions = account_transactions_response["transactions"].map do |transaction|
+      transactions = account_transactions_response['transactions'].map do |transaction|
         ::Atrium::Transaction.new(transaction)
       end
     end

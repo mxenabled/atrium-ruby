@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "::Atrium::Paginate" do
+RSpec.describe ::Atrium::Paginate do
   let(:test_class) { ::Atrium::Institution }
 
   describe "paginate_endpoint" do

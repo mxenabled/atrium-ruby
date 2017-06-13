@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe ::Atrium::Institution do
+RSpec.describe ::Atrium::Institution do
   let(:pagination) {
     {
       :pagination =>

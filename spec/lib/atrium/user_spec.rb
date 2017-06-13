@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe ::Atrium::User do
+RSpec.describe ::Atrium::User do
   let(:identifier) { "DAB_ALL_DAY" }
   let(:is_disabled) { false }
   let(:metadata) { "{\"first_name\": \"Steven\", \"favorite_color\": \"BLUE\"}" }

@@ -5,6 +5,7 @@ require 'atrium/paginate'
 
 require 'atrium/account'
 require 'atrium/client'
+require 'atrium/connect'
 require 'atrium/credential'
 require 'atrium/error'
 require 'atrium/institution'

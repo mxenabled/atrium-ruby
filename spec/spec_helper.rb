@@ -1,4 +1,5 @@
 require 'simplecov'
+require 'pry'
 
 SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
 SimpleCov.start do

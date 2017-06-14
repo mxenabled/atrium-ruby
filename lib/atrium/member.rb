@@ -141,18 +141,7 @@ module Atrium
         }
       }
     end
-
-    def self.member_body(params)
-      {
-        :member => {
-          :credentials => params[:credentials],
-          :identifier => params[:identifier],
-          :institution_code => params[:institution_code],
-          :metadata => params[:metadata]
-        }
-      }
-    end
-    private_class_method :create_params, :member_body
+    private_class_method :create_params
 
     private
 

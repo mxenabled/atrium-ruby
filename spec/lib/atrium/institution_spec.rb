@@ -1,46 +1,45 @@
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe ::Atrium::Institution do
-  let(:pagination) {
+  let(:pagination) do
     {
-      :pagination =>
-        {
-          :current_page => 1,
-          :per_page => 2,
-          :total_entries => 4,
-          :total_pages => 2
-        }
-    }
-  }
-  let(:credentials) {
-    [
-      { :guid => "CRD-123", :value => "user_name" },
-      { :guid => "CRD-456", :value => "password" }
-    ]
-  }
-  let(:institution) { ::Atrium::Member.new(institution_attributes) }
-  let(:institution_code) { institution_attributes["code"] }
-  let(:institution_response) { ::JSON.parse(raw_institution_response)}
-  let(:institutions_response) { ::JSON.parse(raw_institutions_response)}
-  let(:institution_attributes) do
-    {
-      :code => "chase",
-      :name => "Chase Bank",
-      :url => "https://www.chase.com",
+      pagination:         {
+        current_page: 1,
+        per_page: 2,
+        total_entries: 4,
+        total_pages: 2
+      }
     }
   end
-  let(:raw_institution_response) {
-    { :institution => institution_attributes }.merge(pagination).to_json
-  }
-  let(:raw_institutions_response) {
-    { :institutions => [institution_attributes, institution_attributes]}.merge(pagination).to_json
-  }
-  let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
+  let(:credentials) do
+    [
+      { guid: 'CRD-123', value: 'user_name' },
+      { guid: 'CRD-456', value: 'password' }
+    ]
+  end
+  let(:institution) { ::Atrium::Member.new(institution_attributes) }
+  let(:institution_code) { institution_attributes['code'] }
+  let(:institution_response) { ::JSON.parse(raw_institution_response) }
+  let(:institutions_response) { ::JSON.parse(raw_institutions_response) }
+  let(:institution_attributes) do
+    {
+      code: 'chase',
+      name: 'Chase Bank',
+      url: 'https://www.chase.com'
+    }
+  end
+  let(:raw_institution_response) do
+    { institution: institution_attributes }.merge(pagination).to_json
+  end
+  let(:raw_institutions_response) do
+    { institutions: [institution_attributes, institution_attributes] }.merge(pagination).to_json
+  end
+  let(:user_guid) { 'USR-fa7537f3-48aa-a683-a02a-b18940482f54' }
 
-  describe ".list" do
+  describe '.list' do
     before { allow(::Atrium.client).to receive(:make_request).and_return(institutions_response) }
 
-    it "should return an array of institutions" do
+    it 'should return an array of institutions' do
       response = ::Atrium::Institution.list
 
       expect(response).to be_kind_of(::Array)
@@ -53,25 +52,25 @@ RSpec.describe ::Atrium::Institution do
     end
   end
 
-  describe ".credentials" do
-    let(:credential_response) { ::JSON.parse(raw_credential_response)}
-    let(:credentials_response) { ::JSON.parse(raw_credentials_response)}
+  describe '.credentials' do
+    let(:credential_response) { ::JSON.parse(raw_credential_response) }
+    let(:credentials_response) { ::JSON.parse(raw_credentials_response) }
     let(:credential_attributes) do
       {
-        :guid => "CRD-123",
-        :value => "user-name"
+        guid: 'CRD-123',
+        value: 'user-name'
       }
     end
-    let(:raw_credential_response) {
-      { :credential => credential_attributes }.to_json
-    }
-    let(:raw_credentials_response) {
-      { :credentials => [credential_attributes, credential_attributes]}.to_json
-    }
+    let(:raw_credential_response) do
+      { credential: credential_attributes }.to_json
+    end
+    let(:raw_credentials_response) do
+      { credentials: [credential_attributes, credential_attributes] }.to_json
+    end
 
     before { allow(::Atrium.client).to receive(:make_request).and_return(credentials_response) }
 
-    it "should return credentials for institution" do
+    it 'should return credentials for institution' do
       response = ::Atrium::Institution.credentials(institution_code)
 
       expect(response).to be_kind_of(::Array)

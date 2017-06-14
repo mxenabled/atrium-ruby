@@ -26,17 +26,17 @@ module Atrium
 
     def default_headers
       {
-        "Accept"       => "application/vnd.mx.atrium.v1+json",
-        "Content-Type" => "application/json",
-        "MX-API-KEY"   => mx_api_key,
-        "MX-CLIENT-ID" => mx_client_id
+        'Accept'       => 'application/vnd.mx.atrium.v1+json',
+        'Content-Type' => 'application/json',
+        'MX-API-KEY'   => mx_api_key,
+        'MX-CLIENT-ID' => mx_client_id
       }
     end
 
     def handle_response(response)
       # Handle 200-206 responses as acceptable
       unless response.status.between?(200, 206)
-        fail ::Atrium::Error, "#{response.status}: #{response.body}"
+        raise ::Atrium::Error, "#{response.status}: #{response.body}"
       end
 
       ::JSON.parse(response.body) unless response.body.empty?

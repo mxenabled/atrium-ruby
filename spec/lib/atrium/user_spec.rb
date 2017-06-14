@@ -1,31 +1,31 @@
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe ::Atrium::User do
-  let(:identifier) { "DAB_ALL_DAY" }
+  let(:identifier) { 'DAB_ALL_DAY' }
   let(:is_disabled) { false }
-  let(:metadata) { "{\"first_name\": \"Steven\", \"favorite_color\": \"BLUE\"}" }
-  let(:raw_user_response) { { :user => user_attributes }.to_json }
-  let(:raw_users_response) {
-    { :users => [user_attributes, user_attributes]}.to_json
-  }
-  let(:user_response) { ::JSON.parse(raw_user_response)}
-  let(:users_response) { ::JSON.parse(raw_users_response)}
+  let(:metadata) { '{"first_name": "Steven", "favorite_color": "BLUE"}' }
+  let(:raw_user_response) { { user: user_attributes }.to_json }
+  let(:raw_users_response) do
+    { users: [user_attributes, user_attributes] }.to_json
+  end
+  let(:user_response) { ::JSON.parse(raw_user_response) }
+  let(:users_response) { ::JSON.parse(raw_users_response) }
   let(:user_attributes) do
     {
-      :guid => user_guid,
-      :identifier => identifier,
-      :is_disabled => is_disabled,
-      :metadata => metadata
+      guid: user_guid,
+      identifier: identifier,
+      is_disabled: is_disabled,
+      metadata: metadata
     }
   end
   let(:user) { ::Atrium::User.new(user_attributes) }
-  let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
+  let(:user_guid) { 'USR-fa7537f3-48aa-a683-a02a-b18940482f54' }
 
-  describe ".create" do
+  describe '.create' do
     before { allow(::Atrium.client).to receive(:make_request).and_return(user_response) }
 
-    it "should return valid user object with attributes" do
-      response = described_class.create(:identifier => identifier, :metadata => metadata, :is_disabled => is_disabled )
+    it 'should return valid user object with attributes' do
+      response = described_class.create(identifier: identifier, metadata: metadata, is_disabled: is_disabled)
 
       expect(response).to be_kind_of(::Object)
       expect(response).to be_kind_of(::Atrium::User)
@@ -37,10 +37,10 @@ RSpec.describe ::Atrium::User do
     end
   end
 
-  describe ".list" do
+  describe '.list' do
     before { allow(::Atrium.client).to receive(:make_request).and_return(users_response) }
 
-    it "should return list of users" do
+    it 'should return list of users' do
       response = described_class.list
 
       expect(response.length).to eq(2)
@@ -53,11 +53,11 @@ RSpec.describe ::Atrium::User do
     end
   end
 
-  describe ".read" do
+  describe '.read' do
     before { allow(::Atrium.client).to receive(:make_request).and_return(user_response) }
 
-    it "should return a users" do
-      response = described_class.read(:guid => user_guid)
+    it 'should return a users' do
+      response = described_class.read(guid: user_guid)
 
       expect(response).to be_kind_of(::Object)
       expect(response).to be_kind_of(::Atrium::User)
@@ -69,48 +69,48 @@ RSpec.describe ::Atrium::User do
     end
   end
 
-  describe "account" do
-    let(:account_response) { ::JSON.parse(raw_account_response)}
-    let(:accounts_response) { ::JSON.parse(raw_accounts_response)}
+  describe 'account' do
+    let(:account_response) { ::JSON.parse(raw_account_response) }
+    let(:accounts_response) { ::JSON.parse(raw_accounts_response) }
     let(:account_attributes) do
       {
-        :apr => 3.4,
-        :apy => 3.5,
-        :available_balance => 20000,
-        :available_credit => 15000,
-        :balance => 25_000,
-        :created_at => "2016-10-06T09:43:4200:00",
-        :credit_limit => 5000,
-        :day_payment_is_due => "2016-10-06T09:43:4200:00",
-        :guid => "ACT-06d7f44b",
-        :institution_code => "chase",
-        :interest_rate => 5.04,
-        :is_closed => false,
-        :last_payment => "2016-10-06T09:43:4200:00",
-        :last_payment_at => "2016-10-06T09:43:4200:00",
-        :matures_on => "2016-10-06T09:43:4200:00",
-        :member_guid => "MBR",
-        :minimum_balance => 2000,
-        :minimum_payment => 30.00,
-        :name => "CHASE CHECKING",
-        :original_balance => 40000,
-        :payment_due_at => "2016-10-06T09:43:4200:00",
-        :payoff_balance => 4000,
-        :started_on => "2016-10-06T09:43:4200:00",
-        :subtype => 2,
-        :total_account_value => 10000,
-        :type => 1,
-        :updated_at => "2016-10-06T09:43:4200:00",
-        :user_guid => user_guid,
+        apr: 3.4,
+        apy: 3.5,
+        available_balance: 20_000,
+        available_credit: 15_000,
+        balance: 25_000,
+        created_at: '2016-10-06T09:43:4200:00',
+        credit_limit: 5000,
+        day_payment_is_due: '2016-10-06T09:43:4200:00',
+        guid: 'ACT-06d7f44b',
+        institution_code: 'chase',
+        interest_rate: 5.04,
+        is_closed: false,
+        last_payment: '2016-10-06T09:43:4200:00',
+        last_payment_at: '2016-10-06T09:43:4200:00',
+        matures_on: '2016-10-06T09:43:4200:00',
+        member_guid: 'MBR',
+        minimum_balance: 2000,
+        minimum_payment: 30.00,
+        name: 'CHASE CHECKING',
+        original_balance: 40_000,
+        payment_due_at: '2016-10-06T09:43:4200:00',
+        payoff_balance: 4000,
+        started_on: '2016-10-06T09:43:4200:00',
+        subtype: 2,
+        total_account_value: 10_000,
+        type: 1,
+        updated_at: '2016-10-06T09:43:4200:00',
+        user_guid: user_guid
       }
     end
-    let(:raw_accounts_response) {
-      { :accounts => [account_attributes, account_attributes]}.to_json
-    }
+    let(:raw_accounts_response) do
+      { accounts: [account_attributes, account_attributes] }.to_json
+    end
 
     before { allow(::Atrium.client).to receive(:make_request).and_return(accounts_response) }
 
-    it "should return accounts for user" do
+    it 'should return accounts for user' do
       response = user.accounts
 
       expect(response).to be_kind_of(::Array)
@@ -148,10 +148,10 @@ RSpec.describe ::Atrium::User do
     end
   end
 
-  describe "delete" do
+  describe 'delete' do
     before { allow(::Atrium.client).to receive(:make_request).and_return(users_response) }
 
-    it "should return user" do
+    it 'should return user' do
       response = user.delete
 
       expect(response).to be_kind_of(::Object)
@@ -164,52 +164,51 @@ RSpec.describe ::Atrium::User do
     end
   end
 
-
-  describe "user transactions" do
-    let(:transaction_response) { ::JSON.parse(raw_transaction_response)}
-    let(:transactions_response) { ::JSON.parse(raw_transactions_response)}
+  describe 'user transactions' do
+    let(:transaction_response) { ::JSON.parse(raw_transaction_response) }
+    let(:transactions_response) { ::JSON.parse(raw_transactions_response) }
     let(:transaction_attributes) do
       {
-        :account_guid => "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1",
-        :amount => 61.11,
-        :category => "Groceries",
-        :check_number => nil,
-        :created_at => "2016-10-06T09:43:42+00:00",
-        :date => "2013-09-23",
-        :description => "Whole Foods",
-        :guid => "TRN-265abee9-889b-af6a-c69b-25157db2bdd9",
-        :is_bill_pay => false,
-        :is_direct_deposit => false,
-        :is_expense => true,
-        :is_fee => false,
-        :is_income => false,
-        :is_overdraft_fee => false,
-        :is_payroll_advance => false,
-        :latitude => -43.2075,
-        :longitude => 139.691706,
-        :member_guid => "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b",
-        :memo => nil,
-        :merchant_category_code => 5411,
-        :original_description => "WHOLEFDS TSQ 102",
-        :posted_at => "2016-10-07T06:00:00+00:00",
-        :status => "POSTED",
-        :top_level_category => "Food & Dining",
-        :transacted_at => "2016-10-06T13:00:00+00:00",
-        :type => "DEBIT",
-        :updated_at => "2016-10-07T05:49:12+00:00",
-        :user_guid => "USR-fa7537f3-48aa-a683-a02a-b18940482f54"
+        account_guid: 'ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1',
+        amount: 61.11,
+        category: 'Groceries',
+        check_number: nil,
+        created_at: '2016-10-06T09:43:42+00:00',
+        date: '2013-09-23',
+        description: 'Whole Foods',
+        guid: 'TRN-265abee9-889b-af6a-c69b-25157db2bdd9',
+        is_bill_pay: false,
+        is_direct_deposit: false,
+        is_expense: true,
+        is_fee: false,
+        is_income: false,
+        is_overdraft_fee: false,
+        is_payroll_advance: false,
+        latitude: -43.2075,
+        longitude: 139.691706,
+        member_guid: 'MBR-7c6f361b-e582-15b6-60c0-358f12466b4b',
+        memo: nil,
+        merchant_category_code: 5411,
+        original_description: 'WHOLEFDS TSQ 102',
+        posted_at: '2016-10-07T06:00:00+00:00',
+        status: 'POSTED',
+        top_level_category: 'Food & Dining',
+        transacted_at: '2016-10-06T13:00:00+00:00',
+        type: 'DEBIT',
+        updated_at: '2016-10-07T05:49:12+00:00',
+        user_guid: 'USR-fa7537f3-48aa-a683-a02a-b18940482f54'
       }
     end
-    let(:raw_transaction_response) {
-      { :transaction => transaction_attributes }.to_json
-    }
-    let(:raw_transactions_response) {
-      { :transactions => [transaction_attributes, transaction_attributes]}.to_json
-    }
-    context "transactions" do
+    let(:raw_transaction_response) do
+      { transaction: transaction_attributes }.to_json
+    end
+    let(:raw_transactions_response) do
+      { transactions: [transaction_attributes, transaction_attributes] }.to_json
+    end
+    context 'transactions' do
       before { allow(::Atrium.client).to receive(:make_request).and_return(transactions_response) }
 
-      it "should return a users transactions" do
+      it 'should return a users transactions' do
         response = user.transactions
 
         expect(response).to be_kind_of(::Array)
@@ -248,23 +247,23 @@ RSpec.describe ::Atrium::User do
     end
   end
 
-  describe "#update" do
-    let(:raw_user_response) {
-      { :user => user_attributes.merge(update_params) }.to_json
-    }
-    let(:update_params) {
+  describe '#update' do
+    let(:raw_user_response) do
+      { user: user_attributes.merge(update_params) }.to_json
+    end
+    let(:update_params) do
       {
-        :guid => user_guid,
-        :identifier => "PIZZZAAA",
-        :is_disabled => is_disabled,
-        :metadata => metadata
+        guid: user_guid,
+        identifier: 'PIZZZAAA',
+        is_disabled: is_disabled,
+        metadata: metadata
       }
-    }
+    end
     let(:updated_user_response) { ::JSON.parse(raw_user_response) }
 
     before { allow(::Atrium.client).to receive(:make_request).and_return(updated_user_response) }
 
-    it "should return updated user" do
+    it 'should return updated user' do
       response = user.update(update_params)
 
       expect(response).to be_kind_of(::Object)
@@ -276,5 +275,4 @@ RSpec.describe ::Atrium::User do
       expect(response.metadata).to eq(update_params[:metadata])
     end
   end
-
 end

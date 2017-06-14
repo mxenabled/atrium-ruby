@@ -12,19 +12,19 @@ module Atrium
     # CLASS METHODS
     #
     def self.create(identifier:, is_disabled:, metadata:)
-      endpoint = "/users"
+      endpoint = '/users'
       body = user_body(identifier, is_disabled, metadata)
       response = ::Atrium.client.make_request(:post, endpoint, body)
 
-      user_params = response["user"]
+      user_params = response['user']
       ::Atrium::User.new(user_params)
     end
 
     def self.list
-      endpoint = "/users"
+      endpoint = '/users'
       users_response = ::Atrium.client.make_request(:get, endpoint)
 
-      users_response["users"].map do |user|
+      users_response['users'].map do |user|
         ::Atrium::User.new(user)
       end
     end
@@ -33,7 +33,7 @@ module Atrium
       endpoint = "/users/#{guid}"
       response = ::Atrium.client.make_request(:get, endpoint)
 
-      user_params = response["user"]
+      user_params = response['user']
       ::Atrium::User.new(user_params)
     end
 
@@ -41,46 +41,46 @@ module Atrium
     # INSTANCE METHODS
     #
     def accounts
-      endpoint = "/users/#{self.guid}/accounts"
+      endpoint = "/users/#{guid}/accounts"
       response = ::Atrium.client.make_request(:get, endpoint)
 
-      response["accounts"].map do |account|
+      response['accounts'].map do |account|
         ::Atrium::Account.new(account)
       end
     end
 
     def delete
-      endpoint = "/users/#{self.guid}"
+      endpoint = "/users/#{guid}"
       ::Atrium.client.make_request(:delete, endpoint)
 
       self
     end
 
     def members
-      endpoint = "/users/#{self.guid}/members"
+      endpoint = "/users/#{guid}/members"
       response = ::Atrium.client.make_request(:get, endpoint)
 
-      response["members"].map do |member|
+      response['members'].map do |member|
         ::Atrium::Member.new(member)
       end
     end
 
     def transactions
-      endpoint = "/users/#{self.guid}/transactions"
+      endpoint = "/users/#{guid}/transactions"
       response = ::Atrium.client.make_request(:get, endpoint)
 
-      response["transactions"].map do |transaction|
+      response['transactions'].map do |transaction|
         ::Atrium::Transaction.new(transaction)
       end
     end
 
     def update(params)
-      endpoint = "/users/#{self.guid}"
+      endpoint = "/users/#{guid}"
       body = update_params(params)
       response = ::Atrium.client.make_request(:put, endpoint, body)
 
-      user_params = response["user"]
-      self.assign_attributes(user_params)
+      user_params = response['user']
+      assign_attributes(user_params)
       self
     end
 
@@ -88,18 +88,19 @@ module Atrium
 
     def update_params(params)
       {
-        :user => params
+        user: params
       }
     end
 
     def self.user_body(identifier, is_disabled, metadata)
       {
-        :user => {
-          :identifier => identifier,
-          :is_disabled => is_disabled,
-          :metadata => metadata
+        user: {
+          identifier: identifier,
+          is_disabled: is_disabled,
+          metadata: metadata
         }
       }
     end
+    private_class_method :user_body
   end
 end

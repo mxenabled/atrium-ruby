@@ -1,16 +1,17 @@
 module Atrium
   class Client
+    DEVELOPMENT_URL = 'https://vestibule.mx.com'
     attr_accessor :mx_api_key, :mx_client_id, :base_url
 
-    def initialize(api_key = nil, client_id = nil, base_url = "https://vestibule.mx.com")
-      @mx_api_key = api_key
+    def initialize(api_key = nil, client_id = nil, base_url = DEVELOPMENT_URL)
+      @mx_api_key   = api_key
       @mx_client_id = client_id
-      @base_url = base_url
+      @base_url     = base_url
     end
 
     def make_request(method, endpoint, body = {}, headers = {})
       headers = default_headers.merge(headers)
-      url = "#{self.base_url}#{endpoint}"
+      url     = "#{base_url}#{endpoint}"
 
       response = http_client.public_send(method, url, ::JSON.dump(body), headers)
 
@@ -21,13 +22,13 @@ module Atrium
       @http_client ||= ::HTTPClient.new
     end
 
-  private
+    private
 
     def default_headers
       {
-        "Accept" => "application/vnd.mx.atrium.v1+json",
+        "Accept"       => "application/vnd.mx.atrium.v1+json",
         "Content-Type" => "application/json",
-        "MX-API-KEY" => mx_api_key,
+        "MX-API-KEY"   => mx_api_key,
         "MX-CLIENT-ID" => mx_client_id
       }
     end

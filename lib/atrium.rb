@@ -1,18 +1,18 @@
-require "active_attr"
-require "httpclient"
-require "json"
-require "atrium/paginate"
+require 'active_attr'
+require 'httpclient'
+require 'json'
+require 'atrium/paginate'
 
-require "atrium/account"
-require "atrium/client"
-require "atrium/credential"
-require "atrium/error"
-require "atrium/institution"
-require "atrium/challenge"
-require "atrium/member"
-require "atrium/transaction"
-require "atrium/user"
-require "atrium/version"
+require 'atrium/account'
+require 'atrium/client'
+require 'atrium/credential'
+require 'atrium/error'
+require 'atrium/institution'
+require 'atrium/challenge'
+require 'atrium/member'
+require 'atrium/transaction'
+require 'atrium/user'
+require 'atrium/version'
 
 module Atrium
   ##

@@ -1,4 +1,4 @@
-require "uri"
+require 'uri'
 
 module Atrium
   module Paginate
@@ -9,9 +9,9 @@ module Atrium
 
     def endpoint_name(query_params: nil)
       @endpoint = if query_params.present?
-        "/" + klass_name + "?" + URI.encode_www_form(query_params) + "&"
-      else
-        "/" + klass_name + "?"
+                    '/' + klass_name + '?' + URI.encode_www_form(query_params) + '&'
+                  else
+                    '/' + klass_name + '?'
       end
     end
 
@@ -21,12 +21,12 @@ module Atrium
       paginated_endpoint = endpoint + "page=#{current_page}&records_per_page=#{records_per_page}"
       response = ::Atrium.client.make_request(:get, paginated_endpoint)
 
-      pagination = response["pagination"]
-      @total_pages  = pagination["total_pages"]
+      pagination = response['pagination']
+      @total_pages  = pagination['total_pages']
     end
 
     def klass_name
-      @klass_name ||= self.name.gsub("Atrium::", "").downcase.pluralize
+      @klass_name ||= name.gsub('Atrium::', '').downcase.pluralize
     end
 
     def paginate_endpoint(query_params: nil, limit: nil)
@@ -36,7 +36,7 @@ module Atrium
     end
 
     def paginate_endpoint_in_batches(query_params: nil, limit: nil, &block)
-      return "method requires block to be passed" unless block_given?
+      return 'method requires block to be passed' unless block_given?
 
       endpoint_name(query_params: query_params)
       get_total_pages
@@ -53,12 +53,12 @@ module Atrium
       list = []
 
       until current_page > total_pages
-        paginated_endpoint =  endpoint + "page=#{current_page}&records_per_page=#{records_per_page}"
+        paginated_endpoint = endpoint + "page=#{current_page}&records_per_page=#{records_per_page}"
         response = ::Atrium.client.make_request(:get, paginated_endpoint)
 
         # Add new objects to the list
-        response["#{klass_name}"].each do |params|
-          list << self.new(params)
+        response[klass_name.to_s].each do |params|
+          list << new(params)
         end
         @current_page += 1
       end
@@ -70,17 +70,17 @@ module Atrium
       end
     end
 
-    def response_list_in_batches(limit: nil, &block)
+    def response_list_in_batches(limit: nil)
       # "total_pages > 1" check exists since some query_params only return 1 page
       @total_pages = limit / records_per_page if limit.present? && total_pages > 1
 
       until current_page > total_pages
-        paginated_endpoint =  endpoint + "page=#{current_page}&records_per_page=#{records_per_page}"
+        paginated_endpoint = endpoint + "page=#{current_page}&records_per_page=#{records_per_page}"
         response = ::Atrium.client.make_request(:get, paginated_endpoint)
         list = []
 
-        response["#{klass_name}"].each do |params|
-          list << self.new(params)
+        response[klass_name.to_s].each do |params|
+          list << new(params)
         end
         @current_page += 1
         yield list

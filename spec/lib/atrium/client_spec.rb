@@ -48,8 +48,8 @@ RSpec.describe Atrium::Client do
 
     it 'sends authentication headers' do
       expect(client.http_client).to receive(:get).with(anything, anything, hash_including(
-        "MX-API-KEY"   => 'API_KEY',
-        "MX-CLIENT-ID" => 'CLIENT_ID'
+                                                                             'MX-API-KEY'   => 'API_KEY',
+                                                                             'MX-CLIENT-ID' => 'CLIENT_ID'
       )).and_return(response)
       client.make_request(:get, '/ENDPOINT')
     end

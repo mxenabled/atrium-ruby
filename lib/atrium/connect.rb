@@ -2,7 +2,7 @@ module Atrium
   class Connect
     include ::ActiveAttr::Model
 
-    SCRIPT_SOURCE = 'https://atrium.mx.com/connect.js'
+    SCRIPT_SOURCE = 'https://atrium.mx.com/connect.js'.freeze
 
     # ATTRIBUTES
     attribute :connect_widget_url

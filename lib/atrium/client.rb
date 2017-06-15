@@ -1,6 +1,6 @@
 module Atrium
   class Client
-    DEVELOPMENT_URL = 'https://vestibule.mx.com'
+    DEVELOPMENT_URL = 'https://vestibule.mx.com'.freeze
     attr_accessor :mx_api_key, :mx_client_id, :base_url
 
     def initialize(api_key = nil, client_id = nil, base_url = DEVELOPMENT_URL)

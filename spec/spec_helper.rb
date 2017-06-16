@@ -32,3 +32,14 @@ RSpec.configure do |config|
   config.order = :random
   Kernel.srand config.seed
 end
+
+require_relative 'support/vcr'
+
+RSpec.shared_context 'configure', shared_context: :metadata do
+  before(:each) do
+    Atrium.configure do |config|
+      config.mx_api_key   = ENV.fetch('ATRIUM_API_KEY')
+      config.mx_client_id = ENV.fetch('ATRIUM_CLIENT_ID')
+    end
+  end
+end

@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 RSpec.describe ::Atrium::Institution do
+  include_context 'configure'
+
   let(:pagination) do
     {
       pagination:         {
@@ -83,6 +85,38 @@ RSpec.describe ::Atrium::Institution do
 
       expect(response.first.guid).to eq(credential_attributes[:guid])
       expect(response.first.value).to eq(credential_attributes[:value])
+    end
+  end
+
+  describe '.read' do
+    let(:institution_code) { 'chase' }
+
+    it 'should return an institution' do
+      institution = described_class.read(institution_code: institution_code)
+
+      expect(institution).to be_a ::Atrium::Institution
+
+      expect(institution.code).to            be_a String
+      expect(institution.name).to            be_a String
+      expect(institution.url).to             be_a String
+      expect(institution.medium_logo_url).to be_a String
+      expect(institution.small_logo_url).to  be_a String
+    end
+  end
+
+  describe '.list' do
+    before { allow(::Atrium.client).to receive(:make_request).and_return(institutions_response) }
+
+    it 'should return an array of institutions' do
+      response = ::Atrium::Institution.list
+
+      expect(response).to be_kind_of(::Array)
+      expect(response.length).to eq(4)
+      expect(response.first).to be_kind_of(::Atrium::Institution)
+
+      expect(response.first.code).to eq(institution_attributes[:code])
+      expect(response.first.name).to eq(institution_attributes[:name])
+      expect(response.first.url).to eq(institution_attributes[:url])
     end
   end
 end

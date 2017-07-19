@@ -5,6 +5,7 @@ A Ruby wrapper for use with the [MX Atrium API](https://atrium.mx.com). In order
 Atrium.configure do |config|
   config.mx_api_key = YOUR_API_KEY
   config.mx_client_id = YOUR_CLIENT_ID
+  config.base_url = "atrium.mx.com" # base_url is set to "vestibule.mx.com" by default
 end
 ```
 

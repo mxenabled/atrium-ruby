@@ -4,7 +4,9 @@ module Atrium
     include ::ActiveAttr::Model
 
     attribute :code
+    attribute :medium_logo_url
     attribute :name
+    attribute :small_logo_url
     attribute :url
 
     def self.credentials(institution_code)

@@ -25,7 +25,9 @@ describe ::Atrium::Institution do
   let(:institution_attributes) do
     {
       :code => "chase",
+      :medium_logo_url => "https://yolo.mx.com/logos/medium.png",
       :name => "Chase Bank",
+      :small_logo_url => "https://yolo.mx.com/logos/small.png",
       :url => "https://www.chase.com",
     }
   end
@@ -48,7 +50,9 @@ describe ::Atrium::Institution do
       expect(response.first).to be_kind_of(::Atrium::Institution)
 
       expect(response.first.code).to eq(institution_attributes[:code])
+      expect(response.first.medium_logo_url).to eq(institution_attributes[:medium_logo_url])
       expect(response.first.name).to eq(institution_attributes[:name])
+      expect(response.first.small_logo_url).to eq(institution_attributes[:small_logo_url])
       expect(response.first.url).to eq(institution_attributes[:url])
     end
   end

@@ -35,7 +35,7 @@ module Atrium
       endpoint = "/users/#{user_guid}/transactions"
       raw_transactions = ::Atrium.client.make_request(:get, endpoint)
 
-      raw_transactions['transactions'].map do |raw_transaction|
+      raw_transactions["transactions"].map do |raw_transaction|
         ::Atrium::Transaction.new(raw_transaction)
       end
     end
@@ -44,7 +44,7 @@ module Atrium
       endpoint = "/users/#{user_guid}/transactions/#{transaction_guid}"
       raw_transaction = ::Atrium.client.make_request(:get, endpoint)
 
-      ::Atrium::Transaction.new(raw_transaction['transaction'])
+      ::Atrium::Transaction.new(raw_transaction["transaction"])
     end
   end
 end

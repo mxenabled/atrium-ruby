@@ -1,6 +1,6 @@
 module Atrium
   class Client
-    DEVELOPMENT_URL = 'https://vestibule.mx.com'.freeze
+    DEVELOPMENT_URL = "https://vestibule.mx.com".freeze
     attr_accessor :mx_api_key, :mx_client_id, :base_url
 
     def initialize(api_key = nil, client_id = nil, base_url = DEVELOPMENT_URL)
@@ -23,14 +23,14 @@ module Atrium
       @http_client ||= ::HTTPClient.new
     end
 
-    private
+  private
 
     def default_headers
       {
-        'Accept'       => 'application/vnd.mx.atrium.v1+json',
-        'Content-Type' => 'application/json',
-        'MX-API-KEY'   => mx_api_key,
-        'MX-CLIENT-ID' => mx_client_id
+        "Accept"       => "application/vnd.mx.atrium.v1+json",
+        "Content-Type" => "application/json",
+        "MX-API-KEY"   => mx_api_key,
+        "MX-CLIENT-ID" => mx_client_id
       }
     end
 

@@ -1,29 +1,29 @@
 #!/usr/bin/env ruby
-require 'bundler/setup'
-require 'atrium'
-require 'pry'
-require 'yaml'
+require "bundler/setup"
+require "atrium"
+require "pry"
+require "yaml"
 
 def load_settings
-  if ::File.exist?('tmp/settings.yml')
-    puts '=> Using key and ID in tmp/settings.yml ¬'
-    ::YAML.safe_load(::File.read('tmp/settings.yml'))
+  if ::File.exist?("tmp/settings.yml")
+    puts "=> Using key and ID in tmp/settings.yml ¬"
+    ::YAML.safe_load(::File.read("tmp/settings.yml"))
   else
     settings = {}
-    puts 'What is your MX-API-KEY?'
+    puts "What is your MX-API-KEY?"
     settings[:mx_api_key] = gets.chomp
 
-    puts 'What is your Client ID?'
+    puts "What is your Client ID?"
     settings[:mx_client_id] = gets.chomp
 
-    puts 'Would you like to save API key and client ID for future use?'
+    puts "Would you like to save API key and client ID for future use?"
     case gets.chomp
     when /y/i
-      ::File.open('tmp/settings.yml', 'w') { |f| f.write(settings.to_yaml) }
-      puts 'Settings written to tmp/settings.yml ¬'
+      ::File.open("tmp/settings.yml", "w") { |f| f.write(settings.to_yaml) }
+      puts "Settings written to tmp/settings.yml ¬"
       settings
     when /n/i
-      puts 'One-time use settings ¬'
+      puts "One-time use settings ¬"
       settings
     end
   end

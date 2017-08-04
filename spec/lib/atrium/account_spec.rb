@@ -1,54 +1,54 @@
-require 'spec_helper'
+require "spec_helper"
 
 RSpec.describe ::Atrium::Account do
   let(:account_response) { ::JSON.parse(raw_account_response) }
   let(:accounts_response) { ::JSON.parse(raw_accounts_response) }
   let(:account_attributes) do
     {
-      apr: 3.4,
-      apy: 3.5,
-      available_balance: 20_000,
-      available_credit: 15_000,
-      balance: 25_000,
-      created_at: '2016-10-06T09:43:4200:00',
-      credit_limit: 5000,
-      day_payment_is_due: '2016-10-06T09:43:4200:00',
-      guid: 'ACT-06d7f44b',
-      institution_code: 'chase',
-      interest_rate: 5.04,
-      is_closed: false,
-      last_payment: '2016-10-06T09:43:4200:00',
-      last_payment_at: '2016-10-06T09:43:4200:00',
-      matures_on: '2016-10-06T09:43:4200:00',
-      member_guid: 'MBR',
-      minimum_balance: 2000,
-      minimum_payment: 30.00,
-      name: 'CHASE CHECKING',
-      original_balance: 40_000,
-      payment_due_at: '2016-10-06T09:43:4200:00',
-      payoff_balance: 4000,
-      started_on: '2016-10-06T09:43:4200:00',
-      subtype: 2,
-      total_account_value: 10_000,
-      type: 1,
-      updated_at: '2016-10-06T09:43:4200:00',
-      user_guid: user_guid
+      :apr => 3.4,
+      :apy => 3.5,
+      :available_balance => 20_000,
+      :available_credit => 15_000,
+      :balance => 25_000,
+      :created_at => "2016-10-06T09:43:4200:00",
+      :credit_limit => 5000,
+      :day_payment_is_due => "2016-10-06T09:43:4200:00",
+      :guid => "ACT-06d7f44b",
+      :institution_code => "chase",
+      :interest_rate => 5.04,
+      :is_closed => false,
+      :last_payment => "2016-10-06T09:43:4200:00",
+      :last_payment_at => "2016-10-06T09:43:4200:00",
+      :matures_on => "2016-10-06T09:43:4200:00",
+      :member_guid => "MBR",
+      :minimum_balance => 2000,
+      :minimum_payment => 30.00,
+      :name => "CHASE CHECKING",
+      :original_balance => 40_000,
+      :payment_due_at => "2016-10-06T09:43:4200:00",
+      :payoff_balance => 4000,
+      :started_on => "2016-10-06T09:43:4200:00",
+      :subtype => 2,
+      :total_account_value => 10_000,
+      :type => 1,
+      :updated_at => "2016-10-06T09:43:4200:00",
+      :user_guid => user_guid
     }
   end
 
   let(:raw_account_response) do
-    { account: account_attributes }.to_json
+    { :account => account_attributes }.to_json
   end
   let(:raw_accounts_response) do
-    { accounts: [account_attributes, account_attributes] }.to_json
+    { :accounts => [account_attributes, account_attributes] }.to_json
   end
-  let(:user_guid) { 'USR-fa7537f3-48aa-a683-a02a-b18940482f54' }
+  let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 
-  describe '.list' do
+  describe ".list" do
     before { allow(::Atrium.client).to receive(:make_request).and_return(accounts_response) }
 
-    it 'should return list of accounts' do
-      response = described_class.list(user_guid: user_guid)
+    it "should return list of accounts" do
+      response = described_class.list(:user_guid => user_guid)
 
       expect(response).to be_kind_of(::Array)
       expect(response.length).to eq(2)
@@ -85,11 +85,11 @@ RSpec.describe ::Atrium::Account do
     end
   end
 
-  describe '.read' do
+  describe ".read" do
     before { allow(::Atrium.client).to receive(:make_request).and_return(account_response) }
 
-    it 'should return account' do
-      response = described_class.read(user_guid: user_guid, account_guid: account_attributes[:guid])
+    it "should return account" do
+      response = described_class.read(:user_guid => user_guid, :account_guid => account_attributes[:guid])
 
       expect(response).to be_kind_of(::Object)
       expect(response).to be_kind_of(::Atrium::Account)
@@ -125,51 +125,51 @@ RSpec.describe ::Atrium::Account do
     end
   end
 
-  describe 'transactions' do
+  describe "transactions" do
     let(:account) { ::Atrium::Account.new(account_attributes) }
     let(:account_transactions_response) { ::JSON.parse(raw_account_transactions_response) }
     let(:transaction_attributes) do
       {
-        account_guid: account_attributes[:guid],
-        amount: 61.11,
-        category: 'Groceries',
-        check_number: nil,
-        created_at: '2016-10-06T09:43:4200:00',
-        date: '2013-09-23',
-        description: 'Whole Foods',
-        guid: 'TRN-265abee9-889b-af6a-c69b-25157db2bdd9',
-        is_bill_pay: false,
-        is_direct_deposit: false,
-        is_expense: true,
-        is_fee: false,
-        is_income: false,
-        is_overdraft_fee: false,
-        is_payroll_advance: false,
-        latitude: -43.2075,
-        longitude: 139.691706,
-        member_guid: 'MBR-7c6f361b-e582-15b6-60c0-358f12466b4b',
-        memo: nil,
-        merchant_category_code: 5411,
-        original_description: 'WHOLEFDS TSQ 102',
-        posted_at: '2016-10-07T06:00:0000:00',
-        status: 'POSTED',
-        top_level_category: 'Food & Dining',
-        transacted_at: '2016-10-06T13:00:0000:00',
-        type: 'DEBIT',
-        updated_at: '2016-10-07T05:49:1200:00',
-        user_guid: 'USR-fa7537f3-48aa-a683-a02a-b18940482f54'
+        :account_guid => account_attributes[:guid],
+        :amount => 61.11,
+        :category => "Groceries",
+        :check_number => nil,
+        :created_at => "2016-10-06T09:43:4200:00",
+        :date => "2013-09-23",
+        :description => "Whole Foods",
+        :guid => "TRN-265abee9-889b-af6a-c69b-25157db2bdd9",
+        :is_bill_pay => false,
+        :is_direct_deposit => false,
+        :is_expense => true,
+        :is_fee => false,
+        :is_income => false,
+        :is_overdraft_fee => false,
+        :is_payroll_advance => false,
+        :latitude => -43.2075,
+        :longitude => 139.691706,
+        :member_guid => "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b",
+        :memo => nil,
+        :merchant_category_code => 5411,
+        :original_description => "WHOLEFDS TSQ 102",
+        :posted_at => "2016-10-07T06:00:0000:00",
+        :status => "POSTED",
+        :top_level_category => "Food & Dining",
+        :transacted_at => "2016-10-06T13:00:0000:00",
+        :type => "DEBIT",
+        :updated_at => "2016-10-07T05:49:1200:00",
+        :user_guid => "USR-fa7537f3-48aa-a683-a02a-b18940482f54"
       }
     end
 
     let(:raw_account_transactions_response) do
-      { transactions: [transaction_attributes, transaction_attributes] }.to_json
+      { :transactions => [transaction_attributes, transaction_attributes] }.to_json
     end
 
     before do
       allow(::Atrium.client).to receive(:make_request).and_return(account_transactions_response)
     end
 
-    it 'returns list of transactions for account' do
+    it "returns list of transactions for account" do
       response = account.transactions
 
       expect(response).to be_kind_of(::Array)

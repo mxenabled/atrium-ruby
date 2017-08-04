@@ -2,7 +2,7 @@ module Atrium
   class Connect
     include ::ActiveAttr::Model
 
-    SCRIPT_SOURCE = 'https://atrium.mx.com/connect.js'.freeze
+    SCRIPT_SOURCE = "https://atrium.mx.com/connect.js".freeze
 
     # ATTRIBUTES
     attribute :connect_widget_url
@@ -15,7 +15,7 @@ module Atrium
       endpoint = "/users/#{user_guid}/connect_widget_url"
       connect_response = ::Atrium.client.make_request(:post, endpoint)
 
-      connect_params = connect_response['user']
+      connect_params = connect_response["user"]
       ::Atrium::Connect.new(connect_params)
     end
   end

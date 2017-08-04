@@ -16,7 +16,7 @@ module Atrium
       endpoint = "/institutions/#{institution_code}/credentials"
       response = ::Atrium.client.make_request(:get, endpoint)
 
-      response['credentials'].map do |credential|
+      response["credentials"].map do |credential|
         ::Atrium::Credential.new(credential)
       end
     end
@@ -25,16 +25,16 @@ module Atrium
       endpoint = "/institutions/#{institution_code}"
       response = ::Atrium.client.make_request(:get, endpoint)
 
-      institution_params = response['institution']
+      institution_params = response["institution"]
       ::Atrium::Institution.new(institution_params)
     end
 
     def self.list(query_params: nil, limit: nil)
-      paginate_endpoint(query_params: query_params, limit: limit)
+      paginate_endpoint(:query_params => query_params, :limit => limit)
     end
 
     def self.list_in_batches(query_params: nil, limit: nil, &block)
-      paginate_endpoint_in_batches(query_params: query_params, limit: limit, &block)
+      paginate_endpoint_in_batches(:query_params => query_params, :limit => limit, &block)
     end
   end
 end

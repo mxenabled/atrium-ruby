@@ -1,12 +1,12 @@
-require 'simplecov'
-require 'pry'
+require "simplecov"
+require "pry"
 
 SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
 SimpleCov.start do
-  add_filter '/spec/'
+  add_filter "/spec/"
 end
 
-require 'atrium'
+require "atrium"
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -21,7 +21,7 @@ RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.disable_monkey_patching!
 
-  config.default_formatter = 'doc' if config.files_to_run.one?
+  config.default_formatter = "doc" if config.files_to_run.one?
 
   # config.profile_examples = 10
 
@@ -33,13 +33,13 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 end
 
-require_relative 'support/vcr'
+require_relative "support/vcr"
 
-RSpec.shared_context 'configure', shared_context: :metadata do
+RSpec.shared_context "configure", :shared_context => :metadata do
   before(:each) do
     Atrium.configure do |config|
-      config.mx_api_key   = ENV.fetch('ATRIUM_API_KEY')
-      config.mx_client_id = ENV.fetch('ATRIUM_CLIENT_ID')
+      config.mx_api_key   = ENV.fetch("ATRIUM_API_KEY")
+      config.mx_client_id = ENV.fetch("ATRIUM_CLIENT_ID")
     end
   end
 end

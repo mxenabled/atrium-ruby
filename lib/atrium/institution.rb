@@ -4,12 +4,10 @@ module Atrium
     include ::ActiveAttr::Model
 
     attribute :code
-    attribute :medium_logo_url
     attribute :name
-    attribute :small_logo_url
     attribute :url
-    attribute :medium_logo_url
     attribute :small_logo_url
+    attribute :medium_logo_url
 
     # @todo Normalize params interface across gem, most of gem favors hash
     def self.credentials(institution_code)

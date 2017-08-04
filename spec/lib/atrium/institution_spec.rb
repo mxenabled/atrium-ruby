@@ -114,9 +114,11 @@ RSpec.describe ::Atrium::Institution do
       expect(response.length).to eq(4)
       expect(response.first).to be_kind_of(::Atrium::Institution)
 
-      expect(response.first.code).to eq(institution_attributes[:code])
-      expect(response.first.name).to eq(institution_attributes[:name])
-      expect(response.first.url).to eq(institution_attributes[:url])
+      expect(response.first.code).to            eq(institution_attributes[:code])
+      expect(response.first.name).to            eq(institution_attributes[:name])
+      expect(response.first.url).to             eq(institution_attributes[:url])
+      expect(response.first.small_logo_url).to  eq(institution_attributes[:small_logo_url])
+      expect(response.first.medium_logo_url).to eq(institution_attributes[:medium_logo_url])
     end
   end
 end

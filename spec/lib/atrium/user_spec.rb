@@ -21,6 +21,9 @@ RSpec.describe ::Atrium::User do
   let(:user) { ::Atrium::User.new(user_attributes) }
 
   describe ".create" do
+    include_context "vcr"
+    let(:vcr_cassette_name) { "atrium/user/create/should_return_valid_user_object_with_attributes" }
+
     let(:identifier)  { "32d355b8-e2b4-449a-ab5c-86946224e0f9" }
 
     it "should return valid user object with attributes" do
@@ -37,6 +40,9 @@ RSpec.describe ::Atrium::User do
   end
 
   describe ".list" do
+    include_context "vcr"
+    let(:vcr_cassette_name) { "atrium/user/list/should_return_list_of_users" }
+
     it "should return list of users" do
       response = described_class.list
 
@@ -52,6 +58,9 @@ RSpec.describe ::Atrium::User do
   end
 
   describe ".read" do
+    include_context "vcr"
+    let(:vcr_cassette_name) { "atrium/user/read/should_return_a_users" }
+
     it "should return a users" do
       response = described_class.read(:guid => user_guid)
 

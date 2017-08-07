@@ -90,7 +90,7 @@ RSpec.describe ::Atrium::Institution do
 
   describe ".read" do
     include_context "vcr"
-    let(:vcr_cassette_name) { "atrium/institution/read/should_return_an_institution" }
+    let(:vcr_cassette_name) { "atrium/institution/read" }
 
     let(:institution_code) { "chase" }
 

@@ -12,9 +12,10 @@ module Atrium
                     "/" + klass_name + "?" + URI.encode_www_form(query_params) + "&"
                   else
                     "/" + klass_name + "?"
-      end
+                  end
     end
 
+    # rubocop:disable Style/AccessorMethodName
     def get_total_pages
       @current_page = INITIAL_PAGE
 
@@ -24,6 +25,7 @@ module Atrium
       pagination = response["pagination"]
       @total_pages  = pagination["total_pages"]
     end
+    # rubocop:enable Style/AccessorMethodName
 
     def klass_name
       @klass_name ||= name.gsub("Atrium::", "").downcase.pluralize

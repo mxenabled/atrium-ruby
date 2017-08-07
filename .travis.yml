@@ -4,6 +4,8 @@ rvm:
  - 2.3
 sudo: false
 cache: bundler
+before_script:
+  - bundle exec rubocop
 notifications:
   email:
     on_success: never

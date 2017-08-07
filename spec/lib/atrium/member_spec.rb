@@ -1,6 +1,8 @@
 require "spec_helper"
 
 RSpec.describe ::Atrium::Member do
+  include_context "configure"
+
   let(:credentials) do
     [
       { :guid => "CRD-123", :value => "user_name" },

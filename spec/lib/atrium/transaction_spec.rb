@@ -1,6 +1,8 @@
 require "spec_helper"
 
 RSpec.describe ::Atrium::Transaction do
+  include_context "configure"
+
   let(:raw_transaction) { ::JSON.parse(raw_transaction_response) }
   let(:raw_transactions) { ::JSON.parse(raw_transactions_response) }
   let(:raw_transaction_attributes) do

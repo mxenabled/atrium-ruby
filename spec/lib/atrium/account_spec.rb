@@ -1,6 +1,8 @@
 require "spec_helper"
 
 RSpec.describe ::Atrium::Account do
+  include_context "configure"
+
   let(:account_response) { ::JSON.parse(raw_account_response) }
   let(:accounts_response) { ::JSON.parse(raw_accounts_response) }
   let(:account_attributes) do

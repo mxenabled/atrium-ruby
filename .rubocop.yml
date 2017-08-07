@@ -2,6 +2,9 @@
 inherit_gem:
   mad_rubocop: .rubocop.yml
 AllCops:
+  TargetRubyVersion: 2.3
   Include:
     - 'Gemfile'
     - 'Rakefile'
+Style/FrozenStringLiteralComment:
+  Enabled: false

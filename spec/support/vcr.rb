@@ -5,7 +5,7 @@ require "vcr"
 ENV["ATRIUM_API_KEY"]   = ENV.fetch("ATRIUM_API_KEY",   "ATRIUM_API_KEY")
 ENV["ATRIUM_CLIENT_ID"] = ENV.fetch("ATRIUM_CLIENT_ID", "ATRIUM_CLIENT_ID")
 
-VCR_CASSETTES_BASE_PATH = "spec/cassettes".freeze
+VCR_CASSETTES_BASE_PATH = "spec/cassettes"
 
 VCR.configure do |config|
   config.cassette_library_dir = VCR_CASSETTES_BASE_PATH

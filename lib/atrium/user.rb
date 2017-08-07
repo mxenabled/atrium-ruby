@@ -41,7 +41,7 @@ module Atrium
     # INSTANCE METHODS
     #
     def accounts
-      endpoint = "/users/#{self.guid}/accounts"
+      endpoint = "/users/#{guid}/accounts"
       response = ::Atrium.client.make_request(:get, endpoint)
 
       response["accounts"].map do |account|
@@ -50,14 +50,14 @@ module Atrium
     end
 
     def delete
-      endpoint = "/users/#{self.guid}"
+      endpoint = "/users/#{guid}"
       ::Atrium.client.make_request(:delete, endpoint)
 
       self
     end
 
     def members
-      endpoint = "/users/#{self.guid}/members"
+      endpoint = "/users/#{guid}/members"
       response = ::Atrium.client.make_request(:get, endpoint)
 
       response["members"].map do |member|
@@ -66,7 +66,7 @@ module Atrium
     end
 
     def transactions
-      endpoint = "/users/#{self.guid}/transactions"
+      endpoint = "/users/#{guid}/transactions"
       response = ::Atrium.client.make_request(:get, endpoint)
 
       response["transactions"].map do |transaction|
@@ -75,16 +75,16 @@ module Atrium
     end
 
     def update(params)
-      endpoint = "/users/#{self.guid}"
+      endpoint = "/users/#{guid}"
       body = update_params(params)
       response = ::Atrium.client.make_request(:put, endpoint, body)
 
       user_params = response["user"]
-      self.assign_attributes(user_params)
+      assign_attributes(user_params)
       self
     end
 
-    private
+  private
 
     def update_params(params)
       {
@@ -101,5 +101,6 @@ module Atrium
         }
       }
     end
+    private_class_method :user_body
   end
 end

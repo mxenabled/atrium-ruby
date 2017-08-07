@@ -1,15 +1,15 @@
 require "spec_helper"
 
-describe ::Atrium::User do
-  let(:identifier) { "DAB_ALL_DAY" }
+RSpec.describe ::Atrium::User do
+  include_context "configure"
+
+  let(:user_guid)   { "USR-a0d28b12-2ccf-e80f-df0f-157f17d1b134" }
+  let(:identifier)  { "32d355b8-e2b4-449a-ab5c-86946224e0f9" }
   let(:is_disabled) { false }
-  let(:metadata) { "{\"first_name\": \"Steven\", \"favorite_color\": \"BLUE\"}" }
-  let(:raw_user_response) { { :user => user_attributes }.to_json }
-  let(:raw_users_response) {
-    { :users => [user_attributes, user_attributes]}.to_json
-  }
-  let(:user_response) { ::JSON.parse(raw_user_response)}
-  let(:users_response) { ::JSON.parse(raw_users_response)}
+  let(:metadata)    { '{"first_name": "Steven", "favorite_color": "BLUE"}' }
+
+  let(:raw_users_response) { { :users => [user_attributes, user_attributes] }.to_json }
+  let(:users_response) { ::JSON.parse(raw_users_response) }
   let(:user_attributes) do
     {
       :guid => user_guid,
@@ -19,65 +19,70 @@ describe ::Atrium::User do
     }
   end
   let(:user) { ::Atrium::User.new(user_attributes) }
-  let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 
   describe ".create" do
-    before { allow(::Atrium.client).to receive(:make_request).and_return(user_response) }
+    include_context "vcr"
+    let(:vcr_cassette_name) { "atrium/user/create" }
+
+    let(:identifier)  { "32d355b8-e2b4-449a-ab5c-86946224e0f9" }
 
     it "should return valid user object with attributes" do
-      response = described_class.create(:identifier => identifier, :metadata => metadata, :is_disabled => is_disabled )
+      response = described_class.create(:identifier => identifier, :metadata => metadata, :is_disabled => is_disabled)
 
-      expect(response).to be_kind_of(::Object)
-      expect(response).to be_kind_of(::Atrium::User)
+      expect(response).to be_a ::Object
+      expect(response).to be_an ::Atrium::User
 
-      expect(response.guid).to eq(user_attributes[:guid])
-      expect(response.identifier).to eq(user_attributes[:identifier])
-      expect(response.is_disabled).to eq(user_attributes[:is_disabled])
-      expect(response.metadata).to eq(user_attributes[:metadata])
+      expect(response.guid).to        be_a String
+      expect(response.identifier).to  eq identifier
+      expect(response.metadata).to    eq metadata
+      expect(response.is_disabled).to eq is_disabled
     end
   end
 
   describe ".list" do
-    before { allow(::Atrium.client).to receive(:make_request).and_return(users_response) }
+    include_context "vcr"
+    let(:vcr_cassette_name) { "atrium/user/list" }
 
     it "should return list of users" do
       response = described_class.list
 
-      expect(response.length).to eq(2)
-      expect(response.first).to be_kind_of(::Atrium::User)
+      expect(response).to        be_an ::Array
+      expect(response.length).to eq 1
 
-      expect(response.first.guid).to eq(user_attributes[:guid])
-      expect(response.first.identifier).to eq(user_attributes[:identifier])
-      expect(response.first.is_disabled).to eq(user_attributes[:is_disabled])
-      expect(response.first.metadata).to eq(user_attributes[:metadata])
+      expect(response.first).to             be_an ::Atrium::User
+      expect(response.first.guid).to        eq user_guid
+      expect(response.first.identifier).to  eq identifier
+      expect(response.first.metadata).to    eq metadata
+      expect(response.first.is_disabled).to eq is_disabled
     end
   end
 
   describe ".read" do
-    before { allow(::Atrium.client).to receive(:make_request).and_return(user_response) }
+    include_context "vcr"
+    let(:vcr_cassette_name) { "atrium/user/read" }
 
-    it "should return a users" do
+    it "should return a user" do
       response = described_class.read(:guid => user_guid)
 
-      expect(response).to be_kind_of(::Object)
-      expect(response).to be_kind_of(::Atrium::User)
+      expect(response).to be_a ::Object
+      expect(response).to be_an ::Atrium::User
 
-      expect(response.guid).to eq(user_attributes[:guid])
-      expect(response.identifier).to eq(user_attributes[:identifier])
-      expect(response.is_disabled).to eq(user_attributes[:is_disabled])
-      expect(response.metadata).to eq(user_attributes[:metadata])
+      expect(response.guid).to        eq user_guid
+      expect(response.identifier).to  eq identifier
+      expect(response.metadata).to    eq metadata
+      expect(response.is_disabled).to eq is_disabled
     end
   end
 
   describe "account" do
-    let(:account_response) { ::JSON.parse(raw_account_response)}
-    let(:accounts_response) { ::JSON.parse(raw_accounts_response)}
+    let(:account_response) { ::JSON.parse(raw_account_response) }
+    let(:accounts_response) { ::JSON.parse(raw_accounts_response) }
     let(:account_attributes) do
       {
         :apr => 3.4,
         :apy => 3.5,
-        :available_balance => 20000,
-        :available_credit => 15000,
+        :available_balance => 20_000,
+        :available_credit => 15_000,
         :balance => 25_000,
         :created_at => "2016-10-06T09:43:4200:00",
         :credit_limit => 5000,
@@ -93,20 +98,20 @@ describe ::Atrium::User do
         :minimum_balance => 2000,
         :minimum_payment => 30.00,
         :name => "CHASE CHECKING",
-        :original_balance => 40000,
+        :original_balance => 40_000,
         :payment_due_at => "2016-10-06T09:43:4200:00",
         :payoff_balance => 4000,
         :started_on => "2016-10-06T09:43:4200:00",
         :subtype => 2,
-        :total_account_value => 10000,
+        :total_account_value => 10_000,
         :type => 1,
         :updated_at => "2016-10-06T09:43:4200:00",
-        :user_guid => user_guid,
+        :user_guid => user_guid
       }
     end
-    let(:raw_accounts_response) {
-      { :accounts => [account_attributes, account_attributes]}.to_json
-    }
+    let(:raw_accounts_response) do
+      { :accounts => [account_attributes, account_attributes] }.to_json
+    end
 
     before { allow(::Atrium.client).to receive(:make_request).and_return(accounts_response) }
 
@@ -164,10 +169,9 @@ describe ::Atrium::User do
     end
   end
 
-
   describe "user transactions" do
-    let(:transaction_response) { ::JSON.parse(raw_transaction_response)}
-    let(:transactions_response) { ::JSON.parse(raw_transactions_response)}
+    let(:transaction_response) { ::JSON.parse(raw_transaction_response) }
+    let(:transactions_response) { ::JSON.parse(raw_transactions_response) }
     let(:transaction_attributes) do
       {
         :account_guid => "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1",
@@ -200,12 +204,12 @@ describe ::Atrium::User do
         :user_guid => "USR-fa7537f3-48aa-a683-a02a-b18940482f54"
       }
     end
-    let(:raw_transaction_response) {
+    let(:raw_transaction_response) do
       { :transaction => transaction_attributes }.to_json
-    }
-    let(:raw_transactions_response) {
-      { :transactions => [transaction_attributes, transaction_attributes]}.to_json
-    }
+    end
+    let(:raw_transactions_response) do
+      { :transactions => [transaction_attributes, transaction_attributes] }.to_json
+    end
     context "transactions" do
       before { allow(::Atrium.client).to receive(:make_request).and_return(transactions_response) }
 
@@ -249,17 +253,17 @@ describe ::Atrium::User do
   end
 
   describe "#update" do
-    let(:raw_user_response) {
+    let(:raw_user_response) do
       { :user => user_attributes.merge(update_params) }.to_json
-    }
-    let(:update_params) {
+    end
+    let(:update_params) do
       {
         :guid => user_guid,
         :identifier => "PIZZZAAA",
         :is_disabled => is_disabled,
         :metadata => metadata
       }
-    }
+    end
     let(:updated_user_response) { ::JSON.parse(raw_user_response) }
 
     before { allow(::Atrium.client).to receive(:make_request).and_return(updated_user_response) }
@@ -276,5 +280,4 @@ describe ::Atrium::User do
       expect(response.metadata).to eq(update_params[:metadata])
     end
   end
-
 end

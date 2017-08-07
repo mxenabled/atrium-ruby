@@ -5,9 +5,9 @@ require "pry"
 require "yaml"
 
 def load_settings
-  if ::File.exists?("tmp/settings.yml")
+  if ::File.exist?("tmp/settings.yml")
     puts "=> Using key and ID in tmp/settings.yml ¬"
-    ::YAML.load(::File.read("tmp/settings.yml"))
+    ::YAML.safe_load(::File.read("tmp/settings.yml"))
   else
     settings = {}
     puts "What is your MX-API-KEY?"
@@ -27,11 +27,10 @@ def load_settings
       settings
     end
   end
-
 end
 
 settings = load_settings
-settings.each { |k,v| puts "\t#{k}: #{v}" }
+settings.each { |k, v| puts "\t#{k}: #{v}" }
 
 ::Atrium.configure do |config|
   config.mx_client_id = settings[:mx_client_id]

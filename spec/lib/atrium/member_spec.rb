@@ -1,12 +1,14 @@
 require "spec_helper"
 
-describe ::Atrium::Member do
-  let(:credentials) {
+RSpec.describe ::Atrium::Member do
+  include_context "configure"
+
+  let(:credentials) do
     [
       { :guid => "CRD-123", :value => "user_name" },
       { :guid => "CRD-456", :value => "password" }
     ]
-  }
+  end
   let(:challenge_attributes) do
     {
       :field_name => "What city were you born in?",
@@ -17,15 +19,15 @@ describe ::Atrium::Member do
   end
   let(:challenges_response) { ::JSON.parse(raw_challenges_response) }
   let(:member) { ::Atrium::Member.new(member_attributes) }
-  let(:member_response) { ::JSON.parse(raw_member_response)}
-  let(:members_response) { ::JSON.parse(raw_members_response)}
+  let(:member_response) { ::JSON.parse(raw_member_response) }
+  let(:members_response) { ::JSON.parse(raw_members_response) }
   let(:member_attributes) do
     {
       :aggregated_at => "2016-10-13T18:07:57+00:00",
       :guid => "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b",
       :identifier => "unique_id",
       :institution_code => "chase",
-      :metadata => "{\"credentials_last_refreshed_at\": \"2015-10-15\"}",
+      :metadata => '{"credentials_last_refreshed_at": "2015-10-15"}',
       :name => "Chase Bank",
       :status => "COMPLETED",
       :successfully_aggregated_at => "2016-10-13T17:57:38+00:00",
@@ -33,15 +35,15 @@ describe ::Atrium::Member do
     }
   end
 
-  let(:raw_challenges_response) {
+  let(:raw_challenges_response) do
     { :challenges => [challenge_attributes] }.to_json
-  }
-  let(:raw_member_response) {
+  end
+  let(:raw_member_response) do
     { :member => member_attributes }.to_json
-  }
-  let(:raw_members_response) {
-    { :members => [member_attributes, member_attributes]}.to_json
-  }
+  end
+  let(:raw_members_response) do
+    { :members => [member_attributes, member_attributes] }.to_json
+  end
   let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 
   describe ".create" do
@@ -71,8 +73,8 @@ describe ::Atrium::Member do
       {
         :apr => 3.4,
         :apy => 3.5,
-        :available_balance => 20000,
-        :available_credit => 15000,
+        :available_balance => 20_000,
+        :available_credit => 15_000,
         :balance => 25_000,
         :created_at => "2016-10-06T09:43:4200:00",
         :credit_limit => 5000,
@@ -88,25 +90,25 @@ describe ::Atrium::Member do
         :minimum_balance => 2000,
         :minimum_payment => 30.00,
         :name => "CHASE CHECKING",
-        :original_balance => 40000,
+        :original_balance => 40_000,
         :payment_due_at => "2016-10-06T09:43:4200:00",
         :payoff_balance => 4000,
         :started_on => "2016-10-06T09:43:4200:00",
         :subtype => 2,
-        :total_account_value => 10000,
+        :total_account_value => 10_000,
         :type => 1,
         :updated_at => "2016-10-06T09:43:4200:00",
-        :user_guid => user_guid,
+        :user_guid => user_guid
       }
     end
-    let(:account_response) { ::JSON.parse(raw_account_response)}
-    let(:accounts_response) { ::JSON.parse(raw_accounts_response)}
-    let(:raw_account_response) {
+    let(:account_response) { ::JSON.parse(raw_account_response) }
+    let(:accounts_response) { ::JSON.parse(raw_accounts_response) }
+    let(:raw_account_response) do
       { :account => account_attributes }.to_json
-    }
-    let(:raw_accounts_response) {
-      { :accounts => [account_attributes, account_attributes]}.to_json
-    }
+    end
+    let(:raw_accounts_response) do
+      { :accounts => [account_attributes, account_attributes] }.to_json
+    end
 
     context "#accounts" do
       before { allow(::Atrium.client).to receive(:make_request).and_return(accounts_response) }
@@ -146,7 +148,7 @@ describe ::Atrium::Member do
         expect(response.first.type).to eq(account_attributes[:type])
         expect(response.first.updated_at).to eq(account_attributes[:updated_at])
         expect(response.first.user_guid).to eq(account_attributes[:user_guid])
-       end
+      end
     end
 
     context "#read_account" do
@@ -255,19 +257,19 @@ describe ::Atrium::Member do
   end
 
   describe "resume" do
-    let(:challenged_member_params) {
+    let(:challenged_member_params) do
       {
         :aggregated_at => "2016-10-13T18:07:57+00:00",
         :guid => "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b",
         :identifier => "unique_id",
         :institution_code => "chase",
-        :metadata => "{\"credentials_last_refreshed_at\": \"2015-10-15\"}",
+        :metadata => '{"credentials_last_refreshed_at": "2015-10-15"}',
         :name => "Chase Bank",
         :status => "CHALLENGED",
         :successfully_aggregated_at => "2016-10-13T17:57:38+00:00",
         :user_guid => "USR-fa7537f3-48aa-a683-a02a-b18940482f54"
       }
-    }
+    end
     let(:challenged_member) { ::Atrium::Member.new(challenged_member_params) }
 
     before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
@@ -370,7 +372,7 @@ describe ::Atrium::Member do
         :guid => "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b",
         :identifier => "PIZZA",
         :institution_code => "chase",
-        :metadata => "{\"credentials_last_refreshed_at\": \"2015-10-15\"}",
+        :metadata => '{"credentials_last_refreshed_at": "2015-10-15"}',
         :name => "Chase Bank",
         :status => "CHALLENGED",
         :successfully_aggregated_at => "2016-10-13T17:57:38+00:00",
@@ -383,7 +385,7 @@ describe ::Atrium::Member do
         :guid => "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b",
         :identifier => "unique_id",
         :institution_code => "chase",
-        :metadata => "{\"credentials_last_refreshed_at\": \"2015-10-15\"}",
+        :metadata => '{"credentials_last_refreshed_at": "2015-10-15"}',
         :name => "Chase Bank",
         :status => "COMPLETED",
         :successfully_aggregated_at => "2016-10-13T17:57:38+00:00",
@@ -414,7 +416,6 @@ describe ::Atrium::Member do
     let(:member_transactions_response) { ::JSON.parse(raw_member_transactions_response) }
     let(:transaction_attributes) do
       {
-        :member_guid => member_attributes[:guid],
         :amount => 61.11,
         :category => "Groceries",
         :check_number => nil,
@@ -445,13 +446,13 @@ describe ::Atrium::Member do
       }
     end
 
-    let(:raw_member_transactions_response) {
+    let(:raw_member_transactions_response) do
       { :transactions => [transaction_attributes, transaction_attributes] }.to_json
-    }
+    end
 
-    before {
+    before do
       allow(::Atrium.client).to receive(:make_request).and_return(member_transactions_response)
-    }
+    end
 
     it "returns list of transactions for member" do
       response = member.transactions

@@ -1,14 +1,16 @@
 require "spec_helper"
 
-describe ::Atrium::Account do
-  let(:account_response) { ::JSON.parse(raw_account_response)}
-  let(:accounts_response) { ::JSON.parse(raw_accounts_response)}
+RSpec.describe ::Atrium::Account do
+  include_context "configure"
+
+  let(:account_response) { ::JSON.parse(raw_account_response) }
+  let(:accounts_response) { ::JSON.parse(raw_accounts_response) }
   let(:account_attributes) do
     {
       :apr => 3.4,
       :apy => 3.5,
-      :available_balance => 20000,
-      :available_credit => 15000,
+      :available_balance => 20_000,
+      :available_credit => 15_000,
       :balance => 25_000,
       :created_at => "2016-10-06T09:43:4200:00",
       :credit_limit => 5000,
@@ -24,24 +26,24 @@ describe ::Atrium::Account do
       :minimum_balance => 2000,
       :minimum_payment => 30.00,
       :name => "CHASE CHECKING",
-      :original_balance => 40000,
+      :original_balance => 40_000,
       :payment_due_at => "2016-10-06T09:43:4200:00",
       :payoff_balance => 4000,
       :started_on => "2016-10-06T09:43:4200:00",
       :subtype => 2,
-      :total_account_value => 10000,
+      :total_account_value => 10_000,
       :type => 1,
       :updated_at => "2016-10-06T09:43:4200:00",
-      :user_guid => user_guid,
+      :user_guid => user_guid
     }
   end
 
-  let(:raw_account_response) {
+  let(:raw_account_response) do
     { :account => account_attributes }.to_json
-  }
-  let(:raw_accounts_response) {
-    { :accounts => [account_attributes, account_attributes]}.to_json
-  }
+  end
+  let(:raw_accounts_response) do
+    { :accounts => [account_attributes, account_attributes] }.to_json
+  end
   let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 
   describe ".list" do
@@ -161,13 +163,13 @@ describe ::Atrium::Account do
       }
     end
 
-    let(:raw_account_transactions_response) {
+    let(:raw_account_transactions_response) do
       { :transactions => [transaction_attributes, transaction_attributes] }.to_json
-    }
+    end
 
-    before {
+    before do
       allow(::Atrium.client).to receive(:make_request).and_return(account_transactions_response)
-    }
+    end
 
     it "returns list of transactions for account" do
       response = account.transactions

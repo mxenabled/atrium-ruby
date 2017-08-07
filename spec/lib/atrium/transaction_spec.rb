@@ -1,9 +1,11 @@
 require "spec_helper"
 
-describe ::Atrium::Transaction do
+RSpec.describe ::Atrium::Transaction do
+  include_context "configure"
+
   let(:raw_transaction) { ::JSON.parse(raw_transaction_response) }
   let(:raw_transactions) { ::JSON.parse(raw_transactions_response) }
-  let(:raw_transaction_attributes) {
+  let(:raw_transaction_attributes) do
     {
       :account_guid => "ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1",
       :amount => 61.11,
@@ -34,13 +36,13 @@ describe ::Atrium::Transaction do
       :updated_at => "2016-10-07T05:49:12+00:00",
       :user_guid => "USR-fa7537f3-48aa-a683-a02a-b18940482f54"
     }
-  }
-  let(:raw_transaction_response) {
+  end
+  let(:raw_transaction_response) do
     { :transaction => raw_transaction_attributes }.to_json
-  }
-  let(:raw_transactions_response) {
+  end
+  let(:raw_transactions_response) do
     { :transactions => [raw_transaction_attributes, raw_transaction_attributes] }.to_json
-  }
+  end
   let(:transaction_guid) { "TRN-265abee9-889b-af6a-c69b-25157db2bdd9" }
   let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 
@@ -89,7 +91,7 @@ describe ::Atrium::Transaction do
     before { allow(::Atrium.client).to receive(:make_request).and_return(raw_transaction) }
 
     it "gets one transaction" do
-      response = described_class.read(:user_guid => user_guid, :transaction_guid =>transaction_guid)
+      response = described_class.read(:user_guid => user_guid, :transaction_guid => transaction_guid)
 
       expect(response).to be_kind_of(::Atrium::Transaction)
 

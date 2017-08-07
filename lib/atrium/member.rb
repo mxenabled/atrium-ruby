@@ -13,7 +13,6 @@ module Atrium
     attribute :successfully_aggregated_at
     attribute :user_guid
 
-
     ##
     # CLASS METHODS
     #
@@ -47,7 +46,7 @@ module Atrium
     # INSTANCE METHODS
     #
     def accounts
-      endpoint = "/users/#{self.user_guid}/members/#{self.guid}/accounts"
+      endpoint = "/users/#{user_guid}/members/#{guid}/accounts"
       accounts_response = ::Atrium.client.make_request(:get, endpoint)
 
       accounts_response["accounts"].map do |account|
@@ -56,25 +55,25 @@ module Atrium
     end
 
     def aggregate
-      endpoint = "/users/#{self.user_guid}/members/#{self.guid}/aggregate"
+      endpoint = "/users/#{user_guid}/members/#{guid}/aggregate"
       member_response = ::Atrium.client.make_request(:post, endpoint)
 
       member_params = member_response["member"]
-      self.assign_attributes(member_params)
+      assign_attributes(member_params)
       self
     end
 
     def aggregation_status
-      endpoint = "/users/#{self.user_guid}/members/#{self.guid}/status"
+      endpoint = "/users/#{user_guid}/members/#{guid}/status"
       member_response = ::Atrium.client.make_request(:get, endpoint)
 
       member_params = member_response["member"]
-      self.assign_attributes(member_params)
+      assign_attributes(member_params)
       self
     end
 
     def challenges
-      endpoint = "/users/#{self.user_guid}/members/#{self.guid}/challenges"
+      endpoint = "/users/#{user_guid}/members/#{guid}/challenges"
       challenge_response = ::Atrium.client.make_request(:get, endpoint)
 
       return nil if challenge_response.nil?
@@ -87,14 +86,14 @@ module Atrium
     end
 
     def delete
-      endpoint = "/users/#{self.user_guid}/members/#{self.guid}"
+      endpoint = "/users/#{user_guid}/members/#{guid}"
       ::Atrium.client.make_request(:delete, endpoint)
 
       self
     end
 
     def read_account(account_guid:)
-      endpoint = "/users/#{self.user_guid}/members/#{self.guid}/accounts/#{account_guid}"
+      endpoint = "/users/#{user_guid}/members/#{guid}/accounts/#{account_guid}"
       account_response = ::Atrium.client.make_request(:get, endpoint)
 
       account_params = account_response["account"]
@@ -102,27 +101,27 @@ module Atrium
     end
 
     def resume(challenge_credentials)
-      endpoint = "/users/#{self.user_guid}/members/#{self.guid}/resume"
+      endpoint = "/users/#{user_guid}/members/#{guid}/resume"
       body = resume_params(challenge_credentials)
       member_response = ::Atrium.client.make_request(:put, endpoint, body)
 
       member_params = member_response["member"]
-      self.assign_attributes(member_params)
+      assign_attributes(member_params)
       self
     end
 
     def update(params)
-      endpoint = "/users/#{self.user_guid}/members/#{self.guid}"
+      endpoint = "/users/#{user_guid}/members/#{guid}"
       body = member_body(params)
       member_response = ::Atrium.client.make_request(:put, endpoint, body)
 
       member_params = member_response["member"]
-      self.assign_attributes(member_params)
+      assign_attributes(member_params)
       self
     end
 
     def transactions
-      endpoint = "/users/#{self.user_guid}/members/#{self.guid}/transactions"
+      endpoint = "/users/#{user_guid}/members/#{guid}/transactions"
       transactions_response = ::Atrium.client.make_request(:get, endpoint)
 
       transactions_response["transactions"].map do |transaction|
@@ -141,20 +140,9 @@ module Atrium
         }
       }
     end
+    private_class_method :create_params
 
-    def self.member_body(params)
-      {
-        :member => {
-          :credentials => params[:credentials],
-          :identifier => params[:identifier],
-          :institution_code => params[:institution_code],
-          :metadata => params[:metadata]
-        }
-      }
-    end
-    private_class_method :create_params, :member_body
-
-    private
+  private
 
     ##
     # PRIVATE INSTANCE METHODS

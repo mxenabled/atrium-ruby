@@ -110,8 +110,10 @@ RSpec.describe ::Atrium::User do
       }
     end
     let(:raw_accounts_response) do
-      { :accounts => [account_attributes, account_attributes] }.to_json
+      { :accounts => [account_attributes, account_attributes],
+        :pagination => raw_pagination_attributes }.to_json
     end
+    let(:raw_pagination_attributes) { { :total_pages => 100, :total_entries => 2500 } }
 
     before { allow(::Atrium.client).to receive(:make_request).and_return(accounts_response) }
 
@@ -208,8 +210,10 @@ RSpec.describe ::Atrium::User do
       { :transaction => transaction_attributes }.to_json
     end
     let(:raw_transactions_response) do
-      { :transactions => [transaction_attributes, transaction_attributes] }.to_json
+      { :transactions => [transaction_attributes, transaction_attributes],
+        :pagination => raw_pagination_attributes }.to_json
     end
+    let(:raw_pagination_attributes) { { :total_pages => 100, :total_entries => 2500 } }
     context "transactions" do
       before { allow(::Atrium.client).to receive(:make_request).and_return(transactions_response) }
 
@@ -278,6 +282,52 @@ RSpec.describe ::Atrium::User do
       expect(response.identifier).to eq(update_params[:identifier])
       expect(response.is_disabled).to eq(update_params[:is_disabled])
       expect(response.metadata).to eq(update_params[:metadata])
+    end
+  end
+
+  describe "._user_pagination_options" do
+    it "builds default pagination params for transactions" do
+      options = described_class._user_pagination_options({})
+      expect(options).to eq(:endpoint => "/users", :resource => "users")
+    end
+  end
+
+  describe "#_account_pagination_options" do
+    subject { described_class.new(:guid => "USR-123") }
+
+    it "builds options using user attributes" do
+      example_options = {
+        :endpoint => "/users/USR-123/accounts",
+        :resource => "accounts",
+        :klass => ::Atrium::Account,
+      }
+      expect(subject.send(:_account_pagination_options, {})).to eq(example_options)
+    end
+  end
+
+  describe "#_member_pagination_options" do
+    subject { described_class.new(:guid => "USR-123") }
+
+    it "builds options using user attributes" do
+      example_options = {
+        :endpoint => "/users/USR-123/members",
+        :resource => "members",
+        :klass => ::Atrium::Member,
+      }
+      expect(subject.send(:_member_pagination_options, {})).to eq(example_options)
+    end
+  end
+
+  describe "#_transaction_pagination_options" do
+    subject { described_class.new(:guid => "USR-123") }
+
+    it "builds options using member attributes" do
+      example_options = {
+        :endpoint => "/users/USR-123/transactions",
+        :resource => "transactions",
+        :klass => ::Atrium::Transaction,
+      }
+      expect(subject.send(:_transaction_pagination_options, {})).to eq(example_options)
     end
   end
 end

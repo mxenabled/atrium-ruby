@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://vestibule.mx.com/users
+    uri: https://vestibule.mx.com/users?page=1&records_per_page=25
     body:
       encoding: UTF-8
       string: ''
@@ -54,7 +54,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"users":[{"guid":"USR-a0d28b12-2ccf-e80f-df0f-157f17d1b134","is_disabled":false,"metadata":"{\"first_name\":
-        \"Steven\", \"favorite_color\": \"BLUE\"}","identifier":"32d355b8-e2b4-449a-ab5c-86946224e0f9"}]}'
+        \"Steven\", \"favorite_color\": \"BLUE\"}","identifier":"32d355b8-e2b4-449a-ab5c-86946224e0f9"}],"pagination":{"current_page":1,"per_page":25,"total_entries":71,"total_pages":1}}'
     http_version:
   recorded_at: Fri, 16 Jun 2017 17:31:30 GMT
 recorded_with: VCR 3.0.3

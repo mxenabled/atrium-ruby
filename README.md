@@ -11,6 +11,58 @@ end
 
 From there, you can start using some basic class methods to make calls for data. See our [full documentation](https://atrium.mx.com/documentation) for more details.
 
+## Examples
+
+### Pagination
+
+The following demonstrates how you can read data back from the API in a memory efficient way using built-in pagination
+helpers. You can also specify query parameters such as `from_date` and `to_date`.
+
+```ruby
+::Atrium::User.list_each do |user|
+  user.each_member do |member|
+    puts member.name
+    puts member.accounts.total_entries
+
+    member.each_account do |account|
+      puts account.name
+      puts account.transactions.total_entries
+
+      account.each_transaction do |transaction|
+        puts transaction.description
+      end
+    end
+  end
+
+  user.each_account do |account|
+    puts account.name
+    puts account.transactions.total_entries
+
+    account.each_transaction do |transaction|
+      puts transaction.description
+    end
+  end
+
+  user.each_transaction do |transaction|
+    puts transaction.description
+  end
+end
+```
+
+### Date Range
+
+You can specify `from_date` and `to_date` to limit or widen your search. For example:
+
+```ruby
+from_date = ::Date.new(2017, 02, 18)
+to_date = ::Date.new(2017, 03, 18)
+params = {:from_date => from_date, :to_date => to_date}
+
+::Atrium::Transaction.list_each(:user_guid => "USR-123", :query_params => params) do |transaction|
+  puts transaction.description
+end
+```
+
 ## Installation
 
 Add this line to your application's Gemfile:

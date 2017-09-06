@@ -56,19 +56,22 @@ module Atrium
       ::Atrium::Account.new(account_params)
     end
 
-    def transactions
-      endpoint = "/users/#{user_guid}/accounts/#{guid}/transactions"
-      account_transactions_response = ::Atrium.client.make_request(:get, endpoint)
-
-      account_transactions_response["transactions"].map do |transaction|
-        ::Atrium::Transaction.new(transaction)
-      end
+    def transactions(options = {})
+      options = _transaction_pagination_options(options)
+      self.class.paginate(options)
     end
 
     def self._account_pagination_options(options)
       user_guid = options.fetch(:user_guid)
       endpoint = "/users/#{user_guid}/accounts"
       options.merge(:endpoint => endpoint, :resource => "accounts")
+    end
+
+  private
+
+    def _transaction_pagination_options(options)
+      endpoint = "/users/#{user_guid}/accounts/#{guid}/transactions"
+      options.merge(:endpoint => endpoint, :resource => "transactions", :klass => ::Atrium::Transaction)
     end
   end
 end

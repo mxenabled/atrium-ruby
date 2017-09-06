@@ -166,8 +166,10 @@ RSpec.describe ::Atrium::Account do
     end
 
     let(:raw_account_transactions_response) do
-      { :transactions => [transaction_attributes, transaction_attributes] }.to_json
+      { :transactions => [transaction_attributes, transaction_attributes],
+        :pagination => raw_pagination_attributes }.to_json
     end
+    let(:raw_pagination_attributes) { { :total_pages => 100, :total_entries => 2500 } }
 
     before do
       allow(::Atrium.client).to receive(:make_request).and_return(account_transactions_response)
@@ -219,6 +221,19 @@ RSpec.describe ::Atrium::Account do
     it "builds default pagination params for accounts" do
       options = described_class._account_pagination_options(:user_guid => "USR-123")
       expect(options).to eq(:endpoint => "/users/USR-123/accounts", :resource => "accounts", :user_guid => "USR-123")
+    end
+  end
+
+  describe "#_transaction_pagination_options" do
+    subject { described_class.new(:user_guid => "USR-123", :guid => "ACT-123") }
+
+    it "builds options using account attributes" do
+      example_options = {
+        :endpoint => "/users/USR-123/accounts/ACT-123/transactions",
+        :resource => "transactions",
+        :klass => ::Atrium::Transaction,
+      }
+      expect(subject.send(:_transaction_pagination_options, {})).to eq(example_options)
     end
   end
 end

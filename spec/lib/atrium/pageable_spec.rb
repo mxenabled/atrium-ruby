@@ -162,7 +162,8 @@ RSpec.describe ::Atrium::Pageable do
 
     context "custom klass" do
       class YoloClass
-        def initialize(*); end
+        def initialize(*)
+        end
       end
 
       let(:total_pages) { 1 }

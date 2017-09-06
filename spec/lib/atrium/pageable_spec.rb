@@ -13,7 +13,7 @@ RSpec.describe ::Atrium::Pageable do
 
   subject { ExampleClass }
 
-  let(:first_institution) { ExampleClass.new({ "code" => "batman", "name" => "Batman Bank", "url" => "https://batman.com/" }) }
+  let(:first_institution) { ExampleClass.new("code" => "batman", "name" => "Batman Bank", "url" => "https://batman.com/") }
   let(:first_page_response) do
     {
       "institutions" => [
@@ -38,16 +38,16 @@ RSpec.describe ::Atrium::Pageable do
   let(:total_pages) { 2 }
 
   before do
-    allow(::Atrium.client).to receive(:make_request).with(:get, "/institutions?page=1&records_per_page=25").
-                                and_return(first_page_response)
-    allow(::Atrium.client).to receive(:make_request).with(:get, "/institutions?page=2&records_per_page=25").
-                                and_return(second_page_response)
+    allow(::Atrium.client).to receive(:make_request).with(:get, "/institutions?page=1&records_per_page=25")
+                                                    .and_return(first_page_response)
+    allow(::Atrium.client).to receive(:make_request).with(:get, "/institutions?page=2&records_per_page=25")
+                                                    .and_return(second_page_response)
   end
 
   describe ".paginate" do
     it "makes a single request using the default limit" do
-      expect(::Atrium.client).to receive(:make_request).with(:get, "/paginate_once?page=1&records_per_page=25").
-                                   and_return(first_page_response).exactly(:twice)
+      expect(::Atrium.client).to receive(:make_request).with(:get, "/paginate_once?page=1&records_per_page=25")
+        .and_return(first_page_response).exactly(:twice)
       options = {
         :endpoint => "/paginate_once",
         :resource => "institutions"
@@ -58,8 +58,8 @@ RSpec.describe ::Atrium::Pageable do
     end
 
     it "makes a single request using a custom limit" do
-      expect(::Atrium.client).to receive(:make_request).with(:get, "/paginate_once?page=1&records_per_page=100").
-                                   and_return(first_page_response).exactly(:twice)
+      expect(::Atrium.client).to receive(:make_request).with(:get, "/paginate_once?page=1&records_per_page=100")
+        .and_return(first_page_response).exactly(:twice)
       options = {
         :endpoint => "/paginate_once",
         :resource => "institutions",
@@ -74,13 +74,13 @@ RSpec.describe ::Atrium::Pageable do
       let(:empty_response) do
         {
           "institutions" => [],
-          "pagination" => {"current_page" => 1, "per_page" => 25, "total_entries" => 0, "total_pages" => 1}
+          "pagination" => { "current_page" => 1, "per_page" => 25, "total_entries" => 0, "total_pages" => 1 }
         }
       end
 
       it "returns an empty pagination batch" do
-        expect(::Atrium.client).to receive(:make_request).with(:get, "/paginate_once?page=1&records_per_page=25").
-                                     and_return(empty_response).exactly(:twice)
+        expect(::Atrium.client).to receive(:make_request).with(:get, "/paginate_once?page=1&records_per_page=25")
+          .and_return(empty_response).exactly(:twice)
         options = {
           :endpoint => "/paginate_once",
           :resource => "institutions"
@@ -143,12 +143,12 @@ RSpec.describe ::Atrium::Pageable do
     end
 
     context "custom query params" do
-      let(:query_params) { {:from_date => ::Date.new(2017, 10, 22)} }
+      let(:query_params) { { :from_date => ::Date.new(2017, 10, 22) } }
       let(:total_pages) { 1 }
 
       it "uses the query params" do
-        expect(::Atrium.client).to receive(:make_request).with(:get, "/weird_endpoint?from_date=2017-10-22&page=1&records_per_page=25").
-                                     and_return(first_page_response).exactly(:twice)
+        expect(::Atrium.client).to receive(:make_request).with(:get, "/weird_endpoint?from_date=2017-10-22&page=1&records_per_page=25")
+          .and_return(first_page_response).exactly(:twice)
 
         options = {
           :endpoint => "/weird_endpoint",
@@ -156,7 +156,7 @@ RSpec.describe ::Atrium::Pageable do
           :query_params => query_params
         }
 
-        subject.paginate_in_batches(options) { }
+        subject.paginate_in_batches(options) {}
       end
     end
   end

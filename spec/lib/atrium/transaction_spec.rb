@@ -135,7 +135,7 @@ RSpec.describe ::Atrium::Transaction do
 
     it "builds default pagination params for transactions" do
       options = described_class._transaction_pagination_options(:user_guid => "USR-123")
-      expect(options).to eq({:endpoint => "/users/USR-123/transactions", :resource => "transactions", :user_guid => "USR-123"})
+      expect(options).to eq(:endpoint => "/users/USR-123/transactions", :resource => "transactions", :user_guid => "USR-123")
     end
   end
 end

@@ -109,6 +109,10 @@ module Atrium
       self
     end
 
+    def self._user_pagination_options(options)
+      options.merge(:endpoint => "/users", :resource => "users")
+    end
+
   private
 
     def _account_pagination_options(options)
@@ -142,9 +146,5 @@ module Atrium
       }
     end
     private_class_method :user_body
-
-    def self._user_pagination_options(options)
-      options.merge(:endpoint => "/users", :resource => "users")
-    end
   end
 end

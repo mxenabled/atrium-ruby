@@ -22,6 +22,7 @@ RSpec.shared_context "vcr", :shared_context => :metadata do
 
   around(:each) do |example|
     options = example.metadata[:vcr] || {}
+    options[:allow_playback_repeats] = true
 
     case
     when options[:record] == :skip

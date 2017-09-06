@@ -507,4 +507,30 @@ RSpec.describe ::Atrium::Member do
       expect(options).to eq(:endpoint => "/users/USR-123/members", :resource => "members", :user_guid => "USR-123")
     end
   end
+
+  describe "#_account_pagination_options" do
+    subject { described_class.new(:user_guid => "USR-123", :guid => "MBR-123") }
+
+    it "builds options using member attributes" do
+      example_options = {
+        :endpoint => "/users/USR-123/members/MBR-123/accounts",
+        :resource => "accounts",
+        :klass => ::Atrium::Account,
+      }
+      expect(subject.send(:_account_pagination_options, {})).to eq(example_options)
+    end
+  end
+
+  describe "#_transaction_pagination_options" do
+    subject { described_class.new(:user_guid => "USR-123", :guid => "MBR-123") }
+
+    it "builds options using member attributes" do
+      example_options = {
+        :endpoint => "/users/USR-123/members/MBR-123/transactions",
+        :resource => "transactions",
+        :klass => ::Atrium::Transaction,
+      }
+      expect(subject.send(:_transaction_pagination_options, {})).to eq(example_options)
+    end
+  end
 end

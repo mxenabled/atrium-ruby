@@ -51,13 +51,19 @@ module Atrium
     ##
     # INSTANCE METHODS
     #
-    def accounts
-      endpoint = "/users/#{user_guid}/members/#{guid}/accounts"
-      accounts_response = ::Atrium.client.make_request(:get, endpoint)
+    def accounts(options = {})
+      options = _account_pagination_options(options)
+      self.class.paginate(options)
+    end
 
-      accounts_response["accounts"].map do |account|
-        ::Atrium::Account.new(account)
-      end
+    def each_account(options = {})
+      options = _account_pagination_options(options)
+      self.class.paginate_each(options) { |account| yield account }
+    end
+
+    def accounts_in_batches(options = {})
+      options = _account_pagination_options(options)
+      self.class.paginate_in_batches(options) { |batch| yield batch }
     end
 
     def aggregate
@@ -126,13 +132,19 @@ module Atrium
       self
     end
 
-    def transactions
-      endpoint = "/users/#{user_guid}/members/#{guid}/transactions"
-      transactions_response = ::Atrium.client.make_request(:get, endpoint)
+    def transactions(options = {})
+      options = _transaction_pagination_options(options)
+      self.class.paginate(options)
+    end
 
-      transactions_response["transactions"].map do |transaction|
-        ::Atrium::Transaction.new(transaction)
-      end
+    def each_transaction(options = {})
+      options = _transaction_pagination_options(options)
+      self.class.paginate_each(options) { |transaction| yield transaction }
+    end
+
+    def transactions_in_batches(options = {})
+      options = _transaction_pagination_options(options)
+      self.class.paginate_in_batches(options) { |batch| yield batch }
     end
 
     def self._member_pagination_options(options)
@@ -159,6 +171,11 @@ module Atrium
     ##
     # PRIVATE INSTANCE METHODS
     #
+    def _account_pagination_options(options)
+      endpoint = "/users/#{user_guid}/members/#{guid}/accounts"
+      options.merge(:endpoint => endpoint, :resource => "accounts", :klass => ::Atrium::Account)
+    end
+
     def member_body(params)
       {
         :member => {
@@ -176,6 +193,11 @@ module Atrium
           :challenges => challenge_credentials
         }
       }
+    end
+
+    def _transaction_pagination_options(options)
+      endpoint = "/users/#{user_guid}/members/#{guid}/transactions"
+      options.merge(:endpoint => endpoint, :resource => "transactions", :klass => ::Atrium::Transaction)
     end
   end
 end

@@ -41,8 +41,10 @@ RSpec.describe ::Atrium::Transaction do
     { :transaction => raw_transaction_attributes }.to_json
   end
   let(:raw_transactions_response) do
-    { :transactions => [raw_transaction_attributes, raw_transaction_attributes] }.to_json
+    { :transactions => [raw_transaction_attributes, raw_transaction_attributes],
+      :pagination => raw_pagination_attributes }.to_json
   end
+  let(:raw_pagination_attributes) { { :total_pages => 100, :total_entries => 2500 } }
   let(:transaction_guid) { "TRN-265abee9-889b-af6a-c69b-25157db2bdd9" }
   let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 
@@ -123,6 +125,17 @@ RSpec.describe ::Atrium::Transaction do
       expect(response.type).to eq(raw_transaction_attributes[:type])
       expect(response.updated_at).to eq(raw_transaction_attributes[:updated_at])
       expect(response.user_guid).to eq(raw_transaction_attributes[:user_guid])
+    end
+  end
+
+  describe "._transaction_pagination_options" do
+    it "errors when no user_guid is provided" do
+      expect { described_class._transaction_pagination_options({}).to raise_error }
+    end
+
+    it "builds default pagination params for transactions" do
+      options = described_class._transaction_pagination_options(:user_guid => "USR-123")
+      expect(options).to eq(:endpoint => "/users/USR-123/transactions", :resource => "transactions", :user_guid => "USR-123")
     end
   end
 end

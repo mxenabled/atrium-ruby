@@ -34,32 +34,31 @@ module Atrium
     attribute :updated_at
     attribute :user_guid
 
-    def self.list(user_guid:)
-      raw_transactions = ::Atrium.client.make_request(:get, "/users/#{user_guid}/transactions")
-      raw_transactions["transactions"].map do |raw_transaction|
-        ::Atrium::Transaction.new(raw_transaction)
-      end
+    def self.list(options = {})
+      options = _transaction_pagination_options(options)
+      paginate(options)
     end
 
     def self.list_each(options = {})
-      user_guid = options.fetch(:user_guid)
-      endpoint = "/users/#{user_guid}/transactions"
-      options = options.merge(:endpoint => endpoint, :resource => "transactions")
-      paginate_each(options) { |batch| yield batch }
+      options = _transaction_pagination_options(options)
+      paginate_each(options) { |transaction| yield transaction }
     end
 
     def self.list_in_batches(options = {})
-      user_guid = options.fetch(:user_guid)
-      endpoint = "/users/#{user_guid}/transactions"
-      options = options.merge(:endpoint => endpoint, :resource => "transactions")
+      options = _transaction_pagination_options(options)
       paginate_in_batches(options) { |batch| yield batch }
     end
 
     def self.read(user_guid:, transaction_guid:)
       endpoint = "/users/#{user_guid}/transactions/#{transaction_guid}"
       raw_transaction = ::Atrium.client.make_request(:get, endpoint)
-
       ::Atrium::Transaction.new(raw_transaction["transaction"])
+    end
+
+    def self._transaction_pagination_options(options)
+      user_guid = options.fetch(:user_guid)
+      endpoint = "/users/#{user_guid}/transactions"
+      options.merge(:endpoint => endpoint, :resource => "transactions")
     end
   end
 end

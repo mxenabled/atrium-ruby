@@ -41,8 +41,10 @@ RSpec.describe ::Atrium::Transaction do
     { :transaction => raw_transaction_attributes }.to_json
   end
   let(:raw_transactions_response) do
-    { :transactions => [raw_transaction_attributes, raw_transaction_attributes] }.to_json
+    { :transactions => [raw_transaction_attributes, raw_transaction_attributes],
+      :pagination => raw_pagination_attributes }.to_json
   end
+  let(:raw_pagination_attributes) { { :total_pages => 100, :total_entries => 2500 } }
   let(:transaction_guid) { "TRN-265abee9-889b-af6a-c69b-25157db2bdd9" }
   let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 

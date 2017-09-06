@@ -16,6 +16,15 @@ module Atrium
       ::Atrium.client.make_request(:get, uri)
     end
 
+    def paginate(options = {})
+      records_per_page = options.fetch(:records_per_page, DEFAULT_RECORDS_PER_PAGE)
+      results = PaginationBatch.new
+      paginate_in_batches(options.merge(:limit => records_per_page)) do |batch|
+        results = batch
+      end
+      results
+    end
+
     def paginate_each(options = {})
       paginate_in_batches(options) do |batch|
         batch.each do |record|

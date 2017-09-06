@@ -1,7 +1,7 @@
 module Atrium
   class Member
+    extend ::Atrium::Pageable
     include ::ActiveAttr::Model
-    include ::ActiveAttr::Attributes
 
     attribute :aggregated_at
     attribute :guid
@@ -25,13 +25,19 @@ module Atrium
       ::Atrium::Member.new(member_params)
     end
 
-    def self.list(user_guid:)
-      endpoint = "/users/#{user_guid}/members"
-      members_response = ::Atrium.client.make_request(:get, endpoint)
+    def self.list(options = {})
+      options = _member_pagination_options(options)
+      paginate(options)
+    end
 
-      members_response["members"].map do |member|
-        ::Atrium::Member.new(member)
-      end
+    def self.list_each(options = {})
+      options = _member_pagination_options(options)
+      paginate_each(options) { |member| yield member }
+    end
+
+    def self.list_in_batches(options = {})
+      options = _member_pagination_options(options)
+      paginate_in_batches(options) { |batch| yield batch }
     end
 
     def self.read(user_guid:, member_guid:)
@@ -127,6 +133,12 @@ module Atrium
       transactions_response["transactions"].map do |transaction|
         ::Atrium::Transaction.new(transaction)
       end
+    end
+
+    def self._member_pagination_options(options)
+      user_guid = options.fetch(:user_guid)
+      endpoint = "/users/#{user_guid}/members"
+      options.merge(:endpoint => endpoint, :resource => "members")
     end
 
     ##

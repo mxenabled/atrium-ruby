@@ -42,8 +42,10 @@ RSpec.describe ::Atrium::Member do
     { :member => member_attributes }.to_json
   end
   let(:raw_members_response) do
-    { :members => [member_attributes, member_attributes] }.to_json
+    { :members => [member_attributes, member_attributes],
+      :pagination => raw_pagination_attributes }.to_json
   end
+  let(:raw_pagination_attributes) { { :total_pages => 100, :total_entries => 2500 } }
   let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 
   describe ".create" do
@@ -107,8 +109,10 @@ RSpec.describe ::Atrium::Member do
       { :account => account_attributes }.to_json
     end
     let(:raw_accounts_response) do
-      { :accounts => [account_attributes, account_attributes] }.to_json
+      { :accounts => [account_attributes, account_attributes],
+        :pagination => raw_pagination_attributes }.to_json
     end
+    let(:raw_pagination_attributes) { { :total_pages => 100, :total_entries => 2500 } }
 
     context "#accounts" do
       before { allow(::Atrium.client).to receive(:make_request).and_return(accounts_response) }
@@ -447,7 +451,8 @@ RSpec.describe ::Atrium::Member do
     end
 
     let(:raw_member_transactions_response) do
-      { :transactions => [transaction_attributes, transaction_attributes] }.to_json
+      { :transactions => [transaction_attributes, transaction_attributes],
+        :pagination => raw_pagination_attributes }.to_json
     end
 
     before do
@@ -489,6 +494,17 @@ RSpec.describe ::Atrium::Member do
       expect(response.first.type).to eq(transaction_attributes[:type])
       expect(response.first.updated_at).to eq(transaction_attributes[:updated_at])
       expect(response.first.user_guid).to eq(transaction_attributes[:user_guid])
+    end
+  end
+
+  describe "._member_pagination_options" do
+    it "errors when no user_guid is provided" do
+      expect { described_class._member_pagination_options({}).to raise_error }
+    end
+
+    it "builds default pagination params for members" do
+      options = described_class._member_pagination_options(:user_guid => "USR-123")
+      expect(options).to eq(:endpoint => "/users/USR-123/members", :resource => "members", :user_guid => "USR-123")
     end
   end
 end

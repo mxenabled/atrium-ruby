@@ -159,5 +159,27 @@ RSpec.describe ::Atrium::Pageable do
         subject.paginate_in_batches(options) {}
       end
     end
+
+    context "custom klass" do
+      class YoloClass
+        def initialize(*)
+        end
+      end
+
+      let(:total_pages) { 1 }
+
+      it "uses the query params" do
+        options = {
+          :endpoint => "/institutions",
+          :resource => "institutions",
+          :klass => YoloClass,
+        }
+
+        batch = nil
+        subject.paginate_in_batches(options) { |b| batch = b }
+        expect(batch.size).to eq(2)
+        expect(batch.first).to be_a(YoloClass)
+      end
+    end
   end
 end

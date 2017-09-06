@@ -42,8 +42,10 @@ RSpec.describe ::Atrium::Account do
     { :account => account_attributes }.to_json
   end
   let(:raw_accounts_response) do
-    { :accounts => [account_attributes, account_attributes] }.to_json
+    { :accounts => [account_attributes, account_attributes],
+      :pagination => raw_pagination_attributes }.to_json
   end
+  let(:raw_pagination_attributes) { { :total_pages => 100, :total_entries => 2500 } }
   let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 
   describe ".list" do
@@ -164,8 +166,10 @@ RSpec.describe ::Atrium::Account do
     end
 
     let(:raw_account_transactions_response) do
-      { :transactions => [transaction_attributes, transaction_attributes] }.to_json
+      { :transactions => [transaction_attributes, transaction_attributes],
+        :pagination => raw_pagination_attributes }.to_json
     end
+    let(:raw_pagination_attributes) { { :total_pages => 100, :total_entries => 2500 } }
 
     before do
       allow(::Atrium.client).to receive(:make_request).and_return(account_transactions_response)
@@ -206,6 +210,30 @@ RSpec.describe ::Atrium::Account do
       expect(response.first.type).to eq(transaction_attributes[:type])
       expect(response.first.updated_at).to eq(transaction_attributes[:updated_at])
       expect(response.first.user_guid).to eq(transaction_attributes[:user_guid])
+    end
+  end
+
+  describe "._account_pagination_options" do
+    it "errors when no user_guid is provided" do
+      expect { described_class._account_pagination_options({}).to raise_error }
+    end
+
+    it "builds default pagination params for accounts" do
+      options = described_class._account_pagination_options(:user_guid => "USR-123")
+      expect(options).to eq(:endpoint => "/users/USR-123/accounts", :resource => "accounts", :user_guid => "USR-123")
+    end
+  end
+
+  describe "#_transaction_pagination_options" do
+    subject { described_class.new(:user_guid => "USR-123", :guid => "ACT-123") }
+
+    it "builds options using account attributes" do
+      example_options = {
+        :endpoint => "/users/USR-123/accounts/ACT-123/transactions",
+        :resource => "transactions",
+        :klass => ::Atrium::Transaction,
+      }
+      expect(subject.send(:_transaction_pagination_options, {})).to eq(example_options)
     end
   end
 end

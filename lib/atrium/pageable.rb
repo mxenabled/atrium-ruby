@@ -33,6 +33,7 @@ module Atrium
 
       endpoint = options.fetch(:endpoint)
       resource = options.fetch(:resource)
+      klass = options.fetch(:klass, self)
 
       query_params = options.fetch(:query_params, {})
       limit = options.fetch(:limit, nil)
@@ -50,7 +51,7 @@ module Atrium
         params = query_params.merge(:page => current_page, :records_per_page => records_per_page)
         response = make_get_request(endpoint, params)
 
-        records = response[resource].map { |attributes| new(attributes) }
+        records = response[resource].map { |attributes| klass.new(attributes) }
 
         batch = ::Atrium::PaginationBatch.new(records)
         batch.total_pages = total_pages

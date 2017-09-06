@@ -1,5 +1,6 @@
 module Atrium
   class User
+    extend ::Atrium::Pageable
     include ::ActiveAttr::Model
 
     # ATTRIBUTES
@@ -20,13 +21,19 @@ module Atrium
       ::Atrium::User.new(user_params)
     end
 
-    def self.list
-      endpoint = "/users"
-      users_response = ::Atrium.client.make_request(:get, endpoint)
+    def self.list(options = {})
+      options = _user_pagination_options(options)
+      paginate(options)
+    end
 
-      users_response["users"].map do |user|
-        ::Atrium::User.new(user)
-      end
+    def self.list_each(options = {})
+      options = _user_pagination_options(options)
+      paginate_each(options) { |user| yield user }
+    end
+
+    def self.list_in_batches(options = {})
+      options = _user_pagination_options(options)
+      paginate_in_batches(options) { |batch| yield batch }
     end
 
     def self.read(guid:)
@@ -102,5 +109,9 @@ module Atrium
       }
     end
     private_class_method :user_body
+
+    def self._user_pagination_options(options)
+      options.merge(:endpoint => "/users", :resource => "users")
+    end
   end
 end

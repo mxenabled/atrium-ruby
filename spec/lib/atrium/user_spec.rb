@@ -280,4 +280,11 @@ RSpec.describe ::Atrium::User do
       expect(response.metadata).to eq(update_params[:metadata])
     end
   end
+
+  describe "._user_pagination_options" do
+    it "builds default pagination params for transactions" do
+      options = described_class._user_pagination_options({})
+      expect(options).to eq(:endpoint => "/users", :resource => "users")
+    end
+  end
 end

@@ -127,4 +127,15 @@ RSpec.describe ::Atrium::Transaction do
       expect(response.user_guid).to eq(raw_transaction_attributes[:user_guid])
     end
   end
+
+  describe "._transaction_pagination_options" do
+    it "errors when no user_guid is provided" do
+      expect { described_class._transaction_pagination_options({}).to raise_error }
+    end
+
+    it "builds default pagination params for transactions" do
+      options = described_class._transaction_pagination_options(:user_guid => "USR-123")
+      expect(options).to eq({:endpoint => "/users/USR-123/transactions", :resource => "transactions", :user_guid => "USR-123"})
+    end
+  end
 end

@@ -6,13 +6,8 @@ module Atrium
   module Pageable
     DEFAULT_RECORDS_PER_PAGE = 25
 
-    def pagination_info(endpoint, query_params)
-      response = make_get_request(endpoint, query_params.merge(:page => 1))
-      response["pagination"]
-    end
-
     def make_get_request(endpoint, query_params)
-      uri = endpoint + "?" + ::URI.encode_www_form(query_params)
+      uri = endpoint + "?" + ::URI.encode_www_form(query_params.sort)
       ::Atrium.client.make_request(:get, uri)
     end
 
@@ -34,6 +29,8 @@ module Atrium
     end
 
     def paginate_in_batches(options = {})
+      fail ::ArgumentError, "A block is required" unless block_given?
+
       endpoint = options.fetch(:endpoint)
       resource = options.fetch(:resource)
 
@@ -66,6 +63,11 @@ module Atrium
       end
 
       nil
+    end
+
+    def pagination_info(endpoint, query_params)
+      response = make_get_request(endpoint, query_params.merge(:page => 1))
+      response["pagination"]
     end
   end
 end

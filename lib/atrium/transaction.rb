@@ -1,5 +1,3 @@
-require "atrium/pageable"
-
 module Atrium
   class Transaction
     extend ::Atrium::Pageable

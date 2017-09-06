@@ -6,5 +6,7 @@ AllCops:
   Include:
     - 'Gemfile'
     - 'Rakefile'
+Style/FileName:
+  Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: false

@@ -1,5 +1,8 @@
+require "atrium/pageable"
+
 module Atrium
   class Transaction
+    extend ::Atrium::Pageable
     include ::ActiveAttr::Model
 
     attribute :account_guid
@@ -32,19 +35,29 @@ module Atrium
     attribute :user_guid
 
     def self.list(user_guid:)
-      endpoint = "/users/#{user_guid}/transactions"
-      raw_transactions = ::Atrium.client.make_request(:get, endpoint)
+      raw_transactions = ::Atrium.client.make_request(:get, base_endpoint(user_guid))
 
       raw_transactions["transactions"].map do |raw_transaction|
         ::Atrium::Transaction.new(raw_transaction)
       end
     end
 
+    def self.list_in_batches(options = {})
+      user_guid = options.fetch(:user_guid)
+      endpoint = "/users/#{user_guid}/transactions"
+      options = options.merge(:endpoint => endpoint, :resource => "transactions")
+      paginate_in_batches(options) { |batch| yield batch }
+    end
+
     def self.read(user_guid:, transaction_guid:)
-      endpoint = "/users/#{user_guid}/transactions/#{transaction_guid}"
+      endpoint = ::URI.join(base_endpoint(user_guid), "#{transaction_guid}")
       raw_transaction = ::Atrium.client.make_request(:get, endpoint)
 
       ::Atrium::Transaction.new(raw_transaction["transaction"])
+    end
+
+    def self.base_endpoint(user_guid:)
+      "/users/#{user_guid}/transactions"
     end
   end
 end

@@ -35,8 +35,7 @@ module Atrium
     attribute :user_guid
 
     def self.list(user_guid:)
-      raw_transactions = ::Atrium.client.make_request(:get, base_endpoint(user_guid))
-
+      raw_transactions = ::Atrium.client.make_request(:get, "/users/#{user_guid}/transactions")
       raw_transactions["transactions"].map do |raw_transaction|
         ::Atrium::Transaction.new(raw_transaction)
       end
@@ -57,14 +56,10 @@ module Atrium
     end
 
     def self.read(user_guid:, transaction_guid:)
-      endpoint = ::URI.join(base_endpoint(user_guid), "#{transaction_guid}")
+      endpoint = "/users/#{user_guid}/transactions/#{transaction_guid}"
       raw_transaction = ::Atrium.client.make_request(:get, endpoint)
 
       ::Atrium::Transaction.new(raw_transaction["transaction"])
-    end
-
-    def self.base_endpoint(user_guid:)
-      "/users/#{user_guid}/transactions"
     end
   end
 end

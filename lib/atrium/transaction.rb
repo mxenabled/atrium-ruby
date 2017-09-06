@@ -42,6 +42,13 @@ module Atrium
       end
     end
 
+    def self.list_each(options = {})
+      user_guid = options.fetch(:user_guid)
+      endpoint = "/users/#{user_guid}/transactions"
+      options = options.merge(:endpoint => endpoint, :resource => "transactions")
+      paginate_each(options) { |batch| yield batch }
+    end
+
     def self.list_in_batches(options = {})
       user_guid = options.fetch(:user_guid)
       endpoint = "/users/#{user_guid}/transactions"

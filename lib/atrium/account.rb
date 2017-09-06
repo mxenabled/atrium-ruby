@@ -61,6 +61,16 @@ module Atrium
       self.class.paginate(options)
     end
 
+    def each_transaction(options = {})
+      options = _transaction_pagination_options(options)
+      self.class.paginate_each(options) { |account| yield account }
+    end
+
+    def transactions_in_batches(options = {})
+      options = _transaction_pagination_options(options)
+      self.class.paginate_in_batches(options) { |batch| yield batch }
+    end
+
     def self._account_pagination_options(options)
       user_guid = options.fetch(:user_guid)
       endpoint = "/users/#{user_guid}/accounts"

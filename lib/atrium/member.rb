@@ -132,6 +132,11 @@ module Atrium
       self
     end
 
+    def credentials
+      endpoint = "/users/#{user_guid}/members/#{guid}/credentials"
+      ::Atrium.client.make_request(:get, endpoint)
+    end
+
     def transactions(options = {})
       options = _transaction_pagination_options(options)
       self.class.paginate(options)
@@ -181,7 +186,6 @@ module Atrium
         :member => {
           :credentials => params[:credentials],
           :identifier => params[:identifier],
-          :institution_code => params[:institution_code],
           :metadata => params[:metadata]
         }
       }

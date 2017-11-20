@@ -136,6 +136,8 @@ module Atrium
       endpoint = "/users/#{user_guid}/members/#{guid}/credentials"
       credential_response = ::Atrium.client.make_request(:get, endpoint)
 
+      return nil if credential_response.nil?
+
       credential_params = credential_response["credentials"]
 
       credential_params.map do |credential|

@@ -134,7 +134,13 @@ module Atrium
 
     def credentials
       endpoint = "/users/#{user_guid}/members/#{guid}/credentials"
-      ::Atrium.client.make_request(:get, endpoint)
+      credential_response = ::Atrium.client.make_request(:get, endpoint)
+
+      credential_params = credential_response["credentials"]
+
+      credential_params.map do |credential|
+        ::Atrium::Credential.new(credential)
+      end
     end
 
     def transactions(options = {})

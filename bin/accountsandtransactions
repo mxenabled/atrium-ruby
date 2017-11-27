@@ -1,0 +1,53 @@
+#!/usr/bin/env ruby
+require "atrium"
+
+::Atrium.configure do |config|
+  config.mx_client_id = "YOUR_MX_CLIENT_ID"
+  config.mx_api_key = "YOUR_MX_API_KEY"
+end
+
+puts "\n* Creating test user and member *"
+user = ::Atrium::User.create identifier: nil, is_disabled: nil, metadata: nil
+puts "Created user: " + user.guid
+
+credentialOne = {}
+credentialOne[:guid] = "CRD-9f61fb4c-912c-bd1e-b175-ccc7f0275cc1"
+credentialOne[:value] = "test_atrium"
+
+credentialTwo = {}
+credentialTwo[:guid] = "CRD-e3d7ea81-aac7-05e9-fbdd-4b493c6e474d"
+credentialTwo[:value] = "password"
+
+credentialArray = []
+credentialArray.push(credentialOne)
+credentialArray.push(credentialTwo)
+
+member = ::Atrium::Member.create user_guid: user.guid, institution_code: "mxbank", credentials: credentialArray
+puts "Created member: " + member.guid
+
+sleep(1)
+
+
+puts "\n* Aggregating Member *"
+member.aggregate
+
+sleep(4)
+puts "Member aggregation status: " + member.status
+
+
+puts "\n* Listing all member accounts and transactions *"
+accounts = member.accounts
+for account in accounts
+  puts "\nType: " + account.type + "\tName: " + account.name + "\tAvailable Balance: " + account.available_balance.to_s + "\tAvailable Credit: " + account.available_credit.to_s
+  puts "Transactions"
+  params = {:user_guid => user.guid, :guid => account.guid}
+  transactions = account.transactions
+  for transaction in transactions
+    puts "\tDate: " + transaction.date + "\tDescription: " + transaction.description + "\tAmount: " + transaction.amount.to_s
+  end
+end
+
+
+puts "\n* Deleting test user *"
+user.delete
+puts "Deleted user: " + user.guid

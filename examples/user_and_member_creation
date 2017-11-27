@@ -7,51 +7,46 @@ require "atrium"
 end
 
 puts "\n* Creating user *"
-user = ::Atrium::User.create identifier: nil, is_disabled: nil, metadata: nil
+user = ::Atrium::User.create :identifier => nil, :is_disabled => nil, :metadata => nil
 puts user.guid
-
 
 puts "\n* Listing institutions with query string \"bank\" *"
 name = "bank"
-params = {:name => name}
-institutions = ::Atrium::Institution.list query_params: params
-for institution in institutions
+params = { :name => name }
+institutions = ::Atrium::Institution.list :query_params => params
+institutions.each do |institution|
   puts institution.name + " : institution code = " + institution.code
 end
 
-
 puts "\n* Reading institution \"mxbank\" *"
-institution = ::Atrium::Institution.read institution_code: "mxbank"
+institution = ::Atrium::Institution.read :institution_code => "mxbank"
 puts institution.name
-
 
 puts "\n* Reading institution credentials \"mxbank\" *"
 credentials = ::Atrium::Institution.credentials "chase"
-for credential in credentials
+credentials.each do |credential|
   puts credential.guid
 end
-
 
 puts "\n* Creating member *"
 
 # Create credential JSON object
-credentialOne = {}
-credentialOne[:guid] = "CRD-9f61fb4c-912c-bd1e-b175-ccc7f0275cc1"
-credentialOne[:value] = "test_atrium"
+credential_one = {}
+credential_one[:guid] = "CRD-9f61fb4c-912c-bd1e-b175-ccc7f0275cc1"
+credential_one[:value] = "test_atrium"
 
 # Create another credential JSON object
-credentialTwo = {}
-credentialTwo[:guid] = "CRD-e3d7ea81-aac7-05e9-fbdd-4b493c6e474d"
-credentialTwo[:value] = "password"
+credential_two = {}
+credential_two[:guid] = "CRD-e3d7ea81-aac7-05e9-fbdd-4b493c6e474d"
+credential_two[:value] = "password"
 
 # Create credential array from credential JSON Objects
-credentialArray = []
-credentialArray.push(credentialOne)
-credentialArray.push(credentialTwo)
+credential_array = []
+credential_array.push(credential_one)
+credential_array.push(credential_two)
 
-member = ::Atrium::Member.create user_guid: user.guid, institution_code: "mxbank", credentials: credentialArray
+member = ::Atrium::Member.create :user_guid => user.guid, :institution_code => "mxbank", :credentials => credential_array
 puts member.guid
-
 
 puts "\n* Deleting test user *"
 user.delete

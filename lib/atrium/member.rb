@@ -5,6 +5,8 @@ module Atrium
 
     attribute :aggregated_at
     attribute :guid
+    attribute :has_processed_accounts
+    attribute :has_processed_transactions
     attribute :identifier
     attribute :institution_code
     attribute :metadata

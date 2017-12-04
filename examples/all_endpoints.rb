@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require "atrium"
+require 'atrium'
 
 ::Atrium.configure do |config|
   config.mx_client_id = "YOUR_MX_CLIENT_ID"
@@ -7,23 +7,23 @@ require "atrium"
 end
 
 puts "\n************************** Create User **************************"
-user = ::Atrium::User.create :identifier => "unique_id", :is_disabled => "", :metadata => "{\"first_name\": \"Steven\"}"
-puts user.guid
+user = ::Atrium::User.create :identifier => nil, :is_disabled => "", :metadata => "{\"first_name\": \"Steven\"}"
+puts user.attributes
 user_guid = user.guid
 
 puts "\n************************** Read User **************************"
 user = ::Atrium::User.read :guid => user_guid
-puts user.guid
+puts user.attributes
 
 puts "\n************************** Update User **************************"
 user = ::Atrium::User.read :guid => user_guid
 user = user.update :metadata => "{\"first_name\": \"Steven\", \"last_name\": \"Universe\"}"
-puts user.guid
+puts user.attributes
 
 puts "\n************************** List Users **************************"
 users = ::Atrium::User.list
 users.each do |a_user|
-  puts a_user.guid
+  puts a_user.attributes
 end
 
 puts "\n************************** List Institutions **************************"
@@ -31,17 +31,17 @@ name = "bank"
 params = { :name => name }
 institutions = ::Atrium::Institution.list :query_params => params
 institutions.each do |institution|
-  puts institution.name
+  puts institution.attributes
 end
 
 puts "\n************************** Read Institution **************************"
 institution = ::Atrium::Institution.read :institution_code => "mxbank"
-puts institution.name
+puts institution.attributes
 
 puts "\n************************** Read Institution Credentials ************************** "
 credentials = ::Atrium::Institution.credentials "mxbank"
 credentials.each do |credential|
-  puts credential.guid
+  puts credential.attributes
 end
 
 puts "\n************************** Create Member **************************"
@@ -61,12 +61,12 @@ credential_array.push(credential_one)
 credential_array.push(credential_two)
 
 member = ::Atrium::Member.create :user_guid => user_guid, :institution_code => "mxbank", :credentials => credential_array
-puts member.guid
+puts member.attributes
 member_guid = member.guid
 
 puts "\n************************** Read Member **************************"
 member = ::Atrium::Member.read :user_guid => user_guid, :member_guid => member_guid
-puts member.guid
+puts member.attributes
 
 puts "\n************************** Update Member **************************"
 member = ::Atrium::Member.read :user_guid => user_guid, :member_guid => member_guid
@@ -84,30 +84,30 @@ updated_credentials.push(username_credential)
 updated_credentials.push(password_credential)
 
 member = member.update(:metadata => "{\"credentials_last_refreshed_at\": \"2015-10-16\"}", :credentials => updated_credentials)
-puts member.guid
+puts member.attributes
 
 puts "\n************************** List Members **************************"
 members = ::Atrium::Member.list :user_guid => user_guid
 members.each do |a_member|
-  puts a_member.guid
+  puts a_member.attributes
 end
 
 puts "\n************************** Aggregate Member **************************"
 member = ::Atrium::Member.read :user_guid => user_guid, :member_guid => member_guid
 member = member.aggregate
-puts member.guid
+puts member.attributes
 
 puts "\n************************** Read Member Status **************************"
 sleep(5)
 member = ::Atrium::Member.read :user_guid => user_guid, :member_guid => member_guid
 member = member.aggregation_status
-puts member.guid
+puts member.attributes
 
 puts "\n************************** List Member MFA Challenges **************************"
 member = ::Atrium::Member.read :user_guid => user_guid, :member_guid => member_guid
 challenges = member.challenges
 challenges.each do |challenge|
-  puts challenge.guid
+  puts challenge.attributes
 end
 challenge_guid = challenges[0].guid
 
@@ -122,13 +122,13 @@ challenge_responses = []
 challenge_responses.push(credential_one)
 
 member = member.resume challenge_responses
-puts member.status
+puts member.attributes
 
 puts "\n************************** List Member Credentials **************************"
 member = ::Atrium::Member.read :user_guid => user_guid, :member_guid => member_guid
 credentials = member.credentials
 credentials.each do |credential|
-  puts credential.guid
+  puts credential.attributes
 end
 
 puts "\n************************** List Member Accounts **************************"
@@ -136,7 +136,7 @@ sleep(5)
 member = ::Atrium::Member.read :user_guid => user_guid, :member_guid => member_guid
 accounts = member.accounts
 accounts.each do |account|
-  puts account.guid
+  puts account.attributes
 end
 account_guid = accounts[0].guid
 
@@ -144,19 +144,19 @@ puts "\n************************** List Member Transactions ********************
 member = ::Atrium::Member.read :user_guid => user_guid, :member_guid => member_guid
 transactions = member.transactions
 transactions.each do |transaction|
-  puts transaction.guid
+  puts transaction.attributes
 end
 
 puts "\n************************** Read Account **************************"
 account = ::Atrium::Account.read :user_guid => user_guid, :account_guid => account_guid
-puts account.guid
+puts account.attributes
 
 puts "\n************************** List Accounts for User **************************"
 user_guid = user_guid
 params = { :user_guid => user_guid }
 accounts = ::Atrium::Account.list params
 accounts.each do |an_account|
-  puts an_account.guid
+  puts an_account.attributes
 end
 
 puts "\n************************** List Account Transactions **************************"
@@ -168,13 +168,13 @@ params = { :user_guid => user_guid, :guid => guid }
 
 transactions = account.transactions params
 transactions.each do |transaction|
-  puts transaction.guid
+  puts transaction.attributes
 end
 transaction_guid = transactions[0].guid
 
 puts "\n************************** Read a Transaction **************************"
 transaction = ::Atrium::Transaction.read :user_guid => user_guid, :transaction_guid => transaction_guid
-puts transaction.guid
+puts transaction.attributes
 
 puts "\n************************** List Transactions **************************"
 user_guid = user_guid
@@ -183,19 +183,17 @@ params = { :user_guid => user_guid, :account_guid => account_guid }
 
 transactions = ::Atrium::Transaction.list params
 transactions.each do |a_transaction|
-  puts a_transaction.guid
+  puts a_transaction.attributes
 end
 
 puts "\n************************** Connect Widget **************************"
 widget = ::Atrium::Connect.create :user_guid => user_guid
-puts widget.guid
+puts widget.attributes
 
 puts "\n************************** Delete Member **************************"
 member = ::Atrium::Member.read :user_guid => user_guid, :member_guid => member_guid
 response = member.delete
-puts response.attributes
 
 puts "\n************************** Delete User **************************"
 user = ::Atrium::User.read :guid => user_guid
 response = user.delete
-puts response.attributes

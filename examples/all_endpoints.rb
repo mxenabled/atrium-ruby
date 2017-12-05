@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require 'atrium'
+require "atrium"
 
 ::Atrium.configure do |config|
   config.mx_client_id = "YOUR_MX_CLIENT_ID"
@@ -192,8 +192,8 @@ puts widget.attributes
 
 puts "\n************************** Delete Member **************************"
 member = ::Atrium::Member.read :user_guid => user_guid, :member_guid => member_guid
-response = member.delete
+puts member.delete
 
 puts "\n************************** Delete User **************************"
 user = ::Atrium::User.read :guid => user_guid
-response = user.delete
+puts user.delete

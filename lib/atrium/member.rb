@@ -4,6 +4,7 @@ module Atrium
     include ::ActiveAttr::Model
 
     attribute :aggregated_at
+    attribute :challenges
     attribute :guid
     attribute :has_processed_accounts
     attribute :has_processed_transactions
@@ -86,7 +87,7 @@ module Atrium
       self
     end
 
-    def challenges
+    def mfa_challenges
       endpoint = "/users/#{user_guid}/members/#{guid}/challenges"
       challenge_response = ::Atrium.client.make_request(:get, endpoint)
 

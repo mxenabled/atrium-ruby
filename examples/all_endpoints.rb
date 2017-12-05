@@ -105,7 +105,7 @@ puts member.attributes
 
 puts "\n************************** List Member MFA Challenges **************************"
 member = ::Atrium::Member.read :user_guid => user_guid, :member_guid => member_guid
-challenges = member.challenges
+challenges = member.mfa_challenges
 challenges.each do |challenge|
   puts challenge.attributes
 end

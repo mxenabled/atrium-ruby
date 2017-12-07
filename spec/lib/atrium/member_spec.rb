@@ -332,7 +332,7 @@ RSpec.describe ::Atrium::Member do
       before { allow(::Atrium.client).to receive(:make_request).and_return(challenges_response) }
 
       it "should return challenges" do
-        response = new_member.challenges
+        response = new_member.mfa_challenges
 
         expect(response).to be_kind_of(::Array)
 

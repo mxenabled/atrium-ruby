@@ -7,6 +7,7 @@ module Atrium
     attribute :amount
     attribute :category
     attribute :check_number
+    attribute :check_number_string
     attribute :created_at
     attribute :date
     attribute :description

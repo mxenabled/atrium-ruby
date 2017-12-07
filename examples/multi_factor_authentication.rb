@@ -32,7 +32,7 @@ aggregation_response = member.aggregation_status
 puts "Member aggregation status: " + aggregation_response.status
 
 puts "\n* MFA Challenge *"
-challenges = member.challenges
+challenges = member.mfa_challenges
 challenges.each do |challenge|
   puts challenge.label
 end

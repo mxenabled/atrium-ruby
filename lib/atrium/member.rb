@@ -10,6 +10,7 @@ module Atrium
     attribute :has_processed_transactions
     attribute :identifier
     attribute :institution_code
+    attribute :is_being_aggregated
     attribute :metadata
     attribute :name
     attribute :status

@@ -174,8 +174,3 @@ else
   puts "\nEnd user must be present to create a new member"
   exit
 end
-
-puts "\n* Deleting test user *"
-user = ::Atrium::User.read :guid => user_guid
-user.delete
-puts "Deleted user: " + user.guid

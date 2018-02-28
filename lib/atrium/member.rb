@@ -4,6 +4,7 @@ module Atrium
     include ::ActiveAttr::Model
 
     attribute :aggregated_at
+    attribute :connection_status
     attribute :challenges
     attribute :guid
     attribute :has_processed_accounts

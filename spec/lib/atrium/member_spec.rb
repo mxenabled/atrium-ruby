@@ -59,6 +59,7 @@ RSpec.describe ::Atrium::Member do
       expect(response).to be_kind_of(::Atrium::Member)
 
       expect(response.aggregated_at).to eq(member_attributes[:aggregated_at])
+      expect(response.connection_status).to eq(member_attributes[:connection_status])
       expect(response.guid).to eq(member_attributes[:guid])
       expect(response.identifier).to eq(member_attributes[:identifier])
       expect(response.institution_code).to eq(member_attributes[:institution_code])

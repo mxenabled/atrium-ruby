@@ -5,11 +5,11 @@ module Atrium
     include ::ActiveAttr::Model
 
     PERMITTED_CONNECT_CREATE_OPTIONS = ::Set.new([
-      "current_institution_code",
-      "current_member_guid",
-      "is_mobile_webview",
-      "update_credentials",
-    ]).freeze
+                                                   "current_institution_code",
+                                                   "current_member_guid",
+                                                   "is_mobile_webview",
+                                                   "update_credentials",
+                                                 ]).freeze
     SCRIPT_SOURCE = "https://atrium.mx.com/connect.js".freeze
 
     # ATTRIBUTES
@@ -21,7 +21,7 @@ module Atrium
     #
     def self.create(user_guid:, options: {})
       options.each do |key, _value|
-        fail ArgumentError, "An invalid option was provided: #{key}" if !PERMITTED_CONNECT_CREATE_OPTIONS.include?(key.to_s)
+        fail ArgumentError, "An invalid option was provided: #{key}" unless PERMITTED_CONNECT_CREATE_OPTIONS.include?(key.to_s)
       end
 
       endpoint = "/users/#{user_guid}/connect_widget_url"

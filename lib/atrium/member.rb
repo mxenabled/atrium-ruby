@@ -171,6 +171,24 @@ module Atrium
       options.merge(:endpoint => endpoint, :resource => "members")
     end
 
+    def verify
+      endpoint = "/users/#{user_guid}/members/#{guid}/verify"
+      member_response = ::Atrium.client.make_request(:post, endpoint)
+
+      member_params = member_response["member"]
+      assign_attributes(member_params)
+      self
+    end
+
+    def identify
+      endpoint = "/users/#{user_guid}/members/#{guid}/identify"
+      member_response = ::Atrium.client.make_request(:post, endpoint)
+
+      member_params = member_response["member"]
+      assign_attributes(member_params)
+      self
+    end
+
     ##
     # PRIVATE CLASS METHODS
     #

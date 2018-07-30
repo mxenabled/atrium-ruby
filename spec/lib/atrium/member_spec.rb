@@ -498,6 +498,48 @@ RSpec.describe ::Atrium::Member do
     end
   end
 
+  describe "#verify" do
+    before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
+
+    it "should verify & return a member" do
+      response = member.verify
+
+      expect(response).to be_kind_of(::Object)
+      expect(response).to be_kind_of(::Atrium::Member)
+
+      expect(response.aggregated_at).to eq(member_attributes[:aggregated_at])
+      expect(response.guid).to eq(member_attributes[:guid])
+      expect(response.identifier).to eq(member_attributes[:identifier])
+      expect(response.institution_code).to eq(member_attributes[:institution_code])
+      expect(response.metadata).to eq(member_attributes[:metadata])
+      expect(response.name).to eq(member_attributes[:name])
+      expect(response.status).to eq(member_attributes[:status])
+      expect(response.successfully_aggregated_at).to eq(member_attributes[:successfully_aggregated_at])
+      expect(response.user_guid).to eq(member_attributes[:user_guid])
+    end
+  end
+
+  describe "#identify" do
+    before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
+
+    it "should identify & return a member" do
+      response = member.identify
+
+      expect(response).to be_kind_of(::Object)
+      expect(response).to be_kind_of(::Atrium::Member)
+
+      expect(response.aggregated_at).to eq(member_attributes[:aggregated_at])
+      expect(response.guid).to eq(member_attributes[:guid])
+      expect(response.identifier).to eq(member_attributes[:identifier])
+      expect(response.institution_code).to eq(member_attributes[:institution_code])
+      expect(response.metadata).to eq(member_attributes[:metadata])
+      expect(response.name).to eq(member_attributes[:name])
+      expect(response.status).to eq(member_attributes[:status])
+      expect(response.successfully_aggregated_at).to eq(member_attributes[:successfully_aggregated_at])
+      expect(response.user_guid).to eq(member_attributes[:user_guid])
+    end
+  end
+
   describe "._member_pagination_options" do
     it "errors when no user_guid is provided" do
       expect { described_class._member_pagination_options({}).to raise_error }

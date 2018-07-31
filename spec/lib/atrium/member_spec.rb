@@ -3,6 +3,34 @@ require "spec_helper"
 RSpec.describe ::Atrium::Member do
   include_context "configure"
 
+  let(:account_numbers_response) { ::JSON.parse(raw_account_numbers_response) }
+  let(:account_number_attributes) do
+    {
+      :guid => "ACO-123",
+      :account_guid => "ACT-123",
+      :member_guid => "MBR-123",
+      :user_guid => "USR-123",
+      :account_number => "1234-5678A",
+      :routing_number => "987654321"
+    }
+  end
+  let(:account_owners_response) { ::JSON.parse(raw_account_owners_response) }
+  let(:account_owner_attributes) do
+    {
+      :guid => "ACO-123",
+      :user_guid => "USR-123",
+      :member_guid => "MBR-123",
+      :account_guid => "ACT-123",
+      :owner_name => "Donnie Darko",
+      :address => "123 This Way",
+      :city => "Middlesex",
+      :state => "VA",
+      :postal_code => "00000-0000",
+      :country => "US",
+      :email => "donnie@darko.co",
+      :phone => "555-555-5555"
+    }
+  end
   let(:credentials) do
     [
       { :guid => "CRD-123", :value => "user_name" },
@@ -35,6 +63,12 @@ RSpec.describe ::Atrium::Member do
     }
   end
 
+  let(:raw_account_numbers_response) do
+    { :account_numbers => [account_number_attributes] }.to_json
+  end
+  let(:raw_account_owners_response) do
+    { :account_owners => [account_owner_attributes] }.to_json
+  end
   let(:raw_challenges_response) do
     { :challenges => [challenge_attributes] }.to_json
   end
@@ -519,6 +553,39 @@ RSpec.describe ::Atrium::Member do
     end
   end
 
+  describe "#account_numbers" do
+    let(:new_member) { ::Atrium::Member.new(member_attributes) }
+
+    context "member does not have any account numbers" do
+      before { allow(::Atrium.client).to receive(:make_request).and_return(nil) }
+
+      it "does not return any account numbers" do
+        response = new_member.account_numbers
+
+        expect(response).to eq(nil)
+      end
+    end
+
+    context "member has account numbers" do
+      before { allow(::Atrium.client).to receive(:make_request).and_return(account_numbers_response) }
+
+      it "should return account numbers" do
+        response = new_member.account_numbers
+
+        expect(response).to be_kind_of(::Array)
+
+        account_number = response.first
+        expect(account_number).to be_kind_of(::Atrium::AccountNumber)
+        expect(account_number.guid). to eq(account_number_attributes[:guid])
+        expect(account_number.account_guid). to eq(account_number_attributes[:account_guid])
+        expect(account_number.member_guid). to eq(account_number_attributes[:member_guid])
+        expect(account_number.user_guid). to eq(account_number_attributes[:user_guid])
+        expect(account_number.account_number). to eq(account_number_attributes[:account_number])
+        expect(account_number.routing_number). to eq(account_number_attributes[:routing_number])
+      end
+    end
+  end
+
   describe "#identify" do
     before { allow(::Atrium.client).to receive(:make_request).and_return(member_response) }
 
@@ -537,6 +604,45 @@ RSpec.describe ::Atrium::Member do
       expect(response.status).to eq(member_attributes[:status])
       expect(response.successfully_aggregated_at).to eq(member_attributes[:successfully_aggregated_at])
       expect(response.user_guid).to eq(member_attributes[:user_guid])
+    end
+  end
+
+  describe "#account_owners" do
+    let(:new_member) { ::Atrium::Member.new(member_attributes) }
+
+    context "member does not have any account owners" do
+      before { allow(::Atrium.client).to receive(:make_request).and_return(nil) }
+
+      it "does not return any account owners" do
+        response = new_member.account_owners
+
+        expect(response).to eq(nil)
+      end
+    end
+
+    context "member has account owners" do
+      before { allow(::Atrium.client).to receive(:make_request).and_return(account_owners_response) }
+
+      it "should return account owners" do
+        response = new_member.account_owners
+
+        expect(response).to be_kind_of(::Array)
+
+        account_owner = response.first
+        expect(account_owner).to be_kind_of(::Atrium::AccountOwner)
+        expect(account_owner.guid). to eq(account_owner_attributes[:guid])
+        expect(account_owner.user_guid). to eq(account_owner_attributes[:user_guid])
+        expect(account_owner.member_guid). to eq(account_owner_attributes[:member_guid])
+        expect(account_owner.account_guid). to eq(account_owner_attributes[:account_guid])
+        expect(account_owner.owner_name). to eq(account_owner_attributes[:owner_name])
+        expect(account_owner.address). to eq(account_owner_attributes[:address])
+        expect(account_owner.city). to eq(account_owner_attributes[:city])
+        expect(account_owner.state). to eq(account_owner_attributes[:state])
+        expect(account_owner.postal_code). to eq(account_owner_attributes[:postal_code])
+        expect(account_owner.country). to eq(account_owner_attributes[:country])
+        expect(account_owner.email). to eq(account_owner_attributes[:email])
+        expect(account_owner.phone). to eq(account_owner_attributes[:phone])
+      end
     end
   end
 

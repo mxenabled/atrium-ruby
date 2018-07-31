@@ -56,6 +56,19 @@ module Atrium
       ::Atrium::Account.new(account_params)
     end
 
+    def account_numbers
+      endpoint = "/users/#{user_guid}/accounts/#{guid}/account_numbers"
+      account_numbers_response = ::Atrium.client.make_request(:get, endpoint)
+
+      return nil if account_numbers_response.nil?
+
+      account_numbers_params = account_numbers_response["account_numbers"]
+
+      account_numbers_params.map do |account_number|
+        ::Atrium::AccountNumber.new(account_number)
+      end
+    end
+
     def transactions(options = {})
       options = _transaction_pagination_options(options)
       self.class.paginate(options)

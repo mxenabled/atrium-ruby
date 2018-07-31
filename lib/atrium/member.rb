@@ -180,6 +180,19 @@ module Atrium
       self
     end
 
+    def account_numbers
+      endpoint = "/users/#{user_guid}/members/#{guid}/account_numbers"
+      account_numbers_response = ::Atrium.client.make_request(:get, endpoint)
+
+      return nil if account_numbers_response.nil?
+
+      account_numbers_params = account_numbers_response["account_numbers"]
+
+      account_numbers_params.map do |account_number|
+        ::Atrium::AccountNumber.new(account_number)
+      end
+    end
+
     def identify
       endpoint = "/users/#{user_guid}/members/#{guid}/identify"
       member_response = ::Atrium.client.make_request(:post, endpoint)
@@ -187,6 +200,19 @@ module Atrium
       member_params = member_response["member"]
       assign_attributes(member_params)
       self
+    end
+
+    def account_owners
+      endpoint = "/users/#{user_guid}/members/#{guid}/account_owners"
+      account_owners_response = ::Atrium.client.make_request(:get, endpoint)
+
+      return nil if account_owners_response.nil?
+
+      account_owners_params = account_owners_response["account_owners"]
+
+      account_owners_params.map do |account_owner|
+        ::Atrium::AccountOwner.new(account_owner)
+      end
     end
 
     ##

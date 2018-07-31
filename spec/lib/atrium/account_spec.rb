@@ -3,6 +3,17 @@ require "spec_helper"
 RSpec.describe ::Atrium::Account do
   include_context "configure"
 
+  let(:account_numbers_response) { ::JSON.parse(raw_account_numbers_response) }
+  let(:account_number_attributes) do
+    {
+      :guid => "ACO-123",
+      :account_guid => "ACT-123",
+      :member_guid => "MBR-123",
+      :user_guid => "USR-123",
+      :account_number => "1234-5678A",
+      :routing_number => "987654321"
+    }
+  end
   let(:account_response) { ::JSON.parse(raw_account_response) }
   let(:accounts_response) { ::JSON.parse(raw_accounts_response) }
   let(:account_attributes) do
@@ -41,12 +52,48 @@ RSpec.describe ::Atrium::Account do
   let(:raw_account_response) do
     { :account => account_attributes }.to_json
   end
+  let(:raw_account_numbers_response) do
+    { :account_numbers => [account_number_attributes] }.to_json
+  end
   let(:raw_accounts_response) do
     { :accounts => [account_attributes, account_attributes],
       :pagination => raw_pagination_attributes }.to_json
   end
   let(:raw_pagination_attributes) { { :total_pages => 100, :total_entries => 2500 } }
   let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
+
+  describe "#account_numbers" do
+    let(:new_account) { ::Atrium::Account.new(account_attributes) }
+
+    context "account does not have any account numbers" do
+      before { allow(::Atrium.client).to receive(:make_request).and_return(nil) }
+
+      it "does not return any account numbers" do
+        response = new_account.account_numbers
+
+        expect(response).to eq(nil)
+      end
+    end
+
+    context "account has account numbers" do
+      before { allow(::Atrium.client).to receive(:make_request).and_return(account_numbers_response) }
+
+      it "should return account numbers" do
+        response = new_account.account_numbers
+
+        expect(response).to be_kind_of(::Array)
+
+        account_number = response.first
+        expect(account_number).to be_kind_of(::Atrium::AccountNumber)
+        expect(account_number.guid). to eq(account_number_attributes[:guid])
+        expect(account_number.account_guid). to eq(account_number_attributes[:account_guid])
+        expect(account_number.member_guid). to eq(account_number_attributes[:member_guid])
+        expect(account_number.user_guid). to eq(account_number_attributes[:user_guid])
+        expect(account_number.account_number). to eq(account_number_attributes[:account_number])
+        expect(account_number.routing_number). to eq(account_number_attributes[:routing_number])
+      end
+    end
+  end
 
   describe ".list" do
     before { allow(::Atrium.client).to receive(:make_request).and_return(accounts_response) }

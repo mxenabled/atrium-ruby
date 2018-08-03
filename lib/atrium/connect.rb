@@ -20,7 +20,7 @@ module Atrium
     # CLASS METHODS
     #
     def self.create(user_guid:, options: {})
-      options.each do |key, _value|
+      options.each_key do |key|
         fail ArgumentError, "An invalid option was provided: #{key}" unless PERMITTED_CONNECT_CREATE_OPTIONS.include?(key.to_s)
       end
 

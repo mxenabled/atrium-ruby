@@ -5,6 +5,8 @@ require "atrium/pageable"
 require "atrium/paginate"
 
 require "atrium/account"
+require "atrium/account_number"
+require "atrium/account_owner"
 require "atrium/client"
 require "atrium/connect"
 require "atrium/credential"

@@ -33,6 +33,16 @@ module Atrium
     attribute :updated_at
     attribute :user_guid
 
+    def self.categorize_and_describe(transaction_hash = {})
+      endpoint = "/categorize_and_describe"
+      body = { :transactions => transaction_hash }
+      transaction_response = ::Atrium.client.make_request(:post, endpoint, body)
+
+      transaction_response["transactions"].map do |transaction|
+        ::Atrium::Transaction.new(transaction)
+      end
+    end
+
     def self.list(options = {})
       options = _transaction_pagination_options(options)
       paginate(options)

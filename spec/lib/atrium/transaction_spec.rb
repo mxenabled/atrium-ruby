@@ -48,6 +48,90 @@ RSpec.describe ::Atrium::Transaction do
   let(:transaction_guid) { "TRN-265abee9-889b-af6a-c69b-25157db2bdd9" }
   let(:user_guid) { "USR-fa7537f3-48aa-a683-a02a-b18940482f54" }
 
+  describe ".categorize_and_describe" do
+    let(:raw_transactions) do
+      ::JSON.parse('[
+        {
+            "amount": 11.22,
+            "description": "BEER BAR 65000000764SALT LAKE C",
+            "id": "12",
+            "type": "DEBIT"
+        },
+        {
+            "amount": 21.33,
+            "description": "IN-N-OUT BURGER #239AMERICAN FO",
+            "id": "13",
+            "type": "DEBIT"
+        },
+        {
+            "amount": 1595.33,
+            "description": "ONLINE PAYMENT - THANK YOU",
+            "id": "14",
+            "type": "CREDIT"
+        }
+      ]')
+    end
+
+    let(:categorized_transactions) do
+      {
+        "transactions" => [
+          {
+            "category" => "Alcohol & Bars",
+            "description" => "Beer Bar",
+            "type" => "DEBIT",
+            "amount" => 11.22,
+            "is_bill_pay" => false,
+            "is_direct_deposit" => false,
+            "is_expense" => nil,
+            "is_fee" => nil,
+            "is_income" => nil,
+            "is_international" => nil,
+            "is_overdraft_fee" => false,
+            "is_payroll_advance" => false
+          },
+          {
+            "category" => "Fast Food",
+            "description" => "In N Out Burger",
+            "type" => "DEBIT",
+            "amount" => 21.33,
+            "is_bill_pay" => false,
+            "is_direct_deposit" => false,
+            "is_expense" => nil,
+            "is_fee" => nil,
+            "is_income" => nil,
+            "is_international" => nil,
+            "is_overdraft_fee" => false,
+            "is_payroll_advance" => false
+          },
+          {
+            "category" => "Credit Card Payment",
+            "description" => "Online Payment Thank You",
+            "type" => "CREDIT",
+            "amount" => 1595.33,
+            "is_bill_pay" => false,
+            "is_direct_deposit" => false,
+            "is_expense" => nil,
+            "is_fee" => nil,
+            "is_income" => nil,
+            "is_international" => nil,
+            "is_overdraft_fee" => false,
+            "is_payroll_advance" => false
+          }
+        ]
+      }
+    end
+
+    before { allow(::Atrium.client).to receive(:make_request).and_return(categorized_transactions) }
+
+    it "categorizes transactions" do
+      response = described_class.categorize_and_describe(raw_transactions)
+
+      expect(response).to be_kind_of(::Array)
+      expect(response.length).to eq(3)
+      expect(response.first).to be_kind_of(::Atrium::Transaction)
+    end
+  end
+
   describe ".list" do
     before { allow(::Atrium.client).to receive(:make_request).and_return(raw_transactions) }
 

@@ -186,6 +186,33 @@ transactions.each do |a_transaction|
   puts a_transaction.attributes
 end
 
+puts "\n*********************** Categorize Transactions ***********************"
+transactions_to_categorize = ::JSON.parse('[
+        {
+            "amount": 11.22,
+            "description": "BEER BAR 65000000764SALT LAKE C",
+            "id": "12",
+            "type": "DEBIT"
+        },
+        {
+            "amount": 21.33,
+            "description": "IN-N-OUT BURGER #239AMERICAN FO",
+            "id": "13",
+            "type": "DEBIT"
+        },
+        {
+            "amount": 1595.33,
+            "description": "ONLINE PAYMENT - THANK YOU",
+            "id": "14",
+            "type": "CREDIT"
+        }
+    ]')
+
+transactions = ::Atrium::Transaction.categorize_and_describe transactions_to_categorize
+transactions.each do |a_transaction|
+  puts a_transaction.attributes
+end
+
 puts "\n************************** Connect Widget **************************"
 widget = ::Atrium::Connect.create :user_guid => user_guid
 puts widget.attributes

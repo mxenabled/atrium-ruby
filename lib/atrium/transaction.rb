@@ -12,6 +12,7 @@ module Atrium
     attribute :date
     attribute :description
     attribute :guid
+    attribute :id
     attribute :is_bill_pay
     attribute :is_direct_deposit
     attribute :is_expense

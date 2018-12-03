@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**account_owners** | **Array&lt;Object&gt;** |  | [optional] 
+**account_owners** | [**Array&lt;AccountOwnerAttributes&gt;**](AccountOwnerAttributes.md) |  | [optional] 
 
 

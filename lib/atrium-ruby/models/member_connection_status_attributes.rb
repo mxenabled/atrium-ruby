@@ -47,7 +47,7 @@ module MX
     def self.mx_types
       {
         :'aggregated_at' => :'String',
-        :'challenges' => :'Array<Object>',
+        :'challenges' => :'Array<ChallengeAttributes>',
         :'connection_status' => :'String',
         :'guid' => :'BOOLEAN',
         :'has_processed_accounts' => :'BOOLEAN',

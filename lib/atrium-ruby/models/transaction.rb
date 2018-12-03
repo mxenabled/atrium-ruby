@@ -22,7 +22,7 @@ module MX
     # Attribute type mapping.
     def self.mx_types
       {
-        :'transaction' => :'Object'
+        :'transaction' => :'TransactionAttributes'
       }
     end
 

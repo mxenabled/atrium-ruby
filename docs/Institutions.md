@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**institutions** | **Array&lt;Object&gt;** |  | [optional] 
-**pagination** | **Object** |  | [optional] 
+**institutions** | [**Array&lt;InstitutionAttributes&gt;**](InstitutionAttributes.md) |  | [optional] 
+**pagination** | [**Pagination**](Pagination.md) |  | [optional] 
 
 

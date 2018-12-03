@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**account** | **Object** |  | [optional] 
+**account** | [**AccountAttributes**](AccountAttributes.md) |  | [optional] 
 
 

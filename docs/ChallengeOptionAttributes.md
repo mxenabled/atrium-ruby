@@ -1,4 +1,4 @@
-# MX::ChallengeAttributesOptions
+# MX::ChallengeOptionAttributes
 
 ## Properties
 Name | Type | Description | Notes

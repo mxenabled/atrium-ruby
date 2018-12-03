@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**members** | **Array&lt;Object&gt;** |  | [optional] 
-**pagination** | **Object** |  | [optional] 
+**members** | [**Array&lt;MemberAttributes&gt;**](MemberAttributes.md) |  | [optional] 
+**pagination** | [**Pagination**](Pagination.md) |  | [optional] 
 
 

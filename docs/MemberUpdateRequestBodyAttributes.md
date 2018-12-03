@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**credentials** | **Array&lt;Object&gt;** |  | [optional] 
+**credentials** | [**Array&lt;CredentialResponseAttributes&gt;**](CredentialResponseAttributes.md) |  | [optional] 
 **identifier** | **String** |  | [optional] 
 **metadata** | **String** |  | [optional] 
 

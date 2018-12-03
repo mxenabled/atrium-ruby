@@ -22,7 +22,7 @@ module MX
     # Attribute type mapping.
     def self.mx_types
       {
-        :'account_owners' => :'Array<Object>'
+        :'account_owners' => :'Array<AccountOwnerAttributes>'
       }
     end
 

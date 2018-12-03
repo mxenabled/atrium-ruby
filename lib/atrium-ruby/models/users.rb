@@ -25,8 +25,8 @@ module MX
     # Attribute type mapping.
     def self.mx_types
       {
-        :'users' => :'Array<Object>',
-        :'pagination' => :'Object'
+        :'users' => :'Array<UserAttributes>',
+        :'pagination' => :'Pagination'
       }
     end
 

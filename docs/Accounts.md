@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**accounts** | **Array&lt;Object&gt;** |  | [optional] 
-**pagination** | **Object** |  | [optional] 
+**accounts** | [**Array&lt;AccountAttributes&gt;**](AccountAttributes.md) |  | [optional] 
+**pagination** | [**Pagination**](Pagination.md) |  | [optional] 
 
 

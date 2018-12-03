@@ -28,7 +28,7 @@ module MX
     # Attribute type mapping.
     def self.mx_types
       {
-        :'credentials' => :'Array<Object>',
+        :'credentials' => :'Array<CredentialResponseAttributes>',
         :'identifier' => :'String',
         :'metadata' => :'String'
       }

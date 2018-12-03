@@ -9,7 +9,7 @@
 require 'date'
 
 module MX
-  class ChallengeAttributesOptions
+  class ChallengeOptionAttributes
     attr_accessor :image_data
 
     attr_accessor :label

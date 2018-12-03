@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**users** | **Array&lt;Object&gt;** |  | [optional] 
-**pagination** | **Object** |  | [optional] 
+**users** | [**Array&lt;UserAttributes&gt;**](UserAttributes.md) |  | [optional] 
+**pagination** | [**Pagination**](Pagination.md) |  | [optional] 
 
 

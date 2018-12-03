@@ -22,7 +22,7 @@ module MX
     # Attribute type mapping.
     def self.mx_types
       {
-        :'transactions' => :'Array<Object>'
+        :'transactions' => :'Array<TransactionsCleanseAndCategorizeRequestBodyAttributes>'
       }
     end
 

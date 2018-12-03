@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**transaction** | **Object** |  | [optional] 
+**transaction** | [**TransactionAttributes**](TransactionAttributes.md) |  | [optional] 
 
 

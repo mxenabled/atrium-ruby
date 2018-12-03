@@ -37,7 +37,7 @@ module MX
         :'field_name' => :'String',
         :'guid' => :'String',
         :'label' => :'String',
-        :'options' => :'Array<Object>',
+        :'options' => :'Array<CredentialOptionAttributes>',
         :'type' => :'String'
       }
     end

@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**transactions** | **Array&lt;Object&gt;** |  | [optional] 
-**pagination** | **Object** |  | [optional] 
+**transactions** | [**Array&lt;TransactionAttributes&gt;**](TransactionAttributes.md) |  | [optional] 
+**pagination** | [**Pagination**](Pagination.md) |  | [optional] 
 
 

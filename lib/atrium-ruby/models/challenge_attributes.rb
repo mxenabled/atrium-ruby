@@ -38,7 +38,7 @@ module MX
         :'guid' => :'String',
         :'image_data' => :'String',
         :'label' => :'String',
-        :'options' => :'Array<ChallengeAttributesOptions>'
+        :'options' => :'Array<ChallengeOptionAttributes>'
       }
     end
 

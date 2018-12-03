@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**institution** | **Object** |  | [optional] 
+**institution** | [**InstitutionAttributes**](InstitutionAttributes.md) |  | [optional] 
 
 

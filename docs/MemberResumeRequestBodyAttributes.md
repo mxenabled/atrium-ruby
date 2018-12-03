@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**challenges** | **Array&lt;Object&gt;** |  | [optional] 
+**challenges** | [**Array&lt;CredentialResponseAttributes&gt;**](CredentialResponseAttributes.md) |  | [optional] 
 
 

@@ -130,7 +130,7 @@ Class | Method | HTTP request | Description
  - [MX::AccountOwners](docs/AccountOwners.md)
  - [MX::Accounts](docs/Accounts.md)
  - [MX::ChallengeAttributes](docs/ChallengeAttributes.md)
- - [MX::ChallengeAttributesOptions](docs/ChallengeAttributesOptions.md)
+ - [MX::ChallengeOptionAttributes](docs/ChallengeOptionAttributes.md)
  - [MX::Challenges](docs/Challenges.md)
  - [MX::ConnectWidget](docs/ConnectWidget.md)
  - [MX::ConnectWidgetAttributes](docs/ConnectWidgetAttributes.md)

@@ -10,21 +10,21 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for MX::ChallengeAttributesOptions
+# Unit tests for MX::ChallengeOptionAttributes
 # Please update as you see appropriate
-describe 'ChallengeAttributesOptions' do
+describe 'ChallengeOptionAttributes' do
   before do
     # run before each test
-    @instance = MX::ChallengeAttributesOptions.new
+    @instance = MX::ChallengeOptionAttributes.new
   end
 
   after do
     # run after each test
   end
 
-  describe 'test an instance of ChallengeAttributesOptions' do
-    it 'should create an instance of ChallengeAttributesOptions' do
-      expect(@instance).to be_instance_of(MX::ChallengeAttributesOptions)
+  describe 'test an instance of ChallengeOptionAttributes' do
+    it 'should create an instance of ChallengeOptionAttributes' do
+      expect(@instance).to be_instance_of(MX::ChallengeOptionAttributes)
     end
   end
   describe 'test attribute "image_data"' do

@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user** | **Object** |  | [optional] 
+**user** | [**ConnectWidgetAttributes**](ConnectWidgetAttributes.md) |  | [optional] 
 
 

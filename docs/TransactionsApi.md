@@ -18,17 +18,14 @@ Use this endpoint to categorize, cleanse, and classify transactions. These trans
 ```ruby
 # load the gem
 require 'atrium-ruby'
+
 # setup authorization
 MX.configure do |config|
-  # Configure API key authorization: apiKey
-  config.api_key['MX-API-Key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-API-Key'] = 'Bearer'
+  # Configure API Key authorization
+  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
 
-  # Configure API key authorization: clientID
-  config.api_key['MX-Client-ID'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-Client-ID'] = 'Bearer'
+  # Configure Client ID authorization
+  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
 end
 
 api_instance = MX::TransactionsApi.new
@@ -66,17 +63,14 @@ Use this endpoint to get all transactions that belong to a specific user, across
 ```ruby
 # load the gem
 require 'atrium-ruby'
+
 # setup authorization
 MX.configure do |config|
-  # Configure API key authorization: apiKey
-  config.api_key['MX-API-Key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-API-Key'] = 'Bearer'
+  # Configure API Key authorization
+  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
 
-  # Configure API key authorization: clientID
-  config.api_key['MX-Client-ID'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-Client-ID'] = 'Bearer'
+  # Configure Client ID authorization
+  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
 end
 
 api_instance = MX::TransactionsApi.new
@@ -124,17 +118,14 @@ This endpoint allows you to view information about a specific transaction that b
 ```ruby
 # load the gem
 require 'atrium-ruby'
+
 # setup authorization
 MX.configure do |config|
-  # Configure API key authorization: apiKey
-  config.api_key['MX-API-Key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-API-Key'] = 'Bearer'
+  # Configure API Key authorization
+  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
 
-  # Configure API key authorization: clientID
-  config.api_key['MX-Client-ID'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-Client-ID'] = 'Bearer'
+  # Configure Client ID authorization
+  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
 end
 
 api_instance = MX::TransactionsApi.new

@@ -27,17 +27,14 @@ Calling this endpoint initiates an aggregation event for the member. This brings
 ```ruby
 # load the gem
 require 'atrium-ruby'
+
 # setup authorization
 MX.configure do |config|
-  # Configure API key authorization: apiKey
-  config.api_key['MX-API-Key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-API-Key'] = 'Bearer'
+  # Configure API Key authorization
+  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
 
-  # Configure API key authorization: clientID
-  config.api_key['MX-Client-ID'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-Client-ID'] = 'Bearer'
+  # Configure Client ID authorization
+  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
 end
 
 api_instance = MX::MembersApi.new
@@ -78,17 +75,14 @@ This endpoint allows you to create a new member. Members are created with the re
 ```ruby
 # load the gem
 require 'atrium-ruby'
+
 # setup authorization
 MX.configure do |config|
-  # Configure API key authorization: apiKey
-  config.api_key['MX-API-Key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-API-Key'] = 'Bearer'
+  # Configure API Key authorization
+  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
 
-  # Configure API key authorization: clientID
-  config.api_key['MX-Client-ID'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-Client-ID'] = 'Bearer'
+  # Configure Client ID authorization
+  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
 end
 
 api_instance = MX::MembersApi.new
@@ -129,17 +123,14 @@ Accessing this endpoint will permanently delete a member.
 ```ruby
 # load the gem
 require 'atrium-ruby'
+
 # setup authorization
 MX.configure do |config|
-  # Configure API key authorization: apiKey
-  config.api_key['MX-API-Key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-API-Key'] = 'Bearer'
+  # Configure API Key authorization
+  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
 
-  # Configure API key authorization: clientID
-  config.api_key['MX-Client-ID'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-Client-ID'] = 'Bearer'
+  # Configure Client ID authorization
+  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
 end
 
 api_instance = MX::MembersApi.new
@@ -179,17 +170,14 @@ This endpoint returns an array with information about every account associated w
 ```ruby
 # load the gem
 require 'atrium-ruby'
+
 # setup authorization
 MX.configure do |config|
-  # Configure API key authorization: apiKey
-  config.api_key['MX-API-Key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-API-Key'] = 'Bearer'
+  # Configure API Key authorization
+  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
 
-  # Configure API key authorization: clientID
-  config.api_key['MX-Client-ID'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-Client-ID'] = 'Bearer'
+  # Configure Client ID authorization
+  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
 end
 
 api_instance = MX::MembersApi.new
@@ -236,17 +224,14 @@ This endpoint returns an array which contains information on every non-MFA crede
 ```ruby
 # load the gem
 require 'atrium-ruby'
+
 # setup authorization
 MX.configure do |config|
-  # Configure API key authorization: apiKey
-  config.api_key['MX-API-Key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-API-Key'] = 'Bearer'
+  # Configure API Key authorization
+  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
 
-  # Configure API key authorization: clientID
-  config.api_key['MX-Client-ID'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-Client-ID'] = 'Bearer'
+  # Configure Client ID authorization
+  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
 end
 
 api_instance = MX::MembersApi.new
@@ -287,17 +272,14 @@ Use this endpoint for information on what multi-factor authentication challenges
 ```ruby
 # load the gem
 require 'atrium-ruby'
+
 # setup authorization
 MX.configure do |config|
-  # Configure API key authorization: apiKey
-  config.api_key['MX-API-Key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-API-Key'] = 'Bearer'
+  # Configure API Key authorization
+  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
 
-  # Configure API key authorization: clientID
-  config.api_key['MX-Client-ID'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-Client-ID'] = 'Bearer'
+  # Configure Client ID authorization
+  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
 end
 
 api_instance = MX::MembersApi.new
@@ -338,17 +320,14 @@ Use this endpoint to get all transactions from all accounts associated with a sp
 ```ruby
 # load the gem
 require 'atrium-ruby'
+
 # setup authorization
 MX.configure do |config|
-  # Configure API key authorization: apiKey
-  config.api_key['MX-API-Key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-API-Key'] = 'Bearer'
+  # Configure API Key authorization
+  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
 
-  # Configure API key authorization: clientID
-  config.api_key['MX-Client-ID'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-Client-ID'] = 'Bearer'
+  # Configure Client ID authorization
+  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
 end
 
 api_instance = MX::MembersApi.new
@@ -399,17 +378,14 @@ This endpoint returns an array which contains information on every member associ
 ```ruby
 # load the gem
 require 'atrium-ruby'
+
 # setup authorization
 MX.configure do |config|
-  # Configure API key authorization: apiKey
-  config.api_key['MX-API-Key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-API-Key'] = 'Bearer'
+  # Configure API Key authorization
+  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
 
-  # Configure API key authorization: clientID
-  config.api_key['MX-Client-ID'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-Client-ID'] = 'Bearer'
+  # Configure Client ID authorization
+  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
 end
 
 api_instance = MX::MembersApi.new
@@ -453,17 +429,14 @@ Use this endpoint to read the attributes of a specific member.
 ```ruby
 # load the gem
 require 'atrium-ruby'
+
 # setup authorization
 MX.configure do |config|
-  # Configure API key authorization: apiKey
-  config.api_key['MX-API-Key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-API-Key'] = 'Bearer'
+  # Configure API Key authorization
+  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
 
-  # Configure API key authorization: clientID
-  config.api_key['MX-Client-ID'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-Client-ID'] = 'Bearer'
+  # Configure Client ID authorization
+  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
 end
 
 api_instance = MX::MembersApi.new
@@ -504,17 +477,14 @@ This endpoint provides the status of the member's most recent aggregation event.
 ```ruby
 # load the gem
 require 'atrium-ruby'
+
 # setup authorization
 MX.configure do |config|
-  # Configure API key authorization: apiKey
-  config.api_key['MX-API-Key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-API-Key'] = 'Bearer'
+  # Configure API Key authorization
+  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
 
-  # Configure API key authorization: clientID
-  config.api_key['MX-Client-ID'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-Client-ID'] = 'Bearer'
+  # Configure Client ID authorization
+  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
 end
 
 api_instance = MX::MembersApi.new
@@ -555,17 +525,14 @@ This endpoint answers the challenges needed when a member has been challenged by
 ```ruby
 # load the gem
 require 'atrium-ruby'
+
 # setup authorization
 MX.configure do |config|
-  # Configure API key authorization: apiKey
-  config.api_key['MX-API-Key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-API-Key'] = 'Bearer'
+  # Configure API Key authorization
+  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
 
-  # Configure API key authorization: clientID
-  config.api_key['MX-Client-ID'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-Client-ID'] = 'Bearer'
+  # Configure Client ID authorization
+  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
 end
 
 api_instance = MX::MembersApi.new
@@ -609,17 +576,14 @@ Use this endpoint to update a member's attributes. Only the credentials, identif
 ```ruby
 # load the gem
 require 'atrium-ruby'
+
 # setup authorization
 MX.configure do |config|
-  # Configure API key authorization: apiKey
-  config.api_key['MX-API-Key'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-API-Key'] = 'Bearer'
+  # Configure API Key authorization
+  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
 
-  # Configure API key authorization: clientID
-  config.api_key['MX-Client-ID'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['MX-Client-ID'] = 'Bearer'
+  # Configure Client ID authorization
+  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
 end
 
 api_instance = MX::MembersApi.new

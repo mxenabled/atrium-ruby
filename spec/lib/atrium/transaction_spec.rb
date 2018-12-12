@@ -80,6 +80,7 @@ RSpec.describe ::Atrium::Transaction do
             "description" => "Beer Bar",
             "type" => "DEBIT",
             "amount" => 11.22,
+            "id" => "12",
             "is_bill_pay" => false,
             "is_direct_deposit" => false,
             "is_expense" => nil,
@@ -94,6 +95,7 @@ RSpec.describe ::Atrium::Transaction do
             "description" => "In N Out Burger",
             "type" => "DEBIT",
             "amount" => 21.33,
+            "id" => "13",
             "is_bill_pay" => false,
             "is_direct_deposit" => false,
             "is_expense" => nil,
@@ -108,6 +110,7 @@ RSpec.describe ::Atrium::Transaction do
             "description" => "Online Payment Thank You",
             "type" => "CREDIT",
             "amount" => 1595.33,
+            "id" => "14",
             "is_bill_pay" => false,
             "is_direct_deposit" => false,
             "is_expense" => nil,
@@ -129,6 +132,7 @@ RSpec.describe ::Atrium::Transaction do
       expect(response).to be_kind_of(::Array)
       expect(response.length).to eq(3)
       expect(response.first).to be_kind_of(::Atrium::Transaction)
+      expect(response.first.id).to eq("12")
     end
   end
 

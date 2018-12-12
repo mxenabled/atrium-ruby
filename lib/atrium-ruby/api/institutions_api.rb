@@ -27,13 +27,36 @@ module MX
       data
     end
 
+    # Read institution
+    # This endpoint allows you to see information for a specific institution.
+    # @param institution_code The institution_code of the institution.
+    # @param [Hash] opts the optional parameters
+    # @return [Institution]
+    def read_institution(institution_code, opts = {})
+      data, _status_code, _headers = read_institution_with_http_info(institution_code, opts)
+      data
+    end
+
+    # Read institution credentials
+    # Use this endpoint to see which credentials will be needed to create a member for a specific institution.
+    # @param institution_code The institution_code of the institution.
+    # @param [Hash] opts the optional parameters
+    # @return [Credentials]
+    def read_institution_credentials(institution_code, opts = {})
+      data, _status_code, _headers = read_institution_credentials_with_http_info(institution_code, opts)
+      data
+    end
+
+
+  private
+
     # List institutions
     # This endpoint allows you to see what institutions are available for connection. Information returned will include the institution_code assigned to a particular institution, URLs for the financial institution&#39;s logo, and the URL for its website.&lt;br&gt; This endpoint takes an optional query string, name&#x3D;{string}. This will list only institutions in which the appended string appears. 
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :name This will list only institutions in which the appended string appears.
-    # @option opts [Integer] :page Specify current page.
-    # @option opts [Integer] :records_per_page Specify records per page.
-    # @return [Array<(Institutions, Fixnum, Hash)>] Institutions data, response status code and response headers
+        # @param [Hash] opts the optional parameters
+        # @option opts [String] :name This will list only institutions in which the appended string appears.
+        # @option opts [Integer] :page Specify current page.
+        # @option opts [Integer] :records_per_page Specify records per page.
+        # @return [Array<(Institutions, Fixnum, Hash)>] Institutions data, response status code and response headers
     def list_institutions_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InstitutionsApi.list_institutions ...'
@@ -70,21 +93,12 @@ module MX
       end
       return data, status_code, headers
     end
-    # Read institution
-    # This endpoint allows you to see information for a specific institution.
-    # @param institution_code The institution_code of the institution.
-    # @param [Hash] opts the optional parameters
-    # @return [Institution]
-    def read_institution(institution_code, opts = {})
-      data, _status_code, _headers = read_institution_with_http_info(institution_code, opts)
-      data
-    end
 
     # Read institution
     # This endpoint allows you to see information for a specific institution.
-    # @param institution_code The institution_code of the institution.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Institution, Fixnum, Hash)>] Institution data, response status code and response headers
+        # @param institution_code The institution_code of the institution.
+        # @param [Hash] opts the optional parameters
+        # @return [Array<(Institution, Fixnum, Hash)>] Institution data, response status code and response headers
     def read_institution_with_http_info(institution_code, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InstitutionsApi.read_institution ...'
@@ -122,21 +136,12 @@ module MX
       end
       return data, status_code, headers
     end
-    # Read institution credentials
-    # Use this endpoint to see which credentials will be needed to create a member for a specific institution.
-    # @param institution_code The institution_code of the institution.
-    # @param [Hash] opts the optional parameters
-    # @return [Credentials]
-    def read_institution_credentials(institution_code, opts = {})
-      data, _status_code, _headers = read_institution_credentials_with_http_info(institution_code, opts)
-      data
-    end
 
     # Read institution credentials
     # Use this endpoint to see which credentials will be needed to create a member for a specific institution.
-    # @param institution_code The institution_code of the institution.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Credentials, Fixnum, Hash)>] Credentials data, response status code and response headers
+        # @param institution_code The institution_code of the institution.
+        # @param [Hash] opts the optional parameters
+        # @return [Array<(Credentials, Fixnum, Hash)>] Credentials data, response status code and response headers
     def read_institution_credentials_with_http_info(institution_code, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InstitutionsApi.read_institution_credentials ...'
@@ -174,5 +179,6 @@ module MX
       end
       return data, status_code, headers
     end
+
   end
 end

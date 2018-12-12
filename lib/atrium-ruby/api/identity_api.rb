@@ -26,12 +26,26 @@ module MX
       data
     end
 
-    # Identify
-    # The identify endpoint begins an identification process for an already-existing member.
+    # List member account owners
+    # This endpoint returns an array with information about every account associated with a particular member.
     # @param member_guid The unique identifier for a &#x60;member&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Member, Fixnum, Hash)>] Member data, response status code and response headers
+    # @return [AccountOwners]
+    def list_account_owners(member_guid, user_guid, opts = {})
+      data, _status_code, _headers = list_account_owners_with_http_info(member_guid, user_guid, opts)
+      data
+    end
+
+
+  private
+
+    # Identify
+    # The identify endpoint begins an identification process for an already-existing member.
+        # @param member_guid The unique identifier for a &#x60;member&#x60;.
+        # @param user_guid The unique identifier for a &#x60;user&#x60;.
+        # @param [Hash] opts the optional parameters
+        # @return [Array<(Member, Fixnum, Hash)>] Member data, response status code and response headers
     def identify_member_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IdentityApi.identify_member ...'
@@ -75,23 +89,13 @@ module MX
       end
       return data, status_code, headers
     end
-    # List member account owners
-    # This endpoint returns an array with information about every account associated with a particular member.
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @return [AccountOwners]
-    def list_account_owners(member_guid, user_guid, opts = {})
-      data, _status_code, _headers = list_account_owners_with_http_info(member_guid, user_guid, opts)
-      data
-    end
 
     # List member account owners
     # This endpoint returns an array with information about every account associated with a particular member.
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(AccountOwners, Fixnum, Hash)>] AccountOwners data, response status code and response headers
+        # @param member_guid The unique identifier for a &#x60;member&#x60;.
+        # @param user_guid The unique identifier for a &#x60;user&#x60;.
+        # @param [Hash] opts the optional parameters
+        # @return [Array<(AccountOwners, Fixnum, Hash)>] AccountOwners data, response status code and response headers
     def list_account_owners_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IdentityApi.list_account_owners ...'
@@ -133,5 +137,6 @@ module MX
       end
       return data, status_code, headers
     end
+
   end
 end

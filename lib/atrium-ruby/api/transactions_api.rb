@@ -25,11 +25,39 @@ module MX
       data
     end
 
+    # List transactions for a user
+    # Use this endpoint to get all transactions that belong to a specific user, across all the user's members and accounts.<br> This endpoint accepts optional query parameters, from_date and to_date, which filter transactions according to the date they were posted. If no values are given, from_date will default to 90 days prior to the request, and to_date will default to 5 days from the time of the request. 
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page Specify current page.
+    # @option opts [String] :from_date Filter transactions from this date.
+    # @option opts [Integer] :records_per_page Specify records per page.
+    # @option opts [String] :to_date Filter transactions to this date.
+    # @return [Transactions]
+    def list_user_transactions(user_guid, opts = {})
+      data, _status_code, _headers = list_user_transactions_with_http_info(user_guid, opts)
+      data
+    end
+
+    # Read a transaction
+    # This endpoint allows you to view information about a specific transaction that belongs to a user.<br>
+    # @param transaction_guid The unique identifier for a &#x60;transaction&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @return [Transaction]
+    def read_transaction(transaction_guid, user_guid, opts = {})
+      data, _status_code, _headers = read_transaction_with_http_info(transaction_guid, user_guid, opts)
+      data
+    end
+
+
+  private
+
     # Categorize transactions
     # Use this endpoint to categorize, cleanse, and classify transactions. These transactions are not persisted or stored on the MX platform.
-    # @param body User object to be created with optional parameters (amount, type) amd required parameters (description, identifier)
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(TransactionsCleanseAndCategorize, Fixnum, Hash)>] TransactionsCleanseAndCategorize data, response status code and response headers
+        # @param body User object to be created with optional parameters (amount, type) amd required parameters (description, identifier)
+        # @param [Hash] opts the optional parameters
+        # @return [Array<(TransactionsCleanseAndCategorize, Fixnum, Hash)>] TransactionsCleanseAndCategorize data, response status code and response headers
     def cleanse_and_categorize_transactions_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TransactionsApi.cleanse_and_categorize_transactions ...'
@@ -69,29 +97,16 @@ module MX
       end
       return data, status_code, headers
     end
-    # List transactions for a user
-    # Use this endpoint to get all transactions that belong to a specific user, across all the user's members and accounts.<br> This endpoint accepts optional query parameters, from_date and to_date, which filter transactions according to the date they were posted. If no values are given, from_date will default to 90 days prior to the request, and to_date will default to 5 days from the time of the request. 
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page Specify current page.
-    # @option opts [String] :from_date Filter transactions from this date.
-    # @option opts [Integer] :records_per_page Specify records per page.
-    # @option opts [String] :to_date Filter transactions to this date.
-    # @return [Transactions]
-    def list_user_transactions(user_guid, opts = {})
-      data, _status_code, _headers = list_user_transactions_with_http_info(user_guid, opts)
-      data
-    end
 
     # List transactions for a user
     # Use this endpoint to get all transactions that belong to a specific user, across all the user&#39;s members and accounts.&lt;br&gt; This endpoint accepts optional query parameters, from_date and to_date, which filter transactions according to the date they were posted. If no values are given, from_date will default to 90 days prior to the request, and to_date will default to 5 days from the time of the request. 
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page Specify current page.
-    # @option opts [String] :from_date Filter transactions from this date.
-    # @option opts [Integer] :records_per_page Specify records per page.
-    # @option opts [String] :to_date Filter transactions to this date.
-    # @return [Array<(Transactions, Fixnum, Hash)>] Transactions data, response status code and response headers
+        # @param user_guid The unique identifier for a &#x60;user&#x60;.
+        # @param [Hash] opts the optional parameters
+        # @option opts [Integer] :page Specify current page.
+        # @option opts [String] :from_date Filter transactions from this date.
+        # @option opts [Integer] :records_per_page Specify records per page.
+        # @option opts [String] :to_date Filter transactions to this date.
+        # @return [Array<(Transactions, Fixnum, Hash)>] Transactions data, response status code and response headers
     def list_user_transactions_with_http_info(user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TransactionsApi.list_user_transactions ...'
@@ -133,23 +148,13 @@ module MX
       end
       return data, status_code, headers
     end
-    # Read a transaction
-    # This endpoint allows you to view information about a specific transaction that belongs to a user.<br>
-    # @param transaction_guid The unique identifier for a &#x60;transaction&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @return [Transaction]
-    def read_transaction(transaction_guid, user_guid, opts = {})
-      data, _status_code, _headers = read_transaction_with_http_info(transaction_guid, user_guid, opts)
-      data
-    end
 
     # Read a transaction
     # This endpoint allows you to view information about a specific transaction that belongs to a user.&lt;br&gt;
-    # @param transaction_guid The unique identifier for a &#x60;transaction&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Transaction, Fixnum, Hash)>] Transaction data, response status code and response headers
+        # @param transaction_guid The unique identifier for a &#x60;transaction&#x60;.
+        # @param user_guid The unique identifier for a &#x60;user&#x60;.
+        # @param [Hash] opts the optional parameters
+        # @return [Array<(Transaction, Fixnum, Hash)>] Transaction data, response status code and response headers
     def read_transaction_with_http_info(transaction_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TransactionsApi.read_transaction ...'
@@ -191,5 +196,6 @@ module MX
       end
       return data, status_code, headers
     end
+
   end
 end

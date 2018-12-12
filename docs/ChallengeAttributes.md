@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **image_data** | **String** |  | [optional] 
 **label** | **String** |  | [optional] 
 **options** | [**Array&lt;ChallengeOptionAttributes&gt;**](ChallengeOptionAttributes.md) |  | [optional] 
+**type** | **String** |  | [optional] 
 
 

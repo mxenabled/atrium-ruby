@@ -20,6 +20,8 @@ module MX
 
     attr_accessor :options
 
+    attr_accessor :type
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -27,7 +29,8 @@ module MX
         :'guid' => :'guid',
         :'image_data' => :'image_data',
         :'label' => :'label',
-        :'options' => :'options'
+        :'options' => :'options',
+        :'type' => :'type'
       }
     end
 
@@ -38,7 +41,8 @@ module MX
         :'guid' => :'String',
         :'image_data' => :'String',
         :'label' => :'String',
-        :'options' => :'Array<ChallengeOptionAttributes>'
+        :'options' => :'Array<ChallengeOptionAttributes>',
+        :'type' => :'String'
       }
     end
 
@@ -71,6 +75,10 @@ module MX
           self.options = value
         end
       end
+
+      if attributes.has_key?(:'type')
+        self.type = attributes[:'type']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -95,7 +103,8 @@ module MX
           guid == o.guid &&
           image_data == o.image_data &&
           label == o.label &&
-          options == o.options
+          options == o.options &&
+          type == o.type
     end
 
     # @see the `==` method
@@ -107,7 +116,7 @@ module MX
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [field_name, guid, image_data, label, options].hash
+      [field_name, guid, image_data, label, options, type].hash
     end
 
     # Builds the object from hash

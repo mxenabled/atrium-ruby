@@ -26,12 +26,145 @@ module MX
       data
     end
 
-    # Aggregate member
-    # Calling this endpoint initiates an aggregation event for the member. This brings in the latest account and transaction data from the connected institution. If this data has recently been updated, MX may not initiate an aggregation event. 
+    # Create member
+    # This endpoint allows you to create a new member. Members are created with the required parameters credentials and institution_code, and the optional parameters identifier and metadata.<br> When creating a member, you'll need to include the correct type of credential required by the financial institution and provided by the user. You can find out which credential type is required with the /institutions/{institution_code}/credentials endpoint.<br> If successful, Atrium will respond with the newly-created member object.<br> Once you successfully create a member, MX will immediately validate the provided credentials and attempt to aggregate data for accounts and transactions. 
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param body Member object to be created with optional parameters (identifier and metadata) and required parameters (credentials and institution_code)
+    # @param [Hash] opts the optional parameters
+    # @return [Member]
+    def create_member(user_guid, body, opts = {})
+      data, _status_code, _headers = create_member_with_http_info(user_guid, body, opts)
+      data
+    end
+
+    # Delete member
+    # Accessing this endpoint will permanently delete a member.
     # @param member_guid The unique identifier for a &#x60;member&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Member, Fixnum, Hash)>] Member data, response status code and response headers
+    # @return [nil]
+    def delete_member(member_guid, user_guid, opts = {})
+      delete_member_with_http_info(member_guid, user_guid, opts)
+      nil
+    end
+
+    # List member accounts
+    # This endpoint returns an array with information about every account associated with a particular member.
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page Specify current page.
+    # @option opts [Integer] :records_per_page Specify records per page.
+    # @return [Accounts]
+    def list_member_accounts(member_guid, user_guid, opts = {})
+      data, _status_code, _headers = list_member_accounts_with_http_info(member_guid, user_guid, opts)
+      data
+    end
+
+    # List member credentials
+    # This endpoint returns an array which contains information on every non-MFA credential associated with a specific member.
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @return [Credentials]
+    def list_member_credentials(member_guid, user_guid, opts = {})
+      data, _status_code, _headers = list_member_credentials_with_http_info(member_guid, user_guid, opts)
+      data
+    end
+
+    # List member MFA challenges
+    # Use this endpoint for information on what multi-factor authentication challenges need to be answered in order to aggregate a member.<br> If the aggregation is not challenged, i.e., the member does not have a connection status of CHALLENGED, then code 204 No Content will be returned.<br> If the aggregation has been challenged, i.e., the member does have a connection status of CHALLENGED, then code 200 OK will be returned — along with the corresponding credentials. 
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @return [Challenges]
+    def list_member_mfa_challenges(member_guid, user_guid, opts = {})
+      data, _status_code, _headers = list_member_mfa_challenges_with_http_info(member_guid, user_guid, opts)
+      data
+    end
+
+    # List member transactions
+    # Use this endpoint to get all transactions from all accounts associated with a specific member.<br> This endpoint accepts optional URL query parameters — from_date and to_date — which are used to filter transactions according to the date they were posted. If no values are given for the query parameters, from_date will default to 90 days prior to the request and to_date will default to 5 days from the time of the request. 
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :from_date Filter transactions from this date.
+    # @option opts [String] :to_date Filter transactions to this date.
+    # @option opts [Integer] :page Specify current page.
+    # @option opts [Integer] :records_per_page Specify records per page.
+    # @return [Transactions]
+    def list_member_transactions(member_guid, user_guid, opts = {})
+      data, _status_code, _headers = list_member_transactions_with_http_info(member_guid, user_guid, opts)
+      data
+    end
+
+    # List members
+    # This endpoint returns an array which contains information on every member associated with a specific user.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page Specify current page.
+    # @option opts [Integer] :records_per_page Specify records per page.
+    # @return [Members]
+    def list_members(user_guid, opts = {})
+      data, _status_code, _headers = list_members_with_http_info(user_guid, opts)
+      data
+    end
+
+    # Read member
+    # Use this endpoint to read the attributes of a specific member.
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @return [Member]
+    def read_member(member_guid, user_guid, opts = {})
+      data, _status_code, _headers = read_member_with_http_info(member_guid, user_guid, opts)
+      data
+    end
+
+    # Read member connection status
+    # This endpoint provides the status of the member's most recent aggregation event. This is an important step in the aggregation process, and the results returned by this endpoint should determine what you do next in order to successfully aggregate a member.<br> MX has introduced new, more detailed information on the current status of a member's connection to a financial institution and the state of its aggregation: the connection_status field. These are intended to replace and expand upon the information provided in the status field, which will soon be deprecated; support for the status field remains for the time being. 
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @return [MemberConnectionStatus]
+    def read_member_status(member_guid, user_guid, opts = {})
+      data, _status_code, _headers = read_member_status_with_http_info(member_guid, user_guid, opts)
+      data
+    end
+
+    # Resume aggregation from MFA
+    # This endpoint answers the challenges needed when a member has been challenged by multi-factor authentication.
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param body Member object with MFA challenge answers
+    # @param [Hash] opts the optional parameters
+    # @return [Member]
+    def resume_member(member_guid, user_guid, body, opts = {})
+      data, _status_code, _headers = resume_member_with_http_info(member_guid, user_guid, body, opts)
+      data
+    end
+
+    # Update member
+    # Use this endpoint to update a member's attributes. Only the credentials, identifier, and metadata parameters can be updated. To get a list of the required credentials for the member, use the list member credentials endpoint. 
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @option opts [MemberUpdateRequestBody] :body Member object to be updated with optional parameters (credentials, identifier, metadata)
+    # @return [Member]
+    def update_member(member_guid, user_guid, opts = {})
+      data, _status_code, _headers = update_member_with_http_info(member_guid, user_guid, opts)
+      data
+    end
+
+
+  private
+
+    # Aggregate member
+    # Calling this endpoint initiates an aggregation event for the member. This brings in the latest account and transaction data from the connected institution. If this data has recently been updated, MX may not initiate an aggregation event. 
+        # @param member_guid The unique identifier for a &#x60;member&#x60;.
+        # @param user_guid The unique identifier for a &#x60;user&#x60;.
+        # @param [Hash] opts the optional parameters
+        # @return [Array<(Member, Fixnum, Hash)>] Member data, response status code and response headers
     def aggregate_member_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.aggregate_member ...'
@@ -73,23 +206,13 @@ module MX
       end
       return data, status_code, headers
     end
-    # Create member
-    # This endpoint allows you to create a new member. Members are created with the required parameters credentials and institution_code, and the optional parameters identifier and metadata.<br> When creating a member, you'll need to include the correct type of credential required by the financial institution and provided by the user. You can find out which credential type is required with the /institutions/{institution_code}/credentials endpoint.<br> If successful, Atrium will respond with the newly-created member object.<br> Once you successfully create a member, MX will immediately validate the provided credentials and attempt to aggregate data for accounts and transactions. 
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param body Member object to be created with optional parameters (identifier and metadata) and required parameters (credentials and institution_code)
-    # @param [Hash] opts the optional parameters
-    # @return [Member]
-    def create_member(user_guid, body, opts = {})
-      data, _status_code, _headers = create_member_with_http_info(user_guid, body, opts)
-      data
-    end
 
     # Create member
     # This endpoint allows you to create a new member. Members are created with the required parameters credentials and institution_code, and the optional parameters identifier and metadata.&lt;br&gt; When creating a member, you&#39;ll need to include the correct type of credential required by the financial institution and provided by the user. You can find out which credential type is required with the /institutions/{institution_code}/credentials endpoint.&lt;br&gt; If successful, Atrium will respond with the newly-created member object.&lt;br&gt; Once you successfully create a member, MX will immediately validate the provided credentials and attempt to aggregate data for accounts and transactions. 
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param body Member object to be created with optional parameters (identifier and metadata) and required parameters (credentials and institution_code)
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Member, Fixnum, Hash)>] Member data, response status code and response headers
+        # @param user_guid The unique identifier for a &#x60;user&#x60;.
+        # @param body Member object to be created with optional parameters (identifier and metadata) and required parameters (credentials and institution_code)
+        # @param [Hash] opts the optional parameters
+        # @return [Array<(Member, Fixnum, Hash)>] Member data, response status code and response headers
     def create_member_with_http_info(user_guid, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.create_member ...'
@@ -133,23 +256,13 @@ module MX
       end
       return data, status_code, headers
     end
-    # Delete member
-    # Accessing this endpoint will permanently delete a member.
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @return [nil]
-    def delete_member(member_guid, user_guid, opts = {})
-      delete_member_with_http_info(member_guid, user_guid, opts)
-      nil
-    end
 
     # Delete member
     # Accessing this endpoint will permanently delete a member.
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
+        # @param member_guid The unique identifier for a &#x60;member&#x60;.
+        # @param user_guid The unique identifier for a &#x60;user&#x60;.
+        # @param [Hash] opts the optional parameters
+        # @return [Array<(nil, Fixnum, Hash)>] nil, response status code and response headers
     def delete_member_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.delete_member ...'
@@ -190,27 +303,15 @@ module MX
       end
       return data, status_code, headers
     end
-    # List member accounts
-    # This endpoint returns an array with information about every account associated with a particular member.
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page Specify current page.
-    # @option opts [Integer] :records_per_page Specify records per page.
-    # @return [Accounts]
-    def list_member_accounts(member_guid, user_guid, opts = {})
-      data, _status_code, _headers = list_member_accounts_with_http_info(member_guid, user_guid, opts)
-      data
-    end
 
     # List member accounts
     # This endpoint returns an array with information about every account associated with a particular member.
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page Specify current page.
-    # @option opts [Integer] :records_per_page Specify records per page.
-    # @return [Array<(Accounts, Fixnum, Hash)>] Accounts data, response status code and response headers
+        # @param member_guid The unique identifier for a &#x60;member&#x60;.
+        # @param user_guid The unique identifier for a &#x60;user&#x60;.
+        # @param [Hash] opts the optional parameters
+        # @option opts [Integer] :page Specify current page.
+        # @option opts [Integer] :records_per_page Specify records per page.
+        # @return [Array<(Accounts, Fixnum, Hash)>] Accounts data, response status code and response headers
     def list_member_accounts_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.list_member_accounts ...'
@@ -254,23 +355,13 @@ module MX
       end
       return data, status_code, headers
     end
-    # List member credentials
-    # This endpoint returns an array which contains information on every non-MFA credential associated with a specific member.
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @return [Credentials]
-    def list_member_credentials(member_guid, user_guid, opts = {})
-      data, _status_code, _headers = list_member_credentials_with_http_info(member_guid, user_guid, opts)
-      data
-    end
 
     # List member credentials
     # This endpoint returns an array which contains information on every non-MFA credential associated with a specific member.
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Credentials, Fixnum, Hash)>] Credentials data, response status code and response headers
+        # @param member_guid The unique identifier for a &#x60;member&#x60;.
+        # @param user_guid The unique identifier for a &#x60;user&#x60;.
+        # @param [Hash] opts the optional parameters
+        # @return [Array<(Credentials, Fixnum, Hash)>] Credentials data, response status code and response headers
     def list_member_credentials_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.list_member_credentials ...'
@@ -312,23 +403,13 @@ module MX
       end
       return data, status_code, headers
     end
-    # List member MFA challenges
-    # Use this endpoint for information on what multi-factor authentication challenges need to be answered in order to aggregate a member.<br> If the aggregation is not challenged, i.e., the member does not have a connection status of CHALLENGED, then code 204 No Content will be returned.<br> If the aggregation has been challenged, i.e., the member does have a connection status of CHALLENGED, then code 200 OK will be returned — along with the corresponding credentials. 
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @return [Challenges]
-    def list_member_mfa_challenges(member_guid, user_guid, opts = {})
-      data, _status_code, _headers = list_member_mfa_challenges_with_http_info(member_guid, user_guid, opts)
-      data
-    end
 
     # List member MFA challenges
     # Use this endpoint for information on what multi-factor authentication challenges need to be answered in order to aggregate a member.&lt;br&gt; If the aggregation is not challenged, i.e., the member does not have a connection status of CHALLENGED, then code 204 No Content will be returned.&lt;br&gt; If the aggregation has been challenged, i.e., the member does have a connection status of CHALLENGED, then code 200 OK will be returned — along with the corresponding credentials. 
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Challenges, Fixnum, Hash)>] Challenges data, response status code and response headers
+        # @param member_guid The unique identifier for a &#x60;member&#x60;.
+        # @param user_guid The unique identifier for a &#x60;user&#x60;.
+        # @param [Hash] opts the optional parameters
+        # @return [Array<(Challenges, Fixnum, Hash)>] Challenges data, response status code and response headers
     def list_member_mfa_challenges_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.list_member_mfa_challenges ...'
@@ -370,31 +451,17 @@ module MX
       end
       return data, status_code, headers
     end
-    # List member transactions
-    # Use this endpoint to get all transactions from all accounts associated with a specific member.<br> This endpoint accepts optional URL query parameters — from_date and to_date — which are used to filter transactions according to the date they were posted. If no values are given for the query parameters, from_date will default to 90 days prior to the request and to_date will default to 5 days from the time of the request. 
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :from_date Filter transactions from this date.
-    # @option opts [String] :to_date Filter transactions to this date.
-    # @option opts [Integer] :page Specify current page.
-    # @option opts [Integer] :records_per_page Specify records per page.
-    # @return [Transactions]
-    def list_member_transactions(member_guid, user_guid, opts = {})
-      data, _status_code, _headers = list_member_transactions_with_http_info(member_guid, user_guid, opts)
-      data
-    end
 
     # List member transactions
     # Use this endpoint to get all transactions from all accounts associated with a specific member.&lt;br&gt; This endpoint accepts optional URL query parameters — from_date and to_date — which are used to filter transactions according to the date they were posted. If no values are given for the query parameters, from_date will default to 90 days prior to the request and to_date will default to 5 days from the time of the request. 
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :from_date Filter transactions from this date.
-    # @option opts [String] :to_date Filter transactions to this date.
-    # @option opts [Integer] :page Specify current page.
-    # @option opts [Integer] :records_per_page Specify records per page.
-    # @return [Array<(Transactions, Fixnum, Hash)>] Transactions data, response status code and response headers
+        # @param member_guid The unique identifier for a &#x60;member&#x60;.
+        # @param user_guid The unique identifier for a &#x60;user&#x60;.
+        # @param [Hash] opts the optional parameters
+        # @option opts [String] :from_date Filter transactions from this date.
+        # @option opts [String] :to_date Filter transactions to this date.
+        # @option opts [Integer] :page Specify current page.
+        # @option opts [Integer] :records_per_page Specify records per page.
+        # @return [Array<(Transactions, Fixnum, Hash)>] Transactions data, response status code and response headers
     def list_member_transactions_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.list_member_transactions ...'
@@ -440,25 +507,14 @@ module MX
       end
       return data, status_code, headers
     end
-    # List members
-    # This endpoint returns an array which contains information on every member associated with a specific user.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page Specify current page.
-    # @option opts [Integer] :records_per_page Specify records per page.
-    # @return [Members]
-    def list_members(user_guid, opts = {})
-      data, _status_code, _headers = list_members_with_http_info(user_guid, opts)
-      data
-    end
 
     # List members
     # This endpoint returns an array which contains information on every member associated with a specific user.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page Specify current page.
-    # @option opts [Integer] :records_per_page Specify records per page.
-    # @return [Array<(Members, Fixnum, Hash)>] Members data, response status code and response headers
+        # @param user_guid The unique identifier for a &#x60;user&#x60;.
+        # @param [Hash] opts the optional parameters
+        # @option opts [Integer] :page Specify current page.
+        # @option opts [Integer] :records_per_page Specify records per page.
+        # @return [Array<(Members, Fixnum, Hash)>] Members data, response status code and response headers
     def list_members_with_http_info(user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.list_members ...'
@@ -498,23 +554,13 @@ module MX
       end
       return data, status_code, headers
     end
-    # Read member
-    # Use this endpoint to read the attributes of a specific member.
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @return [Member]
-    def read_member(member_guid, user_guid, opts = {})
-      data, _status_code, _headers = read_member_with_http_info(member_guid, user_guid, opts)
-      data
-    end
 
     # Read member
     # Use this endpoint to read the attributes of a specific member.
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Member, Fixnum, Hash)>] Member data, response status code and response headers
+        # @param member_guid The unique identifier for a &#x60;member&#x60;.
+        # @param user_guid The unique identifier for a &#x60;user&#x60;.
+        # @param [Hash] opts the optional parameters
+        # @return [Array<(Member, Fixnum, Hash)>] Member data, response status code and response headers
     def read_member_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.read_member ...'
@@ -556,23 +602,13 @@ module MX
       end
       return data, status_code, headers
     end
-    # Read member connection status
-    # This endpoint provides the status of the member's most recent aggregation event. This is an important step in the aggregation process, and the results returned by this endpoint should determine what you do next in order to successfully aggregate a member.<br> MX has introduced new, more detailed information on the current status of a member's connection to a financial institution and the state of its aggregation: the connection_status field. These are intended to replace and expand upon the information provided in the status field, which will soon be deprecated; support for the status field remains for the time being. 
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @return [MemberConnectionStatus]
-    def read_member_status(member_guid, user_guid, opts = {})
-      data, _status_code, _headers = read_member_status_with_http_info(member_guid, user_guid, opts)
-      data
-    end
 
     # Read member connection status
     # This endpoint provides the status of the member&#39;s most recent aggregation event. This is an important step in the aggregation process, and the results returned by this endpoint should determine what you do next in order to successfully aggregate a member.&lt;br&gt; MX has introduced new, more detailed information on the current status of a member&#39;s connection to a financial institution and the state of its aggregation: the connection_status field. These are intended to replace and expand upon the information provided in the status field, which will soon be deprecated; support for the status field remains for the time being. 
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(MemberConnectionStatus, Fixnum, Hash)>] MemberConnectionStatus data, response status code and response headers
+        # @param member_guid The unique identifier for a &#x60;member&#x60;.
+        # @param user_guid The unique identifier for a &#x60;user&#x60;.
+        # @param [Hash] opts the optional parameters
+        # @return [Array<(MemberConnectionStatus, Fixnum, Hash)>] MemberConnectionStatus data, response status code and response headers
     def read_member_status_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.read_member_status ...'
@@ -614,25 +650,14 @@ module MX
       end
       return data, status_code, headers
     end
-    # Resume aggregation from MFA
-    # This endpoint answers the challenges needed when a member has been challenged by multi-factor authentication.
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param body Member object with MFA challenge answers
-    # @param [Hash] opts the optional parameters
-    # @return [Member]
-    def resume_member(member_guid, user_guid, body, opts = {})
-      data, _status_code, _headers = resume_member_with_http_info(member_guid, user_guid, body, opts)
-      data
-    end
 
     # Resume aggregation from MFA
     # This endpoint answers the challenges needed when a member has been challenged by multi-factor authentication.
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param body Member object with MFA challenge answers
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(Member, Fixnum, Hash)>] Member data, response status code and response headers
+        # @param member_guid The unique identifier for a &#x60;member&#x60;.
+        # @param user_guid The unique identifier for a &#x60;user&#x60;.
+        # @param body Member object with MFA challenge answers
+        # @param [Hash] opts the optional parameters
+        # @return [Array<(Member, Fixnum, Hash)>] Member data, response status code and response headers
     def resume_member_with_http_info(member_guid, user_guid, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.resume_member ...'
@@ -680,25 +705,14 @@ module MX
       end
       return data, status_code, headers
     end
-    # Update member
-    # Use this endpoint to update a member's attributes. Only the credentials, identifier, and metadata parameters can be updated. To get a list of the required credentials for the member, use the list member credentials endpoint. 
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @option opts [MemberUpdateRequestBody] :body Member object to be updated with optional parameters (credentials, identifier, metadata)
-    # @return [Member]
-    def update_member(member_guid, user_guid, opts = {})
-      data, _status_code, _headers = update_member_with_http_info(member_guid, user_guid, opts)
-      data
-    end
 
     # Update member
     # Use this endpoint to update a member&#39;s attributes. Only the credentials, identifier, and metadata parameters can be updated. To get a list of the required credentials for the member, use the list member credentials endpoint. 
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @option opts [MemberUpdateRequestBody] :body Member object to be updated with optional parameters (credentials, identifier, metadata)
-    # @return [Array<(Member, Fixnum, Hash)>] Member data, response status code and response headers
+        # @param member_guid The unique identifier for a &#x60;member&#x60;.
+        # @param user_guid The unique identifier for a &#x60;user&#x60;.
+        # @param [Hash] opts the optional parameters
+        # @option opts [MemberUpdateRequestBody] :body Member object to be updated with optional parameters (credentials, identifier, metadata)
+        # @return [Array<(Member, Fixnum, Hash)>] Member data, response status code and response headers
     def update_member_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.update_member ...'
@@ -742,5 +756,6 @@ module MX
       end
       return data, status_code, headers
     end
+
   end
 end

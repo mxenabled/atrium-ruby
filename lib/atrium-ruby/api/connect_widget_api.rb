@@ -26,12 +26,15 @@ module MX
       data
     end
 
+
+  private
+
     # Embedding in a website
     # This endpoint will return a URL for an embeddable version of MX Connect.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param body Optional config options for WebView (is_mobile_webview, current_institution_code, current_member_guid, update_credentials)
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(ConnectWidget, Fixnum, Hash)>] ConnectWidget data, response status code and response headers
+        # @param user_guid The unique identifier for a &#x60;user&#x60;.
+        # @param body Optional config options for WebView (is_mobile_webview, current_institution_code, current_member_guid, update_credentials)
+        # @param [Hash] opts the optional parameters
+        # @return [Array<(ConnectWidget, Fixnum, Hash)>] ConnectWidget data, response status code and response headers
     def get_connect_widget_with_http_info(user_guid, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ConnectWidgetApi.get_connect_widget ...'
@@ -75,5 +78,6 @@ module MX
       end
       return data, status_code, headers
     end
+
   end
 end

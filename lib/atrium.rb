@@ -26,6 +26,7 @@ module Atrium
   #   config.mx_api_key = generated_api_key
   #   config.mx_client_id = generated_client_id
   #   config.base_url = "https://atrium.mx.com" # for production URL. this will default to vestibule
+  #   config.verify_ssl = false # Defaults to true
   # end
   #
   class << self

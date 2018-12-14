@@ -1,12 +1,13 @@
 module Atrium
   class Client
     DEVELOPMENT_URL = "https://vestibule.mx.com".freeze
-    attr_accessor :mx_api_key, :mx_client_id, :base_url
+    attr_accessor :mx_api_key, :mx_client_id, :base_url, :verify_ssl
 
-    def initialize(api_key = nil, client_id = nil, base_url = DEVELOPMENT_URL)
+    def initialize(api_key = nil, client_id = nil, base_url = DEVELOPMENT_URL, verify_ssl = true)
       @mx_api_key   = api_key
       @mx_client_id = client_id
       @base_url     = base_url
+      @verify_ssl   = verify_ssl
     end
 
     def make_request(method, endpoint, body = nil, headers = {})
@@ -20,7 +21,11 @@ module Atrium
     end
 
     def http_client
-      @http_client ||= ::HTTPClient.new
+      @http_client ||= begin
+                         client = ::HTTPClient.new
+                         client.ssl_config.verify_mode = OpenSSL::SSL::VERIFY_NONE unless @verify_ssl
+                         client
+                       end
     end
 
   private

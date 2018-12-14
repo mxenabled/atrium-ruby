@@ -20,7 +20,7 @@ module MX
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param body Optional config options for WebView (is_mobile_webview, current_institution_code, current_member_guid, update_credentials)
     # @param [Hash] opts the optional parameters
-    # @return [ConnectWidget]
+    # @return [ConnectWidgetResponseBody]
     def get_connect_widget(user_guid, body, opts = {})
       data, _status_code, _headers = get_connect_widget_with_http_info(user_guid, body, opts)
       data
@@ -34,7 +34,7 @@ module MX
         # @param user_guid The unique identifier for a &#x60;user&#x60;.
         # @param body Optional config options for WebView (is_mobile_webview, current_institution_code, current_member_guid, update_credentials)
         # @param [Hash] opts the optional parameters
-        # @return [Array<(ConnectWidget, Fixnum, Hash)>] ConnectWidget data, response status code and response headers
+        # @return [Array<(ConnectWidgetResponseBody, Fixnum, Hash)>] ConnectWidgetResponseBody data, response status code and response headers
     def get_connect_widget_with_http_info(user_guid, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ConnectWidgetApi.get_connect_widget ...'
@@ -72,7 +72,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'ConnectWidget')
+        :return_type => 'ConnectWidgetResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ConnectWidgetApi#get_connect_widget\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

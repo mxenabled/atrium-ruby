@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**member** | [**MemberCreateRequestBodyAttributes**](MemberCreateRequestBodyAttributes.md) |  | [optional] 
+**member** | [**MemberCreateRequest**](MemberCreateRequest.md) |  | [optional] 
 
 

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **list_account_transactions**
-> Transactions list_account_transactions(account_guid, user_guid, opts)
+> TransactionsResponseBody list_account_transactions(account_guid, user_guid, opts)
 
 List account transactions
 
@@ -64,10 +64,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Transactions**](Transactions.md)
+[**TransactionsResponseBody**](TransactionsResponseBody.md)
 
 # **list_user_accounts**
-> Accounts list_user_accounts(user_guid, opts)
+> AccountsResponseBody list_user_accounts(user_guid, opts)
 
 List accounts for a user
 
@@ -115,10 +115,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Accounts**](Accounts.md)
+[**AccountsResponseBody**](AccountsResponseBody.md)
 
 # **read_account**
-> Account read_account(account_guid, user_guid)
+> AccountResponseBody read_account(account_guid, user_guid)
 
 Read an account
 
@@ -163,10 +163,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Account**](Account.md)
+[**AccountResponseBody**](AccountResponseBody.md)
 
 # **read_account_by_member_guid**
-> Account read_account_by_member_guid(account_guid, member_guid, user_guid)
+> AccountResponseBody read_account_by_member_guid(account_guid, member_guid, user_guid)
 
 Read an account
 
@@ -214,5 +214,5 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Account**](Account.md)
+[**AccountResponseBody**](AccountResponseBody.md)
 

@@ -19,7 +19,7 @@ module MX
     # Use this endpoint to categorize, cleanse, and classify transactions. These transactions are not persisted or stored on the MX platform.
     # @param body User object to be created with optional parameters (amount, type) amd required parameters (description, identifier)
     # @param [Hash] opts the optional parameters
-    # @return [TransactionsCleanseAndCategorize]
+    # @return [TransactionsCleanseAndCategorizeResponseBody]
     def cleanse_and_categorize_transactions(body, opts = {})
       data, _status_code, _headers = cleanse_and_categorize_transactions_with_http_info(body, opts)
       data
@@ -33,7 +33,7 @@ module MX
     # @option opts [String] :from_date Filter transactions from this date.
     # @option opts [Integer] :records_per_page Specify records per page.
     # @option opts [String] :to_date Filter transactions to this date.
-    # @return [Transactions]
+    # @return [TransactionsResponseBody]
     def list_user_transactions(user_guid, opts = {})
       data, _status_code, _headers = list_user_transactions_with_http_info(user_guid, opts)
       data
@@ -44,7 +44,7 @@ module MX
     # @param transaction_guid The unique identifier for a &#x60;transaction&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Transaction]
+    # @return [TransactionResponseBody]
     def read_transaction(transaction_guid, user_guid, opts = {})
       data, _status_code, _headers = read_transaction_with_http_info(transaction_guid, user_guid, opts)
       data
@@ -57,7 +57,7 @@ module MX
     # Use this endpoint to categorize, cleanse, and classify transactions. These transactions are not persisted or stored on the MX platform.
         # @param body User object to be created with optional parameters (amount, type) amd required parameters (description, identifier)
         # @param [Hash] opts the optional parameters
-        # @return [Array<(TransactionsCleanseAndCategorize, Fixnum, Hash)>] TransactionsCleanseAndCategorize data, response status code and response headers
+        # @return [Array<(TransactionsCleanseAndCategorizeResponseBody, Fixnum, Hash)>] TransactionsCleanseAndCategorizeResponseBody data, response status code and response headers
     def cleanse_and_categorize_transactions_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TransactionsApi.cleanse_and_categorize_transactions ...'
@@ -91,7 +91,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'TransactionsCleanseAndCategorize')
+        :return_type => 'TransactionsCleanseAndCategorizeResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: TransactionsApi#cleanse_and_categorize_transactions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -106,7 +106,7 @@ module MX
         # @option opts [String] :from_date Filter transactions from this date.
         # @option opts [Integer] :records_per_page Specify records per page.
         # @option opts [String] :to_date Filter transactions to this date.
-        # @return [Array<(Transactions, Fixnum, Hash)>] Transactions data, response status code and response headers
+        # @return [Array<(TransactionsResponseBody, Fixnum, Hash)>] TransactionsResponseBody data, response status code and response headers
     def list_user_transactions_with_http_info(user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TransactionsApi.list_user_transactions ...'
@@ -142,7 +142,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Transactions')
+        :return_type => 'TransactionsResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: TransactionsApi#list_user_transactions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -154,7 +154,7 @@ module MX
         # @param transaction_guid The unique identifier for a &#x60;transaction&#x60;.
         # @param user_guid The unique identifier for a &#x60;user&#x60;.
         # @param [Hash] opts the optional parameters
-        # @return [Array<(Transaction, Fixnum, Hash)>] Transaction data, response status code and response headers
+        # @return [Array<(TransactionResponseBody, Fixnum, Hash)>] TransactionResponseBody data, response status code and response headers
     def read_transaction_with_http_info(transaction_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: TransactionsApi.read_transaction ...'
@@ -190,7 +190,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Transaction')
+        :return_type => 'TransactionResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: TransactionsApi#read_transaction\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

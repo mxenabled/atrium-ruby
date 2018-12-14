@@ -33,7 +33,7 @@ describe 'MembersApi' do
   # @param member_guid The unique identifier for a &#x60;member&#x60;.
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [Member]
+  # @return [MemberResponseBody]
   describe 'aggregate_member test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -46,7 +46,7 @@ describe 'MembersApi' do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param body Member object to be created with optional parameters (identifier and metadata) and required parameters (credentials and institution_code)
   # @param [Hash] opts the optional parameters
-  # @return [Member]
+  # @return [MemberResponseBody]
   describe 'create_member test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -74,7 +74,7 @@ describe 'MembersApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :page Specify current page.
   # @option opts [Integer] :records_per_page Specify records per page.
-  # @return [Accounts]
+  # @return [AccountsResponseBody]
   describe 'list_member_accounts test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -87,7 +87,7 @@ describe 'MembersApi' do
   # @param member_guid The unique identifier for a &#x60;member&#x60;.
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [Credentials]
+  # @return [CredentialsResponseBody]
   describe 'list_member_credentials test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -100,7 +100,7 @@ describe 'MembersApi' do
   # @param member_guid The unique identifier for a &#x60;member&#x60;.
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [Challenges]
+  # @return [ChallengesResponseBody]
   describe 'list_member_mfa_challenges test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -117,7 +117,7 @@ describe 'MembersApi' do
   # @option opts [String] :to_date Filter transactions to this date.
   # @option opts [Integer] :page Specify current page.
   # @option opts [Integer] :records_per_page Specify records per page.
-  # @return [Transactions]
+  # @return [TransactionsResponseBody]
   describe 'list_member_transactions test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -131,7 +131,7 @@ describe 'MembersApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :page Specify current page.
   # @option opts [Integer] :records_per_page Specify records per page.
-  # @return [Members]
+  # @return [MembersResponseBody]
   describe 'list_members test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -144,7 +144,7 @@ describe 'MembersApi' do
   # @param member_guid The unique identifier for a &#x60;member&#x60;.
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [Member]
+  # @return [MemberResponseBody]
   describe 'read_member test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -157,7 +157,7 @@ describe 'MembersApi' do
   # @param member_guid The unique identifier for a &#x60;member&#x60;.
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [MemberConnectionStatus]
+  # @return [MemberConnectionStatusResponseBody]
   describe 'read_member_status test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -171,7 +171,7 @@ describe 'MembersApi' do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param body Member object with MFA challenge answers
   # @param [Hash] opts the optional parameters
-  # @return [Member]
+  # @return [MemberResponseBody]
   describe 'resume_member test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -185,7 +185,7 @@ describe 'MembersApi' do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
   # @option opts [MemberUpdateRequestBody] :body Member object to be updated with optional parameters (credentials, identifier, metadata)
-  # @return [Member]
+  # @return [MemberResponseBody]
   describe 'update_member test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

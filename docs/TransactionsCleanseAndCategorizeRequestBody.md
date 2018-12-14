@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**transactions** | [**Array&lt;TransactionsCleanseAndCategorizeRequestBodyAttributes&gt;**](TransactionsCleanseAndCategorizeRequestBodyAttributes.md) |  | [optional] 
+**transactions** | [**Array&lt;TransactionCleanseAndCategorizeRequest&gt;**](TransactionCleanseAndCategorizeRequest.md) |  | [optional] 
 
 

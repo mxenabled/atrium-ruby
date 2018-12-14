@@ -10,19 +10,51 @@ require 'date'
 
 module MX
   class MemberConnectionStatus
-    attr_accessor :member
+    attr_accessor :aggregated_at
+
+    attr_accessor :challenges
+
+    attr_accessor :connection_status
+
+    attr_accessor :guid
+
+    attr_accessor :has_processed_accounts
+
+    attr_accessor :has_processed_transactions
+
+    attr_accessor :is_being_aggregated
+
+    attr_accessor :status
+
+    attr_accessor :successfully_aggregated_at
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'member' => :'member'
+        :'aggregated_at' => :'aggregated_at',
+        :'challenges' => :'challenges',
+        :'connection_status' => :'connection_status',
+        :'guid' => :'guid',
+        :'has_processed_accounts' => :'has_processed_accounts',
+        :'has_processed_transactions' => :'has_processed_transactions',
+        :'is_being_aggregated' => :'is_being_aggregated',
+        :'status' => :'status',
+        :'successfully_aggregated_at' => :'successfully_aggregated_at'
       }
     end
 
     # Attribute type mapping.
     def self.mx_types
       {
-        :'member' => :'MemberConnectionStatusAttributes'
+        :'aggregated_at' => :'String',
+        :'challenges' => :'Array<Challenge>',
+        :'connection_status' => :'String',
+        :'guid' => :'BOOLEAN',
+        :'has_processed_accounts' => :'BOOLEAN',
+        :'has_processed_transactions' => :'BOOLEAN',
+        :'is_being_aggregated' => :'BOOLEAN',
+        :'status' => :'String',
+        :'successfully_aggregated_at' => :'String'
       }
     end
 
@@ -34,8 +66,42 @@ module MX
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'member')
-        self.member = attributes[:'member']
+      if attributes.has_key?(:'aggregated_at')
+        self.aggregated_at = attributes[:'aggregated_at']
+      end
+
+      if attributes.has_key?(:'challenges')
+        if (value = attributes[:'challenges']).is_a?(Array)
+          self.challenges = value
+        end
+      end
+
+      if attributes.has_key?(:'connection_status')
+        self.connection_status = attributes[:'connection_status']
+      end
+
+      if attributes.has_key?(:'guid')
+        self.guid = attributes[:'guid']
+      end
+
+      if attributes.has_key?(:'has_processed_accounts')
+        self.has_processed_accounts = attributes[:'has_processed_accounts']
+      end
+
+      if attributes.has_key?(:'has_processed_transactions')
+        self.has_processed_transactions = attributes[:'has_processed_transactions']
+      end
+
+      if attributes.has_key?(:'is_being_aggregated')
+        self.is_being_aggregated = attributes[:'is_being_aggregated']
+      end
+
+      if attributes.has_key?(:'status')
+        self.status = attributes[:'status']
+      end
+
+      if attributes.has_key?(:'successfully_aggregated_at')
+        self.successfully_aggregated_at = attributes[:'successfully_aggregated_at']
       end
     end
 
@@ -57,7 +123,15 @@ module MX
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          member == o.member
+          aggregated_at == o.aggregated_at &&
+          challenges == o.challenges &&
+          connection_status == o.connection_status &&
+          guid == o.guid &&
+          has_processed_accounts == o.has_processed_accounts &&
+          has_processed_transactions == o.has_processed_transactions &&
+          is_being_aggregated == o.is_being_aggregated &&
+          status == o.status &&
+          successfully_aggregated_at == o.successfully_aggregated_at
     end
 
     # @see the `==` method
@@ -69,7 +143,7 @@ module MX
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [member].hash
+      [aggregated_at, challenges, connection_status, guid, has_processed_accounts, has_processed_transactions, is_being_aggregated, status, successfully_aggregated_at].hash
     end
 
     # Builds the object from hash

@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **cleanse_and_categorize_transactions**
-> TransactionsCleanseAndCategorize cleanse_and_categorize_transactions(body)
+> TransactionsCleanseAndCategorizeResponseBody cleanse_and_categorize_transactions(body)
 
 Categorize transactions
 
@@ -50,10 +50,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransactionsCleanseAndCategorize**](TransactionsCleanseAndCategorize.md)
+[**TransactionsCleanseAndCategorizeResponseBody**](TransactionsCleanseAndCategorizeResponseBody.md)
 
 # **list_user_transactions**
-> Transactions list_user_transactions(user_guid, opts)
+> TransactionsResponseBody list_user_transactions(user_guid, opts)
 
 List transactions for a user
 
@@ -105,10 +105,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Transactions**](Transactions.md)
+[**TransactionsResponseBody**](TransactionsResponseBody.md)
 
 # **read_transaction**
-> Transaction read_transaction(transaction_guid, user_guid)
+> TransactionResponseBody read_transaction(transaction_guid, user_guid)
 
 Read a transaction
 
@@ -153,5 +153,5 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Transaction**](Transaction.md)
+[**TransactionResponseBody**](TransactionResponseBody.md)
 

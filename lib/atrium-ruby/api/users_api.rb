@@ -19,7 +19,7 @@ module MX
     # Call this endpoint to create a new user. Atrium will respond with the newly-created user object if successful. This endpoint accepts several parameters: identifier, metadata, and is_disabled.<br> Disabling a user means that accounts and transactions associated with it will not be updated in the background by MX. It will also restrict access to that user's data until they are no longer disabled. Users who are disabled for the entirety of an Atrium billing period will not be factored into that month's bill. 
     # @param body User object to be created with optional parameters (identifier, is_disabled, metadata)
     # @param [Hash] opts the optional parameters
-    # @return [User]
+    # @return [UserResponseBody]
     def create_user(body, opts = {})
       data, _status_code, _headers = create_user_with_http_info(body, opts)
       data
@@ -40,7 +40,7 @@ module MX
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page Specify current page.
     # @option opts [Integer] :records_per_page Specify records per page.
-    # @return [Users]
+    # @return [UsersResponseBody]
     def list_users(opts = {})
       data, _status_code, _headers = list_users_with_http_info(opts)
       data
@@ -50,7 +50,7 @@ module MX
     # Use this endpoint to read the attributes of a specific user.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [User]
+    # @return [UserResponseBody]
     def read_user(user_guid, opts = {})
       data, _status_code, _headers = read_user_with_http_info(user_guid, opts)
       data
@@ -61,7 +61,7 @@ module MX
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
     # @option opts [UserUpdateRequestBody] :body User object to be updated with optional parameters (identifier, is_disabled, metadata)
-    # @return [User]
+    # @return [UserResponseBody]
     def update_user(user_guid, opts = {})
       data, _status_code, _headers = update_user_with_http_info(user_guid, opts)
       data
@@ -74,7 +74,7 @@ module MX
     # Call this endpoint to create a new user. Atrium will respond with the newly-created user object if successful. This endpoint accepts several parameters: identifier, metadata, and is_disabled.&lt;br&gt; Disabling a user means that accounts and transactions associated with it will not be updated in the background by MX. It will also restrict access to that user&#39;s data until they are no longer disabled. Users who are disabled for the entirety of an Atrium billing period will not be factored into that month&#39;s bill. 
         # @param body User object to be created with optional parameters (identifier, is_disabled, metadata)
         # @param [Hash] opts the optional parameters
-        # @return [Array<(User, Fixnum, Hash)>] User data, response status code and response headers
+        # @return [Array<(UserResponseBody, Fixnum, Hash)>] UserResponseBody data, response status code and response headers
     def create_user_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: UsersApi.create_user ...'
@@ -108,7 +108,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'User')
+        :return_type => 'UserResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: UsersApi#create_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -162,7 +162,7 @@ module MX
         # @param [Hash] opts the optional parameters
         # @option opts [Integer] :page Specify current page.
         # @option opts [Integer] :records_per_page Specify records per page.
-        # @return [Array<(Users, Fixnum, Hash)>] Users data, response status code and response headers
+        # @return [Array<(UsersResponseBody, Fixnum, Hash)>] UsersResponseBody data, response status code and response headers
     def list_users_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: UsersApi.list_users ...'
@@ -192,7 +192,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Users')
+        :return_type => 'UsersResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: UsersApi#list_users\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -203,7 +203,7 @@ module MX
     # Use this endpoint to read the attributes of a specific user.
         # @param user_guid The unique identifier for a &#x60;user&#x60;.
         # @param [Hash] opts the optional parameters
-        # @return [Array<(User, Fixnum, Hash)>] User data, response status code and response headers
+        # @return [Array<(UserResponseBody, Fixnum, Hash)>] UserResponseBody data, response status code and response headers
     def read_user_with_http_info(user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: UsersApi.read_user ...'
@@ -235,7 +235,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'User')
+        :return_type => 'UserResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: UsersApi#read_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -247,7 +247,7 @@ module MX
         # @param user_guid The unique identifier for a &#x60;user&#x60;.
         # @param [Hash] opts the optional parameters
         # @option opts [UserUpdateRequestBody] :body User object to be updated with optional parameters (identifier, is_disabled, metadata)
-        # @return [Array<(User, Fixnum, Hash)>] User data, response status code and response headers
+        # @return [Array<(UserResponseBody, Fixnum, Hash)>] UserResponseBody data, response status code and response headers
     def update_user_with_http_info(user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: UsersApi.update_user ...'
@@ -281,7 +281,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'User')
+        :return_type => 'UserResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: UsersApi#update_user\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

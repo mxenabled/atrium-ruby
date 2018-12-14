@@ -33,7 +33,7 @@ describe 'IdentityApi' do
   # @param member_guid The unique identifier for a &#x60;member&#x60;.
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [Member]
+  # @return [MemberResponseBody]
   describe 'identify_member test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -46,7 +46,7 @@ describe 'IdentityApi' do
   # @param member_guid The unique identifier for a &#x60;member&#x60;.
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [AccountOwners]
+  # @return [AccountOwnersResponseBody]
   describe 'list_account_owners test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

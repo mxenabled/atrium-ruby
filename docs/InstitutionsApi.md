@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **list_institutions**
-> Institutions list_institutions(opts)
+> InstitutionsResponseBody list_institutions(opts)
 
 List institutions
 
@@ -55,10 +55,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Institutions**](Institutions.md)
+[**InstitutionsResponseBody**](InstitutionsResponseBody.md)
 
 # **read_institution**
-> Institution read_institution(institution_code)
+> InstitutionResponseBody read_institution(institution_code)
 
 Read institution
 
@@ -100,10 +100,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Institution**](Institution.md)
+[**InstitutionResponseBody**](InstitutionResponseBody.md)
 
 # **read_institution_credentials**
-> Credentials read_institution_credentials(institution_code)
+> CredentialsResponseBody read_institution_credentials(institution_code)
 
 Read institution credentials
 
@@ -145,5 +145,5 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Credentials**](Credentials.md)
+[**CredentialsResponseBody**](CredentialsResponseBody.md)
 

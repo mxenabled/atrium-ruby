@@ -10,19 +10,43 @@ require 'date'
 
 module MX
   class Institution
-    attr_accessor :institution
+    attr_accessor :code
+
+    attr_accessor :medium_logo_url
+
+    attr_accessor :name
+
+    attr_accessor :small_logo_url
+
+    attr_accessor :supports_account_identification
+
+    attr_accessor :supports_account_verification
+
+    attr_accessor :url
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'institution' => :'institution'
+        :'code' => :'code',
+        :'medium_logo_url' => :'medium_logo_url',
+        :'name' => :'name',
+        :'small_logo_url' => :'small_logo_url',
+        :'supports_account_identification' => :'supports_account_identification',
+        :'supports_account_verification' => :'supports_account_verification',
+        :'url' => :'url'
       }
     end
 
     # Attribute type mapping.
     def self.mx_types
       {
-        :'institution' => :'InstitutionAttributes'
+        :'code' => :'String',
+        :'medium_logo_url' => :'String',
+        :'name' => :'String',
+        :'small_logo_url' => :'String',
+        :'supports_account_identification' => :'BOOLEAN',
+        :'supports_account_verification' => :'BOOLEAN',
+        :'url' => :'String'
       }
     end
 
@@ -34,8 +58,32 @@ module MX
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'institution')
-        self.institution = attributes[:'institution']
+      if attributes.has_key?(:'code')
+        self.code = attributes[:'code']
+      end
+
+      if attributes.has_key?(:'medium_logo_url')
+        self.medium_logo_url = attributes[:'medium_logo_url']
+      end
+
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.has_key?(:'small_logo_url')
+        self.small_logo_url = attributes[:'small_logo_url']
+      end
+
+      if attributes.has_key?(:'supports_account_identification')
+        self.supports_account_identification = attributes[:'supports_account_identification']
+      end
+
+      if attributes.has_key?(:'supports_account_verification')
+        self.supports_account_verification = attributes[:'supports_account_verification']
+      end
+
+      if attributes.has_key?(:'url')
+        self.url = attributes[:'url']
       end
     end
 
@@ -57,7 +105,13 @@ module MX
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          institution == o.institution
+          code == o.code &&
+          medium_logo_url == o.medium_logo_url &&
+          name == o.name &&
+          small_logo_url == o.small_logo_url &&
+          supports_account_identification == o.supports_account_identification &&
+          supports_account_verification == o.supports_account_verification &&
+          url == o.url
     end
 
     # @see the `==` method
@@ -69,7 +123,7 @@ module MX
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [institution].hash
+      [code, medium_logo_url, name, small_logo_url, supports_account_identification, supports_account_verification, url].hash
     end
 
     # Builds the object from hash

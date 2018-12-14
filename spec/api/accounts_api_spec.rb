@@ -37,7 +37,7 @@ describe 'AccountsApi' do
   # @option opts [String] :to_date Filter transactions to this date.
   # @option opts [Integer] :page Specify current page.
   # @option opts [Integer] :records_per_page Specify records per page.
-  # @return [Transactions]
+  # @return [TransactionsResponseBody]
   describe 'list_account_transactions test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -51,7 +51,7 @@ describe 'AccountsApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :page Specify current page.
   # @option opts [Integer] :records_per_page Specify records per page.
-  # @return [Accounts]
+  # @return [AccountsResponseBody]
   describe 'list_user_accounts test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -64,7 +64,7 @@ describe 'AccountsApi' do
   # @param account_guid The unique identifier for an &#x60;account&#x60;.
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [Account]
+  # @return [AccountResponseBody]
   describe 'read_account test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -78,7 +78,7 @@ describe 'AccountsApi' do
   # @param member_guid The unique identifier for a &#x60;member&#x60;.
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [Account]
+  # @return [AccountResponseBody]
   describe 'read_account_by_member_guid test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

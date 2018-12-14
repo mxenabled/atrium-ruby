@@ -20,7 +20,7 @@ module MX
     # @param member_guid The unique identifier for a &#x60;member&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Member]
+    # @return [MemberResponseBody]
     def identify_member(member_guid, user_guid, opts = {})
       data, _status_code, _headers = identify_member_with_http_info(member_guid, user_guid, opts)
       data
@@ -31,7 +31,7 @@ module MX
     # @param member_guid The unique identifier for a &#x60;member&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [AccountOwners]
+    # @return [AccountOwnersResponseBody]
     def list_account_owners(member_guid, user_guid, opts = {})
       data, _status_code, _headers = list_account_owners_with_http_info(member_guid, user_guid, opts)
       data
@@ -45,7 +45,7 @@ module MX
         # @param member_guid The unique identifier for a &#x60;member&#x60;.
         # @param user_guid The unique identifier for a &#x60;user&#x60;.
         # @param [Hash] opts the optional parameters
-        # @return [Array<(Member, Fixnum, Hash)>] Member data, response status code and response headers
+        # @return [Array<(MemberResponseBody, Fixnum, Hash)>] MemberResponseBody data, response status code and response headers
     def identify_member_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IdentityApi.identify_member ...'
@@ -83,7 +83,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Member')
+        :return_type => 'MemberResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IdentityApi#identify_member\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -95,7 +95,7 @@ module MX
         # @param member_guid The unique identifier for a &#x60;member&#x60;.
         # @param user_guid The unique identifier for a &#x60;user&#x60;.
         # @param [Hash] opts the optional parameters
-        # @return [Array<(AccountOwners, Fixnum, Hash)>] AccountOwners data, response status code and response headers
+        # @return [Array<(AccountOwnersResponseBody, Fixnum, Hash)>] AccountOwnersResponseBody data, response status code and response headers
     def list_account_owners_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IdentityApi.list_account_owners ...'
@@ -131,7 +131,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'AccountOwners')
+        :return_type => 'AccountOwnersResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: IdentityApi#list_account_owners\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

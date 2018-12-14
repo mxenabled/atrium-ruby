@@ -32,7 +32,7 @@ describe 'UsersApi' do
   # Call this endpoint to create a new user. Atrium will respond with the newly-created user object if successful. This endpoint accepts several parameters: identifier, metadata, and is_disabled.&lt;br&gt; Disabling a user means that accounts and transactions associated with it will not be updated in the background by MX. It will also restrict access to that user&#39;s data until they are no longer disabled. Users who are disabled for the entirety of an Atrium billing period will not be factored into that month&#39;s bill. 
   # @param body User object to be created with optional parameters (identifier, is_disabled, metadata)
   # @param [Hash] opts the optional parameters
-  # @return [User]
+  # @return [UserResponseBody]
   describe 'create_user test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -57,7 +57,7 @@ describe 'UsersApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [Integer] :page Specify current page.
   # @option opts [Integer] :records_per_page Specify records per page.
-  # @return [Users]
+  # @return [UsersResponseBody]
   describe 'list_users test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -69,7 +69,7 @@ describe 'UsersApi' do
   # Use this endpoint to read the attributes of a specific user.
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [User]
+  # @return [UserResponseBody]
   describe 'read_user test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -82,7 +82,7 @@ describe 'UsersApi' do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
   # @option opts [UserUpdateRequestBody] :body User object to be updated with optional parameters (identifier, is_disabled, metadata)
-  # @return [User]
+  # @return [UserResponseBody]
   describe 'update_user test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

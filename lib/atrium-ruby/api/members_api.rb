@@ -20,7 +20,7 @@ module MX
     # @param member_guid The unique identifier for a &#x60;member&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Member]
+    # @return [MemberResponseBody]
     def aggregate_member(member_guid, user_guid, opts = {})
       data, _status_code, _headers = aggregate_member_with_http_info(member_guid, user_guid, opts)
       data
@@ -31,7 +31,7 @@ module MX
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param body Member object to be created with optional parameters (identifier and metadata) and required parameters (credentials and institution_code)
     # @param [Hash] opts the optional parameters
-    # @return [Member]
+    # @return [MemberResponseBody]
     def create_member(user_guid, body, opts = {})
       data, _status_code, _headers = create_member_with_http_info(user_guid, body, opts)
       data
@@ -55,7 +55,7 @@ module MX
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page Specify current page.
     # @option opts [Integer] :records_per_page Specify records per page.
-    # @return [Accounts]
+    # @return [AccountsResponseBody]
     def list_member_accounts(member_guid, user_guid, opts = {})
       data, _status_code, _headers = list_member_accounts_with_http_info(member_guid, user_guid, opts)
       data
@@ -66,7 +66,7 @@ module MX
     # @param member_guid The unique identifier for a &#x60;member&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Credentials]
+    # @return [CredentialsResponseBody]
     def list_member_credentials(member_guid, user_guid, opts = {})
       data, _status_code, _headers = list_member_credentials_with_http_info(member_guid, user_guid, opts)
       data
@@ -77,7 +77,7 @@ module MX
     # @param member_guid The unique identifier for a &#x60;member&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Challenges]
+    # @return [ChallengesResponseBody]
     def list_member_mfa_challenges(member_guid, user_guid, opts = {})
       data, _status_code, _headers = list_member_mfa_challenges_with_http_info(member_guid, user_guid, opts)
       data
@@ -92,7 +92,7 @@ module MX
     # @option opts [String] :to_date Filter transactions to this date.
     # @option opts [Integer] :page Specify current page.
     # @option opts [Integer] :records_per_page Specify records per page.
-    # @return [Transactions]
+    # @return [TransactionsResponseBody]
     def list_member_transactions(member_guid, user_guid, opts = {})
       data, _status_code, _headers = list_member_transactions_with_http_info(member_guid, user_guid, opts)
       data
@@ -104,7 +104,7 @@ module MX
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page Specify current page.
     # @option opts [Integer] :records_per_page Specify records per page.
-    # @return [Members]
+    # @return [MembersResponseBody]
     def list_members(user_guid, opts = {})
       data, _status_code, _headers = list_members_with_http_info(user_guid, opts)
       data
@@ -115,7 +115,7 @@ module MX
     # @param member_guid The unique identifier for a &#x60;member&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Member]
+    # @return [MemberResponseBody]
     def read_member(member_guid, user_guid, opts = {})
       data, _status_code, _headers = read_member_with_http_info(member_guid, user_guid, opts)
       data
@@ -126,7 +126,7 @@ module MX
     # @param member_guid The unique identifier for a &#x60;member&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [MemberConnectionStatus]
+    # @return [MemberConnectionStatusResponseBody]
     def read_member_status(member_guid, user_guid, opts = {})
       data, _status_code, _headers = read_member_status_with_http_info(member_guid, user_guid, opts)
       data
@@ -138,7 +138,7 @@ module MX
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param body Member object with MFA challenge answers
     # @param [Hash] opts the optional parameters
-    # @return [Member]
+    # @return [MemberResponseBody]
     def resume_member(member_guid, user_guid, body, opts = {})
       data, _status_code, _headers = resume_member_with_http_info(member_guid, user_guid, body, opts)
       data
@@ -150,7 +150,7 @@ module MX
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
     # @option opts [MemberUpdateRequestBody] :body Member object to be updated with optional parameters (credentials, identifier, metadata)
-    # @return [Member]
+    # @return [MemberResponseBody]
     def update_member(member_guid, user_guid, opts = {})
       data, _status_code, _headers = update_member_with_http_info(member_guid, user_guid, opts)
       data
@@ -164,7 +164,7 @@ module MX
         # @param member_guid The unique identifier for a &#x60;member&#x60;.
         # @param user_guid The unique identifier for a &#x60;user&#x60;.
         # @param [Hash] opts the optional parameters
-        # @return [Array<(Member, Fixnum, Hash)>] Member data, response status code and response headers
+        # @return [Array<(MemberResponseBody, Fixnum, Hash)>] MemberResponseBody data, response status code and response headers
     def aggregate_member_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.aggregate_member ...'
@@ -200,7 +200,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Member')
+        :return_type => 'MemberResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MembersApi#aggregate_member\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -212,7 +212,7 @@ module MX
         # @param user_guid The unique identifier for a &#x60;user&#x60;.
         # @param body Member object to be created with optional parameters (identifier and metadata) and required parameters (credentials and institution_code)
         # @param [Hash] opts the optional parameters
-        # @return [Array<(Member, Fixnum, Hash)>] Member data, response status code and response headers
+        # @return [Array<(MemberResponseBody, Fixnum, Hash)>] MemberResponseBody data, response status code and response headers
     def create_member_with_http_info(user_guid, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.create_member ...'
@@ -250,7 +250,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Member')
+        :return_type => 'MemberResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MembersApi#create_member\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -311,7 +311,7 @@ module MX
         # @param [Hash] opts the optional parameters
         # @option opts [Integer] :page Specify current page.
         # @option opts [Integer] :records_per_page Specify records per page.
-        # @return [Array<(Accounts, Fixnum, Hash)>] Accounts data, response status code and response headers
+        # @return [Array<(AccountsResponseBody, Fixnum, Hash)>] AccountsResponseBody data, response status code and response headers
     def list_member_accounts_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.list_member_accounts ...'
@@ -349,7 +349,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Accounts')
+        :return_type => 'AccountsResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MembersApi#list_member_accounts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -361,7 +361,7 @@ module MX
         # @param member_guid The unique identifier for a &#x60;member&#x60;.
         # @param user_guid The unique identifier for a &#x60;user&#x60;.
         # @param [Hash] opts the optional parameters
-        # @return [Array<(Credentials, Fixnum, Hash)>] Credentials data, response status code and response headers
+        # @return [Array<(CredentialsResponseBody, Fixnum, Hash)>] CredentialsResponseBody data, response status code and response headers
     def list_member_credentials_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.list_member_credentials ...'
@@ -397,7 +397,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Credentials')
+        :return_type => 'CredentialsResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MembersApi#list_member_credentials\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -409,7 +409,7 @@ module MX
         # @param member_guid The unique identifier for a &#x60;member&#x60;.
         # @param user_guid The unique identifier for a &#x60;user&#x60;.
         # @param [Hash] opts the optional parameters
-        # @return [Array<(Challenges, Fixnum, Hash)>] Challenges data, response status code and response headers
+        # @return [Array<(ChallengesResponseBody, Fixnum, Hash)>] ChallengesResponseBody data, response status code and response headers
     def list_member_mfa_challenges_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.list_member_mfa_challenges ...'
@@ -445,7 +445,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Challenges')
+        :return_type => 'ChallengesResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MembersApi#list_member_mfa_challenges\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -461,7 +461,7 @@ module MX
         # @option opts [String] :to_date Filter transactions to this date.
         # @option opts [Integer] :page Specify current page.
         # @option opts [Integer] :records_per_page Specify records per page.
-        # @return [Array<(Transactions, Fixnum, Hash)>] Transactions data, response status code and response headers
+        # @return [Array<(TransactionsResponseBody, Fixnum, Hash)>] TransactionsResponseBody data, response status code and response headers
     def list_member_transactions_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.list_member_transactions ...'
@@ -501,7 +501,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Transactions')
+        :return_type => 'TransactionsResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MembersApi#list_member_transactions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -514,7 +514,7 @@ module MX
         # @param [Hash] opts the optional parameters
         # @option opts [Integer] :page Specify current page.
         # @option opts [Integer] :records_per_page Specify records per page.
-        # @return [Array<(Members, Fixnum, Hash)>] Members data, response status code and response headers
+        # @return [Array<(MembersResponseBody, Fixnum, Hash)>] MembersResponseBody data, response status code and response headers
     def list_members_with_http_info(user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.list_members ...'
@@ -548,7 +548,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Members')
+        :return_type => 'MembersResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MembersApi#list_members\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -560,7 +560,7 @@ module MX
         # @param member_guid The unique identifier for a &#x60;member&#x60;.
         # @param user_guid The unique identifier for a &#x60;user&#x60;.
         # @param [Hash] opts the optional parameters
-        # @return [Array<(Member, Fixnum, Hash)>] Member data, response status code and response headers
+        # @return [Array<(MemberResponseBody, Fixnum, Hash)>] MemberResponseBody data, response status code and response headers
     def read_member_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.read_member ...'
@@ -596,7 +596,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Member')
+        :return_type => 'MemberResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MembersApi#read_member\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -608,7 +608,7 @@ module MX
         # @param member_guid The unique identifier for a &#x60;member&#x60;.
         # @param user_guid The unique identifier for a &#x60;user&#x60;.
         # @param [Hash] opts the optional parameters
-        # @return [Array<(MemberConnectionStatus, Fixnum, Hash)>] MemberConnectionStatus data, response status code and response headers
+        # @return [Array<(MemberConnectionStatusResponseBody, Fixnum, Hash)>] MemberConnectionStatusResponseBody data, response status code and response headers
     def read_member_status_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.read_member_status ...'
@@ -644,7 +644,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'MemberConnectionStatus')
+        :return_type => 'MemberConnectionStatusResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MembersApi#read_member_status\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -657,7 +657,7 @@ module MX
         # @param user_guid The unique identifier for a &#x60;user&#x60;.
         # @param body Member object with MFA challenge answers
         # @param [Hash] opts the optional parameters
-        # @return [Array<(Member, Fixnum, Hash)>] Member data, response status code and response headers
+        # @return [Array<(MemberResponseBody, Fixnum, Hash)>] MemberResponseBody data, response status code and response headers
     def resume_member_with_http_info(member_guid, user_guid, body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.resume_member ...'
@@ -699,7 +699,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Member')
+        :return_type => 'MemberResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MembersApi#resume_member\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -712,7 +712,7 @@ module MX
         # @param user_guid The unique identifier for a &#x60;user&#x60;.
         # @param [Hash] opts the optional parameters
         # @option opts [MemberUpdateRequestBody] :body Member object to be updated with optional parameters (credentials, identifier, metadata)
-        # @return [Array<(Member, Fixnum, Hash)>] Member data, response status code and response headers
+        # @return [Array<(MemberResponseBody, Fixnum, Hash)>] MemberResponseBody data, response status code and response headers
     def update_member_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MembersApi.update_member ...'
@@ -750,7 +750,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Member')
+        :return_type => 'MemberResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MembersApi#update_member\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

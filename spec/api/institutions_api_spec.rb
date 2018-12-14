@@ -34,7 +34,7 @@ describe 'InstitutionsApi' do
   # @option opts [String] :name This will list only institutions in which the appended string appears.
   # @option opts [Integer] :page Specify current page.
   # @option opts [Integer] :records_per_page Specify records per page.
-  # @return [Institutions]
+  # @return [InstitutionsResponseBody]
   describe 'list_institutions test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -46,7 +46,7 @@ describe 'InstitutionsApi' do
   # This endpoint allows you to see information for a specific institution.
   # @param institution_code The institution_code of the institution.
   # @param [Hash] opts the optional parameters
-  # @return [Institution]
+  # @return [InstitutionResponseBody]
   describe 'read_institution test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -58,7 +58,7 @@ describe 'InstitutionsApi' do
   # Use this endpoint to see which credentials will be needed to create a member for a specific institution.
   # @param institution_code The institution_code of the institution.
   # @param [Hash] opts the optional parameters
-  # @return [Credentials]
+  # @return [CredentialsResponseBody]
   describe 'read_institution_credentials test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

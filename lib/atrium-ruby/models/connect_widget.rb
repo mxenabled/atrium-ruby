@@ -10,19 +10,23 @@ require 'date'
 
 module MX
   class ConnectWidget
-    attr_accessor :user
+    attr_accessor :connect_widget_url
+
+    attr_accessor :guid
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'user' => :'user'
+        :'connect_widget_url' => :'connect_widget_url',
+        :'guid' => :'guid'
       }
     end
 
     # Attribute type mapping.
     def self.mx_types
       {
-        :'user' => :'ConnectWidgetAttributes'
+        :'connect_widget_url' => :'String',
+        :'guid' => :'String'
       }
     end
 
@@ -34,8 +38,12 @@ module MX
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'user')
-        self.user = attributes[:'user']
+      if attributes.has_key?(:'connect_widget_url')
+        self.connect_widget_url = attributes[:'connect_widget_url']
+      end
+
+      if attributes.has_key?(:'guid')
+        self.guid = attributes[:'guid']
       end
     end
 
@@ -57,7 +65,8 @@ module MX
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          user == o.user
+          connect_widget_url == o.connect_widget_url &&
+          guid == o.guid
     end
 
     # @see the `==` method
@@ -69,7 +78,7 @@ module MX
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [user].hash
+      [connect_widget_url, guid].hash
     end
 
     # Builds the object from hash

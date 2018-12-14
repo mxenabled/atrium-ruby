@@ -10,19 +10,59 @@ require 'date'
 
 module MX
   class Member
-    attr_accessor :member
+    attr_accessor :aggregated_at
+
+    attr_accessor :connection_status
+
+    attr_accessor :guid
+
+    attr_accessor :identifier
+
+    attr_accessor :institution_code
+
+    attr_accessor :is_being_aggregated
+
+    attr_accessor :metadata
+
+    attr_accessor :name
+
+    attr_accessor :status
+
+    attr_accessor :successfully_aggregated_at
+
+    attr_accessor :user_guid
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'member' => :'member'
+        :'aggregated_at' => :'aggregated_at',
+        :'connection_status' => :'connection_status',
+        :'guid' => :'guid',
+        :'identifier' => :'identifier',
+        :'institution_code' => :'institution_code',
+        :'is_being_aggregated' => :'is_being_aggregated',
+        :'metadata' => :'metadata',
+        :'name' => :'name',
+        :'status' => :'status',
+        :'successfully_aggregated_at' => :'successfully_aggregated_at',
+        :'user_guid' => :'user_guid'
       }
     end
 
     # Attribute type mapping.
     def self.mx_types
       {
-        :'member' => :'MemberAttributes'
+        :'aggregated_at' => :'String',
+        :'connection_status' => :'String',
+        :'guid' => :'BOOLEAN',
+        :'identifier' => :'String',
+        :'institution_code' => :'String',
+        :'is_being_aggregated' => :'BOOLEAN',
+        :'metadata' => :'String',
+        :'name' => :'String',
+        :'status' => :'String',
+        :'successfully_aggregated_at' => :'String',
+        :'user_guid' => :'String'
       }
     end
 
@@ -34,8 +74,48 @@ module MX
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'member')
-        self.member = attributes[:'member']
+      if attributes.has_key?(:'aggregated_at')
+        self.aggregated_at = attributes[:'aggregated_at']
+      end
+
+      if attributes.has_key?(:'connection_status')
+        self.connection_status = attributes[:'connection_status']
+      end
+
+      if attributes.has_key?(:'guid')
+        self.guid = attributes[:'guid']
+      end
+
+      if attributes.has_key?(:'identifier')
+        self.identifier = attributes[:'identifier']
+      end
+
+      if attributes.has_key?(:'institution_code')
+        self.institution_code = attributes[:'institution_code']
+      end
+
+      if attributes.has_key?(:'is_being_aggregated')
+        self.is_being_aggregated = attributes[:'is_being_aggregated']
+      end
+
+      if attributes.has_key?(:'metadata')
+        self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.has_key?(:'name')
+        self.name = attributes[:'name']
+      end
+
+      if attributes.has_key?(:'status')
+        self.status = attributes[:'status']
+      end
+
+      if attributes.has_key?(:'successfully_aggregated_at')
+        self.successfully_aggregated_at = attributes[:'successfully_aggregated_at']
+      end
+
+      if attributes.has_key?(:'user_guid')
+        self.user_guid = attributes[:'user_guid']
       end
     end
 
@@ -57,7 +137,17 @@ module MX
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          member == o.member
+          aggregated_at == o.aggregated_at &&
+          connection_status == o.connection_status &&
+          guid == o.guid &&
+          identifier == o.identifier &&
+          institution_code == o.institution_code &&
+          is_being_aggregated == o.is_being_aggregated &&
+          metadata == o.metadata &&
+          name == o.name &&
+          status == o.status &&
+          successfully_aggregated_at == o.successfully_aggregated_at &&
+          user_guid == o.user_guid
     end
 
     # @see the `==` method
@@ -69,7 +159,7 @@ module MX
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [member].hash
+      [aggregated_at, connection_status, guid, identifier, institution_code, is_being_aggregated, metadata, name, status, successfully_aggregated_at, user_guid].hash
     end
 
     # Builds the object from hash

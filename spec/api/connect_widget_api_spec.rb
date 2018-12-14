@@ -33,7 +33,7 @@ describe 'ConnectWidgetApi' do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param body Optional config options for WebView (is_mobile_webview, current_institution_code, current_member_guid, update_credentials)
   # @param [Hash] opts the optional parameters
-  # @return [ConnectWidget]
+  # @return [ConnectWidgetResponseBody]
   describe 'get_connect_widget test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

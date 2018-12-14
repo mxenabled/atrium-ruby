@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **list_account_numbers**
-> AccountNumbers list_account_numbers(member_guid, user_guid)
+> AccountNumbersResponseBody list_account_numbers(member_guid, user_guid)
 
 Read account numbers
 
@@ -53,10 +53,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountNumbers**](AccountNumbers.md)
+[**AccountNumbersResponseBody**](AccountNumbersResponseBody.md)
 
 # **list_account_numbers_by_account**
-> AccountNumbers list_account_numbers_by_account(account_guid, user_guid)
+> AccountNumbersResponseBody list_account_numbers_by_account(account_guid, user_guid)
 
 Read account numbers by account GUID
 
@@ -101,10 +101,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccountNumbers**](AccountNumbers.md)
+[**AccountNumbersResponseBody**](AccountNumbersResponseBody.md)
 
 # **verify_member**
-> Member verify_member(member_guid, user_guid)
+> MemberResponseBody verify_member(member_guid, user_guid)
 
 Verify
 
@@ -149,5 +149,5 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Member**](Member.md)
+[**MemberResponseBody**](MemberResponseBody.md)
 

@@ -3,6 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**user** | [**UserAttributes**](UserAttributes.md) |  | [optional] 
+**guid** | **String** |  | [optional] 
+**identifier** | **String** |  | [optional] 
+**is_disabled** | **BOOLEAN** |  | [optional] 
+**metadata** | **String** |  | [optional] 
 
 

@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 
 # **aggregate_member**
-> Member aggregate_member(member_guid, user_guid)
+> MemberResponseBody aggregate_member(member_guid, user_guid)
 
 Aggregate member
 
@@ -62,10 +62,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Member**](Member.md)
+[**MemberResponseBody**](MemberResponseBody.md)
 
 # **create_member**
-> Member create_member(user_guidbody)
+> MemberResponseBody create_member(user_guidbody)
 
 Create member
 
@@ -110,7 +110,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Member**](Member.md)
+[**MemberResponseBody**](MemberResponseBody.md)
 
 # **delete_member**
 > delete_member(member_guid, user_guid)
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 nil (empty response body)
 
 # **list_member_accounts**
-> Accounts list_member_accounts(member_guid, user_guid, opts)
+> AccountsResponseBody list_member_accounts(member_guid, user_guid, opts)
 
 List member accounts
 
@@ -211,10 +211,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Accounts**](Accounts.md)
+[**AccountsResponseBody**](AccountsResponseBody.md)
 
 # **list_member_credentials**
-> Credentials list_member_credentials(member_guid, user_guid)
+> CredentialsResponseBody list_member_credentials(member_guid, user_guid)
 
 List member credentials
 
@@ -259,10 +259,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Credentials**](Credentials.md)
+[**CredentialsResponseBody**](CredentialsResponseBody.md)
 
 # **list_member_mfa_challenges**
-> Challenges list_member_mfa_challenges(member_guid, user_guid)
+> ChallengesResponseBody list_member_mfa_challenges(member_guid, user_guid)
 
 List member MFA challenges
 
@@ -307,10 +307,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Challenges**](Challenges.md)
+[**ChallengesResponseBody**](ChallengesResponseBody.md)
 
 # **list_member_transactions**
-> Transactions list_member_transactions(member_guid, user_guid, opts)
+> TransactionsResponseBody list_member_transactions(member_guid, user_guid, opts)
 
 List member transactions
 
@@ -365,10 +365,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Transactions**](Transactions.md)
+[**TransactionsResponseBody**](TransactionsResponseBody.md)
 
 # **list_members**
-> Members list_members(user_guid, opts)
+> MembersResponseBody list_members(user_guid, opts)
 
 List members
 
@@ -416,10 +416,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Members**](Members.md)
+[**MembersResponseBody**](MembersResponseBody.md)
 
 # **read_member**
-> Member read_member(member_guid, user_guid)
+> MemberResponseBody read_member(member_guid, user_guid)
 
 Read member
 
@@ -464,10 +464,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Member**](Member.md)
+[**MemberResponseBody**](MemberResponseBody.md)
 
 # **read_member_status**
-> MemberConnectionStatus read_member_status(member_guid, user_guid)
+> MemberConnectionStatusResponseBody read_member_status(member_guid, user_guid)
 
 Read member connection status
 
@@ -512,10 +512,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MemberConnectionStatus**](MemberConnectionStatus.md)
+[**MemberConnectionStatusResponseBody**](MemberConnectionStatusResponseBody.md)
 
 # **resume_member**
-> Member resume_member(member_guid, user_guidbody)
+> MemberResponseBody resume_member(member_guid, user_guidbody)
 
 Resume aggregation from MFA
 
@@ -563,10 +563,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Member**](Member.md)
+[**MemberResponseBody**](MemberResponseBody.md)
 
 # **update_member**
-> Member update_member(member_guid, user_guid, opts)
+> MemberResponseBody update_member(member_guid, user_guid, opts)
 
 Update member
 
@@ -615,5 +615,5 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Member**](Member.md)
+[**MemberResponseBody**](MemberResponseBody.md)
 

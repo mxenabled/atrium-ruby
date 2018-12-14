@@ -22,7 +22,7 @@ module MX
     # Attribute type mapping.
     def self.mx_types
       {
-        :'member' => :'MemberUpdateRequestBodyAttributes'
+        :'member' => :'MemberUpdateRequest'
       }
     end
 

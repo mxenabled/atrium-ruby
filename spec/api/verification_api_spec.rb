@@ -33,7 +33,7 @@ describe 'VerificationApi' do
   # @param member_guid The unique identifier for a &#x60;member&#x60;.
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [AccountNumbers]
+  # @return [AccountNumbersResponseBody]
   describe 'list_account_numbers test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -46,7 +46,7 @@ describe 'VerificationApi' do
   # @param account_guid The unique identifier for an &#x60;account&#x60;.
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [AccountNumbers]
+  # @return [AccountNumbersResponseBody]
   describe 'list_account_numbers_by_account test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -59,7 +59,7 @@ describe 'VerificationApi' do
   # @param member_guid The unique identifier for a &#x60;member&#x60;.
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [Member]
+  # @return [MemberResponseBody]
   describe 'verify_member test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

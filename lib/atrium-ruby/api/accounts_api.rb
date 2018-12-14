@@ -24,7 +24,7 @@ module MX
     # @option opts [String] :to_date Filter transactions to this date.
     # @option opts [Integer] :page Specify current page.
     # @option opts [Integer] :records_per_page Specify records per page.
-    # @return [Transactions]
+    # @return [TransactionsResponseBody]
     def list_account_transactions(account_guid, user_guid, opts = {})
       data, _status_code, _headers = list_account_transactions_with_http_info(account_guid, user_guid, opts)
       data
@@ -36,7 +36,7 @@ module MX
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :page Specify current page.
     # @option opts [Integer] :records_per_page Specify records per page.
-    # @return [Accounts]
+    # @return [AccountsResponseBody]
     def list_user_accounts(user_guid, opts = {})
       data, _status_code, _headers = list_user_accounts_with_http_info(user_guid, opts)
       data
@@ -47,7 +47,7 @@ module MX
     # @param account_guid The unique identifier for an &#x60;account&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Account]
+    # @return [AccountResponseBody]
     def read_account(account_guid, user_guid, opts = {})
       data, _status_code, _headers = read_account_with_http_info(account_guid, user_guid, opts)
       data
@@ -59,7 +59,7 @@ module MX
     # @param member_guid The unique identifier for a &#x60;member&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Account]
+    # @return [AccountResponseBody]
     def read_account_by_member_guid(account_guid, member_guid, user_guid, opts = {})
       data, _status_code, _headers = read_account_by_member_guid_with_http_info(account_guid, member_guid, user_guid, opts)
       data
@@ -77,7 +77,7 @@ module MX
         # @option opts [String] :to_date Filter transactions to this date.
         # @option opts [Integer] :page Specify current page.
         # @option opts [Integer] :records_per_page Specify records per page.
-        # @return [Array<(Transactions, Fixnum, Hash)>] Transactions data, response status code and response headers
+        # @return [Array<(TransactionsResponseBody, Fixnum, Hash)>] TransactionsResponseBody data, response status code and response headers
     def list_account_transactions_with_http_info(account_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AccountsApi.list_account_transactions ...'
@@ -117,7 +117,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Transactions')
+        :return_type => 'TransactionsResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AccountsApi#list_account_transactions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -130,7 +130,7 @@ module MX
         # @param [Hash] opts the optional parameters
         # @option opts [Integer] :page Specify current page.
         # @option opts [Integer] :records_per_page Specify records per page.
-        # @return [Array<(Accounts, Fixnum, Hash)>] Accounts data, response status code and response headers
+        # @return [Array<(AccountsResponseBody, Fixnum, Hash)>] AccountsResponseBody data, response status code and response headers
     def list_user_accounts_with_http_info(user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AccountsApi.list_user_accounts ...'
@@ -164,7 +164,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Accounts')
+        :return_type => 'AccountsResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AccountsApi#list_user_accounts\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -176,7 +176,7 @@ module MX
         # @param account_guid The unique identifier for an &#x60;account&#x60;.
         # @param user_guid The unique identifier for a &#x60;user&#x60;.
         # @param [Hash] opts the optional parameters
-        # @return [Array<(Account, Fixnum, Hash)>] Account data, response status code and response headers
+        # @return [Array<(AccountResponseBody, Fixnum, Hash)>] AccountResponseBody data, response status code and response headers
     def read_account_with_http_info(account_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AccountsApi.read_account ...'
@@ -212,7 +212,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Account')
+        :return_type => 'AccountResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AccountsApi#read_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -225,7 +225,7 @@ module MX
         # @param member_guid The unique identifier for a &#x60;member&#x60;.
         # @param user_guid The unique identifier for a &#x60;user&#x60;.
         # @param [Hash] opts the optional parameters
-        # @return [Array<(Account, Fixnum, Hash)>] Account data, response status code and response headers
+        # @return [Array<(AccountResponseBody, Fixnum, Hash)>] AccountResponseBody data, response status code and response headers
     def read_account_by_member_guid_with_http_info(account_guid, member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AccountsApi.read_account_by_member_guid ...'
@@ -265,7 +265,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Account')
+        :return_type => 'AccountResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: AccountsApi#read_account_by_member_guid\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

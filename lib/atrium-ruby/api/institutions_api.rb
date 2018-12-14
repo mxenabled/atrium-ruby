@@ -21,7 +21,7 @@ module MX
     # @option opts [String] :name This will list only institutions in which the appended string appears.
     # @option opts [Integer] :page Specify current page.
     # @option opts [Integer] :records_per_page Specify records per page.
-    # @return [Institutions]
+    # @return [InstitutionsResponseBody]
     def list_institutions(opts = {})
       data, _status_code, _headers = list_institutions_with_http_info(opts)
       data
@@ -31,7 +31,7 @@ module MX
     # This endpoint allows you to see information for a specific institution.
     # @param institution_code The institution_code of the institution.
     # @param [Hash] opts the optional parameters
-    # @return [Institution]
+    # @return [InstitutionResponseBody]
     def read_institution(institution_code, opts = {})
       data, _status_code, _headers = read_institution_with_http_info(institution_code, opts)
       data
@@ -41,7 +41,7 @@ module MX
     # Use this endpoint to see which credentials will be needed to create a member for a specific institution.
     # @param institution_code The institution_code of the institution.
     # @param [Hash] opts the optional parameters
-    # @return [Credentials]
+    # @return [CredentialsResponseBody]
     def read_institution_credentials(institution_code, opts = {})
       data, _status_code, _headers = read_institution_credentials_with_http_info(institution_code, opts)
       data
@@ -56,7 +56,7 @@ module MX
         # @option opts [String] :name This will list only institutions in which the appended string appears.
         # @option opts [Integer] :page Specify current page.
         # @option opts [Integer] :records_per_page Specify records per page.
-        # @return [Array<(Institutions, Fixnum, Hash)>] Institutions data, response status code and response headers
+        # @return [Array<(InstitutionsResponseBody, Fixnum, Hash)>] InstitutionsResponseBody data, response status code and response headers
     def list_institutions_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InstitutionsApi.list_institutions ...'
@@ -87,7 +87,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Institutions')
+        :return_type => 'InstitutionsResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: InstitutionsApi#list_institutions\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -98,7 +98,7 @@ module MX
     # This endpoint allows you to see information for a specific institution.
         # @param institution_code The institution_code of the institution.
         # @param [Hash] opts the optional parameters
-        # @return [Array<(Institution, Fixnum, Hash)>] Institution data, response status code and response headers
+        # @return [Array<(InstitutionResponseBody, Fixnum, Hash)>] InstitutionResponseBody data, response status code and response headers
     def read_institution_with_http_info(institution_code, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InstitutionsApi.read_institution ...'
@@ -130,7 +130,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Institution')
+        :return_type => 'InstitutionResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: InstitutionsApi#read_institution\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -141,7 +141,7 @@ module MX
     # Use this endpoint to see which credentials will be needed to create a member for a specific institution.
         # @param institution_code The institution_code of the institution.
         # @param [Hash] opts the optional parameters
-        # @return [Array<(Credentials, Fixnum, Hash)>] Credentials data, response status code and response headers
+        # @return [Array<(CredentialsResponseBody, Fixnum, Hash)>] CredentialsResponseBody data, response status code and response headers
     def read_institution_credentials_with_http_info(institution_code, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InstitutionsApi.read_institution_credentials ...'
@@ -173,7 +173,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Credentials')
+        :return_type => 'CredentialsResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: InstitutionsApi#read_institution_credentials\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

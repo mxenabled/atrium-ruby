@@ -10,19 +10,31 @@ require 'date'
 
 module MX
   class User
-    attr_accessor :user
+    attr_accessor :guid
+
+    attr_accessor :identifier
+
+    attr_accessor :is_disabled
+
+    attr_accessor :metadata
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'user' => :'user'
+        :'guid' => :'guid',
+        :'identifier' => :'identifier',
+        :'is_disabled' => :'is_disabled',
+        :'metadata' => :'metadata'
       }
     end
 
     # Attribute type mapping.
     def self.mx_types
       {
-        :'user' => :'UserAttributes'
+        :'guid' => :'String',
+        :'identifier' => :'String',
+        :'is_disabled' => :'BOOLEAN',
+        :'metadata' => :'String'
       }
     end
 
@@ -34,8 +46,20 @@ module MX
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'user')
-        self.user = attributes[:'user']
+      if attributes.has_key?(:'guid')
+        self.guid = attributes[:'guid']
+      end
+
+      if attributes.has_key?(:'identifier')
+        self.identifier = attributes[:'identifier']
+      end
+
+      if attributes.has_key?(:'is_disabled')
+        self.is_disabled = attributes[:'is_disabled']
+      end
+
+      if attributes.has_key?(:'metadata')
+        self.metadata = attributes[:'metadata']
       end
     end
 
@@ -57,7 +81,10 @@ module MX
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          user == o.user
+          guid == o.guid &&
+          identifier == o.identifier &&
+          is_disabled == o.is_disabled &&
+          metadata == o.metadata
     end
 
     # @see the `==` method
@@ -69,7 +96,7 @@ module MX
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [user].hash
+      [guid, identifier, is_disabled, metadata].hash
     end
 
     # Builds the object from hash

@@ -20,7 +20,7 @@ module MX
     # @param member_guid The unique identifier for a &#x60;member&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [AccountNumbers]
+    # @return [AccountNumbersResponseBody]
     def list_account_numbers(member_guid, user_guid, opts = {})
       data, _status_code, _headers = list_account_numbers_with_http_info(member_guid, user_guid, opts)
       data
@@ -31,7 +31,7 @@ module MX
     # @param account_guid The unique identifier for an &#x60;account&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [AccountNumbers]
+    # @return [AccountNumbersResponseBody]
     def list_account_numbers_by_account(account_guid, user_guid, opts = {})
       data, _status_code, _headers = list_account_numbers_by_account_with_http_info(account_guid, user_guid, opts)
       data
@@ -42,7 +42,7 @@ module MX
     # @param member_guid The unique identifier for a &#x60;member&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
-    # @return [Member]
+    # @return [MemberResponseBody]
     def verify_member(member_guid, user_guid, opts = {})
       data, _status_code, _headers = verify_member_with_http_info(member_guid, user_guid, opts)
       data
@@ -56,7 +56,7 @@ module MX
         # @param member_guid The unique identifier for a &#x60;member&#x60;.
         # @param user_guid The unique identifier for a &#x60;user&#x60;.
         # @param [Hash] opts the optional parameters
-        # @return [Array<(AccountNumbers, Fixnum, Hash)>] AccountNumbers data, response status code and response headers
+        # @return [Array<(AccountNumbersResponseBody, Fixnum, Hash)>] AccountNumbersResponseBody data, response status code and response headers
     def list_account_numbers_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VerificationApi.list_account_numbers ...'
@@ -92,7 +92,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'AccountNumbers')
+        :return_type => 'AccountNumbersResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: VerificationApi#list_account_numbers\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -104,7 +104,7 @@ module MX
         # @param account_guid The unique identifier for an &#x60;account&#x60;.
         # @param user_guid The unique identifier for a &#x60;user&#x60;.
         # @param [Hash] opts the optional parameters
-        # @return [Array<(AccountNumbers, Fixnum, Hash)>] AccountNumbers data, response status code and response headers
+        # @return [Array<(AccountNumbersResponseBody, Fixnum, Hash)>] AccountNumbersResponseBody data, response status code and response headers
     def list_account_numbers_by_account_with_http_info(account_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VerificationApi.list_account_numbers_by_account ...'
@@ -140,7 +140,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'AccountNumbers')
+        :return_type => 'AccountNumbersResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: VerificationApi#list_account_numbers_by_account\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
@@ -152,7 +152,7 @@ module MX
         # @param member_guid The unique identifier for a &#x60;member&#x60;.
         # @param user_guid The unique identifier for a &#x60;user&#x60;.
         # @param [Hash] opts the optional parameters
-        # @return [Array<(Member, Fixnum, Hash)>] Member data, response status code and response headers
+        # @return [Array<(MemberResponseBody, Fixnum, Hash)>] MemberResponseBody data, response status code and response headers
     def verify_member_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VerificationApi.verify_member ...'
@@ -190,7 +190,7 @@ module MX
         :form_params => form_params,
         :body => post_body,
         :auth_names => auth_names,
-        :return_type => 'Member')
+        :return_type => 'MemberResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: VerificationApi#verify_member\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end

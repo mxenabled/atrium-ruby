@@ -32,7 +32,7 @@ describe 'TransactionsApi' do
   # Use this endpoint to categorize, cleanse, and classify transactions. These transactions are not persisted or stored on the MX platform.
   # @param body User object to be created with optional parameters (amount, type) amd required parameters (description, identifier)
   # @param [Hash] opts the optional parameters
-  # @return [TransactionsCleanseAndCategorize]
+  # @return [TransactionsCleanseAndCategorizeResponseBody]
   describe 'cleanse_and_categorize_transactions test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -48,7 +48,7 @@ describe 'TransactionsApi' do
   # @option opts [String] :from_date Filter transactions from this date.
   # @option opts [Integer] :records_per_page Specify records per page.
   # @option opts [String] :to_date Filter transactions to this date.
-  # @return [Transactions]
+  # @return [TransactionsResponseBody]
   describe 'list_user_transactions test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -61,7 +61,7 @@ describe 'TransactionsApi' do
   # @param transaction_guid The unique identifier for a &#x60;transaction&#x60;.
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
-  # @return [Transaction]
+  # @return [TransactionResponseBody]
   describe 'read_transaction test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 
 # **create_user**
-> User create_user(body)
+> UserResponseBody create_user(body)
 
 Create user
 
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**UserResponseBody**](UserResponseBody.md)
 
 # **delete_user**
 > delete_user(user_guid)
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 nil (empty response body)
 
 # **list_users**
-> Users list_users(opts)
+> UsersResponseBody list_users(opts)
 
 List users
 
@@ -144,10 +144,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Users**](Users.md)
+[**UsersResponseBody**](UsersResponseBody.md)
 
 # **read_user**
-> User read_user(user_guid)
+> UserResponseBody read_user(user_guid)
 
 Read user
 
@@ -189,10 +189,10 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**UserResponseBody**](UserResponseBody.md)
 
 # **update_user**
-> User update_user(user_guid, opts)
+> UserResponseBody update_user(user_guid, opts)
 
 Update user
 
@@ -238,5 +238,5 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**User**](User.md)
+[**UserResponseBody**](UserResponseBody.md)
 

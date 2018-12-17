@@ -6,7 +6,7 @@
 
 =end
 
-require "date"
+require 'date'
 
 module Atrium
   class Institution
@@ -58,31 +58,31 @@ module Atrium
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'code')
+      if attributes.has_key?(:'code')
         self.code = attributes[:'code']
       end
 
-      if attributes.key?(:'medium_logo_url')
+      if attributes.has_key?(:'medium_logo_url')
         self.medium_logo_url = attributes[:'medium_logo_url']
       end
 
-      if attributes.key?(:'name')
+      if attributes.has_key?(:'name')
         self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'small_logo_url')
+      if attributes.has_key?(:'small_logo_url')
         self.small_logo_url = attributes[:'small_logo_url']
       end
 
-      if attributes.key?(:'supports_account_identification')
+      if attributes.has_key?(:'supports_account_identification')
         self.supports_account_identification = attributes[:'supports_account_identification']
       end
 
-      if attributes.key?(:'supports_account_verification')
+      if attributes.has_key?(:'supports_account_verification')
         self.supports_account_verification = attributes[:'supports_account_verification']
       end
 
-      if attributes.key?(:'url')
+      if attributes.has_key?(:'url')
         self.url = attributes[:'url']
       end
     end
@@ -90,7 +90,7 @@ module Atrium
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
-      invalid_properties = []
+      invalid_properties = Array.new
       invalid_properties
     end
 
@@ -102,22 +102,22 @@ module Atrium
 
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
-    def ==(other)
-      return true if self.equal?(other)
-      self.class == other.class &&
-        code == other.code &&
-        medium_logo_url == other.medium_logo_url &&
-        name == other.name &&
-        small_logo_url == other.small_logo_url &&
-        supports_account_identification == other.supports_account_identification &&
-        supports_account_verification == other.supports_account_verification &&
-        url == other.url
+    def ==(o)
+      return true if self.equal?(o)
+      self.class == o.class &&
+          code == o.code &&
+          medium_logo_url == o.medium_logo_url &&
+          name == o.name &&
+          small_logo_url == o.small_logo_url &&
+          supports_account_identification == o.supports_account_identification &&
+          supports_account_verification == o.supports_account_verification &&
+          url == o.url
     end
 
     # @see the `==` method
     # @param [Object] Object to be compared
-    def eql?(other)
-      self == other
+    def eql?(o)
+      self == o
     end
 
     # Calculates hash code according to all attributes.
@@ -136,7 +136,7 @@ module Atrium
           # check to ensure the input is an array given that the the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
-            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize(Regexp.last_match(1), v) })
+            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
           end
         elsif !attributes[self.class.attribute_map[key]].nil?
           self.send("#{key}=", _deserialize(type, attributes[self.class.attribute_map[key]]))
@@ -229,7 +229,5 @@ module Atrium
         value
       end
     end
-
   end
-
 end

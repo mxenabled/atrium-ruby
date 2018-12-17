@@ -11,18 +11,18 @@ module Atrium
 
     def initialize(api_key, client_id)
       Atrium.configure do |config|
-        config.api_key["MX-API-Key"] = api_key
-        config.api_key["MX-Client-ID"] = client_id
+        config.api_key['MX-API-Key'] = api_key
+        config.api_key['MX-Client-ID'] = client_id
       end
       
-      @accounts = Atrium::AccountsApi.new();
-      @connectWidget = Atrium::ConnectWidgetApi.new();
-      @identity = Atrium::IdentityApi.new();
-      @institutions = Atrium::InstitutionsApi.new();
-      @members = Atrium::MembersApi.new();
-      @transactions = Atrium::TransactionsApi.new();
-      @users = Atrium::UsersApi.new();
-      @verification = Atrium::VerificationApi.new();
+      @accounts = Atrium::AccountsApi.new()
+      @connectWidget = Atrium::ConnectWidgetApi.new()
+      @identity = Atrium::IdentityApi.new()
+      @institutions = Atrium::InstitutionsApi.new()
+      @members = Atrium::MembersApi.new()
+      @transactions = Atrium::TransactionsApi.new()
+      @users = Atrium::UsersApi.new()
+      @verification = Atrium::VerificationApi.new()
     end
   end
 end

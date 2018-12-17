@@ -42,10 +42,10 @@ module Atrium
 
     # Identify
     # The identify endpoint begins an identification process for an already-existing member.
-        # @param member_guid The unique identifier for a &#x60;member&#x60;.
-        # @param user_guid The unique identifier for a &#x60;user&#x60;.
-        # @param [Hash] opts the optional parameters
-        # @return [Array<(MemberResponseBody, Fixnum, Hash)>] MemberResponseBody data, response status code and response headers
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(MemberResponseBody, Fixnum, Hash)>] MemberResponseBody data, response status code and response headers
     def identify_member_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IdentityApi.identify_member ...'
@@ -89,13 +89,12 @@ module Atrium
       end
       return data, status_code, headers
     end
-
     # List member account owners
     # This endpoint returns an array with information about every account associated with a particular member.
-        # @param member_guid The unique identifier for a &#x60;member&#x60;.
-        # @param user_guid The unique identifier for a &#x60;user&#x60;.
-        # @param [Hash] opts the optional parameters
-        # @return [Array<(AccountOwnersResponseBody, Fixnum, Hash)>] AccountOwnersResponseBody data, response status code and response headers
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AccountOwnersResponseBody, Fixnum, Hash)>] AccountOwnersResponseBody data, response status code and response headers
     def list_account_owners_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: IdentityApi.list_account_owners ...'
@@ -137,6 +136,5 @@ module Atrium
       end
       return data, status_code, headers
     end
-
   end
 end

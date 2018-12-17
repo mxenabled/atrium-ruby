@@ -6,7 +6,7 @@
 
 =end
 
-require "date"
+require 'date'
 
 module Atrium
   class TransactionCleanseAndCategorizeResponse
@@ -82,55 +82,55 @@ module Atrium
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'amount')
+      if attributes.has_key?(:'amount')
         self.amount = attributes[:'amount']
       end
 
-      if attributes.key?(:'category')
+      if attributes.has_key?(:'category')
         self.category = attributes[:'category']
       end
 
-      if attributes.key?(:'description')
+      if attributes.has_key?(:'description')
         self.description = attributes[:'description']
       end
 
-      if attributes.key?(:'identifier')
+      if attributes.has_key?(:'identifier')
         self.identifier = attributes[:'identifier']
       end
 
-      if attributes.key?(:'type')
+      if attributes.has_key?(:'type')
         self.type = attributes[:'type']
       end
 
-      if attributes.key?(:'is_bill_pay')
+      if attributes.has_key?(:'is_bill_pay')
         self.is_bill_pay = attributes[:'is_bill_pay']
       end
 
-      if attributes.key?(:'is_direct_deposit')
+      if attributes.has_key?(:'is_direct_deposit')
         self.is_direct_deposit = attributes[:'is_direct_deposit']
       end
 
-      if attributes.key?(:'is_expense')
+      if attributes.has_key?(:'is_expense')
         self.is_expense = attributes[:'is_expense']
       end
 
-      if attributes.key?(:'is_fee')
+      if attributes.has_key?(:'is_fee')
         self.is_fee = attributes[:'is_fee']
       end
 
-      if attributes.key?(:'is_income')
+      if attributes.has_key?(:'is_income')
         self.is_income = attributes[:'is_income']
       end
 
-      if attributes.key?(:'is_international')
+      if attributes.has_key?(:'is_international')
         self.is_international = attributes[:'is_international']
       end
 
-      if attributes.key?(:'is_overdraft_fee')
+      if attributes.has_key?(:'is_overdraft_fee')
         self.is_overdraft_fee = attributes[:'is_overdraft_fee']
       end
 
-      if attributes.key?(:'is_payroll_advance')
+      if attributes.has_key?(:'is_payroll_advance')
         self.is_payroll_advance = attributes[:'is_payroll_advance']
       end
     end
@@ -138,7 +138,7 @@ module Atrium
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
-      invalid_properties = []
+      invalid_properties = Array.new
       invalid_properties
     end
 
@@ -150,28 +150,28 @@ module Atrium
 
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
-    def ==(other)
-      return true if self.equal?(other)
-      self.class == other.class &&
-        amount == other.amount &&
-        category == other.category &&
-        description == other.description &&
-        identifier == other.identifier &&
-        type == other.type &&
-        is_bill_pay == other.is_bill_pay &&
-        is_direct_deposit == other.is_direct_deposit &&
-        is_expense == other.is_expense &&
-        is_fee == other.is_fee &&
-        is_income == other.is_income &&
-        is_international == other.is_international &&
-        is_overdraft_fee == other.is_overdraft_fee &&
-        is_payroll_advance == other.is_payroll_advance
+    def ==(o)
+      return true if self.equal?(o)
+      self.class == o.class &&
+          amount == o.amount &&
+          category == o.category &&
+          description == o.description &&
+          identifier == o.identifier &&
+          type == o.type &&
+          is_bill_pay == o.is_bill_pay &&
+          is_direct_deposit == o.is_direct_deposit &&
+          is_expense == o.is_expense &&
+          is_fee == o.is_fee &&
+          is_income == o.is_income &&
+          is_international == o.is_international &&
+          is_overdraft_fee == o.is_overdraft_fee &&
+          is_payroll_advance == o.is_payroll_advance
     end
 
     # @see the `==` method
     # @param [Object] Object to be compared
-    def eql?(other)
-      self == other
+    def eql?(o)
+      self == o
     end
 
     # Calculates hash code according to all attributes.
@@ -190,7 +190,7 @@ module Atrium
           # check to ensure the input is an array given that the the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
-            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize(Regexp.last_match(1), v) })
+            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
           end
         elsif !attributes[self.class.attribute_map[key]].nil?
           self.send("#{key}=", _deserialize(type, attributes[self.class.attribute_map[key]]))
@@ -283,7 +283,5 @@ module Atrium
         value
       end
     end
-
   end
-
 end

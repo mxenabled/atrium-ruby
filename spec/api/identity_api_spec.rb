@@ -6,12 +6,12 @@
 
 =end
 
-require "spec_helper"
-require "json"
+require 'spec_helper'
+require 'json'
 
 # Unit tests for Atrium::IdentityApi
 # Please update as you see appropriate
-describe "IdentityApi" do
+describe 'IdentityApi' do
   before do
     # run before each test
     @instance = Atrium::IdentityApi.new
@@ -21,8 +21,8 @@ describe "IdentityApi" do
     # run after each test
   end
 
-  describe "test an instance of IdentityApi" do
-    it "should create an instance of IdentityApi" do
+  describe 'test an instance of IdentityApi' do
+    it 'should create an instance of IdentityApi' do
       expect(@instance).to be_instance_of(Atrium::IdentityApi)
     end
   end
@@ -34,8 +34,8 @@ describe "IdentityApi" do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
   # @return [MemberResponseBody]
-  describe "identify_member test" do
-    it "should work" do
+  describe 'identify_member test' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -47,8 +47,8 @@ describe "IdentityApi" do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
   # @return [AccountOwnersResponseBody]
-  describe "list_account_owners test" do
-    it "should work" do
+  describe 'list_account_owners test' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end

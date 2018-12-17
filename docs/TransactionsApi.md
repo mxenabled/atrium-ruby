@@ -17,7 +17,7 @@ Use this endpoint to categorize, cleanse, and classify transactions. These trans
 ### Example
 ```ruby
 # load the gem
-require "atrium-ruby"
+require 'atrium-ruby'
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
@@ -52,7 +52,7 @@ Use this endpoint to get all transactions that belong to a specific user, across
 ### Example
 ```ruby
 # load the gem
-require "atrium-ruby"
+require 'atrium-ruby'
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
@@ -97,7 +97,7 @@ This endpoint allows you to view information about a specific transaction that b
 ### Example
 ```ruby
 # load the gem
-require "atrium-ruby"
+require 'atrium-ruby'
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 

@@ -6,12 +6,12 @@
 
 =end
 
-require "date"
-require "json"
-require "logger"
-require "tempfile"
-require "typhoeus"
-require "uri"
+require 'date'
+require 'json'
+require 'logger'
+require 'tempfile'
+require 'typhoeus'
+require 'uri'
 
 module Atrium
   class ApiClient
@@ -29,8 +29,8 @@ module Atrium
       @config = config
       @user_agent = "MX-Codegen/#{VERSION}/ruby"
       @default_headers = {
-        "Content-Type" => "application/json",
-        "User-Agent" => @user_agent
+        'Content-Type' => 'application/json',
+        'User-Agent' => @user_agent
       }
     end
 
@@ -52,7 +52,7 @@ module Atrium
 
       unless response.success?
         if response.timed_out?
-          fail ApiError.new("Connection timed out")
+          fail ApiError.new('Connection timed out')
         elsif response.code == 0
           # Errors from libcurl will be made visible here
           fail ApiError.new(:code => 0,
@@ -120,7 +120,7 @@ module Atrium
       end
 
       request = Typhoeus::Request.new(url, req_opts)
-      download_file(request) if opts[:return_type] == "File"
+      download_file(request) if opts[:return_type] == 'File'
       request
     end
 
@@ -133,7 +133,7 @@ module Atrium
     # @param [String] mime MIME
     # @return [Boolean] True if the MIME is application/json
     def json_mime?(mime)
-      (mime == "*/*") || !(mime =~ /Application\/.*json(?!p)(;.*)?/i).nil?
+      (mime == '*/*') || !(mime =~ /Application\/.*json(?!p)(;.*)?/i).nil?
     end
 
     # Deserialize the response to the given return type.
@@ -145,15 +145,15 @@ module Atrium
 
       # handle file downloading - return the File instance processed in request callbacks
       # note that response body is empty when the file is written in chunks in request on_body callback
-      return @tempfile if return_type == "File"
+      return @tempfile if return_type == 'File'
 
       return nil if body.nil? || body.empty?
 
       # return response body directly for String return type
-      return body if return_type == "String"
+      return body if return_type == 'String'
 
       # ensuring a default content type
-      content_type = response.headers["Content-Type"] || "application/json"
+      content_type = response.headers['Content-Type'] || 'application/json'
 
       fail "Content-Type is not supported: #{content_type}" unless json_mime?(content_type)
 
@@ -177,21 +177,21 @@ module Atrium
     def convert_to_type(data, return_type)
       return nil if data.nil?
       case return_type
-      when "String"
+      when 'String'
         data.to_s
-      when "Integer"
+      when 'Integer'
         data.to_i
-      when "Float"
+      when 'Float'
         data.to_f
-      when "BOOLEAN"
+      when 'BOOLEAN'
         data == true
-      when "DateTime"
+      when 'DateTime'
         # parse date time (expecting ISO 8601 format)
         DateTime.parse data
-      when "Date"
+      when 'Date'
         # parse date time (expecting ISO 8601 format)
         Date.parse data
-      when "Object"
+      when 'Object'
         # generic object (usually a Hash), return directly
         data
       when /\AArray<(.+)>\z/
@@ -223,14 +223,14 @@ module Atrium
       tempfile = nil
       encoding = nil
       request.on_headers do |response|
-        content_disposition = response.headers["Content-Disposition"]
+        content_disposition = response.headers['Content-Disposition']
         if content_disposition && content_disposition =~ /filename=/i
-          filename = content_disposition[/filename=[""]?([^""\s]+)[""]?/, 1]
+          filename = content_disposition[/filename=['"]?([^'"\s]+)['"]?/, 1]
           prefix = sanitize_filename(filename)
         else
-          prefix = "download-"
+          prefix = 'download-'
         end
-        prefix = prefix + "-" unless prefix.end_with?("-")
+        prefix = prefix + '-' unless prefix.end_with?('-')
         encoding = response.body.encoding
         tempfile = Tempfile.open(prefix, @config.temp_folder_path, encoding: encoding)
         @tempfile = tempfile
@@ -242,7 +242,7 @@ module Atrium
       request.on_complete do |response|
         tempfile.close
         @config.logger.info "Temp file written to #{tempfile.path}, please copy the file to a proper folder "\
-                            "with e.g. `FileUtils.cp(tempfile.path, "/new/file/path")` otherwise the temp file "\
+                            "with e.g. `FileUtils.cp(tempfile.path, '/new/file/path')` otherwise the temp file "\
                             "will be deleted automatically with GC. It's also recommended to delete the temp file "\
                             "explicitly with `tempfile.delete`"
       end
@@ -254,12 +254,12 @@ module Atrium
     # @param [String] filename the filename to be sanitized
     # @return [String] the sanitized filename
     def sanitize_filename(filename)
-      filename.gsub(/.*[\/\\]/, "")
+      filename.gsub(/.*[\/\\]/, '')
     end
 
     def build_request_url(path)
       # Add leading and trailing slashes to path
-      path = "/#{path}".gsub(/\/+/, "/")
+      path = "/#{path}".gsub(/\/+/, '/')
       URI.encode(@config.base_url + path)
     end
 
@@ -271,8 +271,8 @@ module Atrium
     # @return [String] HTTP body data in the form of string
     def build_request_body(header_params, form_params, body)
       # http form
-      if header_params["Content-Type"] == "application/x-www-form-urlencoded" ||
-          header_params["Content-Type"] == "multipart/form-data"
+      if header_params['Content-Type'] == 'application/x-www-form-urlencoded' ||
+          header_params['Content-Type'] == 'multipart/form-data'
         data = {}
         form_params.each do |key, value|
           case value
@@ -301,9 +301,9 @@ module Atrium
         auth_setting = @config.auth_settings[auth_name]
         next unless auth_setting
         case auth_setting[:in]
-        when "header" then header_params[auth_setting[:key]] = auth_setting[:value]
-        when "query"  then query_params[auth_setting[:key]] = auth_setting[:value]
-        else fail ArgumentError, "Authentication token must be in `query` of `header`"
+        when 'header' then header_params[auth_setting[:key]] = auth_setting[:value]
+        when 'query'  then query_params[auth_setting[:key]] = auth_setting[:value]
+        else fail ArgumentError, 'Authentication token must be in `query` of `header`'
         end
       end
     end
@@ -312,7 +312,7 @@ module Atrium
     #
     def user_agent=(user_agent)
       @user_agent = user_agent
-      @default_headers["User-Agent"] = @user_agent
+      @default_headers['User-Agent'] = @user_agent
     end
 
     # Return Accept header based on an array of accepts provided.
@@ -322,7 +322,7 @@ module Atrium
       return nil if accepts.nil? || accepts.empty?
       # use JSON when present, otherwise use all of the provided
       json_accept = accepts.find { |s| json_mime?(s) }
-      json_accept || accepts.join(",")
+      json_accept || accepts.join(',')
     end
 
     # Return Content-Type header based on an array of content types provided.
@@ -330,7 +330,7 @@ module Atrium
     # @return [String] the Content-Type header  (e.g. application/json)
     def select_header_content_type(content_types)
       # use application/json by default
-      return "application/json" if content_types.nil? || content_types.empty?
+      return 'application/json' if content_types.nil? || content_types.empty?
       # use JSON when present, otherwise use the first one
       json_content_type = content_types.find { |s| json_mime?(s) }
       json_content_type || content_types.first
@@ -366,13 +366,13 @@ module Atrium
     def build_collection_param(param, collection_format)
       case collection_format
       when :csv
-        param.join(",")
+        param.join(',')
       when :ssv
-        param.join(" ")
+        param.join(' ')
       when :tsv
         param.join("\t")
       when :pipes
-        param.join("|")
+        param.join('|')
       when :multi
         # return the array directly as typhoeus will handle it as expected
         param

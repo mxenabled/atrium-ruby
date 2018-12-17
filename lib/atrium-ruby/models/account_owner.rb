@@ -6,7 +6,7 @@
 
 =end
 
-require "date"
+require 'date'
 
 module Atrium
   class AccountOwner
@@ -74,47 +74,47 @@ module Atrium
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'account_guid')
+      if attributes.has_key?(:'account_guid')
         self.account_guid = attributes[:'account_guid']
       end
 
-      if attributes.key?(:'address')
+      if attributes.has_key?(:'address')
         self.address = attributes[:'address']
       end
 
-      if attributes.key?(:'city')
+      if attributes.has_key?(:'city')
         self.city = attributes[:'city']
       end
 
-      if attributes.key?(:'country')
+      if attributes.has_key?(:'country')
         self.country = attributes[:'country']
       end
 
-      if attributes.key?(:'email')
+      if attributes.has_key?(:'email')
         self.email = attributes[:'email']
       end
 
-      if attributes.key?(:'guid')
+      if attributes.has_key?(:'guid')
         self.guid = attributes[:'guid']
       end
 
-      if attributes.key?(:'member_guid')
+      if attributes.has_key?(:'member_guid')
         self.member_guid = attributes[:'member_guid']
       end
 
-      if attributes.key?(:'owner_name')
+      if attributes.has_key?(:'owner_name')
         self.owner_name = attributes[:'owner_name']
       end
 
-      if attributes.key?(:'postal_code')
+      if attributes.has_key?(:'postal_code')
         self.postal_code = attributes[:'postal_code']
       end
 
-      if attributes.key?(:'state')
+      if attributes.has_key?(:'state')
         self.state = attributes[:'state']
       end
 
-      if attributes.key?(:'user_guid')
+      if attributes.has_key?(:'user_guid')
         self.user_guid = attributes[:'user_guid']
       end
     end
@@ -122,7 +122,7 @@ module Atrium
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
-      invalid_properties = []
+      invalid_properties = Array.new
       invalid_properties
     end
 
@@ -134,26 +134,26 @@ module Atrium
 
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
-    def ==(other)
-      return true if self.equal?(other)
-      self.class == other.class &&
-        account_guid == other.account_guid &&
-        address == other.address &&
-        city == other.city &&
-        country == other.country &&
-        email == other.email &&
-        guid == other.guid &&
-        member_guid == other.member_guid &&
-        owner_name == other.owner_name &&
-        postal_code == other.postal_code &&
-        state == other.state &&
-        user_guid == other.user_guid
+    def ==(o)
+      return true if self.equal?(o)
+      self.class == o.class &&
+          account_guid == o.account_guid &&
+          address == o.address &&
+          city == o.city &&
+          country == o.country &&
+          email == o.email &&
+          guid == o.guid &&
+          member_guid == o.member_guid &&
+          owner_name == o.owner_name &&
+          postal_code == o.postal_code &&
+          state == o.state &&
+          user_guid == o.user_guid
     end
 
     # @see the `==` method
     # @param [Object] Object to be compared
-    def eql?(other)
-      self == other
+    def eql?(o)
+      self == o
     end
 
     # Calculates hash code according to all attributes.
@@ -172,7 +172,7 @@ module Atrium
           # check to ensure the input is an array given that the the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
-            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize(Regexp.last_match(1), v) })
+            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
           end
         elsif !attributes[self.class.attribute_map[key]].nil?
           self.send("#{key}=", _deserialize(type, attributes[self.class.attribute_map[key]]))
@@ -265,7 +265,5 @@ module Atrium
         value
       end
     end
-
   end
-
 end

@@ -53,10 +53,10 @@ module Atrium
 
     # Read account numbers
     # Use this endpoint to check whether account and routing numbers are available for accounts associated with a particular member. It returns the account_numbers object, which contains account and routing number data for each account associated with the member.
-        # @param member_guid The unique identifier for a &#x60;member&#x60;.
-        # @param user_guid The unique identifier for a &#x60;user&#x60;.
-        # @param [Hash] opts the optional parameters
-        # @return [Array<(AccountNumbersResponseBody, Fixnum, Hash)>] AccountNumbersResponseBody data, response status code and response headers
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AccountNumbersResponseBody, Fixnum, Hash)>] AccountNumbersResponseBody data, response status code and response headers
     def list_account_numbers_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VerificationApi.list_account_numbers ...'
@@ -98,13 +98,12 @@ module Atrium
       end
       return data, status_code, headers
     end
-
     # Read account numbers by account GUID
     # Use this endpoint to check whether account and routing numbers are available for a specific account. It returns the account_numbers object, which contains account and routing number data.
-        # @param account_guid The unique identifier for an &#x60;account&#x60;.
-        # @param user_guid The unique identifier for a &#x60;user&#x60;.
-        # @param [Hash] opts the optional parameters
-        # @return [Array<(AccountNumbersResponseBody, Fixnum, Hash)>] AccountNumbersResponseBody data, response status code and response headers
+    # @param account_guid The unique identifier for an &#x60;account&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(AccountNumbersResponseBody, Fixnum, Hash)>] AccountNumbersResponseBody data, response status code and response headers
     def list_account_numbers_by_account_with_http_info(account_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VerificationApi.list_account_numbers_by_account ...'
@@ -146,13 +145,12 @@ module Atrium
       end
       return data, status_code, headers
     end
-
     # Verify
     # The verify endpoint begins a verification process for a member.
-        # @param member_guid The unique identifier for a &#x60;member&#x60;.
-        # @param user_guid The unique identifier for a &#x60;user&#x60;.
-        # @param [Hash] opts the optional parameters
-        # @return [Array<(MemberResponseBody, Fixnum, Hash)>] MemberResponseBody data, response status code and response headers
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(MemberResponseBody, Fixnum, Hash)>] MemberResponseBody data, response status code and response headers
     def verify_member_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: VerificationApi.verify_member ...'
@@ -196,6 +194,5 @@ module Atrium
       end
       return data, status_code, headers
     end
-
   end
 end

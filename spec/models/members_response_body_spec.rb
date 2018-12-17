@@ -6,13 +6,13 @@
 
 =end
 
-require "spec_helper"
-require "json"
-require "date"
+require 'spec_helper'
+require 'json'
+require 'date'
 
 # Unit tests for Atrium::MembersResponseBody
 # Please update as you see appropriate
-describe "MembersResponseBody" do
+describe 'MembersResponseBody' do
   before do
     # run before each test
     @instance = Atrium::MembersResponseBody.new
@@ -22,19 +22,19 @@ describe "MembersResponseBody" do
     # run after each test
   end
 
-  describe "test an instance of MembersResponseBody" do
-    it "should create an instance of MembersResponseBody" do
+  describe 'test an instance of MembersResponseBody' do
+    it 'should create an instance of MembersResponseBody' do
       expect(@instance).to be_instance_of(Atrium::MembersResponseBody)
     end
   end
-  describe "test attribute \"members\"" do
-    it "should work" do
+  describe 'test attribute "members"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"pagination\"" do
-    it "should work" do
+  describe 'test attribute "pagination"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end

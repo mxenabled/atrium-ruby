@@ -6,12 +6,12 @@
 
 =end
 
-require "spec_helper"
-require "json"
+require 'spec_helper'
+require 'json'
 
 # Unit tests for Atrium::TransactionsApi
 # Please update as you see appropriate
-describe "TransactionsApi" do
+describe 'TransactionsApi' do
   before do
     # run before each test
     @instance = Atrium::TransactionsApi.new
@@ -21,8 +21,8 @@ describe "TransactionsApi" do
     # run after each test
   end
 
-  describe "test an instance of TransactionsApi" do
-    it "should create an instance of TransactionsApi" do
+  describe 'test an instance of TransactionsApi' do
+    it 'should create an instance of TransactionsApi' do
       expect(@instance).to be_instance_of(Atrium::TransactionsApi)
     end
   end
@@ -33,8 +33,8 @@ describe "TransactionsApi" do
   # @param body User object to be created with optional parameters (amount, type) amd required parameters (description, identifier)
   # @param [Hash] opts the optional parameters
   # @return [TransactionsCleanseAndCategorizeResponseBody]
-  describe "cleanse_and_categorize_transactions test" do
-    it "should work" do
+  describe 'cleanse_and_categorize_transactions test' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -49,8 +49,8 @@ describe "TransactionsApi" do
   # @option opts [Integer] :records_per_page Specify records per page.
   # @option opts [String] :to_date Filter transactions to this date.
   # @return [TransactionsResponseBody]
-  describe "list_user_transactions test" do
-    it "should work" do
+  describe 'list_user_transactions test' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -62,8 +62,8 @@ describe "TransactionsApi" do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
   # @return [TransactionResponseBody]
-  describe "read_transaction test" do
-    it "should work" do
+  describe 'read_transaction test' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end

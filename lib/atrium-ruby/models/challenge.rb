@@ -6,7 +6,7 @@
 
 =end
 
-require "date"
+require 'date'
 
 module Atrium
   class Challenge
@@ -54,29 +54,29 @@ module Atrium
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'field_name')
+      if attributes.has_key?(:'field_name')
         self.field_name = attributes[:'field_name']
       end
 
-      if attributes.key?(:'guid')
+      if attributes.has_key?(:'guid')
         self.guid = attributes[:'guid']
       end
 
-      if attributes.key?(:'image_data')
+      if attributes.has_key?(:'image_data')
         self.image_data = attributes[:'image_data']
       end
 
-      if attributes.key?(:'label')
+      if attributes.has_key?(:'label')
         self.label = attributes[:'label']
       end
 
-      if attributes.key?(:'options')
+      if attributes.has_key?(:'options')
         if (value = attributes[:'options']).is_a?(Array)
           self.options = value
         end
       end
 
-      if attributes.key?(:'type')
+      if attributes.has_key?(:'type')
         self.type = attributes[:'type']
       end
     end
@@ -84,7 +84,7 @@ module Atrium
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
-      invalid_properties = []
+      invalid_properties = Array.new
       invalid_properties
     end
 
@@ -96,21 +96,21 @@ module Atrium
 
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
-    def ==(other)
-      return true if self.equal?(other)
-      self.class == other.class &&
-        field_name == other.field_name &&
-        guid == other.guid &&
-        image_data == other.image_data &&
-        label == other.label &&
-        options == other.options &&
-        type == other.type
+    def ==(o)
+      return true if self.equal?(o)
+      self.class == o.class &&
+          field_name == o.field_name &&
+          guid == o.guid &&
+          image_data == o.image_data &&
+          label == o.label &&
+          options == o.options &&
+          type == o.type
     end
 
     # @see the `==` method
     # @param [Object] Object to be compared
-    def eql?(other)
-      self == other
+    def eql?(o)
+      self == o
     end
 
     # Calculates hash code according to all attributes.
@@ -129,7 +129,7 @@ module Atrium
           # check to ensure the input is an array given that the the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
-            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize(Regexp.last_match(1), v) })
+            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
           end
         elsif !attributes[self.class.attribute_map[key]].nil?
           self.send("#{key}=", _deserialize(type, attributes[self.class.attribute_map[key]]))
@@ -222,7 +222,5 @@ module Atrium
         value
       end
     end
-
   end
-
 end

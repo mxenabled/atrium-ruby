@@ -6,13 +6,13 @@
 
 =end
 
-require "spec_helper"
-require "json"
-require "date"
+require 'spec_helper'
+require 'json'
+require 'date'
 
 # Unit tests for Atrium::TransactionCleanseAndCategorizeResponse
 # Please update as you see appropriate
-describe "TransactionCleanseAndCategorizeResponse" do
+describe 'TransactionCleanseAndCategorizeResponse' do
   before do
     # run before each test
     @instance = Atrium::TransactionCleanseAndCategorizeResponse.new
@@ -22,85 +22,85 @@ describe "TransactionCleanseAndCategorizeResponse" do
     # run after each test
   end
 
-  describe "test an instance of TransactionCleanseAndCategorizeResponse" do
-    it "should create an instance of TransactionCleanseAndCategorizeResponse" do
+  describe 'test an instance of TransactionCleanseAndCategorizeResponse' do
+    it 'should create an instance of TransactionCleanseAndCategorizeResponse' do
       expect(@instance).to be_instance_of(Atrium::TransactionCleanseAndCategorizeResponse)
     end
   end
-  describe "test attribute \"amount\"" do
-    it "should work" do
+  describe 'test attribute "amount"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"category\"" do
-    it "should work" do
+  describe 'test attribute "category"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"description\"" do
-    it "should work" do
+  describe 'test attribute "description"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"identifier\"" do
-    it "should work" do
+  describe 'test attribute "identifier"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"type\"" do
-    it "should work" do
+  describe 'test attribute "type"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"is_bill_pay\"" do
-    it "should work" do
+  describe 'test attribute "is_bill_pay"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"is_direct_deposit\"" do
-    it "should work" do
+  describe 'test attribute "is_direct_deposit"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"is_expense\"" do
-    it "should work" do
+  describe 'test attribute "is_expense"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"is_fee\"" do
-    it "should work" do
+  describe 'test attribute "is_fee"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"is_income\"" do
-    it "should work" do
+  describe 'test attribute "is_income"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"is_international\"" do
-    it "should work" do
+  describe 'test attribute "is_international"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"is_overdraft_fee\"" do
-    it "should work" do
+  describe 'test attribute "is_overdraft_fee"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"is_payroll_advance\"" do
-    it "should work" do
+  describe 'test attribute "is_payroll_advance"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end

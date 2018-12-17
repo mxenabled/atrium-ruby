@@ -52,11 +52,11 @@ module Atrium
 
     # List institutions
     # This endpoint allows you to see what institutions are available for connection. Information returned will include the institution_code assigned to a particular institution, URLs for the financial institution&#39;s logo, and the URL for its website.&lt;br&gt; This endpoint takes an optional query string, name&#x3D;{string}. This will list only institutions in which the appended string appears. 
-        # @param [Hash] opts the optional parameters
-        # @option opts [String] :name This will list only institutions in which the appended string appears.
-        # @option opts [Integer] :page Specify current page.
-        # @option opts [Integer] :records_per_page Specify records per page.
-        # @return [Array<(InstitutionsResponseBody, Fixnum, Hash)>] InstitutionsResponseBody data, response status code and response headers
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :name This will list only institutions in which the appended string appears.
+    # @option opts [Integer] :page Specify current page.
+    # @option opts [Integer] :records_per_page Specify records per page.
+    # @return [Array<(InstitutionsResponseBody, Fixnum, Hash)>] InstitutionsResponseBody data, response status code and response headers
     def list_institutions_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InstitutionsApi.list_institutions ...'
@@ -66,9 +66,9 @@ module Atrium
 
       # query parameters
       query_params = {}
-      query_params[:name] = opts[:name] if !opts[:name].nil?
-      query_params[:page] = opts[:page] if !opts[:page].nil?
-      query_params[:records_per_page] = opts[:records_per_page] if !opts[:records_per_page].nil?
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'records_per_page'] = opts[:'records_per_page'] if !opts[:'records_per_page'].nil?
 
       # header parameters
       header_params = {}
@@ -93,12 +93,11 @@ module Atrium
       end
       return data, status_code, headers
     end
-
     # Read institution
     # This endpoint allows you to see information for a specific institution.
-        # @param institution_code The institution_code of the institution.
-        # @param [Hash] opts the optional parameters
-        # @return [Array<(InstitutionResponseBody, Fixnum, Hash)>] InstitutionResponseBody data, response status code and response headers
+    # @param institution_code The institution_code of the institution.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(InstitutionResponseBody, Fixnum, Hash)>] InstitutionResponseBody data, response status code and response headers
     def read_institution_with_http_info(institution_code, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InstitutionsApi.read_institution ...'
@@ -136,12 +135,11 @@ module Atrium
       end
       return data, status_code, headers
     end
-
     # Read institution credentials
     # Use this endpoint to see which credentials will be needed to create a member for a specific institution.
-        # @param institution_code The institution_code of the institution.
-        # @param [Hash] opts the optional parameters
-        # @return [Array<(CredentialsResponseBody, Fixnum, Hash)>] CredentialsResponseBody data, response status code and response headers
+    # @param institution_code The institution_code of the institution.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(CredentialsResponseBody, Fixnum, Hash)>] CredentialsResponseBody data, response status code and response headers
     def read_institution_credentials_with_http_info(institution_code, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: InstitutionsApi.read_institution_credentials ...'
@@ -179,6 +177,5 @@ module Atrium
       end
       return data, status_code, headers
     end
-
   end
 end

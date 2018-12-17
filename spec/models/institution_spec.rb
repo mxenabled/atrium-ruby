@@ -6,13 +6,13 @@
 
 =end
 
-require "spec_helper"
-require "json"
-require "date"
+require 'spec_helper'
+require 'json'
+require 'date'
 
 # Unit tests for Atrium::Institution
 # Please update as you see appropriate
-describe "Institution" do
+describe 'Institution' do
   before do
     # run before each test
     @instance = Atrium::Institution.new
@@ -22,49 +22,49 @@ describe "Institution" do
     # run after each test
   end
 
-  describe "test an instance of Institution" do
-    it "should create an instance of Institution" do
+  describe 'test an instance of Institution' do
+    it 'should create an instance of Institution' do
       expect(@instance).to be_instance_of(Atrium::Institution)
     end
   end
-  describe "test attribute \"code\"" do
-    it "should work" do
+  describe 'test attribute "code"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"medium_logo_url\"" do
-    it "should work" do
+  describe 'test attribute "medium_logo_url"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"name\"" do
-    it "should work" do
+  describe 'test attribute "name"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"small_logo_url\"" do
-    it "should work" do
+  describe 'test attribute "small_logo_url"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"supports_account_identification\"" do
-    it "should work" do
+  describe 'test attribute "supports_account_identification"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"supports_account_verification\"" do
-    it "should work" do
+  describe 'test attribute "supports_account_verification"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"url\"" do
-    it "should work" do
+  describe 'test attribute "url"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end

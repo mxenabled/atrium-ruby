@@ -18,7 +18,7 @@ This endpoint allows you to see every transaction that belongs to a specific acc
 ### Example
 ```ruby
 # load the gem
-require "atrium-ruby"
+require 'atrium-ruby'
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
@@ -65,7 +65,7 @@ Use this endpoint to view information about every account that belongs to a user
 ### Example
 ```ruby
 # load the gem
-require "atrium-ruby"
+require 'atrium-ruby'
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
@@ -106,7 +106,7 @@ Reading an account allows you to get information about a specific account that b
 ### Example
 ```ruby
 # load the gem
-require "atrium-ruby"
+require 'atrium-ruby'
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
@@ -143,7 +143,7 @@ Reading an account allows you to get information about a specific account that b
 ### Example
 ```ruby
 # load the gem
-require "atrium-ruby"
+require 'atrium-ruby'
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 

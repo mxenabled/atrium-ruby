@@ -6,12 +6,12 @@
 
 =end
 
-require "spec_helper"
-require "json"
+require 'spec_helper'
+require 'json'
 
 # Unit tests for Atrium::ConnectWidgetApi
 # Please update as you see appropriate
-describe "ConnectWidgetApi" do
+describe 'ConnectWidgetApi' do
   before do
     # run before each test
     @instance = Atrium::ConnectWidgetApi.new
@@ -21,8 +21,8 @@ describe "ConnectWidgetApi" do
     # run after each test
   end
 
-  describe "test an instance of ConnectWidgetApi" do
-    it "should create an instance of ConnectWidgetApi" do
+  describe 'test an instance of ConnectWidgetApi' do
+    it 'should create an instance of ConnectWidgetApi' do
       expect(@instance).to be_instance_of(Atrium::ConnectWidgetApi)
     end
   end
@@ -34,8 +34,8 @@ describe "ConnectWidgetApi" do
   # @param body Optional config options for WebView (is_mobile_webview, current_institution_code, current_member_guid, update_credentials)
   # @param [Hash] opts the optional parameters
   # @return [ConnectWidgetResponseBody]
-  describe "get_connect_widget test" do
-    it "should work" do
+  describe 'get_connect_widget test' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end

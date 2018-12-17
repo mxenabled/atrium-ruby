@@ -6,7 +6,7 @@
 
 =end
 
-require "date"
+require 'date'
 
 module Atrium
   class Member
@@ -74,47 +74,47 @@ module Atrium
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'aggregated_at')
+      if attributes.has_key?(:'aggregated_at')
         self.aggregated_at = attributes[:'aggregated_at']
       end
 
-      if attributes.key?(:'connection_status')
+      if attributes.has_key?(:'connection_status')
         self.connection_status = attributes[:'connection_status']
       end
 
-      if attributes.key?(:'guid')
+      if attributes.has_key?(:'guid')
         self.guid = attributes[:'guid']
       end
 
-      if attributes.key?(:'identifier')
+      if attributes.has_key?(:'identifier')
         self.identifier = attributes[:'identifier']
       end
 
-      if attributes.key?(:'institution_code')
+      if attributes.has_key?(:'institution_code')
         self.institution_code = attributes[:'institution_code']
       end
 
-      if attributes.key?(:'is_being_aggregated')
+      if attributes.has_key?(:'is_being_aggregated')
         self.is_being_aggregated = attributes[:'is_being_aggregated']
       end
 
-      if attributes.key?(:'metadata')
+      if attributes.has_key?(:'metadata')
         self.metadata = attributes[:'metadata']
       end
 
-      if attributes.key?(:'name')
+      if attributes.has_key?(:'name')
         self.name = attributes[:'name']
       end
 
-      if attributes.key?(:'status')
+      if attributes.has_key?(:'status')
         self.status = attributes[:'status']
       end
 
-      if attributes.key?(:'successfully_aggregated_at')
+      if attributes.has_key?(:'successfully_aggregated_at')
         self.successfully_aggregated_at = attributes[:'successfully_aggregated_at']
       end
 
-      if attributes.key?(:'user_guid')
+      if attributes.has_key?(:'user_guid')
         self.user_guid = attributes[:'user_guid']
       end
     end
@@ -122,7 +122,7 @@ module Atrium
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
-      invalid_properties = []
+      invalid_properties = Array.new
       invalid_properties
     end
 
@@ -134,26 +134,26 @@ module Atrium
 
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
-    def ==(other)
-      return true if self.equal?(other)
-      self.class == other.class &&
-        aggregated_at == other.aggregated_at &&
-        connection_status == other.connection_status &&
-        guid == other.guid &&
-        identifier == other.identifier &&
-        institution_code == other.institution_code &&
-        is_being_aggregated == other.is_being_aggregated &&
-        metadata == other.metadata &&
-        name == other.name &&
-        status == other.status &&
-        successfully_aggregated_at == other.successfully_aggregated_at &&
-        user_guid == other.user_guid
+    def ==(o)
+      return true if self.equal?(o)
+      self.class == o.class &&
+          aggregated_at == o.aggregated_at &&
+          connection_status == o.connection_status &&
+          guid == o.guid &&
+          identifier == o.identifier &&
+          institution_code == o.institution_code &&
+          is_being_aggregated == o.is_being_aggregated &&
+          metadata == o.metadata &&
+          name == o.name &&
+          status == o.status &&
+          successfully_aggregated_at == o.successfully_aggregated_at &&
+          user_guid == o.user_guid
     end
 
     # @see the `==` method
     # @param [Object] Object to be compared
-    def eql?(other)
-      self == other
+    def eql?(o)
+      self == o
     end
 
     # Calculates hash code according to all attributes.
@@ -172,7 +172,7 @@ module Atrium
           # check to ensure the input is an array given that the the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
-            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize(Regexp.last_match(1), v) })
+            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
           end
         elsif !attributes[self.class.attribute_map[key]].nil?
           self.send("#{key}=", _deserialize(type, attributes[self.class.attribute_map[key]]))
@@ -265,7 +265,5 @@ module Atrium
         value
       end
     end
-
   end
-
 end

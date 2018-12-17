@@ -6,7 +6,7 @@
 
 =end
 
-require "date"
+require 'date'
 
 module Atrium
   class ConnectWidgetRequestBody
@@ -46,19 +46,19 @@ module Atrium
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.key?(:'is_mobile_webview')
+      if attributes.has_key?(:'is_mobile_webview')
         self.is_mobile_webview = attributes[:'is_mobile_webview']
       end
 
-      if attributes.key?(:'current_institution_code')
+      if attributes.has_key?(:'current_institution_code')
         self.current_institution_code = attributes[:'current_institution_code']
       end
 
-      if attributes.key?(:'current_member_guid')
+      if attributes.has_key?(:'current_member_guid')
         self.current_member_guid = attributes[:'current_member_guid']
       end
 
-      if attributes.key?(:'update_credentials')
+      if attributes.has_key?(:'update_credentials')
         self.update_credentials = attributes[:'update_credentials']
       end
     end
@@ -66,7 +66,7 @@ module Atrium
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
-      invalid_properties = []
+      invalid_properties = Array.new
       invalid_properties
     end
 
@@ -78,19 +78,19 @@ module Atrium
 
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
-    def ==(other)
-      return true if self.equal?(other)
-      self.class == other.class &&
-        is_mobile_webview == other.is_mobile_webview &&
-        current_institution_code == other.current_institution_code &&
-        current_member_guid == other.current_member_guid &&
-        update_credentials == other.update_credentials
+    def ==(o)
+      return true if self.equal?(o)
+      self.class == o.class &&
+          is_mobile_webview == o.is_mobile_webview &&
+          current_institution_code == o.current_institution_code &&
+          current_member_guid == o.current_member_guid &&
+          update_credentials == o.update_credentials
     end
 
     # @see the `==` method
     # @param [Object] Object to be compared
-    def eql?(other)
-      self == other
+    def eql?(o)
+      self == o
     end
 
     # Calculates hash code according to all attributes.
@@ -109,7 +109,7 @@ module Atrium
           # check to ensure the input is an array given that the the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
-            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize(Regexp.last_match(1), v) })
+            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
           end
         elsif !attributes[self.class.attribute_map[key]].nil?
           self.send("#{key}=", _deserialize(type, attributes[self.class.attribute_map[key]]))
@@ -202,7 +202,5 @@ module Atrium
         value
       end
     end
-
   end
-
 end

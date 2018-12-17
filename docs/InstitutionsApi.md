@@ -17,7 +17,7 @@ This endpoint allows you to see what institutions are available for connection. 
 ### Example
 ```ruby
 # load the gem
-require "atrium-ruby"
+require 'atrium-ruby'
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
@@ -58,7 +58,7 @@ This endpoint allows you to see information for a specific institution.
 ### Example
 ```ruby
 # load the gem
-require "atrium-ruby"
+require 'atrium-ruby'
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
@@ -93,7 +93,7 @@ Use this endpoint to see which credentials will be needed to create a member for
 ### Example
 ```ruby
 # load the gem
-require "atrium-ruby"
+require 'atrium-ruby'
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 

@@ -6,13 +6,13 @@
 
 =end
 
-require "spec_helper"
-require "json"
-require "date"
+require 'spec_helper'
+require 'json'
+require 'date'
 
 # Unit tests for Atrium::MemberCreateRequest
 # Please update as you see appropriate
-describe "MemberCreateRequest" do
+describe 'MemberCreateRequest' do
   before do
     # run before each test
     @instance = Atrium::MemberCreateRequest.new
@@ -22,31 +22,31 @@ describe "MemberCreateRequest" do
     # run after each test
   end
 
-  describe "test an instance of MemberCreateRequest" do
-    it "should create an instance of MemberCreateRequest" do
+  describe 'test an instance of MemberCreateRequest' do
+    it 'should create an instance of MemberCreateRequest' do
       expect(@instance).to be_instance_of(Atrium::MemberCreateRequest)
     end
   end
-  describe "test attribute \"credentials\"" do
-    it "should work" do
+  describe 'test attribute "credentials"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"identifier\"" do
-    it "should work" do
+  describe 'test attribute "identifier"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"institution_code\"" do
-    it "should work" do
+  describe 'test attribute "institution_code"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"metadata\"" do
-    it "should work" do
+  describe 'test attribute "metadata"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end

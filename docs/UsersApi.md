@@ -19,7 +19,7 @@ Call this endpoint to create a new user. Atrium will respond with the newly-crea
 ### Example
 ```ruby
 # load the gem
-require "atrium-ruby"
+require 'atrium-ruby'
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
@@ -54,7 +54,7 @@ Calling this endpoint will permanently delete a user from Atrium. If successful,
 ### Example
 ```ruby
 # load the gem
-require "atrium-ruby"
+require 'atrium-ruby'
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
@@ -88,7 +88,7 @@ Use this endpoint to list every user you've created in Atrium.
 ### Example
 ```ruby
 # load the gem
-require "atrium-ruby"
+require 'atrium-ruby'
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
@@ -127,7 +127,7 @@ Use this endpoint to read the attributes of a specific user.
 ### Example
 ```ruby
 # load the gem
-require "atrium-ruby"
+require 'atrium-ruby'
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
@@ -162,7 +162,7 @@ Use this endpoint to update the attributes of a specific user. Atrium will respo
 ### Example
 ```ruby
 # load the gem
-require "atrium-ruby"
+require 'atrium-ruby'
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 

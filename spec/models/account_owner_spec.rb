@@ -6,13 +6,13 @@
 
 =end
 
-require "spec_helper"
-require "json"
-require "date"
+require 'spec_helper'
+require 'json'
+require 'date'
 
 # Unit tests for Atrium::AccountOwner
 # Please update as you see appropriate
-describe "AccountOwner" do
+describe 'AccountOwner' do
   before do
     # run before each test
     @instance = Atrium::AccountOwner.new
@@ -22,73 +22,73 @@ describe "AccountOwner" do
     # run after each test
   end
 
-  describe "test an instance of AccountOwner" do
-    it "should create an instance of AccountOwner" do
+  describe 'test an instance of AccountOwner' do
+    it 'should create an instance of AccountOwner' do
       expect(@instance).to be_instance_of(Atrium::AccountOwner)
     end
   end
-  describe "test attribute \"account_guid\"" do
-    it "should work" do
+  describe 'test attribute "account_guid"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"address\"" do
-    it "should work" do
+  describe 'test attribute "address"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"city\"" do
-    it "should work" do
+  describe 'test attribute "city"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"country\"" do
-    it "should work" do
+  describe 'test attribute "country"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"email\"" do
-    it "should work" do
+  describe 'test attribute "email"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"guid\"" do
-    it "should work" do
+  describe 'test attribute "guid"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"member_guid\"" do
-    it "should work" do
+  describe 'test attribute "member_guid"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"owner_name\"" do
-    it "should work" do
+  describe 'test attribute "owner_name"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"postal_code\"" do
-    it "should work" do
+  describe 'test attribute "postal_code"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"state\"" do
-    it "should work" do
+  describe 'test attribute "state"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe "test attribute \"user_guid\"" do
-    it "should work" do
+  describe 'test attribute "user_guid"' do
+    it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end

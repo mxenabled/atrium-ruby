@@ -6,7 +6,7 @@
 
 =end
 
-require 'date'
+require "date"
 
 module Atrium
   class Transaction
@@ -154,127 +154,127 @@ module Atrium
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'account_guid')
+      if attributes.key?(:'account_guid')
         self.account_guid = attributes[:'account_guid']
       end
 
-      if attributes.has_key?(:'amount')
+      if attributes.key?(:'amount')
         self.amount = attributes[:'amount']
       end
 
-      if attributes.has_key?(:'category')
+      if attributes.key?(:'category')
         self.category = attributes[:'category']
       end
 
-      if attributes.has_key?(:'check_number')
+      if attributes.key?(:'check_number')
         self.check_number = attributes[:'check_number']
       end
 
-      if attributes.has_key?(:'check_number_string')
+      if attributes.key?(:'check_number_string')
         self.check_number_string = attributes[:'check_number_string']
       end
 
-      if attributes.has_key?(:'created_at')
+      if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
 
-      if attributes.has_key?(:'currency_code')
+      if attributes.key?(:'currency_code')
         self.currency_code = attributes[:'currency_code']
       end
 
-      if attributes.has_key?(:'date')
+      if attributes.key?(:'date')
         self.date = attributes[:'date']
       end
 
-      if attributes.has_key?(:'description')
+      if attributes.key?(:'description')
         self.description = attributes[:'description']
       end
 
-      if attributes.has_key?(:'guid')
+      if attributes.key?(:'guid')
         self.guid = attributes[:'guid']
       end
 
-      if attributes.has_key?(:'is_bill_pay')
+      if attributes.key?(:'is_bill_pay')
         self.is_bill_pay = attributes[:'is_bill_pay']
       end
 
-      if attributes.has_key?(:'is_direct_deposit')
+      if attributes.key?(:'is_direct_deposit')
         self.is_direct_deposit = attributes[:'is_direct_deposit']
       end
 
-      if attributes.has_key?(:'is_expense')
+      if attributes.key?(:'is_expense')
         self.is_expense = attributes[:'is_expense']
       end
 
-      if attributes.has_key?(:'is_fee')
+      if attributes.key?(:'is_fee')
         self.is_fee = attributes[:'is_fee']
       end
 
-      if attributes.has_key?(:'is_income')
+      if attributes.key?(:'is_income')
         self.is_income = attributes[:'is_income']
       end
 
-      if attributes.has_key?(:'is_international')
+      if attributes.key?(:'is_international')
         self.is_international = attributes[:'is_international']
       end
 
-      if attributes.has_key?(:'is_overdraft_fee')
+      if attributes.key?(:'is_overdraft_fee')
         self.is_overdraft_fee = attributes[:'is_overdraft_fee']
       end
 
-      if attributes.has_key?(:'is_payroll_advance')
+      if attributes.key?(:'is_payroll_advance')
         self.is_payroll_advance = attributes[:'is_payroll_advance']
       end
 
-      if attributes.has_key?(:'latitude')
+      if attributes.key?(:'latitude')
         self.latitude = attributes[:'latitude']
       end
 
-      if attributes.has_key?(:'longitude')
+      if attributes.key?(:'longitude')
         self.longitude = attributes[:'longitude']
       end
 
-      if attributes.has_key?(:'member_guid')
+      if attributes.key?(:'member_guid')
         self.member_guid = attributes[:'member_guid']
       end
 
-      if attributes.has_key?(:'memo')
+      if attributes.key?(:'memo')
         self.memo = attributes[:'memo']
       end
 
-      if attributes.has_key?(:'merchant_category_code')
+      if attributes.key?(:'merchant_category_code')
         self.merchant_category_code = attributes[:'merchant_category_code']
       end
 
-      if attributes.has_key?(:'original_description')
+      if attributes.key?(:'original_description')
         self.original_description = attributes[:'original_description']
       end
 
-      if attributes.has_key?(:'posted_at')
+      if attributes.key?(:'posted_at')
         self.posted_at = attributes[:'posted_at']
       end
 
-      if attributes.has_key?(:'status')
+      if attributes.key?(:'status')
         self.status = attributes[:'status']
       end
 
-      if attributes.has_key?(:'top_level_category')
+      if attributes.key?(:'top_level_category')
         self.top_level_category = attributes[:'top_level_category']
       end
 
-      if attributes.has_key?(:'transacted_at')
+      if attributes.key?(:'transacted_at')
         self.transacted_at = attributes[:'transacted_at']
       end
 
-      if attributes.has_key?(:'type')
+      if attributes.key?(:'type')
         self.type = attributes[:'type']
       end
 
-      if attributes.has_key?(:'updated_at')
+      if attributes.key?(:'updated_at')
         self.updated_at = attributes[:'updated_at']
       end
 
-      if attributes.has_key?(:'user_guid')
+      if attributes.key?(:'user_guid')
         self.user_guid = attributes[:'user_guid']
       end
     end
@@ -282,7 +282,7 @@ module Atrium
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
-      invalid_properties = Array.new
+      invalid_properties = []
       invalid_properties
     end
 
@@ -294,46 +294,46 @@ module Atrium
 
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          account_guid == o.account_guid &&
-          amount == o.amount &&
-          category == o.category &&
-          check_number == o.check_number &&
-          check_number_string == o.check_number_string &&
-          created_at == o.created_at &&
-          currency_code == o.currency_code &&
-          date == o.date &&
-          description == o.description &&
-          guid == o.guid &&
-          is_bill_pay == o.is_bill_pay &&
-          is_direct_deposit == o.is_direct_deposit &&
-          is_expense == o.is_expense &&
-          is_fee == o.is_fee &&
-          is_income == o.is_income &&
-          is_international == o.is_international &&
-          is_overdraft_fee == o.is_overdraft_fee &&
-          is_payroll_advance == o.is_payroll_advance &&
-          latitude == o.latitude &&
-          longitude == o.longitude &&
-          member_guid == o.member_guid &&
-          memo == o.memo &&
-          merchant_category_code == o.merchant_category_code &&
-          original_description == o.original_description &&
-          posted_at == o.posted_at &&
-          status == o.status &&
-          top_level_category == o.top_level_category &&
-          transacted_at == o.transacted_at &&
-          type == o.type &&
-          updated_at == o.updated_at &&
-          user_guid == o.user_guid
+    def ==(other)
+      return true if self.equal?(other)
+      self.class == other.class &&
+        account_guid == other.account_guid &&
+        amount == other.amount &&
+        category == other.category &&
+        check_number == other.check_number &&
+        check_number_string == other.check_number_string &&
+        created_at == other.created_at &&
+        currency_code == other.currency_code &&
+        date == other.date &&
+        description == other.description &&
+        guid == other.guid &&
+        is_bill_pay == other.is_bill_pay &&
+        is_direct_deposit == other.is_direct_deposit &&
+        is_expense == other.is_expense &&
+        is_fee == other.is_fee &&
+        is_income == other.is_income &&
+        is_international == other.is_international &&
+        is_overdraft_fee == other.is_overdraft_fee &&
+        is_payroll_advance == other.is_payroll_advance &&
+        latitude == other.latitude &&
+        longitude == other.longitude &&
+        member_guid == other.member_guid &&
+        memo == other.memo &&
+        merchant_category_code == other.merchant_category_code &&
+        original_description == other.original_description &&
+        posted_at == other.posted_at &&
+        status == other.status &&
+        top_level_category == other.top_level_category &&
+        transacted_at == other.transacted_at &&
+        type == other.type &&
+        updated_at == other.updated_at &&
+        user_guid == other.user_guid
     end
 
     # @see the `==` method
     # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
+    def eql?(other)
+      self == other
     end
 
     # Calculates hash code according to all attributes.
@@ -352,7 +352,7 @@ module Atrium
           # check to ensure the input is an array given that the the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
-            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
+            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize(Regexp.last_match(1), v) })
           end
         elsif !attributes[self.class.attribute_map[key]].nil?
           self.send("#{key}=", _deserialize(type, attributes[self.class.attribute_map[key]]))
@@ -445,5 +445,7 @@ module Atrium
         value
       end
     end
+
   end
+
 end

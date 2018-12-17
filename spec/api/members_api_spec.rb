@@ -6,12 +6,12 @@
 
 =end
 
-require 'spec_helper'
-require 'json'
+require "spec_helper"
+require "json"
 
 # Unit tests for Atrium::MembersApi
 # Please update as you see appropriate
-describe 'MembersApi' do
+describe "MembersApi" do
   before do
     # run before each test
     @instance = Atrium::MembersApi.new
@@ -21,8 +21,8 @@ describe 'MembersApi' do
     # run after each test
   end
 
-  describe 'test an instance of MembersApi' do
-    it 'should create an instance of MembersApi' do
+  describe "test an instance of MembersApi" do
+    it "should create an instance of MembersApi" do
       expect(@instance).to be_instance_of(Atrium::MembersApi)
     end
   end
@@ -34,8 +34,8 @@ describe 'MembersApi' do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
   # @return [MemberResponseBody]
-  describe 'aggregate_member test' do
-    it 'should work' do
+  describe "aggregate_member test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -47,8 +47,8 @@ describe 'MembersApi' do
   # @param body Member object to be created with optional parameters (identifier and metadata) and required parameters (credentials and institution_code)
   # @param [Hash] opts the optional parameters
   # @return [MemberResponseBody]
-  describe 'create_member test' do
-    it 'should work' do
+  describe "create_member test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -60,8 +60,8 @@ describe 'MembersApi' do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
   # @return [nil]
-  describe 'delete_member test' do
-    it 'should work' do
+  describe "delete_member test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -75,8 +75,8 @@ describe 'MembersApi' do
   # @option opts [Integer] :page Specify current page.
   # @option opts [Integer] :records_per_page Specify records per page.
   # @return [AccountsResponseBody]
-  describe 'list_member_accounts test' do
-    it 'should work' do
+  describe "list_member_accounts test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -88,8 +88,8 @@ describe 'MembersApi' do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
   # @return [CredentialsResponseBody]
-  describe 'list_member_credentials test' do
-    it 'should work' do
+  describe "list_member_credentials test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -101,8 +101,8 @@ describe 'MembersApi' do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
   # @return [ChallengesResponseBody]
-  describe 'list_member_mfa_challenges test' do
-    it 'should work' do
+  describe "list_member_mfa_challenges test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -118,8 +118,8 @@ describe 'MembersApi' do
   # @option opts [Integer] :page Specify current page.
   # @option opts [Integer] :records_per_page Specify records per page.
   # @return [TransactionsResponseBody]
-  describe 'list_member_transactions test' do
-    it 'should work' do
+  describe "list_member_transactions test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -132,8 +132,8 @@ describe 'MembersApi' do
   # @option opts [Integer] :page Specify current page.
   # @option opts [Integer] :records_per_page Specify records per page.
   # @return [MembersResponseBody]
-  describe 'list_members test' do
-    it 'should work' do
+  describe "list_members test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -145,8 +145,8 @@ describe 'MembersApi' do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
   # @return [MemberResponseBody]
-  describe 'read_member test' do
-    it 'should work' do
+  describe "read_member test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -158,8 +158,8 @@ describe 'MembersApi' do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
   # @return [MemberConnectionStatusResponseBody]
-  describe 'read_member_status test' do
-    it 'should work' do
+  describe "read_member_status test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -172,8 +172,8 @@ describe 'MembersApi' do
   # @param body Member object with MFA challenge answers
   # @param [Hash] opts the optional parameters
   # @return [MemberResponseBody]
-  describe 'resume_member test' do
-    it 'should work' do
+  describe "resume_member test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -186,8 +186,8 @@ describe 'MembersApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [MemberUpdateRequestBody] :body Member object to be updated with optional parameters (credentials, identifier, metadata)
   # @return [MemberResponseBody]
-  describe 'update_member test' do
-    it 'should work' do
+  describe "update_member test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end

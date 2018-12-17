@@ -6,12 +6,12 @@
 
 =end
 
-require 'spec_helper'
-require 'json'
+require "spec_helper"
+require "json"
 
 # Unit tests for Atrium::VerificationApi
 # Please update as you see appropriate
-describe 'VerificationApi' do
+describe "VerificationApi" do
   before do
     # run before each test
     @instance = Atrium::VerificationApi.new
@@ -21,8 +21,8 @@ describe 'VerificationApi' do
     # run after each test
   end
 
-  describe 'test an instance of VerificationApi' do
-    it 'should create an instance of VerificationApi' do
+  describe "test an instance of VerificationApi" do
+    it "should create an instance of VerificationApi" do
       expect(@instance).to be_instance_of(Atrium::VerificationApi)
     end
   end
@@ -34,8 +34,8 @@ describe 'VerificationApi' do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
   # @return [AccountNumbersResponseBody]
-  describe 'list_account_numbers test' do
-    it 'should work' do
+  describe "list_account_numbers test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -47,8 +47,8 @@ describe 'VerificationApi' do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
   # @return [AccountNumbersResponseBody]
-  describe 'list_account_numbers_by_account test' do
-    it 'should work' do
+  describe "list_account_numbers_by_account test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -60,8 +60,8 @@ describe 'VerificationApi' do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
   # @return [MemberResponseBody]
-  describe 'verify_member test' do
-    it 'should work' do
+  describe "verify_member test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end

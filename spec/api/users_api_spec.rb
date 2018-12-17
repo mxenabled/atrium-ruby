@@ -6,12 +6,12 @@
 
 =end
 
-require 'spec_helper'
-require 'json'
+require "spec_helper"
+require "json"
 
 # Unit tests for Atrium::UsersApi
 # Please update as you see appropriate
-describe 'UsersApi' do
+describe "UsersApi" do
   before do
     # run before each test
     @instance = Atrium::UsersApi.new
@@ -21,8 +21,8 @@ describe 'UsersApi' do
     # run after each test
   end
 
-  describe 'test an instance of UsersApi' do
-    it 'should create an instance of UsersApi' do
+  describe "test an instance of UsersApi" do
+    it "should create an instance of UsersApi" do
       expect(@instance).to be_instance_of(Atrium::UsersApi)
     end
   end
@@ -33,8 +33,8 @@ describe 'UsersApi' do
   # @param body User object to be created with optional parameters (identifier, is_disabled, metadata)
   # @param [Hash] opts the optional parameters
   # @return [UserResponseBody]
-  describe 'create_user test' do
-    it 'should work' do
+  describe "create_user test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -45,8 +45,8 @@ describe 'UsersApi' do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
   # @return [nil]
-  describe 'delete_user test' do
-    it 'should work' do
+  describe "delete_user test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -58,8 +58,8 @@ describe 'UsersApi' do
   # @option opts [Integer] :page Specify current page.
   # @option opts [Integer] :records_per_page Specify records per page.
   # @return [UsersResponseBody]
-  describe 'list_users test' do
-    it 'should work' do
+  describe "list_users test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -70,8 +70,8 @@ describe 'UsersApi' do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
   # @return [UserResponseBody]
-  describe 'read_user test' do
-    it 'should work' do
+  describe "read_user test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -83,8 +83,8 @@ describe 'UsersApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [UserUpdateRequestBody] :body User object to be updated with optional parameters (identifier, is_disabled, metadata)
   # @return [UserResponseBody]
-  describe 'update_user test' do
-    it 'should work' do
+  describe "update_user test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end

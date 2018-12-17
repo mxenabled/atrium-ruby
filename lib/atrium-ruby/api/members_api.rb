@@ -329,8 +329,8 @@ module Atrium
 
       # query parameters
       query_params = {}
-      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
-      query_params[:'records_per_page'] = opts[:'records_per_page'] if !opts[:'records_per_page'].nil?
+      query_params[:page] = opts[:page] if !opts[:page].nil?
+      query_params[:records_per_page] = opts[:records_per_page] if !opts[:records_per_page].nil?
 
       # header parameters
       header_params = {}
@@ -479,10 +479,10 @@ module Atrium
 
       # query parameters
       query_params = {}
-      query_params[:'from_date'] = opts[:'from_date'] if !opts[:'from_date'].nil?
-      query_params[:'to_date'] = opts[:'to_date'] if !opts[:'to_date'].nil?
-      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
-      query_params[:'records_per_page'] = opts[:'records_per_page'] if !opts[:'records_per_page'].nil?
+      query_params[:from_date] = opts[:from_date] if !opts[:from_date].nil?
+      query_params[:to_date] = opts[:to_date] if !opts[:to_date].nil?
+      query_params[:page] = opts[:page] if !opts[:page].nil?
+      query_params[:records_per_page] = opts[:records_per_page] if !opts[:records_per_page].nil?
 
       # header parameters
       header_params = {}
@@ -528,8 +528,8 @@ module Atrium
 
       # query parameters
       query_params = {}
-      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
-      query_params[:'records_per_page'] = opts[:'records_per_page'] if !opts[:'records_per_page'].nil?
+      query_params[:page] = opts[:page] if !opts[:page].nil?
+      query_params[:records_per_page] = opts[:records_per_page] if !opts[:records_per_page].nil?
 
       # header parameters
       header_params = {}
@@ -742,7 +742,7 @@ module Atrium
       form_params = {}
 
       # http body (model)
-      post_body = @api_client.object_to_http_body(opts[:'body'])
+      post_body = @api_client.object_to_http_body(opts[:body])
       auth_names = ['apiKey', 'clientID']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
         :header_params => header_params,

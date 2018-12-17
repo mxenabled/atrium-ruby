@@ -6,13 +6,13 @@
 
 =end
 
-require 'spec_helper'
-require 'json'
-require 'date'
+require "spec_helper"
+require "json"
+require "date"
 
 # Unit tests for Atrium::User
 # Please update as you see appropriate
-describe 'User' do
+describe "User" do
   before do
     # run before each test
     @instance = Atrium::User.new
@@ -22,31 +22,31 @@ describe 'User' do
     # run after each test
   end
 
-  describe 'test an instance of User' do
-    it 'should create an instance of User' do
+  describe "test an instance of User" do
+    it "should create an instance of User" do
       expect(@instance).to be_instance_of(Atrium::User)
     end
   end
-  describe 'test attribute "guid"' do
-    it 'should work' do
+  describe "test attribute \"guid\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "identifier"' do
-    it 'should work' do
+  describe "test attribute \"identifier\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "is_disabled"' do
-    it 'should work' do
+  describe "test attribute \"is_disabled\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "metadata"' do
-    it 'should work' do
+  describe "test attribute \"metadata\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end

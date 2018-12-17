@@ -6,13 +6,13 @@
 
 =end
 
-require 'spec_helper'
-require 'json'
-require 'date'
+require "spec_helper"
+require "json"
+require "date"
 
 # Unit tests for Atrium::AccountNumber
 # Please update as you see appropriate
-describe 'AccountNumber' do
+describe "AccountNumber" do
   before do
     # run before each test
     @instance = Atrium::AccountNumber.new
@@ -22,37 +22,37 @@ describe 'AccountNumber' do
     # run after each test
   end
 
-  describe 'test an instance of AccountNumber' do
-    it 'should create an instance of AccountNumber' do
+  describe "test an instance of AccountNumber" do
+    it "should create an instance of AccountNumber" do
       expect(@instance).to be_instance_of(Atrium::AccountNumber)
     end
   end
-  describe 'test attribute "account_guid"' do
-    it 'should work' do
+  describe "test attribute \"account_guid\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "account_number"' do
-    it 'should work' do
+  describe "test attribute \"account_number\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "member_guid"' do
-    it 'should work' do
+  describe "test attribute \"member_guid\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "routing_number"' do
-    it 'should work' do
+  describe "test attribute \"routing_number\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "user_guid"' do
-    it 'should work' do
+  describe "test attribute \"user_guid\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end

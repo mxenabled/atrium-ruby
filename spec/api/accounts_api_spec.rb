@@ -6,12 +6,12 @@
 
 =end
 
-require 'spec_helper'
-require 'json'
+require "spec_helper"
+require "json"
 
 # Unit tests for Atrium::AccountsApi
 # Please update as you see appropriate
-describe 'AccountsApi' do
+describe "AccountsApi" do
   before do
     # run before each test
     @instance = Atrium::AccountsApi.new
@@ -21,8 +21,8 @@ describe 'AccountsApi' do
     # run after each test
   end
 
-  describe 'test an instance of AccountsApi' do
-    it 'should create an instance of AccountsApi' do
+  describe "test an instance of AccountsApi" do
+    it "should create an instance of AccountsApi" do
       expect(@instance).to be_instance_of(Atrium::AccountsApi)
     end
   end
@@ -38,8 +38,8 @@ describe 'AccountsApi' do
   # @option opts [Integer] :page Specify current page.
   # @option opts [Integer] :records_per_page Specify records per page.
   # @return [TransactionsResponseBody]
-  describe 'list_account_transactions test' do
-    it 'should work' do
+  describe "list_account_transactions test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -52,8 +52,8 @@ describe 'AccountsApi' do
   # @option opts [Integer] :page Specify current page.
   # @option opts [Integer] :records_per_page Specify records per page.
   # @return [AccountsResponseBody]
-  describe 'list_user_accounts test' do
-    it 'should work' do
+  describe "list_user_accounts test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -65,8 +65,8 @@ describe 'AccountsApi' do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
   # @return [AccountResponseBody]
-  describe 'read_account test' do
-    it 'should work' do
+  describe "read_account test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
@@ -79,8 +79,8 @@ describe 'AccountsApi' do
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
   # @return [AccountResponseBody]
-  describe 'read_account_by_member_guid test' do
-    it 'should work' do
+  describe "read_account_by_member_guid test" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end

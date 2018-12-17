@@ -17,7 +17,7 @@ Use this endpoint to check whether account and routing numbers are available for
 ### Example
 ```ruby
 # load the gem
-require 'atrium-ruby'
+require "atrium-ruby"
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
@@ -54,7 +54,7 @@ Use this endpoint to check whether account and routing numbers are available for
 ### Example
 ```ruby
 # load the gem
-require 'atrium-ruby'
+require "atrium-ruby"
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
@@ -91,7 +91,7 @@ The verify endpoint begins a verification process for a member.
 ### Example
 ```ruby
 # load the gem
-require 'atrium-ruby'
+require "atrium-ruby"
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 

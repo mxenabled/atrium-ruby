@@ -16,7 +16,7 @@ The identify endpoint begins an identification process for an already-existing m
 ### Example
 ```ruby
 # load the gem
-require 'atrium-ruby'
+require "atrium-ruby"
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
@@ -53,7 +53,7 @@ This endpoint returns an array with information about every account associated w
 ### Example
 ```ruby
 # load the gem
-require 'atrium-ruby'
+require "atrium-ruby"
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 

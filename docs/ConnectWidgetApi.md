@@ -15,7 +15,7 @@ This endpoint will return a URL for an embeddable version of MX Connect.
 ### Example
 ```ruby
 # load the gem
-require 'atrium-ruby'
+require "atrium-ruby"
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 

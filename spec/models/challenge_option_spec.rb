@@ -6,13 +6,13 @@
 
 =end
 
-require 'spec_helper'
-require 'json'
-require 'date'
+require "spec_helper"
+require "json"
+require "date"
 
 # Unit tests for Atrium::ChallengeOption
 # Please update as you see appropriate
-describe 'ChallengeOption' do
+describe "ChallengeOption" do
   before do
     # run before each test
     @instance = Atrium::ChallengeOption.new
@@ -22,25 +22,25 @@ describe 'ChallengeOption' do
     # run after each test
   end
 
-  describe 'test an instance of ChallengeOption' do
-    it 'should create an instance of ChallengeOption' do
+  describe "test an instance of ChallengeOption" do
+    it "should create an instance of ChallengeOption" do
       expect(@instance).to be_instance_of(Atrium::ChallengeOption)
     end
   end
-  describe 'test attribute "image_data"' do
-    it 'should work' do
+  describe "test attribute \"image_data\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "label"' do
-    it 'should work' do
+  describe "test attribute \"label\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "value"' do
-    it 'should work' do
+  describe "test attribute \"value\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end

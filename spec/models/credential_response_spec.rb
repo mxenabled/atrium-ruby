@@ -6,13 +6,13 @@
 
 =end
 
-require 'spec_helper'
-require 'json'
-require 'date'
+require "spec_helper"
+require "json"
+require "date"
 
 # Unit tests for Atrium::CredentialResponse
 # Please update as you see appropriate
-describe 'CredentialResponse' do
+describe "CredentialResponse" do
   before do
     # run before each test
     @instance = Atrium::CredentialResponse.new
@@ -22,37 +22,37 @@ describe 'CredentialResponse' do
     # run after each test
   end
 
-  describe 'test an instance of CredentialResponse' do
-    it 'should create an instance of CredentialResponse' do
+  describe "test an instance of CredentialResponse" do
+    it "should create an instance of CredentialResponse" do
       expect(@instance).to be_instance_of(Atrium::CredentialResponse)
     end
   end
-  describe 'test attribute "field_name"' do
-    it 'should work' do
+  describe "test attribute \"field_name\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "guid"' do
-    it 'should work' do
+  describe "test attribute \"guid\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "label"' do
-    it 'should work' do
+  describe "test attribute \"label\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "options"' do
-    it 'should work' do
+  describe "test attribute \"options\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "type"' do
-    it 'should work' do
+  describe "test attribute \"type\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end

@@ -66,9 +66,9 @@ module Atrium
 
       # query parameters
       query_params = {}
-      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
-      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
-      query_params[:'records_per_page'] = opts[:'records_per_page'] if !opts[:'records_per_page'].nil?
+      query_params[:name] = opts[:name] if !opts[:name].nil?
+      query_params[:page] = opts[:page] if !opts[:page].nil?
+      query_params[:records_per_page] = opts[:records_per_page] if !opts[:records_per_page].nil?
 
       # header parameters
       header_params = {}

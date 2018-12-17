@@ -6,13 +6,13 @@
 
 =end
 
-require 'spec_helper'
-require 'json'
-require 'date'
+require "spec_helper"
+require "json"
+require "date"
 
 # Unit tests for Atrium::Pagination
 # Please update as you see appropriate
-describe 'Pagination' do
+describe "Pagination" do
   before do
     # run before each test
     @instance = Atrium::Pagination.new
@@ -22,31 +22,31 @@ describe 'Pagination' do
     # run after each test
   end
 
-  describe 'test an instance of Pagination' do
-    it 'should create an instance of Pagination' do
+  describe "test an instance of Pagination" do
+    it "should create an instance of Pagination" do
       expect(@instance).to be_instance_of(Atrium::Pagination)
     end
   end
-  describe 'test attribute "current_page"' do
-    it 'should work' do
+  describe "test attribute \"current_page\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "per_page"' do
-    it 'should work' do
+  describe "test attribute \"per_page\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "total_entries"' do
-    it 'should work' do
+  describe "test attribute \"total_entries\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "total_pages"' do
-    it 'should work' do
+  describe "test attribute \"total_pages\"" do
+    it "should work" do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end

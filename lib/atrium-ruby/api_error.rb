@@ -17,8 +17,8 @@ module Atrium
     #   ApiError.new(:code => 404, :message => "Not Found")
     def initialize(arg = nil)
       if arg.is_a? Hash
-        if arg.key?(:message) || arg.key?('message')
-          super(arg[:message] || arg['message'])
+        if arg.key?(:message) || arg.key?("message")
+          super(arg[:message] || arg["message"])
         else
           super arg
         end

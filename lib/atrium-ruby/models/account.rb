@@ -6,7 +6,7 @@
 
 =end
 
-require 'date'
+require "date"
 
 module Atrium
   class Account
@@ -142,115 +142,115 @@ module Atrium
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'apr')
+      if attributes.key?(:'apr')
         self.apr = attributes[:'apr']
       end
 
-      if attributes.has_key?(:'apy')
+      if attributes.key?(:'apy')
         self.apy = attributes[:'apy']
       end
 
-      if attributes.has_key?(:'available_balance')
+      if attributes.key?(:'available_balance')
         self.available_balance = attributes[:'available_balance']
       end
 
-      if attributes.has_key?(:'available_credit')
+      if attributes.key?(:'available_credit')
         self.available_credit = attributes[:'available_credit']
       end
 
-      if attributes.has_key?(:'balance')
+      if attributes.key?(:'balance')
         self.balance = attributes[:'balance']
       end
 
-      if attributes.has_key?(:'created_at')
+      if attributes.key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
 
-      if attributes.has_key?(:'credit_limit')
+      if attributes.key?(:'credit_limit')
         self.credit_limit = attributes[:'credit_limit']
       end
 
-      if attributes.has_key?(:'currency_code')
+      if attributes.key?(:'currency_code')
         self.currency_code = attributes[:'currency_code']
       end
 
-      if attributes.has_key?(:'day_payment_is_due')
+      if attributes.key?(:'day_payment_is_due')
         self.day_payment_is_due = attributes[:'day_payment_is_due']
       end
 
-      if attributes.has_key?(:'guid')
+      if attributes.key?(:'guid')
         self.guid = attributes[:'guid']
       end
 
-      if attributes.has_key?(:'institution_code')
+      if attributes.key?(:'institution_code')
         self.institution_code = attributes[:'institution_code']
       end
 
-      if attributes.has_key?(:'interest_rate')
+      if attributes.key?(:'interest_rate')
         self.interest_rate = attributes[:'interest_rate']
       end
 
-      if attributes.has_key?(:'is_closed')
+      if attributes.key?(:'is_closed')
         self.is_closed = attributes[:'is_closed']
       end
 
-      if attributes.has_key?(:'last_payment')
+      if attributes.key?(:'last_payment')
         self.last_payment = attributes[:'last_payment']
       end
 
-      if attributes.has_key?(:'matures_on')
+      if attributes.key?(:'matures_on')
         self.matures_on = attributes[:'matures_on']
       end
 
-      if attributes.has_key?(:'member_guid')
+      if attributes.key?(:'member_guid')
         self.member_guid = attributes[:'member_guid']
       end
 
-      if attributes.has_key?(:'minimum_balance')
+      if attributes.key?(:'minimum_balance')
         self.minimum_balance = attributes[:'minimum_balance']
       end
 
-      if attributes.has_key?(:'minimum_payment')
+      if attributes.key?(:'minimum_payment')
         self.minimum_payment = attributes[:'minimum_payment']
       end
 
-      if attributes.has_key?(:'name')
+      if attributes.key?(:'name')
         self.name = attributes[:'name']
       end
 
-      if attributes.has_key?(:'original_balance')
+      if attributes.key?(:'original_balance')
         self.original_balance = attributes[:'original_balance']
       end
 
-      if attributes.has_key?(:'payment_due_at')
+      if attributes.key?(:'payment_due_at')
         self.payment_due_at = attributes[:'payment_due_at']
       end
 
-      if attributes.has_key?(:'payoff_balance')
+      if attributes.key?(:'payoff_balance')
         self.payoff_balance = attributes[:'payoff_balance']
       end
 
-      if attributes.has_key?(:'started_on')
+      if attributes.key?(:'started_on')
         self.started_on = attributes[:'started_on']
       end
 
-      if attributes.has_key?(:'subtype')
+      if attributes.key?(:'subtype')
         self.subtype = attributes[:'subtype']
       end
 
-      if attributes.has_key?(:'total_account_value')
+      if attributes.key?(:'total_account_value')
         self.total_account_value = attributes[:'total_account_value']
       end
 
-      if attributes.has_key?(:'type')
+      if attributes.key?(:'type')
         self.type = attributes[:'type']
       end
 
-      if attributes.has_key?(:'updated_at')
+      if attributes.key?(:'updated_at')
         self.updated_at = attributes[:'updated_at']
       end
 
-      if attributes.has_key?(:'user_guid')
+      if attributes.key?(:'user_guid')
         self.user_guid = attributes[:'user_guid']
       end
     end
@@ -258,7 +258,7 @@ module Atrium
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
-      invalid_properties = Array.new
+      invalid_properties = []
       invalid_properties
     end
 
@@ -270,43 +270,43 @@ module Atrium
 
     # Checks equality by comparing each attribute.
     # @param [Object] Object to be compared
-    def ==(o)
-      return true if self.equal?(o)
-      self.class == o.class &&
-          apr == o.apr &&
-          apy == o.apy &&
-          available_balance == o.available_balance &&
-          available_credit == o.available_credit &&
-          balance == o.balance &&
-          created_at == o.created_at &&
-          credit_limit == o.credit_limit &&
-          currency_code == o.currency_code &&
-          day_payment_is_due == o.day_payment_is_due &&
-          guid == o.guid &&
-          institution_code == o.institution_code &&
-          interest_rate == o.interest_rate &&
-          is_closed == o.is_closed &&
-          last_payment == o.last_payment &&
-          matures_on == o.matures_on &&
-          member_guid == o.member_guid &&
-          minimum_balance == o.minimum_balance &&
-          minimum_payment == o.minimum_payment &&
-          name == o.name &&
-          original_balance == o.original_balance &&
-          payment_due_at == o.payment_due_at &&
-          payoff_balance == o.payoff_balance &&
-          started_on == o.started_on &&
-          subtype == o.subtype &&
-          total_account_value == o.total_account_value &&
-          type == o.type &&
-          updated_at == o.updated_at &&
-          user_guid == o.user_guid
+    def ==(other)
+      return true if self.equal?(other)
+      self.class == other.class &&
+        apr == other.apr &&
+        apy == other.apy &&
+        available_balance == other.available_balance &&
+        available_credit == other.available_credit &&
+        balance == other.balance &&
+        created_at == other.created_at &&
+        credit_limit == other.credit_limit &&
+        currency_code == other.currency_code &&
+        day_payment_is_due == other.day_payment_is_due &&
+        guid == other.guid &&
+        institution_code == other.institution_code &&
+        interest_rate == other.interest_rate &&
+        is_closed == other.is_closed &&
+        last_payment == other.last_payment &&
+        matures_on == other.matures_on &&
+        member_guid == other.member_guid &&
+        minimum_balance == other.minimum_balance &&
+        minimum_payment == other.minimum_payment &&
+        name == other.name &&
+        original_balance == other.original_balance &&
+        payment_due_at == other.payment_due_at &&
+        payoff_balance == other.payoff_balance &&
+        started_on == other.started_on &&
+        subtype == other.subtype &&
+        total_account_value == other.total_account_value &&
+        type == other.type &&
+        updated_at == other.updated_at &&
+        user_guid == other.user_guid
     end
 
     # @see the `==` method
     # @param [Object] Object to be compared
-    def eql?(o)
-      self == o
+    def eql?(other)
+      self == other
     end
 
     # Calculates hash code according to all attributes.
@@ -325,7 +325,7 @@ module Atrium
           # check to ensure the input is an array given that the the attribute
           # is documented as an array but the input is not
           if attributes[self.class.attribute_map[key]].is_a?(Array)
-            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize($1, v) })
+            self.send("#{key}=", attributes[self.class.attribute_map[key]].map { |v| _deserialize(Regexp.last_match(1), v) })
           end
         elsif !attributes[self.class.attribute_map[key]].nil?
           self.send("#{key}=", _deserialize(type, attributes[self.class.attribute_map[key]]))
@@ -418,5 +418,7 @@ module Atrium
         value
       end
     end
+
   end
+
 end

@@ -10,12 +10,12 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for MX::AccountNumber
+# Unit tests for Atrium::AccountNumber
 # Please update as you see appropriate
 describe 'AccountNumber' do
   before do
     # run before each test
-    @instance = MX::AccountNumber.new
+    @instance = Atrium::AccountNumber.new
   end
 
   after do
@@ -24,7 +24,7 @@ describe 'AccountNumber' do
 
   describe 'test an instance of AccountNumber' do
     it 'should create an instance of AccountNumber' do
-      expect(@instance).to be_instance_of(MX::AccountNumber)
+      expect(@instance).to be_instance_of(Atrium::AccountNumber)
     end
   end
   describe 'test attribute "account_guid"' do

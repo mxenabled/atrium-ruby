@@ -8,7 +8,7 @@
 
 require 'uri'
 
-module MX
+module Atrium
   class Configuration
     # Defines url scheme
     attr_accessor :scheme

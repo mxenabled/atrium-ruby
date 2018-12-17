@@ -10,12 +10,12 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for MX::ConnectWidget
+# Unit tests for Atrium::ConnectWidget
 # Please update as you see appropriate
 describe 'ConnectWidget' do
   before do
     # run before each test
-    @instance = MX::ConnectWidget.new
+    @instance = Atrium::ConnectWidget.new
   end
 
   after do
@@ -24,7 +24,7 @@ describe 'ConnectWidget' do
 
   describe 'test an instance of ConnectWidget' do
     it 'should create an instance of ConnectWidget' do
-      expect(@instance).to be_instance_of(MX::ConnectWidget)
+      expect(@instance).to be_instance_of(Atrium::ConnectWidget)
     end
   end
   describe 'test attribute "connect_widget_url"' do

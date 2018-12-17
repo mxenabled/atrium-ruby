@@ -9,12 +9,12 @@
 require 'spec_helper'
 require 'json'
 
-# Unit tests for MX::VerificationApi
+# Unit tests for Atrium::VerificationApi
 # Please update as you see appropriate
 describe 'VerificationApi' do
   before do
     # run before each test
-    @instance = MX::VerificationApi.new
+    @instance = Atrium::VerificationApi.new
   end
 
   after do
@@ -23,7 +23,7 @@ describe 'VerificationApi' do
 
   describe 'test an instance of VerificationApi' do
     it 'should create an instance of VerificationApi' do
-      expect(@instance).to be_instance_of(MX::VerificationApi)
+      expect(@instance).to be_instance_of(Atrium::VerificationApi)
     end
   end
 

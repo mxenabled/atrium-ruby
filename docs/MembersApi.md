@@ -1,4 +1,4 @@
-# MX::MembersApi
+# Atrium::MembersApi
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -28,27 +28,16 @@ Calling this endpoint initiates an aggregation event for the member. This brings
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::MembersApi.new
-
-member_guid = 'member_guid_example' # String | The unique identifier for a `member`.
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+member_guid = "MBR-123" # String | The unique identifier for a `member`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Aggregate member
-  result = api_instance.aggregate_member(member_guid, user_guid)
-  p result
-rescue MX::ApiError => e
+  response = client.members.aggregate_member(member_guid, user_guid)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->aggregate_member: #{e}"
 end
 ```
@@ -76,27 +65,16 @@ This endpoint allows you to create a new member. Members are created with the re
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::MembersApi.new
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
-body = MX::MemberCreateRequestBody.new # MemberCreateRequestBody | Member object to be created with optional parameters (identifier and metadata) and required parameters (credentials and institution_code)
-
+user_guid = "USR-123" # String | The unique identifier for a `user`.
+body = Atrium::MemberCreateRequestBody.new # MemberCreateRequestBody | Member object to be created with optional parameters (identifier and metadata) and required parameters (credentials and institution_code)
 
 begin
   #Create member
-  result = api_instance.create_member(user_guidbody)
-  p result
-rescue MX::ApiError => e
+  response = client.members.create_member(user_guidbody)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->create_member: #{e}"
 end
 ```
@@ -124,26 +102,15 @@ Accessing this endpoint will permanently delete a member.
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::MembersApi.new
-
-member_guid = 'member_guid_example' # String | The unique identifier for a `member`.
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+member_guid = "MBR-123" # String | The unique identifier for a `member`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Delete member
-  api_instance.delete_member(member_guid, user_guid)
-rescue MX::ApiError => e
+  client.members.delete_member(member_guid, user_guid)
+rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->delete_member: #{e}"
 end
 ```
@@ -171,31 +138,20 @@ This endpoint returns an array with information about every account associated w
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::MembersApi.new
-
-member_guid = 'member_guid_example' # String | The unique identifier for a `member`.
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+member_guid = "MBR-123" # String | The unique identifier for a `member`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 opts = { 
-  page: 12, # Integer | Specify current page.
+  page: 1, # Integer | Specify current page.
   records_per_page: 12, # Integer | Specify records per page.
 }
 
 begin
   #List member accounts
-  result = api_instance.list_member_accounts(member_guid, user_guid, opts)
-  p result
-rescue MX::ApiError => e
+  response = client.members.list_member_accounts(member_guid, user_guid, opts)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->list_member_accounts: #{e}"
 end
 ```
@@ -225,27 +181,16 @@ This endpoint returns an array which contains information on every non-MFA crede
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::MembersApi.new
-
-member_guid = 'member_guid_example' # String | The unique identifier for a `member`.
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+member_guid = "MBR-123" # String | The unique identifier for a `member`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #List member credentials
-  result = api_instance.list_member_credentials(member_guid, user_guid)
-  p result
-rescue MX::ApiError => e
+  response = client.members.list_member_credentials(member_guid, user_guid)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->list_member_credentials: #{e}"
 end
 ```
@@ -273,27 +218,16 @@ Use this endpoint for information on what multi-factor authentication challenges
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::MembersApi.new
-
-member_guid = 'member_guid_example' # String | The unique identifier for a `member`.
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+member_guid = "MBR-123" # String | The unique identifier for a `member`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #List member MFA challenges
-  result = api_instance.list_member_mfa_challenges(member_guid, user_guid)
-  p result
-rescue MX::ApiError => e
+  response = client.members.list_member_mfa_challenges(member_guid, user_guid)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->list_member_mfa_challenges: #{e}"
 end
 ```
@@ -321,33 +255,22 @@ Use this endpoint to get all transactions from all accounts associated with a sp
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::MembersApi.new
-
-member_guid = 'member_guid_example' # String | The unique identifier for a `member`.
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+member_guid = "MBR-123" # String | The unique identifier for a `member`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 opts = { 
-  from_date: 'from_date_example', # String | Filter transactions from this date.
-  to_date: 'to_date_example' # String | Filter transactions to this date.
-  page: 12, # Integer | Specify current page.
+  from_date: "2016-09-20", # String | Filter transactions from this date.
+  to_date: "2016-10-20" # String | Filter transactions to this date.
+  page: 1, # Integer | Specify current page.
   records_per_page: 12, # Integer | Specify records per page.
 }
 
 begin
   #List member transactions
-  result = api_instance.list_member_transactions(member_guid, user_guid, opts)
-  p result
-rescue MX::ApiError => e
+  response = client.members.list_member_transactions(member_guid, user_guid, opts)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->list_member_transactions: #{e}"
 end
 ```
@@ -379,29 +302,19 @@ This endpoint returns an array which contains information on every member associ
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::MembersApi.new
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 opts = { 
-  page: 12, # Integer | Specify current page.
+  page: 1, # Integer | Specify current page.
   records_per_page: 12, # Integer | Specify records per page.
 }
 
 begin
   #List members
-  result = api_instance.list_members(user_guid, opts)
-  p result
-rescue MX::ApiError => e
+  response = client.members.list_members(user_guid, opts)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->list_members: #{e}"
 end
 ```
@@ -430,27 +343,16 @@ Use this endpoint to read the attributes of a specific member.
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::MembersApi.new
-
-member_guid = 'member_guid_example' # String | The unique identifier for a `member`.
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+member_guid = "MBR-123" # String | The unique identifier for a `member`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Read member
-  result = api_instance.read_member(member_guid, user_guid)
-  p result
-rescue MX::ApiError => e
+  response = client.members.read_member(member_guid, user_guid)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->read_member: #{e}"
 end
 ```
@@ -478,27 +380,16 @@ This endpoint provides the status of the member's most recent aggregation event.
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::MembersApi.new
-
-member_guid = 'member_guid_example' # String | The unique identifier for a `member`.
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+member_guid = "MBR-123" # String | The unique identifier for a `member`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Read member connection status
-  result = api_instance.read_member_status(member_guid, user_guid)
-  p result
-rescue MX::ApiError => e
+  response = client.members.read_member_status(member_guid, user_guid)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->read_member_status: #{e}"
 end
 ```
@@ -526,29 +417,17 @@ This endpoint answers the challenges needed when a member has been challenged by
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::MembersApi.new
-
-member_guid = 'member_guid_example' # String | The unique identifier for a `member`.
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
-body = MX::MemberResumeRequestBody.new # MemberResumeRequestBody | Member object with MFA challenge answers
-
+member_guid = "MBR-123" # String | The unique identifier for a `member`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
+body = Atrium::MemberResumeRequestBody.new # MemberResumeRequestBody | Member object with MFA challenge answers
 
 begin
   #Resume aggregation from MFA
-  result = api_instance.resume_member(member_guid, user_guidbody)
-  p result
-rescue MX::ApiError => e
+  response = client.members.resume_member(member_guid, user_guidbody)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->resume_member: #{e}"
 end
 ```
@@ -577,30 +456,19 @@ Use this endpoint to update a member's attributes. Only the credentials, identif
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::MembersApi.new
-
-member_guid = 'member_guid_example' # String | The unique identifier for a `member`.
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+member_guid = "MBR-123" # String | The unique identifier for a `member`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 opts = { 
-  body: MX::MemberUpdateRequestBody.new # MemberUpdateRequestBody | Member object to be updated with optional parameters (credentials, identifier, metadata)
+  body: Atrium::MemberUpdateRequestBody.new # MemberUpdateRequestBody | Member object to be updated with optional parameters (credentials, identifier, metadata)
 }
 
 begin
   #Update member
-  result = api_instance.update_member(member_guid, user_guid, opts)
-  p result
-rescue MX::ApiError => e
+  response = client.members.update_member(member_guid, user_guid, opts)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->update_member: #{e}"
 end
 ```

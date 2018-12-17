@@ -10,12 +10,12 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for MX::MemberResumeRequest
+# Unit tests for Atrium::MemberResumeRequest
 # Please update as you see appropriate
 describe 'MemberResumeRequest' do
   before do
     # run before each test
-    @instance = MX::MemberResumeRequest.new
+    @instance = Atrium::MemberResumeRequest.new
   end
 
   after do
@@ -24,7 +24,7 @@ describe 'MemberResumeRequest' do
 
   describe 'test an instance of MemberResumeRequest' do
     it 'should create an instance of MemberResumeRequest' do
-      expect(@instance).to be_instance_of(MX::MemberResumeRequest)
+      expect(@instance).to be_instance_of(Atrium::MemberResumeRequest)
     end
   end
   describe 'test attribute "challenges"' do

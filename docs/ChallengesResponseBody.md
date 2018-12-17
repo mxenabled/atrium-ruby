@@ -1,4 +1,4 @@
-# MX::ChallengesResponseBody
+# Atrium::ChallengesResponseBody
 
 ## Properties
 Name | Type | Description | Notes

@@ -1,4 +1,4 @@
-# MX::ConnectWidgetRequestBody
+# Atrium::ConnectWidgetRequestBody
 
 ## Properties
 Name | Type | Description | Notes

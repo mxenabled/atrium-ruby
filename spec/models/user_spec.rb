@@ -10,12 +10,12 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for MX::User
+# Unit tests for Atrium::User
 # Please update as you see appropriate
 describe 'User' do
   before do
     # run before each test
-    @instance = MX::User.new
+    @instance = Atrium::User.new
   end
 
   after do
@@ -24,7 +24,7 @@ describe 'User' do
 
   describe 'test an instance of User' do
     it 'should create an instance of User' do
-      expect(@instance).to be_instance_of(MX::User)
+      expect(@instance).to be_instance_of(Atrium::User)
     end
   end
   describe 'test attribute "guid"' do

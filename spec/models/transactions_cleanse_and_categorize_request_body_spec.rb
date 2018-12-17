@@ -10,12 +10,12 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for MX::TransactionsCleanseAndCategorizeRequestBody
+# Unit tests for Atrium::TransactionsCleanseAndCategorizeRequestBody
 # Please update as you see appropriate
 describe 'TransactionsCleanseAndCategorizeRequestBody' do
   before do
     # run before each test
-    @instance = MX::TransactionsCleanseAndCategorizeRequestBody.new
+    @instance = Atrium::TransactionsCleanseAndCategorizeRequestBody.new
   end
 
   after do
@@ -24,7 +24,7 @@ describe 'TransactionsCleanseAndCategorizeRequestBody' do
 
   describe 'test an instance of TransactionsCleanseAndCategorizeRequestBody' do
     it 'should create an instance of TransactionsCleanseAndCategorizeRequestBody' do
-      expect(@instance).to be_instance_of(MX::TransactionsCleanseAndCategorizeRequestBody)
+      expect(@instance).to be_instance_of(Atrium::TransactionsCleanseAndCategorizeRequestBody)
     end
   end
   describe 'test attribute "transactions"' do

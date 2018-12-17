@@ -10,12 +10,12 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for MX::Pagination
+# Unit tests for Atrium::Pagination
 # Please update as you see appropriate
 describe 'Pagination' do
   before do
     # run before each test
-    @instance = MX::Pagination.new
+    @instance = Atrium::Pagination.new
   end
 
   after do
@@ -24,7 +24,7 @@ describe 'Pagination' do
 
   describe 'test an instance of Pagination' do
     it 'should create an instance of Pagination' do
-      expect(@instance).to be_instance_of(MX::Pagination)
+      expect(@instance).to be_instance_of(Atrium::Pagination)
     end
   end
   describe 'test attribute "current_page"' do

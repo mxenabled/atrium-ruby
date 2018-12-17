@@ -10,12 +10,12 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for MX::CredentialRequest
+# Unit tests for Atrium::CredentialRequest
 # Please update as you see appropriate
 describe 'CredentialRequest' do
   before do
     # run before each test
-    @instance = MX::CredentialRequest.new
+    @instance = Atrium::CredentialRequest.new
   end
 
   after do
@@ -24,7 +24,7 @@ describe 'CredentialRequest' do
 
   describe 'test an instance of CredentialRequest' do
     it 'should create an instance of CredentialRequest' do
-      expect(@instance).to be_instance_of(MX::CredentialRequest)
+      expect(@instance).to be_instance_of(Atrium::CredentialRequest)
     end
   end
   describe 'test attribute "guid"' do

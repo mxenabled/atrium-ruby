@@ -1,4 +1,4 @@
-# MX::MemberCreateRequestBody
+# Atrium::MemberCreateRequestBody
 
 ## Properties
 Name | Type | Description | Notes

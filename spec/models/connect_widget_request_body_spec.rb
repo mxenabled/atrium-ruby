@@ -10,12 +10,12 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for MX::ConnectWidgetRequestBody
+# Unit tests for Atrium::ConnectWidgetRequestBody
 # Please update as you see appropriate
 describe 'ConnectWidgetRequestBody' do
   before do
     # run before each test
-    @instance = MX::ConnectWidgetRequestBody.new
+    @instance = Atrium::ConnectWidgetRequestBody.new
   end
 
   after do
@@ -24,7 +24,7 @@ describe 'ConnectWidgetRequestBody' do
 
   describe 'test an instance of ConnectWidgetRequestBody' do
     it 'should create an instance of ConnectWidgetRequestBody' do
-      expect(@instance).to be_instance_of(MX::ConnectWidgetRequestBody)
+      expect(@instance).to be_instance_of(Atrium::ConnectWidgetRequestBody)
     end
   end
   describe 'test attribute "is_mobile_webview"' do

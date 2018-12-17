@@ -1,4 +1,4 @@
-# MX::MemberResumeRequest
+# Atrium::MemberResumeRequest
 
 ## Properties
 Name | Type | Description | Notes

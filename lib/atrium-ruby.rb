@@ -67,11 +67,12 @@ require 'atrium-ruby/api/members_api'
 require 'atrium-ruby/api/transactions_api'
 require 'atrium-ruby/api/users_api'
 require 'atrium-ruby/api/verification_api'
+require 'atrium-ruby/api/atrium_client'
 
-module MX
+module Atrium
   class << self
     # Customize default settings for the SDK using block.
-    #   MX.configure do |config|
+    #   Atrium.configure do |config|
     #     config.username = "xxx"
     #     config.password = "xxx"
     #   end

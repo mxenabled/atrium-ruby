@@ -13,7 +13,7 @@ require "atrium-ruby/version"
 
 Gem::Specification.new do |s|
   s.name        = "atrium-ruby"
-  s.version     = MX::VERSION
+  s.version     = Atrium::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["MX"]
   s.email       = ["atrium.api@mx.com"]

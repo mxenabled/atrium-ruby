@@ -1,4 +1,4 @@
-# MX::AccountResponseBody
+# Atrium::AccountResponseBody
 
 ## Properties
 Name | Type | Description | Notes

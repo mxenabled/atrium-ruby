@@ -1,4 +1,4 @@
-# MX::TransactionResponseBody
+# Atrium::TransactionResponseBody
 
 ## Properties
 Name | Type | Description | Notes

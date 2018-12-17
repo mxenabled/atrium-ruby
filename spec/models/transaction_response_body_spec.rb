@@ -10,12 +10,12 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for MX::TransactionResponseBody
+# Unit tests for Atrium::TransactionResponseBody
 # Please update as you see appropriate
 describe 'TransactionResponseBody' do
   before do
     # run before each test
-    @instance = MX::TransactionResponseBody.new
+    @instance = Atrium::TransactionResponseBody.new
   end
 
   after do
@@ -24,7 +24,7 @@ describe 'TransactionResponseBody' do
 
   describe 'test an instance of TransactionResponseBody' do
     it 'should create an instance of TransactionResponseBody' do
-      expect(@instance).to be_instance_of(MX::TransactionResponseBody)
+      expect(@instance).to be_instance_of(Atrium::TransactionResponseBody)
     end
   end
   describe 'test attribute "transaction"' do

@@ -1,4 +1,4 @@
-# MX::ConnectWidget
+# Atrium::ConnectWidget
 
 ## Properties
 Name | Type | Description | Notes

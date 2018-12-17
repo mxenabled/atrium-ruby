@@ -8,7 +8,7 @@
 
 require 'uri'
 
-module MX
+module Atrium
   class ConnectWidgetApi
     attr_accessor :api_client
 

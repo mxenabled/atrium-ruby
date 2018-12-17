@@ -6,6 +6,6 @@
 
 =end
 
-module MX
+module Atrium
   VERSION = '2.0'
 end

@@ -1,4 +1,4 @@
-# MX::UsersApi
+# Atrium::UsersApi
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -21,25 +21,15 @@ Call this endpoint to create a new user. Atrium will respond with the newly-crea
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::UsersApi.new
-
-body = MX::UserCreateRequestBody.new # UserCreateRequestBody | User object to be created with optional parameters (identifier, is_disabled, metadata)
-
+body = Atrium::UserCreateRequestBody.new # UserCreateRequestBody | User object to be created with optional parameters (identifier, is_disabled, metadata)
 
 begin
   #Create user
-  result = api_instance.create_user(body)
-  p result
-rescue MX::ApiError => e
+  response = client.users.create_user(body)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling UsersApi->create_user: #{e}"
 end
 ```
@@ -66,24 +56,14 @@ Calling this endpoint will permanently delete a user from Atrium. If successful,
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::UsersApi.new
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Delete user
-  api_instance.delete_user(user_guid)
-rescue MX::ApiError => e
+  client.users.delete_user(user_guid)
+rescue Atrium::ApiError => e
   puts "Exception when calling UsersApi->delete_user: #{e}"
 end
 ```
@@ -110,27 +90,18 @@ Use this endpoint to list every user you've created in Atrium.
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
-
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::UsersApi.new
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
 opts = { 
-  page: 12, # Integer | Specify current page.
+  page: 1, # Integer | Specify current page.
   records_per_page: 12, # Integer | Specify records per page.
 }
 
 begin
   #List users
-  result = api_instance.list_users(opts)
-  p result
-rescue MX::ApiError => e
+  response = client.users.list_users(opts)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling UsersApi->list_users: #{e}"
 end
 ```
@@ -158,25 +129,15 @@ Use this endpoint to read the attributes of a specific user.
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::UsersApi.new
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Read user
-  result = api_instance.read_user(user_guid)
-  p result
-rescue MX::ApiError => e
+  response = client.users.read_user(user_guid)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling UsersApi->read_user: #{e}"
 end
 ```
@@ -203,28 +164,18 @@ Use this endpoint to update the attributes of a specific user. Atrium will respo
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::UsersApi.new
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 opts = { 
-  body: MX::UserUpdateRequestBody.new # UserUpdateRequestBody | User object to be updated with optional parameters (identifier, is_disabled, metadata)
+  body: Atrium::UserUpdateRequestBody.new # UserUpdateRequestBody | User object to be updated with optional parameters (identifier, is_disabled, metadata)
 }
 
 begin
   #Update user
-  result = api_instance.update_user(user_guid, opts)
-  p result
-rescue MX::ApiError => e
+  response = client.users.update_user(user_guid, opts)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling UsersApi->update_user: #{e}"
 end
 ```

@@ -1,4 +1,4 @@
-# MX::AccountOwner
+# Atrium::AccountOwner
 
 ## Properties
 Name | Type | Description | Notes

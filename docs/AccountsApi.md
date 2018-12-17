@@ -1,4 +1,4 @@
-# MX::AccountsApi
+# Atrium::AccountsApi
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -20,33 +20,22 @@ This endpoint allows you to see every transaction that belongs to a specific acc
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::AccountsApi.new
-
-account_guid = 'account_guid_example' # String | The unique identifier for an `account`.
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+account_guid = "ACT-123" # String | The unique identifier for an `account`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 opts = { 
-  from_date: 'from_date_example', # String | Filter transactions from this date.
-  to_date: 'to_date_example' # String | Filter transactions to this date.
-  page: 12, # Integer | Specify current page.
+  from_date: "2016-09-20", # String | Filter transactions from this date.
+  to_date: "2016-10-20" # String | Filter transactions to this date.
+  page: 1, # Integer | Specify current page.
   records_per_page: 12, # Integer | Specify records per page.
 }
 
 begin
   #List account transactions
-  result = api_instance.list_account_transactions(account_guid, user_guid, opts)
-  p result
-rescue MX::ApiError => e
+  response = client.accounts.list_account_transactions(account_guid, user_guid, opts)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling AccountsApi->list_account_transactions: #{e}"
 end
 ```
@@ -78,29 +67,19 @@ Use this endpoint to view information about every account that belongs to a user
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::AccountsApi.new
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 opts = { 
-  page: 12, # Integer | Specify current page.
+  page: 1, # Integer | Specify current page.
   records_per_page: 12, # Integer | Specify records per page.
 }
 
 begin
   #List accounts for a user
-  result = api_instance.list_user_accounts(user_guid, opts)
-  p result
-rescue MX::ApiError => e
+  response = client.accounts.list_user_accounts(user_guid, opts)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling AccountsApi->list_user_accounts: #{e}"
 end
 ```
@@ -129,27 +108,16 @@ Reading an account allows you to get information about a specific account that b
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::AccountsApi.new
-
-account_guid = 'account_guid_example' # String | The unique identifier for an `account`.
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+account_guid = "ACT-123" # String | The unique identifier for an `account`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Read an account
-  result = api_instance.read_account(account_guid, user_guid)
-  p result
-rescue MX::ApiError => e
+  response = client.accounts.read_account(account_guid, user_guid)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling AccountsApi->read_account: #{e}"
 end
 ```
@@ -177,29 +145,17 @@ Reading an account allows you to get information about a specific account that b
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::AccountsApi.new
-
-account_guid = 'account_guid_example' # String | The unique identifier for an `account`.
-
-member_guid = 'member_guid_example' # String | The unique identifier for a `member`.
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+account_guid = "ACT-123" # String | The unique identifier for an `account`.
+member_guid = "MBR-123" # String | The unique identifier for a `member`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Read an account
-  result = api_instance.read_account_by_member_guid(account_guid, member_guid, user_guid)
-  p result
-rescue MX::ApiError => e
+  response = client.accounts.read_account_by_member_guid(account_guid, member_guid, user_guid)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling AccountsApi->read_account_by_member_guid: #{e}"
 end
 ```

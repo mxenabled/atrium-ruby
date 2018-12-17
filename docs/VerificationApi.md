@@ -1,4 +1,4 @@
-# MX::VerificationApi
+# Atrium::VerificationApi
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -19,27 +19,16 @@ Use this endpoint to check whether account and routing numbers are available for
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::VerificationApi.new
-
-member_guid = 'member_guid_example' # String | The unique identifier for a `member`.
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+member_guid = "MBR-123" # String | The unique identifier for a `member`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Read account numbers
-  result = api_instance.list_account_numbers(member_guid, user_guid)
-  p result
-rescue MX::ApiError => e
+  response = client.verification.list_account_numbers(member_guid, user_guid)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling VerificationApi->list_account_numbers: #{e}"
 end
 ```
@@ -67,27 +56,16 @@ Use this endpoint to check whether account and routing numbers are available for
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::VerificationApi.new
-
-account_guid = 'account_guid_example' # String | The unique identifier for an `account`.
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+account_guid = "ACT-123" # String | The unique identifier for an `account`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Read account numbers by account GUID
-  result = api_instance.list_account_numbers_by_account(account_guid, user_guid)
-  p result
-rescue MX::ApiError => e
+  response = client.verification.list_account_numbers_by_account(account_guid, user_guid)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling VerificationApi->list_account_numbers_by_account: #{e}"
 end
 ```
@@ -115,27 +93,16 @@ The verify endpoint begins a verification process for a member.
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::VerificationApi.new
-
-member_guid = 'member_guid_example' # String | The unique identifier for a `member`.
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+member_guid = "MBR-123" # String | The unique identifier for a `member`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Verify
-  result = api_instance.verify_member(member_guid, user_guid)
-  p result
-rescue MX::ApiError => e
+  response = client.verification.verify_member(member_guid, user_guid)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling VerificationApi->verify_member: #{e}"
 end
 ```

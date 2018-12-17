@@ -9,12 +9,12 @@
 require 'spec_helper'
 require 'json'
 
-# Unit tests for MX::IdentityApi
+# Unit tests for Atrium::IdentityApi
 # Please update as you see appropriate
 describe 'IdentityApi' do
   before do
     # run before each test
-    @instance = MX::IdentityApi.new
+    @instance = Atrium::IdentityApi.new
   end
 
   after do
@@ -23,7 +23,7 @@ describe 'IdentityApi' do
 
   describe 'test an instance of IdentityApi' do
     it 'should create an instance of IdentityApi' do
-      expect(@instance).to be_instance_of(MX::IdentityApi)
+      expect(@instance).to be_instance_of(Atrium::IdentityApi)
     end
   end
 

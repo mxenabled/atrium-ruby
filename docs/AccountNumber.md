@@ -1,4 +1,4 @@
-# MX::AccountNumber
+# Atrium::AccountNumber
 
 ## Properties
 Name | Type | Description | Notes

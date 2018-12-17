@@ -1,4 +1,4 @@
-# MX::Transaction
+# Atrium::Transaction
 
 ## Properties
 Name | Type | Description | Notes

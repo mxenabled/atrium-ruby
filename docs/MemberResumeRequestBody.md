@@ -1,4 +1,4 @@
-# MX::MemberResumeRequestBody
+# Atrium::MemberResumeRequestBody
 
 ## Properties
 Name | Type | Description | Notes

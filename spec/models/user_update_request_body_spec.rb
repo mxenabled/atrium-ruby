@@ -10,12 +10,12 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for MX::UserUpdateRequestBody
+# Unit tests for Atrium::UserUpdateRequestBody
 # Please update as you see appropriate
 describe 'UserUpdateRequestBody' do
   before do
     # run before each test
-    @instance = MX::UserUpdateRequestBody.new
+    @instance = Atrium::UserUpdateRequestBody.new
   end
 
   after do
@@ -24,7 +24,7 @@ describe 'UserUpdateRequestBody' do
 
   describe 'test an instance of UserUpdateRequestBody' do
     it 'should create an instance of UserUpdateRequestBody' do
-      expect(@instance).to be_instance_of(MX::UserUpdateRequestBody)
+      expect(@instance).to be_instance_of(Atrium::UserUpdateRequestBody)
     end
   end
   describe 'test attribute "user"' do

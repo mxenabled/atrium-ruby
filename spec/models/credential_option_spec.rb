@@ -10,12 +10,12 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for MX::CredentialOption
+# Unit tests for Atrium::CredentialOption
 # Please update as you see appropriate
 describe 'CredentialOption' do
   before do
     # run before each test
-    @instance = MX::CredentialOption.new
+    @instance = Atrium::CredentialOption.new
   end
 
   after do
@@ -24,7 +24,7 @@ describe 'CredentialOption' do
 
   describe 'test an instance of CredentialOption' do
     it 'should create an instance of CredentialOption' do
-      expect(@instance).to be_instance_of(MX::CredentialOption)
+      expect(@instance).to be_instance_of(Atrium::CredentialOption)
     end
   end
   describe 'test attribute "label"' do

@@ -1,4 +1,4 @@
-# MX::MemberConnectionStatusResponseBody
+# Atrium::MemberConnectionStatusResponseBody
 
 ## Properties
 Name | Type | Description | Notes

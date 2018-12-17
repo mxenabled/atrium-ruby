@@ -1,4 +1,4 @@
-# MX::MemberConnectionStatus
+# Atrium::MemberConnectionStatus
 
 ## Properties
 Name | Type | Description | Notes

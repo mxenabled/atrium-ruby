@@ -10,12 +10,12 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for MX::Member
+# Unit tests for Atrium::Member
 # Please update as you see appropriate
 describe 'Member' do
   before do
     # run before each test
-    @instance = MX::Member.new
+    @instance = Atrium::Member.new
   end
 
   after do
@@ -24,7 +24,7 @@ describe 'Member' do
 
   describe 'test an instance of Member' do
     it 'should create an instance of Member' do
-      expect(@instance).to be_instance_of(MX::Member)
+      expect(@instance).to be_instance_of(Atrium::Member)
     end
   end
   describe 'test attribute "aggregated_at"' do

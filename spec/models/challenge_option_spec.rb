@@ -10,12 +10,12 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for MX::ChallengeOption
+# Unit tests for Atrium::ChallengeOption
 # Please update as you see appropriate
 describe 'ChallengeOption' do
   before do
     # run before each test
-    @instance = MX::ChallengeOption.new
+    @instance = Atrium::ChallengeOption.new
   end
 
   after do
@@ -24,7 +24,7 @@ describe 'ChallengeOption' do
 
   describe 'test an instance of ChallengeOption' do
     it 'should create an instance of ChallengeOption' do
-      expect(@instance).to be_instance_of(MX::ChallengeOption)
+      expect(@instance).to be_instance_of(Atrium::ChallengeOption)
     end
   end
   describe 'test attribute "image_data"' do

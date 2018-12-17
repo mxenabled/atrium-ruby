@@ -1,4 +1,4 @@
-# MX::ChallengeOption
+# Atrium::ChallengeOption
 
 ## Properties
 Name | Type | Description | Notes

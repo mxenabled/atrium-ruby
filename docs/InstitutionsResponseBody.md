@@ -1,4 +1,4 @@
-# MX::InstitutionsResponseBody
+# Atrium::InstitutionsResponseBody
 
 ## Properties
 Name | Type | Description | Notes

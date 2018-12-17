@@ -1,4 +1,4 @@
-# MX::IdentityApi
+# Atrium::IdentityApi
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -18,27 +18,16 @@ The identify endpoint begins an identification process for an already-existing m
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::IdentityApi.new
-
-member_guid = 'member_guid_example' # String | The unique identifier for a `member`.
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+member_guid = "MBR-123" # String | The unique identifier for a `member`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Identify
-  result = api_instance.identify_member(member_guid, user_guid)
-  p result
-rescue MX::ApiError => e
+  response = client.identity.identify_member(member_guid, user_guid)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling IdentityApi->identify_member: #{e}"
 end
 ```
@@ -66,27 +55,16 @@ This endpoint returns an array with information about every account associated w
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::IdentityApi.new
-
-member_guid = 'member_guid_example' # String | The unique identifier for a `member`.
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+member_guid = "MBR-123" # String | The unique identifier for a `member`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #List member account owners
-  result = api_instance.list_account_owners(member_guid, user_guid)
-  p result
-rescue MX::ApiError => e
+  response = client.identity.list_account_owners(member_guid, user_guid)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling IdentityApi->list_account_owners: #{e}"
 end
 ```

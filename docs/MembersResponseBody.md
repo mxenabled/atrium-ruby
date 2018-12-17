@@ -1,4 +1,4 @@
-# MX::MembersResponseBody
+# Atrium::MembersResponseBody
 
 ## Properties
 Name | Type | Description | Notes

@@ -13,7 +13,7 @@ require 'tempfile'
 require 'typhoeus'
 require 'uri'
 
-module MX
+module Atrium
   class ApiClient
     # The Configuration object holding settings to be used in the API client.
     attr_accessor :config
@@ -206,7 +206,7 @@ module MX
         end
       else
         # models, e.g. Pet
-        MX.const_get(return_type).new.tap do |model|
+        Atrium.const_get(return_type).new.tap do |model|
           model.build_from_hash data
         end
       end

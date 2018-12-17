@@ -1,4 +1,4 @@
-# MX::Pagination
+# Atrium::Pagination
 
 ## Properties
 Name | Type | Description | Notes

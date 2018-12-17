@@ -1,4 +1,4 @@
-# MX::InstitutionsApi
+# Atrium::InstitutionsApi
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -19,28 +19,19 @@ This endpoint allows you to see what institutions are available for connection. 
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
-
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::InstitutionsApi.new
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
 opts = { 
-  name: 'name_example', # String | This will list only institutions in which the appended string appears.
-  page: 12, # Integer | Specify current page.
+  name: name_example, # String | This will list only institutions in which the appended string appears.
+  page: 1, # Integer | Specify current page.
   records_per_page: 12, # Integer | Specify records per page.
 }
 
 begin
   #List institutions
-  result = api_instance.list_institutions(opts)
-  p result
-rescue MX::ApiError => e
+  response = client.institutions.list_institutions(opts)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling InstitutionsApi->list_institutions: #{e}"
 end
 ```
@@ -69,25 +60,15 @@ This endpoint allows you to see information for a specific institution.
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::InstitutionsApi.new
-
-institution_code = 'institution_code_example' # String | The institution_code of the institution.
-
+institution_code = "example_institution_code" # String | The institution_code of the institution.
 
 begin
   #Read institution
-  result = api_instance.read_institution(institution_code)
-  p result
-rescue MX::ApiError => e
+  response = client.institutions.read_institution(institution_code)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling InstitutionsApi->read_institution: #{e}"
 end
 ```
@@ -114,25 +95,15 @@ Use this endpoint to see which credentials will be needed to create a member for
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::InstitutionsApi.new
-
-institution_code = 'institution_code_example' # String | The institution_code of the institution.
-
+institution_code = "example_institution_code" # String | The institution_code of the institution.
 
 begin
   #Read institution credentials
-  result = api_instance.read_institution_credentials(institution_code)
-  p result
-rescue MX::ApiError => e
+  response = client.institutions.read_institution_credentials(institution_code)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling InstitutionsApi->read_institution_credentials: #{e}"
 end
 ```

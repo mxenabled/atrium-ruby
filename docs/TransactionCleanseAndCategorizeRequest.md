@@ -1,4 +1,4 @@
-# MX::TransactionCleanseAndCategorizeRequest
+# Atrium::TransactionCleanseAndCategorizeRequest
 
 ## Properties
 Name | Type | Description | Notes

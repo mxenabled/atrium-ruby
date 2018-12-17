@@ -1,4 +1,4 @@
-# MX::TransactionCleanseAndCategorizeResponse
+# Atrium::TransactionCleanseAndCategorizeResponse
 
 ## Properties
 Name | Type | Description | Notes

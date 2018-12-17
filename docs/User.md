@@ -1,4 +1,4 @@
-# MX::User
+# Atrium::User
 
 ## Properties
 Name | Type | Description | Notes

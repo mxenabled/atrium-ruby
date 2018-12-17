@@ -10,12 +10,12 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for MX::CredentialsResponseBody
+# Unit tests for Atrium::CredentialsResponseBody
 # Please update as you see appropriate
 describe 'CredentialsResponseBody' do
   before do
     # run before each test
-    @instance = MX::CredentialsResponseBody.new
+    @instance = Atrium::CredentialsResponseBody.new
   end
 
   after do
@@ -24,7 +24,7 @@ describe 'CredentialsResponseBody' do
 
   describe 'test an instance of CredentialsResponseBody' do
     it 'should create an instance of CredentialsResponseBody' do
-      expect(@instance).to be_instance_of(MX::CredentialsResponseBody)
+      expect(@instance).to be_instance_of(Atrium::CredentialsResponseBody)
     end
   end
   describe 'test attribute "credentials"' do

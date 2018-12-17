@@ -10,12 +10,12 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for MX::MemberCreateRequest
+# Unit tests for Atrium::MemberCreateRequest
 # Please update as you see appropriate
 describe 'MemberCreateRequest' do
   before do
     # run before each test
-    @instance = MX::MemberCreateRequest.new
+    @instance = Atrium::MemberCreateRequest.new
   end
 
   after do
@@ -24,7 +24,7 @@ describe 'MemberCreateRequest' do
 
   describe 'test an instance of MemberCreateRequest' do
     it 'should create an instance of MemberCreateRequest' do
-      expect(@instance).to be_instance_of(MX::MemberCreateRequest)
+      expect(@instance).to be_instance_of(Atrium::MemberCreateRequest)
     end
   end
   describe 'test attribute "credentials"' do

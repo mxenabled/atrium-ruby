@@ -9,12 +9,12 @@
 require 'spec_helper'
 require 'json'
 
-# Unit tests for MX::ConnectWidgetApi
+# Unit tests for Atrium::ConnectWidgetApi
 # Please update as you see appropriate
 describe 'ConnectWidgetApi' do
   before do
     # run before each test
-    @instance = MX::ConnectWidgetApi.new
+    @instance = Atrium::ConnectWidgetApi.new
   end
 
   after do
@@ -23,7 +23,7 @@ describe 'ConnectWidgetApi' do
 
   describe 'test an instance of ConnectWidgetApi' do
     it 'should create an instance of ConnectWidgetApi' do
-      expect(@instance).to be_instance_of(MX::ConnectWidgetApi)
+      expect(@instance).to be_instance_of(Atrium::ConnectWidgetApi)
     end
   end
 

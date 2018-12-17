@@ -1,4 +1,4 @@
-# MX::UserUpdateRequestBody
+# Atrium::UserUpdateRequestBody
 
 ## Properties
 Name | Type | Description | Notes

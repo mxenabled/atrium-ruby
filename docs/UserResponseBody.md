@@ -1,4 +1,4 @@
-# MX::UserResponseBody
+# Atrium::UserResponseBody
 
 ## Properties
 Name | Type | Description | Notes

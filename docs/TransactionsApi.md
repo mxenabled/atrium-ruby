@@ -1,4 +1,4 @@
-# MX::TransactionsApi
+# Atrium::TransactionsApi
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -19,25 +19,15 @@ Use this endpoint to categorize, cleanse, and classify transactions. These trans
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::TransactionsApi.new
-
-body = MX::TransactionsCleanseAndCategorizeRequestBody.new # TransactionsCleanseAndCategorizeRequestBody | User object to be created with optional parameters (amount, type) amd required parameters (description, identifier)
-
+body = Atrium::TransactionsCleanseAndCategorizeRequestBody.new # TransactionsCleanseAndCategorizeRequestBody | User object to be created with optional parameters (amount, type) amd required parameters (description, identifier)
 
 begin
   #Categorize transactions
-  result = api_instance.cleanse_and_categorize_transactions(body)
-  p result
-rescue MX::ApiError => e
+  response = client.transactions.cleanse_and_categorize_transactions(body)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling TransactionsApi->cleanse_and_categorize_transactions: #{e}"
 end
 ```
@@ -64,31 +54,21 @@ Use this endpoint to get all transactions that belong to a specific user, across
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::TransactionsApi.new
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 opts = { 
-  page: 12, # Integer | Specify current page.
-  from_date: 'from_date_example', # String | Filter transactions from this date.
+  page: 1, # Integer | Specify current page.
+  from_date: "2016-09-20", # String | Filter transactions from this date.
   records_per_page: 12, # Integer | Specify records per page.
-  to_date: 'to_date_example' # String | Filter transactions to this date.
+  to_date: "2016-10-20" # String | Filter transactions to this date.
 }
 
 begin
   #List transactions for a user
-  result = api_instance.list_user_transactions(user_guid, opts)
-  p result
-rescue MX::ApiError => e
+  response = client.transactions.list_user_transactions(user_guid, opts)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling TransactionsApi->list_user_transactions: #{e}"
 end
 ```
@@ -119,27 +99,16 @@ This endpoint allows you to view information about a specific transaction that b
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::TransactionsApi.new
-
-transaction_guid = 'transaction_guid_example' # String | The unique identifier for a `transaction`.
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
+transaction_guid = "TRN-123" # String | The unique identifier for a `transaction`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Read a transaction
-  result = api_instance.read_transaction(transaction_guid, user_guid)
-  p result
-rescue MX::ApiError => e
+  response = client.transactions.read_transaction(transaction_guid, user_guid)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling TransactionsApi->read_transaction: #{e}"
 end
 ```

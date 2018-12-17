@@ -1,4 +1,4 @@
-# MX::ConnectWidgetApi
+# Atrium::ConnectWidgetApi
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -17,27 +17,16 @@ This endpoint will return a URL for an embeddable version of MX Connect.
 # load the gem
 require 'atrium-ruby'
 
-# setup authorization
-MX.configure do |config|
-  # Configure API Key authorization
-  config.api_key['MX-API-Key'] = 'YOUR_API_KEY'
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
-  # Configure Client ID authorization
-  config.api_key['MX-Client-ID'] = 'YOUR_CLIENT_ID'
-end
-
-api_instance = MX::ConnectWidgetApi.new
-
-user_guid = 'user_guid_example' # String | The unique identifier for a `user`.
-
-body = MX::ConnectWidgetRequestBody.new # ConnectWidgetRequestBody | Optional config options for WebView (is_mobile_webview, current_institution_code, current_member_guid, update_credentials)
-
+user_guid = "USR-123" # String | The unique identifier for a `user`.
+body = Atrium::ConnectWidgetRequestBody.new # ConnectWidgetRequestBody | Optional config options for WebView (is_mobile_webview, current_institution_code, current_member_guid, update_credentials)
 
 begin
   #Embedding in a website
-  result = api_instance.get_connect_widget(user_guidbody)
-  p result
-rescue MX::ApiError => e
+  response = client.connectWidget.get_connect_widget(user_guidbody)
+  p response
+rescue Atrium::ApiError => e
   puts "Exception when calling ConnectWidgetApi->get_connect_widget: #{e}"
 end
 ```

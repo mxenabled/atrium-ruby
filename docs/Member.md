@@ -1,4 +1,4 @@
-# MX::Member
+# Atrium::Member
 
 ## Properties
 Name | Type | Description | Notes

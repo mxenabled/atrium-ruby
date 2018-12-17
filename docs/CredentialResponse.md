@@ -1,4 +1,4 @@
-# MX::CredentialResponse
+# Atrium::CredentialResponse
 
 ## Properties
 Name | Type | Description | Notes

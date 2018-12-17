@@ -8,7 +8,7 @@
 
 require 'date'
 
-module MX
+module Atrium
   class Institution
     attr_accessor :code
 
@@ -183,7 +183,7 @@ module MX
           end
         end
       else # model
-        temp_model = MX.const_get(type).new
+        temp_model = Atrium.const_get(type).new
         temp_model.build_from_hash(value)
       end
     end

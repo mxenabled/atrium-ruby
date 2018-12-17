@@ -10,12 +10,12 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for MX::MemberResponseBody
+# Unit tests for Atrium::MemberResponseBody
 # Please update as you see appropriate
 describe 'MemberResponseBody' do
   before do
     # run before each test
-    @instance = MX::MemberResponseBody.new
+    @instance = Atrium::MemberResponseBody.new
   end
 
   after do
@@ -24,7 +24,7 @@ describe 'MemberResponseBody' do
 
   describe 'test an instance of MemberResponseBody' do
     it 'should create an instance of MemberResponseBody' do
-      expect(@instance).to be_instance_of(MX::MemberResponseBody)
+      expect(@instance).to be_instance_of(Atrium::MemberResponseBody)
     end
   end
   describe 'test attribute "member"' do

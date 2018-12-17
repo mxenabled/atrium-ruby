@@ -9,12 +9,12 @@
 require 'spec_helper'
 require 'json'
 
-# Unit tests for MX::InstitutionsApi
+# Unit tests for Atrium::InstitutionsApi
 # Please update as you see appropriate
 describe 'InstitutionsApi' do
   before do
     # run before each test
-    @instance = MX::InstitutionsApi.new
+    @instance = Atrium::InstitutionsApi.new
   end
 
   after do
@@ -23,7 +23,7 @@ describe 'InstitutionsApi' do
 
   describe 'test an instance of InstitutionsApi' do
     it 'should create an instance of InstitutionsApi' do
-      expect(@instance).to be_instance_of(MX::InstitutionsApi)
+      expect(@instance).to be_instance_of(Atrium::InstitutionsApi)
     end
   end
 

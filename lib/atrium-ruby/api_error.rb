@@ -6,7 +6,7 @@
 
 =end
 
-module MX
+module Atrium
   class ApiError < StandardError
     attr_reader :code, :response_headers, :response_body
 

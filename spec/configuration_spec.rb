@@ -8,14 +8,14 @@
 
 require 'spec_helper'
 
-describe MX::Configuration do
-  let(:config) { MX::Configuration.default }
+describe Atrium::Configuration do
+  let(:config) { Atrium::Configuration.default }
 
   before(:each) do
     # uncomment below to setup host and base_path
     # require 'URI'
     # uri = URI.parse("https://vestibule.mx.com")
-    # MX.configure do |c|
+    # Atrium.configure do |c|
     #   c.host = uri.host
     #   c.base_path = uri.path
     # end

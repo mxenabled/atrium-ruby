@@ -1,4 +1,4 @@
-# MX::Institution
+# Atrium::Institution
 
 ## Properties
 Name | Type | Description | Notes

@@ -10,12 +10,12 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for MX::MemberConnectionStatus
+# Unit tests for Atrium::MemberConnectionStatus
 # Please update as you see appropriate
 describe 'MemberConnectionStatus' do
   before do
     # run before each test
-    @instance = MX::MemberConnectionStatus.new
+    @instance = Atrium::MemberConnectionStatus.new
   end
 
   after do
@@ -24,7 +24,7 @@ describe 'MemberConnectionStatus' do
 
   describe 'test an instance of MemberConnectionStatus' do
     it 'should create an instance of MemberConnectionStatus' do
-      expect(@instance).to be_instance_of(MX::MemberConnectionStatus)
+      expect(@instance).to be_instance_of(Atrium::MemberConnectionStatus)
     end
   end
   describe 'test attribute "aggregated_at"' do

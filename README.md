@@ -1,88 +1,154 @@
-# Atrium-Ruby [![Build Status](https://travis-ci.org/mxenabled/atrium-ruby.svg?branch=master)](https://travis-ci.org/mxenabled/atrium-ruby)
+# atrium-ruby
 
-A Ruby wrapper for use with the [MX Atrium API](https://atrium.mx.com). In order to make requests, you will need to [sign up for MX Atrium API](https://atrium.mx.com/developers/sign_up) and get a `MX-API-KEY` and `MX-CLIENT-ID`. Then, configure your instance with:
-```ruby
-Atrium.configure do |config|
-  config.mx_api_key = YOUR_API_KEY
-  config.mx_client_id = YOUR_CLIENT_ID
-  config.base_url = "https://atrium.mx.com" # base_url is set to "https://vestibule.mx.com" by default
-end
-```
+Atrium - the Ruby gem for the MX API
 
-From there, you can start using some basic class methods to make calls for data. See our [full documentation](https://atrium.mx.com/documentation) for more details.
-
-## Examples
-
-### Pagination
-
-The following demonstrates how you can read data back from the API in a memory efficient way using built-in pagination
-helpers. You can also specify query parameters such as `from_date` and `to_date`.
-
-```ruby
-::Atrium::User.list_each do |user|
-  user.each_member do |member|
-    puts member.name
-    puts member.accounts.total_entries
-
-    member.each_account do |account|
-      puts account.name
-      puts account.transactions.total_entries
-
-      account.each_transaction do |transaction|
-        puts transaction.description
-      end
-    end
-  end
-
-  user.each_account do |account|
-    puts account.name
-    puts account.transactions.total_entries
-
-    account.each_transaction do |transaction|
-      puts transaction.description
-    end
-  end
-
-  user.each_transaction do |transaction|
-    puts transaction.description
-  end
-end
-```
-
-### Date Range
-
-You can specify `from_date` and `to_date` to limit or widen your search. For example:
-
-```ruby
-from_date = ::Date.new(2017, 02, 18)
-to_date = ::Date.new(2017, 03, 18)
-params = {:from_date => from_date, :to_date => to_date}
-
-::Atrium::Transaction.list_each(:user_guid => "USR-123", :query_params => params) do |transaction|
-  puts transaction.description
-end
-```
+The MX Atrium API supports over 48,000 data connections to thousands of financial institutions. It provides secure access to your users' accounts and transactions with industry-leading cleansing, categorization, and classification.  Atrium is designed according to resource-oriented REST architecture and responds with JSON bodies and HTTP response codes.  Use Atrium's development environment, vestibule.mx.com, to quickly get up and running. The development environment limits are 100 users, 25 members per user, and access to the top 15 institutions. Contact MX to purchase production access. 
 
 ## Installation
 
-Add this line to your application's Gemfile:
+### Build a gem
 
-```ruby
-gem 'atrium-ruby'
+To build the Ruby code into a gem:
+
+```shell
+gem build atrium-ruby.gemspec
 ```
 
-And then execute:
+Then either install the gem locally:
 
-    $ bundle
+```shell
+gem install ./atrium-ruby-2.0.0.gem
+```
 
-Or install it yourself as:
+Finally add this to the Gemfile:
 
-    $ gem install atrium-ruby
+    gem 'atrium-ruby', '~> 2.0.0'
 
-## Development
+### Install from Git
 
-Suggested implementation flow can be found in `bin/demo` comments. You can also use that as an executable for managing the settings and creating your own test flow to handle the requests and data with `./bin/demo`
+Add the following in the Gemfile:
 
-## Contributing
+    gem 'atrium-ruby', :git => 'https://github.com/mxenabled/atrium-ruby.git'
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/mxenabled/atrium-ruby.
+### Include the Ruby code directly
+
+Include the Ruby code directly using `-I` as follows:
+
+```shell
+ruby -Ilib script.rb
+```
+
+## Example Usage
+
+Please see `docs` directory for additional endpoint examples
+```ruby
+# Load the gem
+require 'atrium-ruby'
+
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
+
+account_guid = "ACT-123" # String | The unique identifier for an `account`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
+opts = { 
+  from_date: "2016-09-20", # String | Filter transactions from this date.
+  to_date: "2016-10-20" # String | Filter transactions to this date.
+  page: 1, # Integer | Specify current page.
+  records_per_page: 12, # Integer | Specify records per page.
+}
+
+begin
+  #List account transactions
+  response = client.accounts.list_account_transactions(account_guid, user_guid, opts)
+  p response
+rescue Atrium::ApiError => e
+  puts "Exception when calling AccountsApi->list_account_transactions: #{e}"
+end
+
+```
+
+## Documentation for API Endpoints
+
+Class | Method | HTTP request | Description
+------------ | ------------- | ------------- | -------------
+*Atrium::AccountsApi* | [**list_account_transactions**](docs/AccountsApi.md#list_account_transactions) | **GET** /users/{user_guid}/accounts/{account_guid}/transactions | List account transactions
+*Atrium::AccountsApi* | [**list_user_accounts**](docs/AccountsApi.md#list_user_accounts) | **GET** /users/{user_guid}/accounts | List accounts for a user
+*Atrium::AccountsApi* | [**read_account**](docs/AccountsApi.md#read_account) | **GET** /users/{user_guid}/accounts/{account_guid} | Read an account
+*Atrium::AccountsApi* | [**read_account_by_member_guid**](docs/AccountsApi.md#read_account_by_member_guid) | **GET** /users/{user_guid}/members/{member_guid}/accounts/{account_guid} | Read an account
+*Atrium::ConnectWidgetApi* | [**get_connect_widget**](docs/ConnectWidgetApi.md#get_connect_widget) | **POST** /users/{user_guid}/connect_widget_url | Embedding in a website
+*Atrium::IdentityApi* | [**identify_member**](docs/IdentityApi.md#identify_member) | **POST** /users/{user_guid}/members/{member_guid}/identify | Identify
+*Atrium::IdentityApi* | [**list_account_owners**](docs/IdentityApi.md#list_account_owners) | **GET** /users/{user_guid}/members/{member_guid}/account_owners | List member account owners
+*Atrium::InstitutionsApi* | [**list_institutions**](docs/InstitutionsApi.md#list_institutions) | **GET** /institutions | List institutions
+*Atrium::InstitutionsApi* | [**read_institution**](docs/InstitutionsApi.md#read_institution) | **GET** /institutions/{institution_code} | Read institution
+*Atrium::InstitutionsApi* | [**read_institution_credentials**](docs/InstitutionsApi.md#read_institution_credentials) | **GET** /institutions/{institution_code}/credentials | Read institution credentials
+*Atrium::MembersApi* | [**aggregate_member**](docs/MembersApi.md#aggregate_member) | **POST** /users/{user_guid}/members/{member_guid}/aggregate | Aggregate member
+*Atrium::MembersApi* | [**create_member**](docs/MembersApi.md#create_member) | **POST** /users/{user_guid}/members | Create member
+*Atrium::MembersApi* | [**delete_member**](docs/MembersApi.md#delete_member) | **DELETE** /users/{user_guid}/members/{member_guid} | Delete member
+*Atrium::MembersApi* | [**list_member_accounts**](docs/MembersApi.md#list_member_accounts) | **GET** /users/{user_guid}/members/{member_guid}/accounts | List member accounts
+*Atrium::MembersApi* | [**list_member_credentials**](docs/MembersApi.md#list_member_credentials) | **GET** /users/{user_guid}/members/{member_guid}/credentials | List member credentials
+*Atrium::MembersApi* | [**list_member_mfa_challenges**](docs/MembersApi.md#list_member_mfa_challenges) | **GET** /users/{user_guid}/members/{member_guid}/challenges | List member MFA challenges
+*Atrium::MembersApi* | [**list_member_transactions**](docs/MembersApi.md#list_member_transactions) | **GET** /users/{user_guid}/members/{member_guid}/transactions | List member transactions
+*Atrium::MembersApi* | [**list_members**](docs/MembersApi.md#list_members) | **GET** /users/{user_guid}/members | List members
+*Atrium::MembersApi* | [**read_member**](docs/MembersApi.md#read_member) | **GET** /users/{user_guid}/members/{member_guid} | Read member
+*Atrium::MembersApi* | [**read_member_status**](docs/MembersApi.md#read_member_status) | **GET** /users/{user_guid}/members/{member_guid}/status | Read member connection status
+*Atrium::MembersApi* | [**resume_member**](docs/MembersApi.md#resume_member) | **PUT** /users/{user_guid}/members/{member_guid}/resume | Resume aggregation from MFA
+*Atrium::MembersApi* | [**update_member**](docs/MembersApi.md#update_member) | **PUT** /users/{user_guid}/members/{member_guid} | Update member
+*Atrium::TransactionsApi* | [**cleanse_and_categorize_transactions**](docs/TransactionsApi.md#cleanse_and_categorize_transactions) | **POST** /cleanse_and_categorize | Categorize transactions
+*Atrium::TransactionsApi* | [**list_user_transactions**](docs/TransactionsApi.md#list_user_transactions) | **GET** /users/{user_guid}/transactions | List transactions for a user
+*Atrium::TransactionsApi* | [**read_transaction**](docs/TransactionsApi.md#read_transaction) | **GET** /users/{user_guid}/transactions/{transaction_guid} | Read a transaction
+*Atrium::UsersApi* | [**create_user**](docs/UsersApi.md#create_user) | **POST** /users | Create user
+*Atrium::UsersApi* | [**delete_user**](docs/UsersApi.md#delete_user) | **DELETE** /users/{user_guid} | Delete user
+*Atrium::UsersApi* | [**list_users**](docs/UsersApi.md#list_users) | **GET** /users | List users
+*Atrium::UsersApi* | [**read_user**](docs/UsersApi.md#read_user) | **GET** /users/{user_guid} | Read user
+*Atrium::UsersApi* | [**update_user**](docs/UsersApi.md#update_user) | **PUT** /users/{user_guid} | Update user
+*Atrium::VerificationApi* | [**list_account_numbers**](docs/VerificationApi.md#list_account_numbers) | **GET** /users/{user_guid}/members/{member_guid}/account_numbers | Read account numbers
+*Atrium::VerificationApi* | [**list_account_numbers_by_account**](docs/VerificationApi.md#list_account_numbers_by_account) | **GET** /users/{user_guid}/accounts/{account_guid}/account_numbers | Read account numbers by account GUID
+*Atrium::VerificationApi* | [**verify_member**](docs/VerificationApi.md#verify_member) | **POST** /users/{user_guid}/members/{member_guid}/verify | Verify
+
+
+## Documentation for Models
+
+ - [Atrium::Account](docs/Account.md)
+ - [Atrium::AccountNumber](docs/AccountNumber.md)
+ - [Atrium::AccountNumbersResponseBody](docs/AccountNumbersResponseBody.md)
+ - [Atrium::AccountOwner](docs/AccountOwner.md)
+ - [Atrium::AccountOwnersResponseBody](docs/AccountOwnersResponseBody.md)
+ - [Atrium::AccountResponseBody](docs/AccountResponseBody.md)
+ - [Atrium::AccountsResponseBody](docs/AccountsResponseBody.md)
+ - [Atrium::Challenge](docs/Challenge.md)
+ - [Atrium::ChallengeOption](docs/ChallengeOption.md)
+ - [Atrium::ChallengesResponseBody](docs/ChallengesResponseBody.md)
+ - [Atrium::ConnectWidget](docs/ConnectWidget.md)
+ - [Atrium::ConnectWidgetRequestBody](docs/ConnectWidgetRequestBody.md)
+ - [Atrium::ConnectWidgetResponseBody](docs/ConnectWidgetResponseBody.md)
+ - [Atrium::CredentialOption](docs/CredentialOption.md)
+ - [Atrium::CredentialRequest](docs/CredentialRequest.md)
+ - [Atrium::CredentialResponse](docs/CredentialResponse.md)
+ - [Atrium::CredentialsResponseBody](docs/CredentialsResponseBody.md)
+ - [Atrium::Institution](docs/Institution.md)
+ - [Atrium::InstitutionResponseBody](docs/InstitutionResponseBody.md)
+ - [Atrium::InstitutionsResponseBody](docs/InstitutionsResponseBody.md)
+ - [Atrium::Member](docs/Member.md)
+ - [Atrium::MemberConnectionStatus](docs/MemberConnectionStatus.md)
+ - [Atrium::MemberConnectionStatusResponseBody](docs/MemberConnectionStatusResponseBody.md)
+ - [Atrium::MemberCreateRequest](docs/MemberCreateRequest.md)
+ - [Atrium::MemberCreateRequestBody](docs/MemberCreateRequestBody.md)
+ - [Atrium::MemberResponseBody](docs/MemberResponseBody.md)
+ - [Atrium::MemberResumeRequest](docs/MemberResumeRequest.md)
+ - [Atrium::MemberResumeRequestBody](docs/MemberResumeRequestBody.md)
+ - [Atrium::MemberUpdateRequest](docs/MemberUpdateRequest.md)
+ - [Atrium::MemberUpdateRequestBody](docs/MemberUpdateRequestBody.md)
+ - [Atrium::MembersResponseBody](docs/MembersResponseBody.md)
+ - [Atrium::Pagination](docs/Pagination.md)
+ - [Atrium::Transaction](docs/Transaction.md)
+ - [Atrium::TransactionCleanseAndCategorizeRequest](docs/TransactionCleanseAndCategorizeRequest.md)
+ - [Atrium::TransactionCleanseAndCategorizeResponse](docs/TransactionCleanseAndCategorizeResponse.md)
+ - [Atrium::TransactionResponseBody](docs/TransactionResponseBody.md)
+ - [Atrium::TransactionsCleanseAndCategorizeRequestBody](docs/TransactionsCleanseAndCategorizeRequestBody.md)
+ - [Atrium::TransactionsCleanseAndCategorizeResponseBody](docs/TransactionsCleanseAndCategorizeResponseBody.md)
+ - [Atrium::TransactionsResponseBody](docs/TransactionsResponseBody.md)
+ - [Atrium::User](docs/User.md)
+ - [Atrium::UserCreateRequestBody](docs/UserCreateRequestBody.md)
+ - [Atrium::UserResponseBody](docs/UserResponseBody.md)
+ - [Atrium::UserUpdateRequestBody](docs/UserUpdateRequestBody.md)
+ - [Atrium::UsersResponseBody](docs/UsersResponseBody.md)
+

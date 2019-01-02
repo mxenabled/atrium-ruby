@@ -75,6 +75,10 @@ Class | Method | HTTP request | Description
 *Atrium::AccountsApi* | [**read_account**](docs/AccountsApi.md#read_account) | **GET** /users/{user_guid}/accounts/{account_guid} | Read an account
 *Atrium::AccountsApi* | [**read_account_by_member_guid**](docs/AccountsApi.md#read_account_by_member_guid) | **GET** /users/{user_guid}/members/{member_guid}/accounts/{account_guid} | Read an account
 *Atrium::ConnectWidgetApi* | [**get_connect_widget**](docs/ConnectWidgetApi.md#get_connect_widget) | **POST** /users/{user_guid}/connect_widget_url | Embedding in a website
+*Atrium::HoldingsApi* | [**list_holdings**](docs/HoldingsApi.md#list_holdings) | **GET** /users/{user_guid}/holdings | List holdings
+*Atrium::HoldingsApi* | [**list_holdings_by_account**](docs/HoldingsApi.md#list_holdings_by_account) | **GET** /users/{user_guid}/accounts/{account_guid}/holdings | List holdings by account
+*Atrium::HoldingsApi* | [**list_holdings_by_member**](docs/HoldingsApi.md#list_holdings_by_member) | **GET** /users/{user_guid}/members/{member_guid}/holdings | List holdings by member
+*Atrium::HoldingsApi* | [**read_holding**](docs/HoldingsApi.md#read_holding) | **GET** /users/{user_guid}/holdings/{holding_guid} | Read holding
 *Atrium::IdentityApi* | [**identify_member**](docs/IdentityApi.md#identify_member) | **POST** /users/{user_guid}/members/{member_guid}/identify | Identify
 *Atrium::IdentityApi* | [**list_account_owners**](docs/IdentityApi.md#list_account_owners) | **GET** /users/{user_guid}/members/{member_guid}/account_owners | List member account owners
 *Atrium::InstitutionsApi* | [**list_institutions**](docs/InstitutionsApi.md#list_institutions) | **GET** /institutions | List institutions
@@ -92,6 +96,7 @@ Class | Method | HTTP request | Description
 *Atrium::MembersApi* | [**read_member_status**](docs/MembersApi.md#read_member_status) | **GET** /users/{user_guid}/members/{member_guid}/status | Read member connection status
 *Atrium::MembersApi* | [**resume_member**](docs/MembersApi.md#resume_member) | **PUT** /users/{user_guid}/members/{member_guid}/resume | Resume aggregation from MFA
 *Atrium::MembersApi* | [**update_member**](docs/MembersApi.md#update_member) | **PUT** /users/{user_guid}/members/{member_guid} | Update member
+*Atrium::MerchantsApi* | [**read_merchant**](docs/MerchantsApi.md#read_merchant) | **GET** /merchants/{merchant_guid} | Read merchant
 *Atrium::TransactionsApi* | [**cleanse_and_categorize_transactions**](docs/TransactionsApi.md#cleanse_and_categorize_transactions) | **POST** /cleanse_and_categorize | Categorize transactions
 *Atrium::TransactionsApi* | [**list_user_transactions**](docs/TransactionsApi.md#list_user_transactions) | **GET** /users/{user_guid}/transactions | List transactions for a user
 *Atrium::TransactionsApi* | [**read_transaction**](docs/TransactionsApi.md#read_transaction) | **GET** /users/{user_guid}/transactions/{transaction_guid} | Read a transaction
@@ -124,6 +129,9 @@ Class | Method | HTTP request | Description
  - [Atrium::CredentialRequest](docs/CredentialRequest.md)
  - [Atrium::CredentialResponse](docs/CredentialResponse.md)
  - [Atrium::CredentialsResponseBody](docs/CredentialsResponseBody.md)
+ - [Atrium::Holding](docs/Holding.md)
+ - [Atrium::HoldingResponseBody](docs/HoldingResponseBody.md)
+ - [Atrium::HoldingsResponseBody](docs/HoldingsResponseBody.md)
  - [Atrium::Institution](docs/Institution.md)
  - [Atrium::InstitutionResponseBody](docs/InstitutionResponseBody.md)
  - [Atrium::InstitutionsResponseBody](docs/InstitutionsResponseBody.md)
@@ -138,6 +146,8 @@ Class | Method | HTTP request | Description
  - [Atrium::MemberUpdateRequest](docs/MemberUpdateRequest.md)
  - [Atrium::MemberUpdateRequestBody](docs/MemberUpdateRequestBody.md)
  - [Atrium::MembersResponseBody](docs/MembersResponseBody.md)
+ - [Atrium::Merchant](docs/Merchant.md)
+ - [Atrium::MerchantResponseBody](docs/MerchantResponseBody.md)
  - [Atrium::Pagination](docs/Pagination.md)
  - [Atrium::Transaction](docs/Transaction.md)
  - [Atrium::TransactionCleanseAndCategorizeRequest](docs/TransactionCleanseAndCategorizeRequest.md)

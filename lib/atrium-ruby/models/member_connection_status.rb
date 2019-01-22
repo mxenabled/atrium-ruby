@@ -49,7 +49,7 @@ module Atrium
         :'aggregated_at' => :'String',
         :'challenges' => :'Array<Challenge>',
         :'connection_status' => :'String',
-        :'guid' => :'BOOLEAN',
+        :'guid' => :'String',
         :'has_processed_accounts' => :'BOOLEAN',
         :'has_processed_transactions' => :'BOOLEAN',
         :'is_being_aggregated' => :'BOOLEAN',

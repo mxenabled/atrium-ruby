@@ -54,7 +54,7 @@ module Atrium
       {
         :'aggregated_at' => :'String',
         :'connection_status' => :'String',
-        :'guid' => :'BOOLEAN',
+        :'guid' => :'String',
         :'identifier' => :'String',
         :'institution_code' => :'String',
         :'is_being_aggregated' => :'BOOLEAN',

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 **aggregated_at** | **String** |  | [optional] 
 **challenges** | [**Array&lt;Challenge&gt;**](Challenge.md) |  | [optional] 
 **connection_status** | **String** |  | [optional] 
-**guid** | **BOOLEAN** |  | [optional] 
+**guid** | **String** |  | [optional] 
 **has_processed_accounts** | **BOOLEAN** |  | [optional] 
 **has_processed_transactions** | **BOOLEAN** |  | [optional] 
 **is_being_aggregated** | **BOOLEAN** |  | [optional] 

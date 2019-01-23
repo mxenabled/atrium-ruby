@@ -11,11 +11,10 @@ module Atrium
     attr_accessor :users
     attr_accessor :verification
 
-    def initialize(api_key, client_id, opts = {})
+    def initialize(api_key, client_id)
       Atrium.configure do |config|
         config.api_key['MX-API-Key'] = api_key
         config.api_key['MX-Client-ID'] = client_id
-        config.proxy_url = opts[:proxy_url] if opts.has_key?(:proxy_url)
       end
 
       @accounts = Atrium::AccountsApi.new()

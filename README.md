@@ -2,7 +2,7 @@
 
 Atrium - the Ruby gem for the MX API
 
-The MX Atrium API supports over 48,000 data connections to thousands of financial institutions. It provides secure access to your users' accounts and transactions with industry-leading cleansing, categorization, and classification.  Atrium is designed according to resource-oriented REST architecture and responds with JSON bodies and HTTP response codes.  Use Atrium's development environment, vestibule.mx.com, to quickly get up and running. The development environment limits are 100 users, 25 members per user, and access to the top 15 institutions. Contact MX to purchase production access. 
+The MX Atrium API supports over 48,000 data connections to thousands of financial institutions. It provides secure access to your users' accounts and transactions with industry-leading cleansing, categorization, and classification.  Atrium is designed according to resource-oriented REST architecture and responds with JSON bodies and HTTP response codes.  Use Atrium's development environment, vestibule.mx.com, to quickly get up and running. The development environment limits are 100 users, 25 members per user, and access to the top 15 institutions. Contact MX to purchase production access.
 
 ## Installation
 
@@ -49,7 +49,7 @@ client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
 account_guid = "ACT-123" # String | The unique identifier for an `account`.
 user_guid = "USR-123" # String | The unique identifier for a `user`.
-opts = { 
+opts = {
   from_date: "2016-09-20", # String | Filter transactions from this date.
   to_date: "2016-10-20" # String | Filter transactions to this date.
   page: 1, # Integer | Specify current page.
@@ -64,13 +64,6 @@ rescue Atrium::ApiError => e
   puts "Exception when calling AccountsApi->list_account_transactions: #{e}"
 end
 
-```
-
-## Optional Proxy Parameter
-
-To use a proxy, set the optional `proxy_url` parameter to your proxy url when initializing the AtriumClient.
-```ruby
-client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID", :proxy_url => "YOUR_PROXY_URL")
 ```
 
 ## Documentation for API Endpoints

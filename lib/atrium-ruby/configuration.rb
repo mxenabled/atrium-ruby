@@ -123,6 +123,8 @@ module Atrium
 
     attr_accessor :force_ending_format
 
+    attr_accessor :proxy_url
+
     def initialize
       @scheme = 'https'
       @host = 'vestibule.mx.com'
@@ -140,6 +142,7 @@ module Atrium
       @inject_format = false
       @force_ending_format = false
       @logger = defined?(Rails) ? Rails.logger : Logger.new(STDOUT)
+      @proxy_url = nil
 
       yield(self) if block_given?
     end

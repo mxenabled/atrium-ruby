@@ -66,6 +66,13 @@ end
 
 ```
 
+## Optional Proxy Parameter
+
+To use a proxy, set the optional `proxy_url` parameter to your proxy url when initializing the AtriumClient.
+```ruby
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID", :proxy_url => "YOUR_PROXY_URL")
+```
+
 ## Documentation for API Endpoints
 
 Class | Method | HTTP request | Description
@@ -161,4 +168,3 @@ Class | Method | HTTP request | Description
  - [Atrium::UserResponseBody](docs/UserResponseBody.md)
  - [Atrium::UserUpdateRequestBody](docs/UserUpdateRequestBody.md)
  - [Atrium::UsersResponseBody](docs/UsersResponseBody.md)
-

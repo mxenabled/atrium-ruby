@@ -16,7 +16,7 @@ module Atrium
         config.api_key['MX-API-Key'] = api_key
         config.api_key['MX-Client-ID'] = client_id
       end
-
+      
       @accounts = Atrium::AccountsApi.new()
       @connectWidget = Atrium::ConnectWidgetApi.new()
       @holdings = Atrium::HoldingsApi.new()

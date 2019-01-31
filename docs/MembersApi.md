@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**list_member_accounts**](MembersApi.md#list_member_accounts) | **GET** /users/{user_guid}/members/{member_guid}/accounts | List member accounts
 [**list_member_credentials**](MembersApi.md#list_member_credentials) | **GET** /users/{user_guid}/members/{member_guid}/credentials | List member credentials
 [**list_member_mfa_challenges**](MembersApi.md#list_member_mfa_challenges) | **GET** /users/{user_guid}/members/{member_guid}/challenges | List member MFA challenges
+[**list_member_statements**](MembersApi.md#list_member_statements) | **GET** /users/{user_guid}/members/{member_guid}/statements | List member statements
 [**list_member_transactions**](MembersApi.md#list_member_transactions) | **GET** /users/{user_guid}/members/{member_guid}/transactions | List member transactions
 [**list_members**](MembersApi.md#list_members) | **GET** /users/{user_guid}/members | List members
 [**read_member**](MembersApi.md#read_member) | **GET** /users/{user_guid}/members/{member_guid} | Read member
@@ -17,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **aggregate_member**
-> MemberResponseBody aggregate_member(member_guid, user_guid)
+> MemberResponseBody aggregate_member(member_guid, user_guid, opts)
 
 Aggregate member
 
@@ -32,10 +33,13 @@ client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
 member_guid = "MBR-123" # String | The unique identifier for a `member`.
 user_guid = "USR-123" # String | The unique identifier for a `user`.
+opts = { 
+  type: "history" # String | An optional parameter which determines the type of aggregation to be peformed. Possible values are `statement` and `history`.
+}
 
 begin
   #Aggregate member
-  response = client.members.aggregate_member(member_guid, user_guid)
+  response = client.members.aggregate_member(member_guid, user_guid, opts)
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->aggregate_member: #{e}"
@@ -48,6 +52,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **member_guid** | **String**| The unique identifier for a &#x60;member&#x60;. | 
  **user_guid** | **String**| The unique identifier for a &#x60;user&#x60;. | 
+ **type** | **String**| An optional parameter which determines the type of aggregation to be peformed. Possible values are &#x60;statement&#x60; and &#x60;history&#x60;. | [optional] 
 
 ### Return type
 
@@ -242,6 +247,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ChallengesResponseBody**](ChallengesResponseBody.md)
+
+# **list_member_statements**
+> StatementsResponseBody list_member_statements(member_guid, user_guid, opts)
+
+List member statements
+
+Certain institutions in Atrium allow developers to access account statements associated with a particular `member`. Use this endpoint to get an array of available statements.  Before this endpoint can be used, an aggregation of type `statement` should be performed on the relevant `member`. 
+
+### Example
+```ruby
+# load the gem
+require 'atrium-ruby'
+
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
+
+member_guid = "MBR-123" # String | The unique identifier for a `member`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
+opts = { 
+  page: 1, # Integer | Specify current page.
+  records_per_page: 12, # Integer | Specify records per page.
+}
+
+begin
+  #List member statements
+  response = client.members.list_member_statements(member_guid, user_guid, opts)
+  p response
+rescue Atrium::ApiError => e
+  puts "Exception when calling MembersApi->list_member_statements: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **member_guid** | **String**| The unique identifier for a &#x60;member&#x60;. | 
+ **user_guid** | **String**| The unique identifier for a &#x60;user&#x60;. | 
+ **page** | **Integer**| Specify current page. | [optional] 
+ **records_per_page** | **Integer**| Specify records per page. | [optional] 
+
+### Return type
+
+[**StatementsResponseBody**](StatementsResponseBody.md)
 
 # **list_member_transactions**
 > TransactionsResponseBody list_member_transactions(member_guid, user_guid, opts)

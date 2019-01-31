@@ -10,72 +10,72 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for Atrium::Institution
+# Unit tests for Atrium::Statement
 # Please update as you see appropriate
-describe 'Institution' do
+describe 'Statement' do
   before do
     # run before each test
-    @instance = Atrium::Institution.new
+    @instance = Atrium::Statement.new
   end
 
   after do
     # run after each test
   end
 
-  describe 'test an instance of Institution' do
-    it 'should create an instance of Institution' do
-      expect(@instance).to be_instance_of(Atrium::Institution)
+  describe 'test an instance of Statement' do
+    it 'should create an instance of Statement' do
+      expect(@instance).to be_instance_of(Atrium::Statement)
     end
   end
-  describe 'test attribute "code"' do
+  describe 'test attribute "account_guid"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "medium_logo_url"' do
+  describe 'test attribute "created_at"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "name"' do
+  describe 'test attribute "content_hash"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "small_logo_url"' do
+  describe 'test attribute "deleted_at"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "supports_account_identification"' do
+  describe 'test attribute "guid"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "supports_account_statement"' do
+  describe 'test attribute "is_deleted"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "supports_account_verification"' do
+  describe 'test attribute "updated_at"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "supports_transaction_history"' do
+  describe 'test attribute "uri"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "url"' do
+  describe 'test attribute "user_guid"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

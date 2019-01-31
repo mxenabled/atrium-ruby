@@ -25,6 +25,10 @@ opts = {
   name: name_example, # String | This will list only institutions in which the appended string appears.
   page: 1, # Integer | Specify current page.
   records_per_page: 12, # Integer | Specify records per page.
+  supports_account_identification: true, # BOOLEAN | Filter only institutions which support account identification.
+  supports_account_statement: true, # BOOLEAN | Filter only institutions which support account statements.
+  supports_account_verification: true, # BOOLEAN | Filter only institutions which support account verification.
+  supports_transaction_history: true # BOOLEAN | Filter only institutions which support extended transaction history.
 }
 
 begin
@@ -43,6 +47,10 @@ Name | Type | Description  | Notes
  **name** | **String**| This will list only institutions in which the appended string appears. | [optional] 
  **page** | **Integer**| Specify current page. | [optional] 
  **records_per_page** | **Integer**| Specify records per page. | [optional] 
+ **supports_account_identification** | **BOOLEAN**| Filter only institutions which support account identification. | [optional] 
+ **supports_account_statement** | **BOOLEAN**| Filter only institutions which support account statements. | [optional] 
+ **supports_account_verification** | **BOOLEAN**| Filter only institutions which support account verification. | [optional] 
+ **supports_transaction_history** | **BOOLEAN**| Filter only institutions which support extended transaction history. | [optional] 
 
 ### Return type
 

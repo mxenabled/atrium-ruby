@@ -21,6 +21,10 @@ module Atrium
     # @option opts [String] :name This will list only institutions in which the appended string appears.
     # @option opts [Integer] :page Specify current page.
     # @option opts [Integer] :records_per_page Specify records per page.
+    # @option opts [BOOLEAN] :supports_account_identification Filter only institutions which support account identification.
+    # @option opts [BOOLEAN] :supports_account_statement Filter only institutions which support account statements.
+    # @option opts [BOOLEAN] :supports_account_verification Filter only institutions which support account verification.
+    # @option opts [BOOLEAN] :supports_transaction_history Filter only institutions which support extended transaction history.
     # @return [InstitutionsResponseBody]
     def list_institutions(opts = {})
       data, _status_code, _headers = list_institutions_with_http_info(opts)
@@ -56,6 +60,10 @@ module Atrium
     # @option opts [String] :name This will list only institutions in which the appended string appears.
     # @option opts [Integer] :page Specify current page.
     # @option opts [Integer] :records_per_page Specify records per page.
+    # @option opts [BOOLEAN] :supports_account_identification Filter only institutions which support account identification.
+    # @option opts [BOOLEAN] :supports_account_statement Filter only institutions which support account statements.
+    # @option opts [BOOLEAN] :supports_account_verification Filter only institutions which support account verification.
+    # @option opts [BOOLEAN] :supports_transaction_history Filter only institutions which support extended transaction history.
     # @return [Array<(InstitutionsResponseBody, Fixnum, Hash)>] InstitutionsResponseBody data, response status code and response headers
     def list_institutions_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -69,6 +77,10 @@ module Atrium
       query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
       query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
       query_params[:'records_per_page'] = opts[:'records_per_page'] if !opts[:'records_per_page'].nil?
+      query_params[:'supports_account_identification'] = opts[:'supports_account_identification'] if !opts[:'supports_account_identification'].nil?
+      query_params[:'supports_account_statement'] = opts[:'supports_account_statement'] if !opts[:'supports_account_statement'].nil?
+      query_params[:'supports_account_verification'] = opts[:'supports_account_verification'] if !opts[:'supports_account_verification'].nil?
+      query_params[:'supports_transaction_history'] = opts[:'supports_transaction_history'] if !opts[:'supports_transaction_history'].nil?
 
       # header parameters
       header_params = {}

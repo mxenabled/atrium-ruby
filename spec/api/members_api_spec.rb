@@ -33,6 +33,7 @@ describe 'MembersApi' do
   # @param member_guid The unique identifier for a &#x60;member&#x60;.
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :type An optional parameter which determines the type of aggregation to be peformed. Possible values are &#x60;statement&#x60; and &#x60;history&#x60;.
   # @return [MemberResponseBody]
   describe 'aggregate_member test' do
     it 'should work' do
@@ -102,6 +103,21 @@ describe 'MembersApi' do
   # @param [Hash] opts the optional parameters
   # @return [ChallengesResponseBody]
   describe 'list_member_mfa_challenges test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for list_member_statements
+  # List member statements
+  # Certain institutions in Atrium allow developers to access account statements associated with a particular &#x60;member&#x60;. Use this endpoint to get an array of available statements.  Before this endpoint can be used, an aggregation of type &#x60;statement&#x60; should be performed on the relevant &#x60;member&#x60;. 
+  # @param member_guid The unique identifier for a &#x60;member&#x60;.
+  # @param user_guid The unique identifier for a &#x60;user&#x60;.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :page Specify current page.
+  # @option opts [Integer] :records_per_page Specify records per page.
+  # @return [StatementsResponseBody]
+  describe 'list_member_statements test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

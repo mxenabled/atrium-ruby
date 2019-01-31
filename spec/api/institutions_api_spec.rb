@@ -34,6 +34,10 @@ describe 'InstitutionsApi' do
   # @option opts [String] :name This will list only institutions in which the appended string appears.
   # @option opts [Integer] :page Specify current page.
   # @option opts [Integer] :records_per_page Specify records per page.
+  # @option opts [BOOLEAN] :supports_account_identification Filter only institutions which support account identification.
+  # @option opts [BOOLEAN] :supports_account_statement Filter only institutions which support account statements.
+  # @option opts [BOOLEAN] :supports_account_verification Filter only institutions which support account verification.
+  # @option opts [BOOLEAN] :supports_transaction_history Filter only institutions which support extended transaction history.
   # @return [InstitutionsResponseBody]
   describe 'list_institutions test' do
     it 'should work' do

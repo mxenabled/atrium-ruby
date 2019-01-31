@@ -9,52 +9,24 @@
 require 'date'
 
 module Atrium
-  class Institution
-    attr_accessor :code
+  class StatementsResponseBody
+    attr_accessor :statements
 
-    attr_accessor :medium_logo_url
-
-    attr_accessor :name
-
-    attr_accessor :small_logo_url
-
-    attr_accessor :supports_account_identification
-
-    attr_accessor :supports_account_statement
-
-    attr_accessor :supports_account_verification
-
-    attr_accessor :supports_transaction_history
-
-    attr_accessor :url
+    attr_accessor :pagination
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'code' => :'code',
-        :'medium_logo_url' => :'medium_logo_url',
-        :'name' => :'name',
-        :'small_logo_url' => :'small_logo_url',
-        :'supports_account_identification' => :'supports_account_identification',
-        :'supports_account_statement' => :'supports_account_statement',
-        :'supports_account_verification' => :'supports_account_verification',
-        :'supports_transaction_history' => :'supports_transaction_history',
-        :'url' => :'url'
+        :'statements' => :'statements',
+        :'pagination' => :'pagination'
       }
     end
 
     # Attribute type mapping.
     def self.mx_types
       {
-        :'code' => :'String',
-        :'medium_logo_url' => :'String',
-        :'name' => :'String',
-        :'small_logo_url' => :'String',
-        :'supports_account_identification' => :'BOOLEAN',
-        :'supports_account_statement' => :'BOOLEAN',
-        :'supports_account_verification' => :'BOOLEAN',
-        :'supports_transaction_history' => :'BOOLEAN',
-        :'url' => :'String'
+        :'statements' => :'Array<Statement>',
+        :'pagination' => :'Pagination'
       }
     end
 
@@ -66,40 +38,14 @@ module Atrium
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'code')
-        self.code = attributes[:'code']
+      if attributes.has_key?(:'statements')
+        if (value = attributes[:'statements']).is_a?(Array)
+          self.statements = value
+        end
       end
 
-      if attributes.has_key?(:'medium_logo_url')
-        self.medium_logo_url = attributes[:'medium_logo_url']
-      end
-
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
-      end
-
-      if attributes.has_key?(:'small_logo_url')
-        self.small_logo_url = attributes[:'small_logo_url']
-      end
-
-      if attributes.has_key?(:'supports_account_identification')
-        self.supports_account_identification = attributes[:'supports_account_identification']
-      end
-
-      if attributes.has_key?(:'supports_account_statement')
-        self.supports_account_statement = attributes[:'supports_account_statement']
-      end
-
-      if attributes.has_key?(:'supports_account_verification')
-        self.supports_account_verification = attributes[:'supports_account_verification']
-      end
-
-      if attributes.has_key?(:'supports_transaction_history')
-        self.supports_transaction_history = attributes[:'supports_transaction_history']
-      end
-
-      if attributes.has_key?(:'url')
-        self.url = attributes[:'url']
+      if attributes.has_key?(:'pagination')
+        self.pagination = attributes[:'pagination']
       end
     end
 
@@ -121,15 +67,8 @@ module Atrium
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          code == o.code &&
-          medium_logo_url == o.medium_logo_url &&
-          name == o.name &&
-          small_logo_url == o.small_logo_url &&
-          supports_account_identification == o.supports_account_identification &&
-          supports_account_statement == o.supports_account_statement &&
-          supports_account_verification == o.supports_account_verification &&
-          supports_transaction_history == o.supports_transaction_history &&
-          url == o.url
+          statements == o.statements &&
+          pagination == o.pagination
     end
 
     # @see the `==` method
@@ -141,7 +80,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [code, medium_logo_url, name, small_logo_url, supports_account_identification, supports_account_statement, supports_account_verification, supports_transaction_history, url].hash
+      [statements, pagination].hash
     end
 
     # Builds the object from hash

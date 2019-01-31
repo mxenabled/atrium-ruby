@@ -9,52 +9,61 @@
 require 'date'
 
 module Atrium
-  class Institution
-    attr_accessor :code
+  class Statement
+    # The unique identifier for the `account` associated with the `statement`. Defined by MX.
+    attr_accessor :account_guid
 
-    attr_accessor :medium_logo_url
+    # The date and time the `statement` was created.
+    attr_accessor :created_at
 
-    attr_accessor :name
+    # An SHA-256 hash value of the statement's byte payload, used as a unique identifier.
+    attr_accessor :content_hash
 
-    attr_accessor :small_logo_url
+    # The date and time the `statement` was deleted. Statements are automatically deleted when an `account` is deleted.
+    attr_accessor :deleted_at
 
-    attr_accessor :supports_account_identification
+    # The unique identifier for the `statement`. Defined by MX.
+    attr_accessor :guid
 
-    attr_accessor :supports_account_statement
+    # This indicates whether the `statement` has been deleted. Statements are automatically deleted when an `account` is deleted.
+    attr_accessor :is_deleted
 
-    attr_accessor :supports_account_verification
+    # The date and time at which the `statement` was last updated.
+    attr_accessor :updated_at
 
-    attr_accessor :supports_transaction_history
+    # A URI for accessing the byte payload of the `statement`.
+    attr_accessor :uri
 
-    attr_accessor :url
+    # The unique identifier for the `user` associated with the `statement`.  Defined by MX.
+    attr_accessor :user_guid
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'code' => :'code',
-        :'medium_logo_url' => :'medium_logo_url',
-        :'name' => :'name',
-        :'small_logo_url' => :'small_logo_url',
-        :'supports_account_identification' => :'supports_account_identification',
-        :'supports_account_statement' => :'supports_account_statement',
-        :'supports_account_verification' => :'supports_account_verification',
-        :'supports_transaction_history' => :'supports_transaction_history',
-        :'url' => :'url'
+        :'account_guid' => :'account_guid',
+        :'created_at' => :'created_at',
+        :'content_hash' => :'content_hash',
+        :'deleted_at' => :'deleted_at',
+        :'guid' => :'guid',
+        :'is_deleted' => :'is_deleted',
+        :'updated_at' => :'updated_at',
+        :'uri' => :'uri',
+        :'user_guid' => :'user_guid'
       }
     end
 
     # Attribute type mapping.
     def self.mx_types
       {
-        :'code' => :'String',
-        :'medium_logo_url' => :'String',
-        :'name' => :'String',
-        :'small_logo_url' => :'String',
-        :'supports_account_identification' => :'BOOLEAN',
-        :'supports_account_statement' => :'BOOLEAN',
-        :'supports_account_verification' => :'BOOLEAN',
-        :'supports_transaction_history' => :'BOOLEAN',
-        :'url' => :'String'
+        :'account_guid' => :'String',
+        :'created_at' => :'String',
+        :'content_hash' => :'String',
+        :'deleted_at' => :'String',
+        :'guid' => :'String',
+        :'is_deleted' => :'BOOLEAN',
+        :'updated_at' => :'String',
+        :'uri' => :'String',
+        :'user_guid' => :'String'
       }
     end
 
@@ -66,40 +75,40 @@ module Atrium
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'code')
-        self.code = attributes[:'code']
+      if attributes.has_key?(:'account_guid')
+        self.account_guid = attributes[:'account_guid']
       end
 
-      if attributes.has_key?(:'medium_logo_url')
-        self.medium_logo_url = attributes[:'medium_logo_url']
+      if attributes.has_key?(:'created_at')
+        self.created_at = attributes[:'created_at']
       end
 
-      if attributes.has_key?(:'name')
-        self.name = attributes[:'name']
+      if attributes.has_key?(:'content_hash')
+        self.content_hash = attributes[:'content_hash']
       end
 
-      if attributes.has_key?(:'small_logo_url')
-        self.small_logo_url = attributes[:'small_logo_url']
+      if attributes.has_key?(:'deleted_at')
+        self.deleted_at = attributes[:'deleted_at']
       end
 
-      if attributes.has_key?(:'supports_account_identification')
-        self.supports_account_identification = attributes[:'supports_account_identification']
+      if attributes.has_key?(:'guid')
+        self.guid = attributes[:'guid']
       end
 
-      if attributes.has_key?(:'supports_account_statement')
-        self.supports_account_statement = attributes[:'supports_account_statement']
+      if attributes.has_key?(:'is_deleted')
+        self.is_deleted = attributes[:'is_deleted']
       end
 
-      if attributes.has_key?(:'supports_account_verification')
-        self.supports_account_verification = attributes[:'supports_account_verification']
+      if attributes.has_key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
       end
 
-      if attributes.has_key?(:'supports_transaction_history')
-        self.supports_transaction_history = attributes[:'supports_transaction_history']
+      if attributes.has_key?(:'uri')
+        self.uri = attributes[:'uri']
       end
 
-      if attributes.has_key?(:'url')
-        self.url = attributes[:'url']
+      if attributes.has_key?(:'user_guid')
+        self.user_guid = attributes[:'user_guid']
       end
     end
 
@@ -121,15 +130,15 @@ module Atrium
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          code == o.code &&
-          medium_logo_url == o.medium_logo_url &&
-          name == o.name &&
-          small_logo_url == o.small_logo_url &&
-          supports_account_identification == o.supports_account_identification &&
-          supports_account_statement == o.supports_account_statement &&
-          supports_account_verification == o.supports_account_verification &&
-          supports_transaction_history == o.supports_transaction_history &&
-          url == o.url
+          account_guid == o.account_guid &&
+          created_at == o.created_at &&
+          content_hash == o.content_hash &&
+          deleted_at == o.deleted_at &&
+          guid == o.guid &&
+          is_deleted == o.is_deleted &&
+          updated_at == o.updated_at &&
+          uri == o.uri &&
+          user_guid == o.user_guid
     end
 
     # @see the `==` method
@@ -141,7 +150,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [code, medium_logo_url, name, small_logo_url, supports_account_identification, supports_account_statement, supports_account_verification, supports_transaction_history, url].hash
+      [account_guid, created_at, content_hash, deleted_at, guid, is_deleted, updated_at, uri, user_guid].hash
     end
 
     # Builds the object from hash

@@ -17,12 +17,12 @@ gem build atrium-ruby.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./atrium-ruby-2.2.2.gem
+gem install ./atrium-ruby-2.3.0.gem
 ```
 
 Finally add this to the Gemfile:
 
-    gem 'atrium-ruby', '~> 2.2.2'
+    gem 'atrium-ruby', '~> 2.3.0'
 
 ### Install from Git
 
@@ -90,6 +90,7 @@ Class | Method | HTTP request | Description
 *Atrium::MembersApi* | [**list_member_accounts**](docs/MembersApi.md#list_member_accounts) | **GET** /users/{user_guid}/members/{member_guid}/accounts | List member accounts
 *Atrium::MembersApi* | [**list_member_credentials**](docs/MembersApi.md#list_member_credentials) | **GET** /users/{user_guid}/members/{member_guid}/credentials | List member credentials
 *Atrium::MembersApi* | [**list_member_mfa_challenges**](docs/MembersApi.md#list_member_mfa_challenges) | **GET** /users/{user_guid}/members/{member_guid}/challenges | List member MFA challenges
+*Atrium::MembersApi* | [**list_member_statements**](docs/MembersApi.md#list_member_statements) | **GET** /users/{user_guid}/members/{member_guid}/statements | List member statements
 *Atrium::MembersApi* | [**list_member_transactions**](docs/MembersApi.md#list_member_transactions) | **GET** /users/{user_guid}/members/{member_guid}/transactions | List member transactions
 *Atrium::MembersApi* | [**list_members**](docs/MembersApi.md#list_members) | **GET** /users/{user_guid}/members | List members
 *Atrium::MembersApi* | [**read_member**](docs/MembersApi.md#read_member) | **GET** /users/{user_guid}/members/{member_guid} | Read member
@@ -149,6 +150,8 @@ Class | Method | HTTP request | Description
  - [Atrium::Merchant](docs/Merchant.md)
  - [Atrium::MerchantResponseBody](docs/MerchantResponseBody.md)
  - [Atrium::Pagination](docs/Pagination.md)
+ - [Atrium::Statement](docs/Statement.md)
+ - [Atrium::StatementsResponseBody](docs/StatementsResponseBody.md)
  - [Atrium::Transaction](docs/Transaction.md)
  - [Atrium::TransactionCleanseAndCategorizeRequest](docs/TransactionCleanseAndCategorizeRequest.md)
  - [Atrium::TransactionCleanseAndCategorizeResponse](docs/TransactionCleanseAndCategorizeResponse.md)

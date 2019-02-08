@@ -94,7 +94,7 @@ client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
 opts = { 
   page: 1, # Integer | Specify current page.
-  records_per_page: 12, # Integer | Specify records per page.
+  records_per_page: 12 # Integer | Specify records per page.
 }
 
 begin

@@ -16,20 +16,11 @@ module Atrium
     # The date and time the `statement` was created.
     attr_accessor :created_at
 
-    # An SHA-256 hash value of the statement's byte payload, used as a unique identifier.
-    attr_accessor :content_hash
-
-    # The date and time the `statement` was deleted. Statements are automatically deleted when an `account` is deleted.
-    attr_accessor :deleted_at
-
     # The unique identifier for the `statement`. Defined by MX.
     attr_accessor :guid
 
-    # This indicates whether the `statement` has been deleted. Statements are automatically deleted when an `account` is deleted.
-    attr_accessor :is_deleted
-
-    # The date and time at which the `statement` was last updated.
-    attr_accessor :updated_at
+    # The unique identifier for the `member` associated with the `statement`.  Defined by MX.
+    attr_accessor :member_guid
 
     # A URI for accessing the byte payload of the `statement`.
     attr_accessor :uri
@@ -37,18 +28,19 @@ module Atrium
     # The unique identifier for the `user` associated with the `statement`.  Defined by MX.
     attr_accessor :user_guid
 
+    # The date and time at which the `statement` was last updated.
+    attr_accessor :updated_at
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'account_guid' => :'account_guid',
         :'created_at' => :'created_at',
-        :'content_hash' => :'content_hash',
-        :'deleted_at' => :'deleted_at',
         :'guid' => :'guid',
-        :'is_deleted' => :'is_deleted',
-        :'updated_at' => :'updated_at',
+        :'member_guid' => :'member_guid',
         :'uri' => :'uri',
-        :'user_guid' => :'user_guid'
+        :'user_guid' => :'user_guid',
+        :'updated_at' => :'updated_at'
       }
     end
 
@@ -57,13 +49,11 @@ module Atrium
       {
         :'account_guid' => :'String',
         :'created_at' => :'String',
-        :'content_hash' => :'String',
-        :'deleted_at' => :'String',
         :'guid' => :'String',
-        :'is_deleted' => :'BOOLEAN',
-        :'updated_at' => :'String',
+        :'member_guid' => :'String',
         :'uri' => :'String',
-        :'user_guid' => :'String'
+        :'user_guid' => :'String',
+        :'updated_at' => :'String'
       }
     end
 
@@ -83,24 +73,12 @@ module Atrium
         self.created_at = attributes[:'created_at']
       end
 
-      if attributes.has_key?(:'content_hash')
-        self.content_hash = attributes[:'content_hash']
-      end
-
-      if attributes.has_key?(:'deleted_at')
-        self.deleted_at = attributes[:'deleted_at']
-      end
-
       if attributes.has_key?(:'guid')
         self.guid = attributes[:'guid']
       end
 
-      if attributes.has_key?(:'is_deleted')
-        self.is_deleted = attributes[:'is_deleted']
-      end
-
-      if attributes.has_key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
+      if attributes.has_key?(:'member_guid')
+        self.member_guid = attributes[:'member_guid']
       end
 
       if attributes.has_key?(:'uri')
@@ -109,6 +87,10 @@ module Atrium
 
       if attributes.has_key?(:'user_guid')
         self.user_guid = attributes[:'user_guid']
+      end
+
+      if attributes.has_key?(:'updated_at')
+        self.updated_at = attributes[:'updated_at']
       end
     end
 
@@ -132,13 +114,11 @@ module Atrium
       self.class == o.class &&
           account_guid == o.account_guid &&
           created_at == o.created_at &&
-          content_hash == o.content_hash &&
-          deleted_at == o.deleted_at &&
           guid == o.guid &&
-          is_deleted == o.is_deleted &&
-          updated_at == o.updated_at &&
+          member_guid == o.member_guid &&
           uri == o.uri &&
-          user_guid == o.user_guid
+          user_guid == o.user_guid &&
+          updated_at == o.updated_at
     end
 
     # @see the `==` method
@@ -150,7 +130,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [account_guid, created_at, content_hash, deleted_at, guid, is_deleted, updated_at, uri, user_guid].hash
+      [account_guid, created_at, guid, member_guid, uri, user_guid, updated_at].hash
     end
 
     # Builds the object from hash

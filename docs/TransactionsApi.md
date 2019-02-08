@@ -60,7 +60,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 opts = { 
   page: 1, # Integer | Specify current page.
   from_date: "2016-09-20", # String | Filter transactions from this date.
-  records_per_page: 12, # Integer | Specify records per page.
+  records_per_page: 12 # Integer | Specify records per page.
   to_date: "2016-10-20" # String | Filter transactions to this date.
 }
 

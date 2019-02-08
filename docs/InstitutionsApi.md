@@ -24,7 +24,7 @@ client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 opts = { 
   name: name_example, # String | This will list only institutions in which the appended string appears.
   page: 1, # Integer | Specify current page.
-  records_per_page: 12, # Integer | Specify records per page.
+  records_per_page: 12 # Integer | Specify records per page.
   supports_account_identification: true, # BOOLEAN | Filter only institutions which support account identification.
   supports_account_statement: true, # BOOLEAN | Filter only institutions which support account statements.
   supports_account_verification: true, # BOOLEAN | Filter only institutions which support account verification.

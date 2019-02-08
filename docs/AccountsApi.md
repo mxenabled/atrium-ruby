@@ -28,7 +28,7 @@ opts = {
   from_date: "2016-09-20", # String | Filter transactions from this date.
   to_date: "2016-10-20" # String | Filter transactions to this date.
   page: 1, # Integer | Specify current page.
-  records_per_page: 12, # Integer | Specify records per page.
+  records_per_page: 12 # Integer | Specify records per page.
 }
 
 begin
@@ -72,7 +72,7 @@ client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 user_guid = "USR-123" # String | The unique identifier for a `user`.
 opts = { 
   page: 1, # Integer | Specify current page.
-  records_per_page: 12, # Integer | Specify records per page.
+  records_per_page: 12 # Integer | Specify records per page.
 }
 
 begin

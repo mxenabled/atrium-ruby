@@ -7,6 +7,7 @@ module Atrium
     attr_accessor :institutions
     attr_accessor :members
     attr_accessor :merchants
+    attr_accessor :statements
     attr_accessor :transactions
     attr_accessor :users
     attr_accessor :verification
@@ -24,6 +25,7 @@ module Atrium
       @institutions = Atrium::InstitutionsApi.new()
       @members = Atrium::MembersApi.new()
       @merchants = Atrium::MerchantsApi.new()
+      @statements = Atrium::StatementsApi.new()
       @transactions = Atrium::TransactionsApi.new()
       @users = Atrium::UsersApi.new()
       @verification = Atrium::VerificationApi.new()

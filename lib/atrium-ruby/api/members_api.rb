@@ -20,7 +20,6 @@ module Atrium
     # @param member_guid The unique identifier for a &#x60;member&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :type An optional parameter which determines the type of aggregation to be peformed. Possible values are &#x60;statement&#x60; and &#x60;history&#x60;.
     # @return [MemberResponseBody]
     def aggregate_member(member_guid, user_guid, opts = {})
       data, _status_code, _headers = aggregate_member_with_http_info(member_guid, user_guid, opts)
@@ -47,6 +46,17 @@ module Atrium
     def delete_member(member_guid, user_guid, opts = {})
       delete_member_with_http_info(member_guid, user_guid, opts)
       nil
+    end
+
+    # Extend history
+    # The extend_history endpoint begins the process of fetching up to 24 months of data associated with a particular `member`.
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @return [MemberResponseBody]
+    def extend_history(member_guid, user_guid, opts = {})
+      data, _status_code, _headers = extend_history_with_http_info(member_guid, user_guid, opts)
+      data
     end
 
     # List member accounts
@@ -81,19 +91,6 @@ module Atrium
     # @return [ChallengesResponseBody]
     def list_member_mfa_challenges(member_guid, user_guid, opts = {})
       data, _status_code, _headers = list_member_mfa_challenges_with_http_info(member_guid, user_guid, opts)
-      data
-    end
-
-    # List member statements
-    # Certain institutions in Atrium allow developers to access account statements associated with a particular `member`. Use this endpoint to get an array of available statements.  Before this endpoint can be used, an aggregation of type `statement` should be performed on the relevant `member`. 
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page Specify current page.
-    # @option opts [Integer] :records_per_page Specify records per page.
-    # @return [StatementsResponseBody]
-    def list_member_statements(member_guid, user_guid, opts = {})
-      data, _status_code, _headers = list_member_statements_with_http_info(member_guid, user_guid, opts)
       data
     end
 
@@ -178,7 +175,6 @@ module Atrium
     # @param member_guid The unique identifier for a &#x60;member&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :type An optional parameter which determines the type of aggregation to be peformed. Possible values are &#x60;statement&#x60; and &#x60;history&#x60;.
     # @return [Array<(MemberResponseBody, Fixnum, Hash)>] MemberResponseBody data, response status code and response headers
     def aggregate_member_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
@@ -197,7 +193,6 @@ module Atrium
 
       # query parameters
       query_params = {}
-      query_params[:'type'] = opts[:'type'] if !opts[:'type'].nil?
 
       # header parameters
       header_params = {}
@@ -316,6 +311,55 @@ module Atrium
         :auth_names => auth_names)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MembersApi#delete_member\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Extend history
+    # The extend_history endpoint begins the process of fetching up to 24 months of data associated with a particular &#x60;member&#x60;.
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(MemberResponseBody, Fixnum, Hash)>] MemberResponseBody data, response status code and response headers
+    def extend_history_with_http_info(member_guid, user_guid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: MembersApi.extend_history ...'
+      end
+      # verify the required parameter 'member_guid' is set
+      if @api_client.config.client_side_validation && member_guid.nil?
+        fail ArgumentError, "Missing the required parameter 'member_guid' when calling MembersApi.extend_history"
+      end
+      # verify the required parameter 'user_guid' is set
+      if @api_client.config.client_side_validation && user_guid.nil?
+        fail ArgumentError, "Missing the required parameter 'user_guid' when calling MembersApi.extend_history"
+      end
+      # resource path
+      local_var_path = '/users/{user_guid}/members/{member_guid}/extend_history'.sub('{' + 'member_guid' + '}', member_guid.to_s).sub('{' + 'user_guid' + '}', user_guid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/vnd.mx.atrium.v1+json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['apiKey', 'clientID']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'MemberResponseBody')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: MembersApi#extend_history\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -461,57 +505,6 @@ module Atrium
         :return_type => 'ChallengesResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MembersApi#list_member_mfa_challenges\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-    # List member statements
-    # Certain institutions in Atrium allow developers to access account statements associated with a particular &#x60;member&#x60;. Use this endpoint to get an array of available statements.  Before this endpoint can be used, an aggregation of type &#x60;statement&#x60; should be performed on the relevant &#x60;member&#x60;. 
-    # @param member_guid The unique identifier for a &#x60;member&#x60;.
-    # @param user_guid The unique identifier for a &#x60;user&#x60;.
-    # @param [Hash] opts the optional parameters
-    # @option opts [Integer] :page Specify current page.
-    # @option opts [Integer] :records_per_page Specify records per page.
-    # @return [Array<(StatementsResponseBody, Fixnum, Hash)>] StatementsResponseBody data, response status code and response headers
-    def list_member_statements_with_http_info(member_guid, user_guid, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: MembersApi.list_member_statements ...'
-      end
-      # verify the required parameter 'member_guid' is set
-      if @api_client.config.client_side_validation && member_guid.nil?
-        fail ArgumentError, "Missing the required parameter 'member_guid' when calling MembersApi.list_member_statements"
-      end
-      # verify the required parameter 'user_guid' is set
-      if @api_client.config.client_side_validation && user_guid.nil?
-        fail ArgumentError, "Missing the required parameter 'user_guid' when calling MembersApi.list_member_statements"
-      end
-      # resource path
-      local_var_path = '/users/{user_guid}/members/{member_guid}/statements'.sub('{' + 'member_guid' + '}', member_guid.to_s).sub('{' + 'user_guid' + '}', user_guid.to_s)
-
-      # query parameters
-      query_params = {}
-      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
-      query_params[:'records_per_page'] = opts[:'records_per_page'] if !opts[:'records_per_page'].nil?
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/vnd.mx.atrium.v1+json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = nil
-      auth_names = ['apiKey', 'clientID']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'StatementsResponseBody')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: MembersApi#list_member_statements\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

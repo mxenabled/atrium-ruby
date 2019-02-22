@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 [**UserResponseBody**](UserResponseBody.md)
 
 # **delete_user**
-> delete_user(user_guid)
+> delete_user(user_guid, )
 
 Delete user
 
@@ -62,7 +62,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Delete user
-  client.users.delete_user(user_guid)
+  client.users.delete_user(user_guid, )
 rescue Atrium::ApiError => e
   puts "Exception when calling UsersApi->delete_user: #{e}"
 end
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 [**UsersResponseBody**](UsersResponseBody.md)
 
 # **read_user**
-> UserResponseBody read_user(user_guid)
+> UserResponseBody read_user(user_guid, )
 
 Read user
 
@@ -135,7 +135,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Read user
-  response = client.users.read_user(user_guid)
+  response = client.users.read_user(user_guid, )
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling UsersApi->read_user: #{e}"
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 [**UserResponseBody**](UserResponseBody.md)
 
 # **update_user**
-> UserResponseBody update_user(user_guid, opts)
+> UserResponseBody update_user(user_guid, , opts)
 
 Update user
 
@@ -173,7 +173,7 @@ opts = {
 
 begin
   #Update user
-  response = client.users.update_user(user_guid, opts)
+  response = client.users.update_user(user_guid, , opts)
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling UsersApi->update_user: #{e}"

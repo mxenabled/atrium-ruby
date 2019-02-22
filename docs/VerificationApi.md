@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **list_account_numbers**
-> AccountNumbersResponseBody list_account_numbers(member_guid, user_guid)
+> AccountNumbersResponseBody list_account_numbers(member_guid, user_guid, )
 
 Read account numbers
 
@@ -26,7 +26,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Read account numbers
-  response = client.verification.list_account_numbers(member_guid, user_guid)
+  response = client.verification.list_account_numbers(member_guid, user_guid, )
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling VerificationApi->list_account_numbers: #{e}"
@@ -45,7 +45,7 @@ Name | Type | Description  | Notes
 [**AccountNumbersResponseBody**](AccountNumbersResponseBody.md)
 
 # **list_account_numbers_by_account**
-> AccountNumbersResponseBody list_account_numbers_by_account(account_guid, user_guid)
+> AccountNumbersResponseBody list_account_numbers_by_account(account_guid, user_guid, )
 
 Read account numbers by account GUID
 
@@ -63,7 +63,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Read account numbers by account GUID
-  response = client.verification.list_account_numbers_by_account(account_guid, user_guid)
+  response = client.verification.list_account_numbers_by_account(account_guid, user_guid, )
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling VerificationApi->list_account_numbers_by_account: #{e}"
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 [**AccountNumbersResponseBody**](AccountNumbersResponseBody.md)
 
 # **verify_member**
-> MemberResponseBody verify_member(member_guid, user_guid)
+> MemberResponseBody verify_member(member_guid, user_guid, )
 
 Verify
 
@@ -100,7 +100,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Verify
-  response = client.verification.verify_member(member_guid, user_guid)
+  response = client.verification.verify_member(member_guid, user_guid, )
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling VerificationApi->verify_member: #{e}"

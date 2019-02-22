@@ -9,56 +9,20 @@
 require 'date'
 
 module Atrium
-  class Statement
-    # The unique identifier for the `account` associated with the `statement`. Defined by MX.
-    attr_accessor :account_guid
-
-    # SHA256 digest of the pdf payload
-    attr_accessor :content_hash
-
-    # The date and time the `statement` was created.
-    attr_accessor :created_at
-
-    # The unique identifier for the `statement`. Defined by MX.
-    attr_accessor :guid
-
-    # The unique identifier for the `member` associated with the `statement`.  Defined by MX.
-    attr_accessor :member_guid
-
-    # A URI for accessing the byte payload of the `statement`.
-    attr_accessor :uri
-
-    # The unique identifier for the `user` associated with the `statement`.  Defined by MX.
-    attr_accessor :user_guid
-
-    # The date and time at which the `statement` was last updated.
-    attr_accessor :updated_at
+  class StatementResponseBody
+    attr_accessor :user
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'account_guid' => :'account_guid',
-        :'content_hash' => :'content_hash',
-        :'created_at' => :'created_at',
-        :'guid' => :'guid',
-        :'member_guid' => :'member_guid',
-        :'uri' => :'uri',
-        :'user_guid' => :'user_guid',
-        :'updated_at' => :'updated_at'
+        :'user' => :'user'
       }
     end
 
     # Attribute type mapping.
     def self.mx_types
       {
-        :'account_guid' => :'String',
-        :'content_hash' => :'String',
-        :'created_at' => :'String',
-        :'guid' => :'String',
-        :'member_guid' => :'String',
-        :'uri' => :'String',
-        :'user_guid' => :'String',
-        :'updated_at' => :'String'
+        :'user' => :'Statement'
       }
     end
 
@@ -70,36 +34,8 @@ module Atrium
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'account_guid')
-        self.account_guid = attributes[:'account_guid']
-      end
-
-      if attributes.has_key?(:'content_hash')
-        self.content_hash = attributes[:'content_hash']
-      end
-
-      if attributes.has_key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.has_key?(:'guid')
-        self.guid = attributes[:'guid']
-      end
-
-      if attributes.has_key?(:'member_guid')
-        self.member_guid = attributes[:'member_guid']
-      end
-
-      if attributes.has_key?(:'uri')
-        self.uri = attributes[:'uri']
-      end
-
-      if attributes.has_key?(:'user_guid')
-        self.user_guid = attributes[:'user_guid']
-      end
-
-      if attributes.has_key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
+      if attributes.has_key?(:'user')
+        self.user = attributes[:'user']
       end
     end
 
@@ -121,14 +57,7 @@ module Atrium
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          account_guid == o.account_guid &&
-          content_hash == o.content_hash &&
-          created_at == o.created_at &&
-          guid == o.guid &&
-          member_guid == o.member_guid &&
-          uri == o.uri &&
-          user_guid == o.user_guid &&
-          updated_at == o.updated_at
+          user == o.user
     end
 
     # @see the `==` method
@@ -140,7 +69,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [account_guid, content_hash, created_at, guid, member_guid, uri, user_guid, updated_at].hash
+      [user].hash
     end
 
     # Builds the object from hash

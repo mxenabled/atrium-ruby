@@ -43,7 +43,7 @@ Name | Type | Description  | Notes
 [**TransactionsCleanseAndCategorizeResponseBody**](TransactionsCleanseAndCategorizeResponseBody.md)
 
 # **list_user_transactions**
-> TransactionsResponseBody list_user_transactions(user_guid, opts)
+> TransactionsResponseBody list_user_transactions(user_guid, , opts)
 
 List transactions for a user
 
@@ -66,7 +66,7 @@ opts = {
 
 begin
   #List transactions for a user
-  response = client.transactions.list_user_transactions(user_guid, opts)
+  response = client.transactions.list_user_transactions(user_guid, , opts)
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling TransactionsApi->list_user_transactions: #{e}"
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 [**TransactionsResponseBody**](TransactionsResponseBody.md)
 
 # **read_transaction**
-> TransactionResponseBody read_transaction(transaction_guid, user_guid)
+> TransactionResponseBody read_transaction(transaction_guid, user_guid, )
 
 Read a transaction
 
@@ -106,7 +106,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Read a transaction
-  response = client.transactions.read_transaction(transaction_guid, user_guid)
+  response = client.transactions.read_transaction(transaction_guid, user_guid, )
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling TransactionsApi->read_transaction: #{e}"

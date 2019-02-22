@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **list_holdings**
-> HoldingsResponseBody list_holdings(user_guid)
+> HoldingsResponseBody list_holdings(user_guid, )
 
 List holdings
 
@@ -26,7 +26,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #List holdings
-  response = client.holdings.list_holdings(user_guid)
+  response = client.holdings.list_holdings(user_guid, )
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling HoldingsApi->list_holdings: #{e}"
@@ -44,7 +44,7 @@ Name | Type | Description  | Notes
 [**HoldingsResponseBody**](HoldingsResponseBody.md)
 
 # **list_holdings_by_account**
-> HoldingsResponseBody list_holdings_by_account(account_guid, user_guid)
+> HoldingsResponseBody list_holdings_by_account(account_guid, user_guid, )
 
 List holdings by account
 
@@ -62,7 +62,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #List holdings by account
-  response = client.holdings.list_holdings_by_account(account_guid, user_guid)
+  response = client.holdings.list_holdings_by_account(account_guid, user_guid, )
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling HoldingsApi->list_holdings_by_account: #{e}"
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 [**HoldingsResponseBody**](HoldingsResponseBody.md)
 
 # **list_holdings_by_member**
-> HoldingsResponseBody list_holdings_by_member(member_guid, user_guid)
+> HoldingsResponseBody list_holdings_by_member(member_guid, user_guid, )
 
 List holdings by member
 
@@ -99,7 +99,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #List holdings by member
-  response = client.holdings.list_holdings_by_member(member_guid, user_guid)
+  response = client.holdings.list_holdings_by_member(member_guid, user_guid, )
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling HoldingsApi->list_holdings_by_member: #{e}"
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 [**HoldingsResponseBody**](HoldingsResponseBody.md)
 
 # **read_holding**
-> HoldingResponseBody read_holding(holding_guid, user_guid)
+> HoldingResponseBody read_holding(holding_guid, user_guid, )
 
 Read holding
 
@@ -136,7 +136,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Read holding
-  response = client.holdings.read_holding(holding_guid, user_guid)
+  response = client.holdings.read_holding(holding_guid, user_guid, )
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling HoldingsApi->read_holding: #{e}"

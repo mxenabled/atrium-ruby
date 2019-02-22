@@ -15,6 +15,18 @@ module Atrium
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Download statement PDF
+    # Use this endpoint to download a specified statement. The endpoint URL is the same as the URI given in each `statement` object. 
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param statement_guid The unique identifier for an &#x60;statement&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @return [File]
+    def download_statement_pdf(member_guid, user_guid, statement_guid, opts = {})
+      data, _status_code, _headers = download_statement_pdf_with_http_info(member_guid, user_guid, statement_guid, opts)
+      data
+    end
+
     # Fetch statements
     # The fetch statements endpoint begins fetching statements for a member.
     # @param member_guid The unique identifier for a &#x60;member&#x60;.
@@ -39,9 +51,73 @@ module Atrium
       data
     end
 
+    # Read statement JSON
+    # Use this endpoint to download a specified statement. The endpoint URL is the same as the URI given in each `statement` object. 
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param statement_guid The unique identifier for an &#x60;statement&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @return [StatementResponseBody]
+    def read_member_statement(member_guid, user_guid, statement_guid, opts = {})
+      data, _status_code, _headers = read_member_statement_with_http_info(member_guid, user_guid, statement_guid, opts)
+      data
+    end
+
 
   private
 
+    # Download statement PDF
+    # Use this endpoint to download a specified statement. The endpoint URL is the same as the URI given in each &#x60;statement&#x60; object. 
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param statement_guid The unique identifier for an &#x60;statement&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(File, Fixnum, Hash)>] File data, response status code and response headers
+    def download_statement_pdf_with_http_info(member_guid, user_guid, statement_guid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StatementsApi.download_statement_pdf ...'
+      end
+      # verify the required parameter 'member_guid' is set
+      if @api_client.config.client_side_validation && member_guid.nil?
+        fail ArgumentError, "Missing the required parameter 'member_guid' when calling StatementsApi.download_statement_pdf"
+      end
+      # verify the required parameter 'user_guid' is set
+      if @api_client.config.client_side_validation && user_guid.nil?
+        fail ArgumentError, "Missing the required parameter 'user_guid' when calling StatementsApi.download_statement_pdf"
+      end
+      # verify the required parameter 'statement_guid' is set
+      if @api_client.config.client_side_validation && statement_guid.nil?
+        fail ArgumentError, "Missing the required parameter 'statement_guid' when calling StatementsApi.download_statement_pdf"
+      end
+      # resource path
+      local_var_path = '/users/{user_guid}/members/{member_guid}/statements/{statement_guid}.pdf'.sub('{' + 'member_guid' + '}', member_guid.to_s).sub('{' + 'user_guid' + '}', user_guid.to_s).sub('{' + 'statement_guid' + '}', statement_guid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/vnd.mx.atrium.v1+pdf'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['apiKey', 'clientID']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StatementsApi#download_statement_pdf\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Fetch statements
     # The fetch statements endpoint begins fetching statements for a member.
     # @param member_guid The unique identifier for a &#x60;member&#x60;.
@@ -139,6 +215,58 @@ module Atrium
         :return_type => 'StatementsResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: StatementsApi#list_member_statements\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Read statement JSON
+    # Use this endpoint to download a specified statement. The endpoint URL is the same as the URI given in each &#x60;statement&#x60; object. 
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param statement_guid The unique identifier for an &#x60;statement&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(StatementResponseBody, Fixnum, Hash)>] StatementResponseBody data, response status code and response headers
+    def read_member_statement_with_http_info(member_guid, user_guid, statement_guid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: StatementsApi.read_member_statement ...'
+      end
+      # verify the required parameter 'member_guid' is set
+      if @api_client.config.client_side_validation && member_guid.nil?
+        fail ArgumentError, "Missing the required parameter 'member_guid' when calling StatementsApi.read_member_statement"
+      end
+      # verify the required parameter 'user_guid' is set
+      if @api_client.config.client_side_validation && user_guid.nil?
+        fail ArgumentError, "Missing the required parameter 'user_guid' when calling StatementsApi.read_member_statement"
+      end
+      # verify the required parameter 'statement_guid' is set
+      if @api_client.config.client_side_validation && statement_guid.nil?
+        fail ArgumentError, "Missing the required parameter 'statement_guid' when calling StatementsApi.read_member_statement"
+      end
+      # resource path
+      local_var_path = '/users/{user_guid}/members/{member_guid}/statements/{statement_guid}'.sub('{' + 'member_guid' + '}', member_guid.to_s).sub('{' + 'user_guid' + '}', user_guid.to_s).sub('{' + 'statement_guid' + '}', statement_guid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/vnd.mx.atrium.v1+json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['apiKey', 'clientID']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'StatementResponseBody')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: StatementsApi#read_member_statement\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

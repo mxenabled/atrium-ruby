@@ -27,6 +27,20 @@ describe 'StatementsApi' do
     end
   end
 
+  # unit tests for download_statement_pdf
+  # Download statement PDF
+  # Use this endpoint to download a specified statement. The endpoint URL is the same as the URI given in each &#x60;statement&#x60; object. 
+  # @param member_guid The unique identifier for a &#x60;member&#x60;.
+  # @param user_guid The unique identifier for a &#x60;user&#x60;.
+  # @param statement_guid The unique identifier for an &#x60;statement&#x60;.
+  # @param [Hash] opts the optional parameters
+  # @return [File]
+  describe 'download_statement_pdf test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for fetch_statements
   # Fetch statements
   # The fetch statements endpoint begins fetching statements for a member.
@@ -50,6 +64,20 @@ describe 'StatementsApi' do
   # @option opts [Integer] :records_per_page Specify records per page.
   # @return [StatementsResponseBody]
   describe 'list_member_statements test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for read_member_statement
+  # Read statement JSON
+  # Use this endpoint to download a specified statement. The endpoint URL is the same as the URI given in each &#x60;statement&#x60; object. 
+  # @param member_guid The unique identifier for a &#x60;member&#x60;.
+  # @param user_guid The unique identifier for a &#x60;user&#x60;.
+  # @param statement_guid The unique identifier for an &#x60;statement&#x60;.
+  # @param [Hash] opts the optional parameters
+  # @return [StatementResponseBody]
+  describe 'read_member_statement test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

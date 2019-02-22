@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 
 # **aggregate_member**
-> MemberResponseBody aggregate_member(member_guid, user_guid)
+> MemberResponseBody aggregate_member(member_guid, user_guid, )
 
 Aggregate member
 
@@ -36,7 +36,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Aggregate member
-  response = client.members.aggregate_member(member_guid, user_guid)
+  response = client.members.aggregate_member(member_guid, user_guid, )
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->aggregate_member: #{e}"
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 [**MemberResponseBody**](MemberResponseBody.md)
 
 # **create_member**
-> MemberResponseBody create_member(user_guidbody)
+> MemberResponseBody create_member(user_guid, body)
 
 Create member
 
@@ -73,7 +73,7 @@ body = Atrium::MemberCreateRequestBody.new # MemberCreateRequestBody | Member ob
 
 begin
   #Create member
-  response = client.members.create_member(user_guidbody)
+  response = client.members.create_member(user_guid, body)
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->create_member: #{e}"
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 [**MemberResponseBody**](MemberResponseBody.md)
 
 # **delete_member**
-> delete_member(member_guid, user_guid)
+> delete_member(member_guid, user_guid, )
 
 Delete member
 
@@ -110,7 +110,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Delete member
-  client.members.delete_member(member_guid, user_guid)
+  client.members.delete_member(member_guid, user_guid, )
 rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->delete_member: #{e}"
 end
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 nil (empty response body)
 
 # **extend_history**
-> MemberResponseBody extend_history(member_guid, user_guid)
+> MemberResponseBody extend_history(member_guid, user_guid, )
 
 Extend history
 
@@ -146,7 +146,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Extend history
-  response = client.members.extend_history(member_guid, user_guid)
+  response = client.members.extend_history(member_guid, user_guid, )
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->extend_history: #{e}"
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 [**MemberResponseBody**](MemberResponseBody.md)
 
 # **list_member_accounts**
-> AccountsResponseBody list_member_accounts(member_guid, user_guid, opts)
+> AccountsResponseBody list_member_accounts(member_guid, user_guid, , opts)
 
 List member accounts
 
@@ -187,7 +187,7 @@ opts = {
 
 begin
   #List member accounts
-  response = client.members.list_member_accounts(member_guid, user_guid, opts)
+  response = client.members.list_member_accounts(member_guid, user_guid, , opts)
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->list_member_accounts: #{e}"
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 [**AccountsResponseBody**](AccountsResponseBody.md)
 
 # **list_member_credentials**
-> CredentialsResponseBody list_member_credentials(member_guid, user_guid)
+> CredentialsResponseBody list_member_credentials(member_guid, user_guid, )
 
 List member credentials
 
@@ -226,7 +226,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #List member credentials
-  response = client.members.list_member_credentials(member_guid, user_guid)
+  response = client.members.list_member_credentials(member_guid, user_guid, )
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->list_member_credentials: #{e}"
@@ -245,7 +245,7 @@ Name | Type | Description  | Notes
 [**CredentialsResponseBody**](CredentialsResponseBody.md)
 
 # **list_member_mfa_challenges**
-> ChallengesResponseBody list_member_mfa_challenges(member_guid, user_guid)
+> ChallengesResponseBody list_member_mfa_challenges(member_guid, user_guid, )
 
 List member MFA challenges
 
@@ -263,7 +263,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #List member MFA challenges
-  response = client.members.list_member_mfa_challenges(member_guid, user_guid)
+  response = client.members.list_member_mfa_challenges(member_guid, user_guid, )
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->list_member_mfa_challenges: #{e}"
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 [**ChallengesResponseBody**](ChallengesResponseBody.md)
 
 # **list_member_transactions**
-> TransactionsResponseBody list_member_transactions(member_guid, user_guid, opts)
+> TransactionsResponseBody list_member_transactions(member_guid, user_guid, , opts)
 
 List member transactions
 
@@ -306,7 +306,7 @@ opts = {
 
 begin
   #List member transactions
-  response = client.members.list_member_transactions(member_guid, user_guid, opts)
+  response = client.members.list_member_transactions(member_guid, user_guid, , opts)
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->list_member_transactions: #{e}"
@@ -329,7 +329,7 @@ Name | Type | Description  | Notes
 [**TransactionsResponseBody**](TransactionsResponseBody.md)
 
 # **list_members**
-> MembersResponseBody list_members(user_guid, opts)
+> MembersResponseBody list_members(user_guid, , opts)
 
 List members
 
@@ -350,7 +350,7 @@ opts = {
 
 begin
   #List members
-  response = client.members.list_members(user_guid, opts)
+  response = client.members.list_members(user_guid, , opts)
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->list_members: #{e}"
@@ -370,7 +370,7 @@ Name | Type | Description  | Notes
 [**MembersResponseBody**](MembersResponseBody.md)
 
 # **read_member**
-> MemberResponseBody read_member(member_guid, user_guid)
+> MemberResponseBody read_member(member_guid, user_guid, )
 
 Read member
 
@@ -388,7 +388,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Read member
-  response = client.members.read_member(member_guid, user_guid)
+  response = client.members.read_member(member_guid, user_guid, )
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->read_member: #{e}"
@@ -407,7 +407,7 @@ Name | Type | Description  | Notes
 [**MemberResponseBody**](MemberResponseBody.md)
 
 # **read_member_status**
-> MemberConnectionStatusResponseBody read_member_status(member_guid, user_guid)
+> MemberConnectionStatusResponseBody read_member_status(member_guid, user_guid, )
 
 Read member connection status
 
@@ -425,7 +425,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Read member connection status
-  response = client.members.read_member_status(member_guid, user_guid)
+  response = client.members.read_member_status(member_guid, user_guid, )
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->read_member_status: #{e}"
@@ -444,7 +444,7 @@ Name | Type | Description  | Notes
 [**MemberConnectionStatusResponseBody**](MemberConnectionStatusResponseBody.md)
 
 # **resume_member**
-> MemberResponseBody resume_member(member_guid, user_guidbody)
+> MemberResponseBody resume_member(member_guid, user_guid, body)
 
 Resume aggregation from MFA
 
@@ -463,7 +463,7 @@ body = Atrium::MemberResumeRequestBody.new # MemberResumeRequestBody | Member ob
 
 begin
   #Resume aggregation from MFA
-  response = client.members.resume_member(member_guid, user_guidbody)
+  response = client.members.resume_member(member_guid, user_guid, body)
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->resume_member: #{e}"
@@ -483,7 +483,7 @@ Name | Type | Description  | Notes
 [**MemberResponseBody**](MemberResponseBody.md)
 
 # **update_member**
-> MemberResponseBody update_member(member_guid, user_guid, opts)
+> MemberResponseBody update_member(member_guid, user_guid, , opts)
 
 Update member
 
@@ -504,7 +504,7 @@ opts = {
 
 begin
   #Update member
-  response = client.members.update_member(member_guid, user_guid, opts)
+  response = client.members.update_member(member_guid, user_guid, , opts)
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->update_member: #{e}"

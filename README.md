@@ -17,12 +17,12 @@ gem build atrium-ruby.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./atrium-ruby-2.4.0.gem
+gem install ./atrium-ruby-2.5.0.gem
 ```
 
 Finally add this to the Gemfile:
 
-    gem 'atrium-ruby', '~> 2.4.0'
+    gem 'atrium-ruby', '~> 2.5.0'
 
 ### Install from Git
 
@@ -58,7 +58,7 @@ opts = {
 
 begin
   #List account transactions
-  response = client.accounts.list_account_transactions(account_guid, user_guid, opts)
+  response = client.accounts.list_account_transactions(account_guid, user_guid, , opts)
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling AccountsApi->list_account_transactions: #{e}"
@@ -98,8 +98,10 @@ Class | Method | HTTP request | Description
 *Atrium::MembersApi* | [**resume_member**](docs/MembersApi.md#resume_member) | **PUT** /users/{user_guid}/members/{member_guid}/resume | Resume aggregation from MFA
 *Atrium::MembersApi* | [**update_member**](docs/MembersApi.md#update_member) | **PUT** /users/{user_guid}/members/{member_guid} | Update member
 *Atrium::MerchantsApi* | [**read_merchant**](docs/MerchantsApi.md#read_merchant) | **GET** /merchants/{merchant_guid} | Read merchant
+*Atrium::StatementsApi* | [**download_statement_pdf**](docs/StatementsApi.md#download_statement_pdf) | **GET** /users/{user_guid}/members/{member_guid}/statements/{statement_guid}.pdf | Download statement PDF
 *Atrium::StatementsApi* | [**fetch_statements**](docs/StatementsApi.md#fetch_statements) | **POST** /users/{user_guid}/members/{member_guid}/fetch_statements | Fetch statements
 *Atrium::StatementsApi* | [**list_member_statements**](docs/StatementsApi.md#list_member_statements) | **GET** /users/{user_guid}/members/{member_guid}/statements | List member statements
+*Atrium::StatementsApi* | [**read_member_statement**](docs/StatementsApi.md#read_member_statement) | **GET** /users/{user_guid}/members/{member_guid}/statements/{statement_guid} | Read statement JSON
 *Atrium::TransactionsApi* | [**cleanse_and_categorize_transactions**](docs/TransactionsApi.md#cleanse_and_categorize_transactions) | **POST** /cleanse_and_categorize | Categorize transactions
 *Atrium::TransactionsApi* | [**list_user_transactions**](docs/TransactionsApi.md#list_user_transactions) | **GET** /users/{user_guid}/transactions | List transactions for a user
 *Atrium::TransactionsApi* | [**read_transaction**](docs/TransactionsApi.md#read_transaction) | **GET** /users/{user_guid}/transactions/{transaction_guid} | Read a transaction
@@ -153,6 +155,7 @@ Class | Method | HTTP request | Description
  - [Atrium::MerchantResponseBody](docs/MerchantResponseBody.md)
  - [Atrium::Pagination](docs/Pagination.md)
  - [Atrium::Statement](docs/Statement.md)
+ - [Atrium::StatementResponseBody](docs/StatementResponseBody.md)
  - [Atrium::StatementsResponseBody](docs/StatementsResponseBody.md)
  - [Atrium::Transaction](docs/Transaction.md)
  - [Atrium::TransactionCleanseAndCategorizeRequest](docs/TransactionCleanseAndCategorizeRequest.md)

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **list_account_transactions**
-> TransactionsResponseBody list_account_transactions(account_guid, user_guid, opts)
+> TransactionsResponseBody list_account_transactions(account_guid, user_guid, , opts)
 
 List account transactions
 
@@ -33,7 +33,7 @@ opts = {
 
 begin
   #List account transactions
-  response = client.accounts.list_account_transactions(account_guid, user_guid, opts)
+  response = client.accounts.list_account_transactions(account_guid, user_guid, , opts)
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling AccountsApi->list_account_transactions: #{e}"
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 [**TransactionsResponseBody**](TransactionsResponseBody.md)
 
 # **list_user_accounts**
-> AccountsResponseBody list_user_accounts(user_guid, opts)
+> AccountsResponseBody list_user_accounts(user_guid, , opts)
 
 List accounts for a user
 
@@ -77,7 +77,7 @@ opts = {
 
 begin
   #List accounts for a user
-  response = client.accounts.list_user_accounts(user_guid, opts)
+  response = client.accounts.list_user_accounts(user_guid, , opts)
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling AccountsApi->list_user_accounts: #{e}"
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 [**AccountsResponseBody**](AccountsResponseBody.md)
 
 # **read_account**
-> AccountResponseBody read_account(account_guid, user_guid)
+> AccountResponseBody read_account(account_guid, user_guid, )
 
 Read an account
 
@@ -115,7 +115,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Read an account
-  response = client.accounts.read_account(account_guid, user_guid)
+  response = client.accounts.read_account(account_guid, user_guid, )
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling AccountsApi->read_account: #{e}"
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 [**AccountResponseBody**](AccountResponseBody.md)
 
 # **read_account_by_member_guid**
-> AccountResponseBody read_account_by_member_guid(account_guid, member_guid, user_guid)
+> AccountResponseBody read_account_by_member_guid(account_guid, member_guid, user_guid, )
 
 Read an account
 
@@ -153,7 +153,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Read an account
-  response = client.accounts.read_account_by_member_guid(account_guid, member_guid, user_guid)
+  response = client.accounts.read_account_by_member_guid(account_guid, member_guid, user_guid, )
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling AccountsApi->read_account_by_member_guid: #{e}"

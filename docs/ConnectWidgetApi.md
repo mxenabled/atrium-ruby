@@ -6,7 +6,7 @@ Method | HTTP request | Description
 
 
 # **get_connect_widget**
-> ConnectWidgetResponseBody get_connect_widget(user_guidbody)
+> ConnectWidgetResponseBody get_connect_widget(user_guid, body)
 
 Embedding in a website
 
@@ -24,7 +24,7 @@ body = Atrium::ConnectWidgetRequestBody.new # ConnectWidgetRequestBody | Optiona
 
 begin
   #Embedding in a website
-  response = client.connectWidget.get_connect_widget(user_guidbody)
+  response = client.connectWidget.get_connect_widget(user_guid, body)
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling ConnectWidgetApi->get_connect_widget: #{e}"

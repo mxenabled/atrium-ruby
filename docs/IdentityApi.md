@@ -7,7 +7,7 @@ Method | HTTP request | Description
 
 
 # **identify_member**
-> MemberResponseBody identify_member(member_guid, user_guid)
+> MemberResponseBody identify_member(member_guid, user_guid, )
 
 Identify
 
@@ -25,7 +25,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #Identify
-  response = client.identity.identify_member(member_guid, user_guid)
+  response = client.identity.identify_member(member_guid, user_guid, )
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling IdentityApi->identify_member: #{e}"
@@ -44,7 +44,7 @@ Name | Type | Description  | Notes
 [**MemberResponseBody**](MemberResponseBody.md)
 
 # **list_account_owners**
-> AccountOwnersResponseBody list_account_owners(member_guid, user_guid)
+> AccountOwnersResponseBody list_account_owners(member_guid, user_guid, )
 
 List member account owners
 
@@ -62,7 +62,7 @@ user_guid = "USR-123" # String | The unique identifier for a `user`.
 
 begin
   #List member account owners
-  response = client.identity.list_account_owners(member_guid, user_guid)
+  response = client.identity.list_account_owners(member_guid, user_guid, )
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling IdentityApi->list_account_owners: #{e}"

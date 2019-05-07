@@ -17,12 +17,12 @@ gem build atrium-ruby.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./atrium-ruby-2.5.0.gem
+gem install ./atrium-ruby-2.6.0.gem
 ```
 
 Finally add this to the Gemfile:
 
-    gem 'atrium-ruby', '~> 2.5.0'
+    gem 'atrium-ruby', '~> 2.6.0'
 
 ### Install from Git
 
@@ -102,7 +102,7 @@ Class | Method | HTTP request | Description
 *Atrium::StatementsApi* | [**fetch_statements**](docs/StatementsApi.md#fetch_statements) | **POST** /users/{user_guid}/members/{member_guid}/fetch_statements | Fetch statements
 *Atrium::StatementsApi* | [**list_member_statements**](docs/StatementsApi.md#list_member_statements) | **GET** /users/{user_guid}/members/{member_guid}/statements | List member statements
 *Atrium::StatementsApi* | [**read_member_statement**](docs/StatementsApi.md#read_member_statement) | **GET** /users/{user_guid}/members/{member_guid}/statements/{statement_guid} | Read statement JSON
-*Atrium::TransactionsApi* | [**cleanse_and_categorize_transactions**](docs/TransactionsApi.md#cleanse_and_categorize_transactions) | **POST** /cleanse_and_categorize | Categorize transactions
+*Atrium::TransactionsApi* | [**cleanse_and_categorize_transactions**](docs/TransactionsApi.md#cleanse_and_categorize_transactions) | **POST** /transactions/cleanse_and_categorize | Categorize transactions
 *Atrium::TransactionsApi* | [**list_user_transactions**](docs/TransactionsApi.md#list_user_transactions) | **GET** /users/{user_guid}/transactions | List transactions for a user
 *Atrium::TransactionsApi* | [**read_transaction**](docs/TransactionsApi.md#read_transaction) | **GET** /users/{user_guid}/transactions/{transaction_guid} | Read a transaction
 *Atrium::UsersApi* | [**create_user**](docs/UsersApi.md#create_user) | **POST** /users | Create user

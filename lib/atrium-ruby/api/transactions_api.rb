@@ -67,7 +67,7 @@ module Atrium
         fail ArgumentError, "Missing the required parameter 'body' when calling TransactionsApi.cleanse_and_categorize_transactions"
       end
       # resource path
-      local_var_path = '/cleanse_and_categorize'
+      local_var_path = '/transactions/cleanse_and_categorize'
 
       # query parameters
       query_params = {}

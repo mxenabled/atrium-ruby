@@ -20,6 +20,10 @@ module Atrium
 
     attr_accessor :balance
 
+    attr_accessor :cash_balance
+
+    attr_accessor :cash_surrender_value
+
     attr_accessor :created_at
 
     attr_accessor :credit_limit
@@ -28,7 +32,11 @@ module Atrium
 
     attr_accessor :day_payment_is_due
 
+    attr_accessor :death_benefit
+
     attr_accessor :guid
+
+    attr_accessor :holdings_value
 
     attr_accessor :institution_code
 
@@ -37,6 +45,8 @@ module Atrium
     attr_accessor :is_closed
 
     attr_accessor :last_payment
+
+    attr_accessor :loan_amount
 
     attr_accessor :matures_on
 
@@ -74,15 +84,20 @@ module Atrium
         :'available_balance' => :'available_balance',
         :'available_credit' => :'available_credit',
         :'balance' => :'balance',
+        :'cash_balance' => :'cash_balance',
+        :'cash_surrender_value' => :'cash_surrender_value',
         :'created_at' => :'created_at',
         :'credit_limit' => :'credit_limit',
         :'currency_code' => :'currency_code',
         :'day_payment_is_due' => :'day_payment_is_due',
+        :'death_benefit' => :'death_benefit',
         :'guid' => :'guid',
+        :'holdings_value' => :'holdings_value',
         :'institution_code' => :'institution_code',
         :'interest_rate' => :'interest_rate',
         :'is_closed' => :'is_closed',
         :'last_payment' => :'last_payment',
+        :'loan_amount' => :'loan_amount',
         :'matures_on' => :'matures_on',
         :'member_guid' => :'member_guid',
         :'minimum_balance' => :'minimum_balance',
@@ -108,15 +123,20 @@ module Atrium
         :'available_balance' => :'Float',
         :'available_credit' => :'Float',
         :'balance' => :'Float',
+        :'cash_balance' => :'Float',
+        :'cash_surrender_value' => :'Float',
         :'created_at' => :'String',
         :'credit_limit' => :'Float',
         :'currency_code' => :'String',
         :'day_payment_is_due' => :'Integer',
+        :'death_benefit' => :'Float',
         :'guid' => :'String',
+        :'holdings_value' => :'Float',
         :'institution_code' => :'String',
         :'interest_rate' => :'Float',
         :'is_closed' => :'BOOLEAN',
         :'last_payment' => :'Float',
+        :'loan_amount' => :'Float',
         :'matures_on' => :'String',
         :'member_guid' => :'String',
         :'minimum_balance' => :'Float',
@@ -162,6 +182,14 @@ module Atrium
         self.balance = attributes[:'balance']
       end
 
+      if attributes.has_key?(:'cash_balance')
+        self.cash_balance = attributes[:'cash_balance']
+      end
+
+      if attributes.has_key?(:'cash_surrender_value')
+        self.cash_surrender_value = attributes[:'cash_surrender_value']
+      end
+
       if attributes.has_key?(:'created_at')
         self.created_at = attributes[:'created_at']
       end
@@ -178,8 +206,16 @@ module Atrium
         self.day_payment_is_due = attributes[:'day_payment_is_due']
       end
 
+      if attributes.has_key?(:'death_benefit')
+        self.death_benefit = attributes[:'death_benefit']
+      end
+
       if attributes.has_key?(:'guid')
         self.guid = attributes[:'guid']
+      end
+
+      if attributes.has_key?(:'holdings_value')
+        self.holdings_value = attributes[:'holdings_value']
       end
 
       if attributes.has_key?(:'institution_code')
@@ -196,6 +232,10 @@ module Atrium
 
       if attributes.has_key?(:'last_payment')
         self.last_payment = attributes[:'last_payment']
+      end
+
+      if attributes.has_key?(:'loan_amount')
+        self.loan_amount = attributes[:'loan_amount']
       end
 
       if attributes.has_key?(:'matures_on')
@@ -278,15 +318,20 @@ module Atrium
           available_balance == o.available_balance &&
           available_credit == o.available_credit &&
           balance == o.balance &&
+          cash_balance == o.cash_balance &&
+          cash_surrender_value == o.cash_surrender_value &&
           created_at == o.created_at &&
           credit_limit == o.credit_limit &&
           currency_code == o.currency_code &&
           day_payment_is_due == o.day_payment_is_due &&
+          death_benefit == o.death_benefit &&
           guid == o.guid &&
+          holdings_value == o.holdings_value &&
           institution_code == o.institution_code &&
           interest_rate == o.interest_rate &&
           is_closed == o.is_closed &&
           last_payment == o.last_payment &&
+          loan_amount == o.loan_amount &&
           matures_on == o.matures_on &&
           member_guid == o.member_guid &&
           minimum_balance == o.minimum_balance &&
@@ -312,7 +357,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [apr, apy, available_balance, available_credit, balance, created_at, credit_limit, currency_code, day_payment_is_due, guid, institution_code, interest_rate, is_closed, last_payment, matures_on, member_guid, minimum_balance, minimum_payment, name, original_balance, payment_due_at, payoff_balance, started_on, subtype, total_account_value, type, updated_at, user_guid].hash
+      [apr, apy, available_balance, available_credit, balance, cash_balance, cash_surrender_value, created_at, credit_limit, currency_code, day_payment_is_due, death_benefit, guid, holdings_value, institution_code, interest_rate, is_closed, last_payment, loan_amount, matures_on, member_guid, minimum_balance, minimum_payment, name, original_balance, payment_due_at, payoff_balance, started_on, subtype, total_account_value, type, updated_at, user_guid].hash
     end
 
     # Builds the object from hash

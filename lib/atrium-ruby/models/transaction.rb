@@ -56,6 +56,8 @@ module Atrium
 
     attr_accessor :merchant_category_code
 
+    attr_accessor :merchant_guid
+
     attr_accessor :original_description
 
     attr_accessor :posted_at
@@ -98,6 +100,7 @@ module Atrium
         :'member_guid' => :'member_guid',
         :'memo' => :'memo',
         :'merchant_category_code' => :'merchant_category_code',
+        :'merchant_guid' => :'merchant_guid',
         :'original_description' => :'original_description',
         :'posted_at' => :'posted_at',
         :'status' => :'status',
@@ -135,6 +138,7 @@ module Atrium
         :'member_guid' => :'String',
         :'memo' => :'String',
         :'merchant_category_code' => :'Integer',
+        :'merchant_guid' => :'String',
         :'original_description' => :'String',
         :'posted_at' => :'String',
         :'status' => :'String',
@@ -246,6 +250,10 @@ module Atrium
         self.merchant_category_code = attributes[:'merchant_category_code']
       end
 
+      if attributes.has_key?(:'merchant_guid')
+        self.merchant_guid = attributes[:'merchant_guid']
+      end
+
       if attributes.has_key?(:'original_description')
         self.original_description = attributes[:'original_description']
       end
@@ -320,6 +328,7 @@ module Atrium
           member_guid == o.member_guid &&
           memo == o.memo &&
           merchant_category_code == o.merchant_category_code &&
+          merchant_guid == o.merchant_guid &&
           original_description == o.original_description &&
           posted_at == o.posted_at &&
           status == o.status &&
@@ -339,7 +348,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [account_guid, amount, category, check_number, check_number_string, created_at, currency_code, date, description, guid, is_bill_pay, is_direct_deposit, is_expense, is_fee, is_income, is_international, is_overdraft_fee, is_payroll_advance, latitude, longitude, member_guid, memo, merchant_category_code, original_description, posted_at, status, top_level_category, transacted_at, type, updated_at, user_guid].hash
+      [account_guid, amount, category, check_number, check_number_string, created_at, currency_code, date, description, guid, is_bill_pay, is_direct_deposit, is_expense, is_fee, is_income, is_international, is_overdraft_fee, is_payroll_advance, latitude, longitude, member_guid, memo, merchant_category_code, merchant_guid, original_description, posted_at, status, top_level_category, transacted_at, type, updated_at, user_guid].hash
     end
 
     # Builds the object from hash

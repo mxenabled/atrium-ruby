@@ -7,5 +7,6 @@ Name | Type | Description | Notes
 **identifier** | **String** |  | [optional] 
 **institution_code** | **String** |  | 
 **metadata** | **String** |  | [optional] 
+**skip_aggregation** | **BOOLEAN** |  | [optional] 
 
 

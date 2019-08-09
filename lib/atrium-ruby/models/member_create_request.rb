@@ -18,13 +18,16 @@ module Atrium
 
     attr_accessor :metadata
 
+    attr_accessor :skip_aggregation
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'credentials' => :'credentials',
         :'identifier' => :'identifier',
         :'institution_code' => :'institution_code',
-        :'metadata' => :'metadata'
+        :'metadata' => :'metadata',
+        :'skip_aggregation' => :'skip_aggregation'
       }
     end
 
@@ -34,7 +37,8 @@ module Atrium
         :'credentials' => :'Array<CredentialRequest>',
         :'identifier' => :'String',
         :'institution_code' => :'String',
-        :'metadata' => :'String'
+        :'metadata' => :'String',
+        :'skip_aggregation' => :'BOOLEAN'
       }
     end
 
@@ -62,6 +66,10 @@ module Atrium
 
       if attributes.has_key?(:'metadata')
         self.metadata = attributes[:'metadata']
+      end
+
+      if attributes.has_key?(:'skip_aggregation')
+        self.skip_aggregation = attributes[:'skip_aggregation']
       end
     end
 
@@ -96,7 +104,8 @@ module Atrium
           credentials == o.credentials &&
           identifier == o.identifier &&
           institution_code == o.institution_code &&
-          metadata == o.metadata
+          metadata == o.metadata &&
+          skip_aggregation == o.skip_aggregation
     end
 
     # @see the `==` method
@@ -108,7 +117,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [credentials, identifier, institution_code, metadata].hash
+      [credentials, identifier, institution_code, metadata, skip_aggregation].hash
     end
 
     # Builds the object from hash

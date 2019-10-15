@@ -3,6 +3,7 @@
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**aggregate_member**](MembersApi.md#aggregate_member) | **POST** /users/{user_guid}/members/{member_guid}/aggregate | Aggregate member
+[**aggregate_member_balances**](MembersApi.md#aggregate_member_balances) | **POST** /users/{user_guid}/members/{member_guid}/balance | Aggregate member account balances
 [**create_member**](MembersApi.md#create_member) | **POST** /users/{user_guid}/members | Create member
 [**delete_member**](MembersApi.md#delete_member) | **DELETE** /users/{user_guid}/members/{member_guid} | Delete member
 [**extend_history**](MembersApi.md#extend_history) | **POST** /users/{user_guid}/members/{member_guid}/extend_history | Extend history
@@ -40,6 +41,43 @@ begin
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling MembersApi->aggregate_member: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **member_guid** | **String**| The unique identifier for a &#x60;member&#x60;. | 
+ **user_guid** | **String**| The unique identifier for a &#x60;user&#x60;. | 
+
+### Return type
+
+[**MemberResponseBody**](MemberResponseBody.md)
+
+# **aggregate_member_balances**
+> MemberResponseBody aggregate_member_balances(member_guid, user_guid, )
+
+Aggregate member account balances
+
+This endpoint operates much like the _aggregate member_ endpoint except that it gathers only account balance information; it does not gather any transaction data at all.
+
+### Example
+```ruby
+# load the gem
+require 'atrium-ruby'
+
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
+
+member_guid = "MBR-123" # String | The unique identifier for a `member`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
+
+begin
+  #Aggregate member account balances
+  response = client.members.aggregate_member_balances(member_guid, user_guid, )
+  p response
+rescue Atrium::ApiError => e
+  puts "Exception when calling MembersApi->aggregate_member_balances: #{e}"
 end
 ```
 

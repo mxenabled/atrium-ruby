@@ -40,6 +40,19 @@ describe 'MembersApi' do
     end
   end
 
+  # unit tests for aggregate_member_balances
+  # Aggregate member account balances
+  # This endpoint operates much like the _aggregate member_ endpoint except that it gathers only account balance information; it does not gather any transaction data at all.
+  # @param member_guid The unique identifier for a &#x60;member&#x60;.
+  # @param user_guid The unique identifier for a &#x60;user&#x60;.
+  # @param [Hash] opts the optional parameters
+  # @return [MemberResponseBody]
+  describe 'aggregate_member_balances test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for create_member
   # Create member
   # This endpoint allows you to create a new member. Members are created with the required parameters credentials and institution_code, and the optional parameters identifier and metadata.&lt;br&gt; When creating a member, you&#39;ll need to include the correct type of credential required by the financial institution and provided by the user. You can find out which credential type is required with the /institutions/{institution_code}/credentials endpoint.&lt;br&gt; If successful, Atrium will respond with the newly-created member object.&lt;br&gt; Once you successfully create a member, MX will immediately validate the provided credentials and attempt to aggregate data for accounts and transactions. 

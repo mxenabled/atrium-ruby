@@ -17,12 +17,12 @@ gem build atrium-ruby.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./atrium-ruby-2.7.0.gem
+gem install ./atrium-ruby-2.8.0.gem
 ```
 
 Finally add this to the Gemfile:
 
-    gem 'atrium-ruby', '~> 2.7.0'
+    gem 'atrium-ruby', '~> 2.8.0'
 
 ### Install from Git
 
@@ -85,6 +85,7 @@ Class | Method | HTTP request | Description
 *Atrium::InstitutionsApi* | [**read_institution**](docs/InstitutionsApi.md#read_institution) | **GET** /institutions/{institution_code} | Read institution
 *Atrium::InstitutionsApi* | [**read_institution_credentials**](docs/InstitutionsApi.md#read_institution_credentials) | **GET** /institutions/{institution_code}/credentials | Read institution credentials
 *Atrium::MembersApi* | [**aggregate_member**](docs/MembersApi.md#aggregate_member) | **POST** /users/{user_guid}/members/{member_guid}/aggregate | Aggregate member
+*Atrium::MembersApi* | [**aggregate_member_balances**](docs/MembersApi.md#aggregate_member_balances) | **POST** /users/{user_guid}/members/{member_guid}/balance | Aggregate member account balances
 *Atrium::MembersApi* | [**create_member**](docs/MembersApi.md#create_member) | **POST** /users/{user_guid}/members | Create member
 *Atrium::MembersApi* | [**delete_member**](docs/MembersApi.md#delete_member) | **DELETE** /users/{user_guid}/members/{member_guid} | Delete member
 *Atrium::MembersApi* | [**extend_history**](docs/MembersApi.md#extend_history) | **POST** /users/{user_guid}/members/{member_guid}/extend_history | Extend history

@@ -26,6 +26,17 @@ module Atrium
       data
     end
 
+    # Aggregate member account balances
+    # This endpoint operates much like the _aggregate member_ endpoint except that it gathers only account balance information; it does not gather any transaction data at all.
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @return [MemberResponseBody]
+    def aggregate_member_balances(member_guid, user_guid, opts = {})
+      data, _status_code, _headers = aggregate_member_balances_with_http_info(member_guid, user_guid, opts)
+      data
+    end
+
     # Create member
     # This endpoint allows you to create a new member. Members are created with the required parameters credentials and institution_code, and the optional parameters identifier and metadata.<br> When creating a member, you'll need to include the correct type of credential required by the financial institution and provided by the user. You can find out which credential type is required with the /institutions/{institution_code}/credentials endpoint.<br> If successful, Atrium will respond with the newly-created member object.<br> Once you successfully create a member, MX will immediately validate the provided credentials and attempt to aggregate data for accounts and transactions. 
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
@@ -216,6 +227,53 @@ module Atrium
         :return_type => 'MemberResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MembersApi#aggregate_member\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Aggregate member account balances
+    # This endpoint operates much like the _aggregate member_ endpoint except that it gathers only account balance information; it does not gather any transaction data at all.
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(MemberResponseBody, Fixnum, Hash)>] MemberResponseBody data, response status code and response headers
+    def aggregate_member_balances_with_http_info(member_guid, user_guid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: MembersApi.aggregate_member_balances ...'
+      end
+      # verify the required parameter 'member_guid' is set
+      if @api_client.config.client_side_validation && member_guid.nil?
+        fail ArgumentError, "Missing the required parameter 'member_guid' when calling MembersApi.aggregate_member_balances"
+      end
+      # verify the required parameter 'user_guid' is set
+      if @api_client.config.client_side_validation && user_guid.nil?
+        fail ArgumentError, "Missing the required parameter 'user_guid' when calling MembersApi.aggregate_member_balances"
+      end
+      # resource path
+      local_var_path = '/users/{user_guid}/members/{member_guid}/balance'.sub('{' + 'member_guid' + '}', member_guid.to_s).sub('{' + 'user_guid' + '}', user_guid.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/vnd.mx.atrium.v1+json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['apiKey', 'clientID']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'MemberResponseBody')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: MembersApi#aggregate_member_balances\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

@@ -63,6 +63,12 @@ describe 'MemberConnectionStatus' do
     end
   end
 
+  describe 'test attribute "is_authenticated"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "is_being_aggregated"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

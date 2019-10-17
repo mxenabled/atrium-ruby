@@ -22,6 +22,8 @@ module Atrium
 
     attr_accessor :has_processed_transactions
 
+    attr_accessor :is_authenticated
+
     attr_accessor :is_being_aggregated
 
     attr_accessor :status
@@ -37,6 +39,7 @@ module Atrium
         :'guid' => :'guid',
         :'has_processed_accounts' => :'has_processed_accounts',
         :'has_processed_transactions' => :'has_processed_transactions',
+        :'is_authenticated' => :'is_authenticated',
         :'is_being_aggregated' => :'is_being_aggregated',
         :'status' => :'status',
         :'successfully_aggregated_at' => :'successfully_aggregated_at'
@@ -52,6 +55,7 @@ module Atrium
         :'guid' => :'String',
         :'has_processed_accounts' => :'BOOLEAN',
         :'has_processed_transactions' => :'BOOLEAN',
+        :'is_authenticated' => :'BOOLEAN',
         :'is_being_aggregated' => :'BOOLEAN',
         :'status' => :'String',
         :'successfully_aggregated_at' => :'String'
@@ -92,6 +96,10 @@ module Atrium
         self.has_processed_transactions = attributes[:'has_processed_transactions']
       end
 
+      if attributes.has_key?(:'is_authenticated')
+        self.is_authenticated = attributes[:'is_authenticated']
+      end
+
       if attributes.has_key?(:'is_being_aggregated')
         self.is_being_aggregated = attributes[:'is_being_aggregated']
       end
@@ -129,6 +137,7 @@ module Atrium
           guid == o.guid &&
           has_processed_accounts == o.has_processed_accounts &&
           has_processed_transactions == o.has_processed_transactions &&
+          is_authenticated == o.is_authenticated &&
           is_being_aggregated == o.is_being_aggregated &&
           status == o.status &&
           successfully_aggregated_at == o.successfully_aggregated_at
@@ -143,7 +152,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [aggregated_at, challenges, connection_status, guid, has_processed_accounts, has_processed_transactions, is_being_aggregated, status, successfully_aggregated_at].hash
+      [aggregated_at, challenges, connection_status, guid, has_processed_accounts, has_processed_transactions, is_authenticated, is_being_aggregated, status, successfully_aggregated_at].hash
     end
 
     # Builds the object from hash

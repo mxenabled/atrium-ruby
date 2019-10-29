@@ -10,6 +10,8 @@ require 'date'
 
 module Atrium
   class Account
+    attr_accessor :account_number
+
     attr_accessor :apr
 
     attr_accessor :apy
@@ -79,6 +81,7 @@ module Atrium
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'account_number' => :'account_number',
         :'apr' => :'apr',
         :'apy' => :'apy',
         :'available_balance' => :'available_balance',
@@ -118,6 +121,7 @@ module Atrium
     # Attribute type mapping.
     def self.mx_types
       {
+        :'account_number' => :'String',
         :'apr' => :'Float',
         :'apy' => :'Float',
         :'available_balance' => :'Float',
@@ -161,6 +165,10 @@ module Atrium
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'account_number')
+        self.account_number = attributes[:'account_number']
+      end
 
       if attributes.has_key?(:'apr')
         self.apr = attributes[:'apr']
@@ -313,6 +321,7 @@ module Atrium
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          account_number == o.account_number &&
           apr == o.apr &&
           apy == o.apy &&
           available_balance == o.available_balance &&
@@ -357,7 +366,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [apr, apy, available_balance, available_credit, balance, cash_balance, cash_surrender_value, created_at, credit_limit, currency_code, day_payment_is_due, death_benefit, guid, holdings_value, institution_code, interest_rate, is_closed, last_payment, loan_amount, matures_on, member_guid, minimum_balance, minimum_payment, name, original_balance, payment_due_at, payoff_balance, started_on, subtype, total_account_value, type, updated_at, user_guid].hash
+      [account_number, apr, apy, available_balance, available_credit, balance, cash_balance, cash_surrender_value, created_at, credit_limit, currency_code, day_payment_is_due, death_benefit, guid, holdings_value, institution_code, interest_rate, is_closed, last_payment, loan_amount, matures_on, member_guid, minimum_balance, minimum_payment, name, original_balance, payment_due_at, payoff_balance, started_on, subtype, total_account_value, type, updated_at, user_guid].hash
     end
 
     # Builds the object from hash

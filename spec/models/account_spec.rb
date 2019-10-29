@@ -27,6 +27,12 @@ describe 'Account' do
       expect(@instance).to be_instance_of(Atrium::Account)
     end
   end
+  describe 'test attribute "account_number"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "apr"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

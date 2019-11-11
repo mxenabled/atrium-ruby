@@ -10,42 +10,24 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for Atrium::Challenge
+# Unit tests for Atrium::ChallengeImageOption
 # Please update as you see appropriate
-describe 'Challenge' do
+describe 'ChallengeImageOption' do
   before do
     # run before each test
-    @instance = Atrium::Challenge.new
+    @instance = Atrium::ChallengeImageOption.new
   end
 
   after do
     # run after each test
   end
 
-  describe 'test an instance of Challenge' do
-    it 'should create an instance of Challenge' do
-      expect(@instance).to be_instance_of(Atrium::Challenge)
+  describe 'test an instance of ChallengeImageOption' do
+    it 'should create an instance of ChallengeImageOption' do
+      expect(@instance).to be_instance_of(Atrium::ChallengeImageOption)
     end
   end
-  describe 'test attribute "field_name"' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  describe 'test attribute "guid"' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  describe 'test attribute "image_data"' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  describe 'test attribute "image_options"' do
+  describe 'test attribute "data_uri"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -57,13 +39,7 @@ describe 'Challenge' do
     end
   end
 
-  describe 'test attribute "options"' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  describe 'test attribute "type"' do
+  describe 'test attribute "value"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

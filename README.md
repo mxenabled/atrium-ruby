@@ -17,12 +17,12 @@ gem build atrium-ruby.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./atrium-ruby-2.8.2.gem
+gem install ./atrium-ruby-2.8.3.gem
 ```
 
 Finally add this to the Gemfile:
 
-    gem 'atrium-ruby', '~> 2.8.2'
+    gem 'atrium-ruby', '~> 2.8.3'
 
 ### Install from Git
 
@@ -126,6 +126,7 @@ Class | Method | HTTP request | Description
  - [Atrium::AccountResponseBody](docs/AccountResponseBody.md)
  - [Atrium::AccountsResponseBody](docs/AccountsResponseBody.md)
  - [Atrium::Challenge](docs/Challenge.md)
+ - [Atrium::ChallengeImageOption](docs/ChallengeImageOption.md)
  - [Atrium::ChallengeOption](docs/ChallengeOption.md)
  - [Atrium::ChallengesResponseBody](docs/ChallengesResponseBody.md)
  - [Atrium::ConnectWidget](docs/ConnectWidget.md)

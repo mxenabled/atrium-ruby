@@ -16,6 +16,8 @@ module Atrium
 
     attr_accessor :image_data
 
+    attr_accessor :image_options
+
     attr_accessor :label
 
     attr_accessor :options
@@ -28,6 +30,7 @@ module Atrium
         :'field_name' => :'field_name',
         :'guid' => :'guid',
         :'image_data' => :'image_data',
+        :'image_options' => :'image_options',
         :'label' => :'label',
         :'options' => :'options',
         :'type' => :'type'
@@ -40,6 +43,7 @@ module Atrium
         :'field_name' => :'String',
         :'guid' => :'String',
         :'image_data' => :'String',
+        :'image_options' => :'Array<ChallengeImageOption>',
         :'label' => :'String',
         :'options' => :'Array<ChallengeOption>',
         :'type' => :'String'
@@ -64,6 +68,12 @@ module Atrium
 
       if attributes.has_key?(:'image_data')
         self.image_data = attributes[:'image_data']
+      end
+
+      if attributes.has_key?(:'image_options')
+        if (value = attributes[:'image_options']).is_a?(Array)
+          self.image_options = value
+        end
       end
 
       if attributes.has_key?(:'label')
@@ -102,6 +112,7 @@ module Atrium
           field_name == o.field_name &&
           guid == o.guid &&
           image_data == o.image_data &&
+          image_options == o.image_options &&
           label == o.label &&
           options == o.options &&
           type == o.type
@@ -116,7 +127,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [field_name, guid, image_data, label, options, type].hash
+      [field_name, guid, image_data, image_options, label, options, type].hash
     end
 
     # Builds the object from hash

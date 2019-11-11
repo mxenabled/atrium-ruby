@@ -9,7 +9,9 @@
 require 'date'
 
 module Atrium
-  class ChallengeOption
+  class ChallengeImageOption
+    attr_accessor :data_uri
+
     attr_accessor :label
 
     attr_accessor :value
@@ -17,6 +19,7 @@ module Atrium
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
+        :'data_uri' => :'data_uri',
         :'label' => :'label',
         :'value' => :'value'
       }
@@ -25,6 +28,7 @@ module Atrium
     # Attribute type mapping.
     def self.mx_types
       {
+        :'data_uri' => :'String',
         :'label' => :'String',
         :'value' => :'String'
       }
@@ -37,6 +41,10 @@ module Atrium
 
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
+
+      if attributes.has_key?(:'data_uri')
+        self.data_uri = attributes[:'data_uri']
+      end
 
       if attributes.has_key?(:'label')
         self.label = attributes[:'label']
@@ -65,6 +73,7 @@ module Atrium
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
+          data_uri == o.data_uri &&
           label == o.label &&
           value == o.value
     end
@@ -78,7 +87,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [label, value].hash
+      [data_uri, label, value].hash
     end
 
     # Builds the object from hash

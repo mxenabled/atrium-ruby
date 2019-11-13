@@ -16,6 +16,10 @@ module Atrium
 
     attr_accessor :current_member_guid
 
+    attr_accessor :disable_institution_search
+
+    attr_accessor :mode
+
     attr_accessor :ui_message_version
 
     attr_accessor :update_credentials
@@ -26,6 +30,8 @@ module Atrium
         :'is_mobile_webview' => :'is_mobile_webview',
         :'current_institution_code' => :'current_institution_code',
         :'current_member_guid' => :'current_member_guid',
+        :'disable_institution_search' => :'disable_institution_search',
+        :'mode' => :'mode',
         :'ui_message_version' => :'ui_message_version',
         :'update_credentials' => :'update_credentials'
       }
@@ -37,6 +43,8 @@ module Atrium
         :'is_mobile_webview' => :'BOOLEAN',
         :'current_institution_code' => :'String',
         :'current_member_guid' => :'String',
+        :'disable_institution_search' => :'BOOLEAN',
+        :'mode' => :'String',
         :'ui_message_version' => :'Float',
         :'update_credentials' => :'BOOLEAN'
       }
@@ -60,6 +68,14 @@ module Atrium
 
       if attributes.has_key?(:'current_member_guid')
         self.current_member_guid = attributes[:'current_member_guid']
+      end
+
+      if attributes.has_key?(:'disable_institution_search')
+        self.disable_institution_search = attributes[:'disable_institution_search']
+      end
+
+      if attributes.has_key?(:'mode')
+        self.mode = attributes[:'mode']
       end
 
       if attributes.has_key?(:'ui_message_version')
@@ -92,6 +108,8 @@ module Atrium
           is_mobile_webview == o.is_mobile_webview &&
           current_institution_code == o.current_institution_code &&
           current_member_guid == o.current_member_guid &&
+          disable_institution_search == o.disable_institution_search &&
+          mode == o.mode &&
           ui_message_version == o.ui_message_version &&
           update_credentials == o.update_credentials
     end
@@ -105,7 +123,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [is_mobile_webview, current_institution_code, current_member_guid, ui_message_version, update_credentials].hash
+      [is_mobile_webview, current_institution_code, current_member_guid, disable_institution_search, mode, ui_message_version, update_credentials].hash
     end
 
     # Builds the object from hash

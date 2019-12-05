@@ -36,6 +36,12 @@ module Atrium
 
     attr_accessor :is_payroll_advance
 
+    attr_accessor :merchant_category_code
+
+    attr_accessor :merchant_guid
+
+    attr_accessor :original_description
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -51,7 +57,10 @@ module Atrium
         :'is_income' => :'is_income',
         :'is_international' => :'is_international',
         :'is_overdraft_fee' => :'is_overdraft_fee',
-        :'is_payroll_advance' => :'is_payroll_advance'
+        :'is_payroll_advance' => :'is_payroll_advance',
+        :'merchant_category_code' => :'merchant_category_code',
+        :'merchant_guid' => :'merchant_guid',
+        :'original_description' => :'original_description'
       }
     end
 
@@ -70,7 +79,10 @@ module Atrium
         :'is_income' => :'BOOLEAN',
         :'is_international' => :'BOOLEAN',
         :'is_overdraft_fee' => :'BOOLEAN',
-        :'is_payroll_advance' => :'BOOLEAN'
+        :'is_payroll_advance' => :'BOOLEAN',
+        :'merchant_category_code' => :'Float',
+        :'merchant_guid' => :'String',
+        :'original_description' => :'String'
       }
     end
 
@@ -133,6 +145,18 @@ module Atrium
       if attributes.has_key?(:'is_payroll_advance')
         self.is_payroll_advance = attributes[:'is_payroll_advance']
       end
+
+      if attributes.has_key?(:'merchant_category_code')
+        self.merchant_category_code = attributes[:'merchant_category_code']
+      end
+
+      if attributes.has_key?(:'merchant_guid')
+        self.merchant_guid = attributes[:'merchant_guid']
+      end
+
+      if attributes.has_key?(:'original_description')
+        self.original_description = attributes[:'original_description']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -165,7 +189,10 @@ module Atrium
           is_income == o.is_income &&
           is_international == o.is_international &&
           is_overdraft_fee == o.is_overdraft_fee &&
-          is_payroll_advance == o.is_payroll_advance
+          is_payroll_advance == o.is_payroll_advance &&
+          merchant_category_code == o.merchant_category_code &&
+          merchant_guid == o.merchant_guid &&
+          original_description == o.original_description
     end
 
     # @see the `==` method
@@ -177,7 +204,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [amount, category, description, identifier, type, is_bill_pay, is_direct_deposit, is_expense, is_fee, is_income, is_international, is_overdraft_fee, is_payroll_advance].hash
+      [amount, category, description, identifier, type, is_bill_pay, is_direct_deposit, is_expense, is_fee, is_income, is_international, is_overdraft_fee, is_payroll_advance, merchant_category_code, merchant_guid, original_description].hash
     end
 
     # Builds the object from hash

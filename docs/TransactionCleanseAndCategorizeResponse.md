@@ -16,5 +16,8 @@ Name | Type | Description | Notes
 **is_international** | **BOOLEAN** |  | [optional] 
 **is_overdraft_fee** | **BOOLEAN** |  | [optional] 
 **is_payroll_advance** | **BOOLEAN** |  | [optional] 
+**merchant_category_code** | **Float** |  | [optional] 
+**merchant_guid** | **String** |  | [optional] 
+**original_description** | **String** |  | [optional] 
 
 

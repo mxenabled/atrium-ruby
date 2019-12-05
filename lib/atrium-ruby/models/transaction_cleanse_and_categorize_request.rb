@@ -16,6 +16,8 @@ module Atrium
 
     attr_accessor :identifier
 
+    attr_accessor :merchant_category_code
+
     attr_accessor :type
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -24,6 +26,7 @@ module Atrium
         :'amount' => :'amount',
         :'description' => :'description',
         :'identifier' => :'identifier',
+        :'merchant_category_code' => :'merchant_category_code',
         :'type' => :'type'
       }
     end
@@ -34,6 +37,7 @@ module Atrium
         :'amount' => :'Float',
         :'description' => :'String',
         :'identifier' => :'String',
+        :'merchant_category_code' => :'Float',
         :'type' => :'String'
       }
     end
@@ -56,6 +60,10 @@ module Atrium
 
       if attributes.has_key?(:'identifier')
         self.identifier = attributes[:'identifier']
+      end
+
+      if attributes.has_key?(:'merchant_category_code')
+        self.merchant_category_code = attributes[:'merchant_category_code']
       end
 
       if attributes.has_key?(:'type')
@@ -84,6 +92,7 @@ module Atrium
           amount == o.amount &&
           description == o.description &&
           identifier == o.identifier &&
+          merchant_category_code == o.merchant_category_code &&
           type == o.type
     end
 
@@ -96,7 +105,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [amount, description, identifier, type].hash
+      [amount, description, identifier, merchant_category_code, type].hash
     end
 
     # Builds the object from hash

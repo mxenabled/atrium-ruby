@@ -9,44 +9,24 @@
 require 'date'
 
 module Atrium
-  class AccountNumber
-    attr_accessor :account_guid
+  class MerchantsResponseBody
+    attr_accessor :merchant
 
-    attr_accessor :account_number
-
-    attr_accessor :institution_number
-
-    attr_accessor :member_guid
-
-    attr_accessor :routing_number
-
-    attr_accessor :transit_number
-
-    attr_accessor :user_guid
+    attr_accessor :pagination
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'account_guid' => :'account_guid',
-        :'account_number' => :'account_number',
-        :'institution_number' => :'institution_number',
-        :'member_guid' => :'member_guid',
-        :'routing_number' => :'routing_number',
-        :'transit_number' => :'transit_number',
-        :'user_guid' => :'user_guid'
+        :'merchant' => :'merchant',
+        :'pagination' => :'pagination'
       }
     end
 
     # Attribute type mapping.
     def self.mx_types
       {
-        :'account_guid' => :'String',
-        :'account_number' => :'String',
-        :'institution_number' => :'String',
-        :'member_guid' => :'String',
-        :'routing_number' => :'String',
-        :'transit_number' => :'String',
-        :'user_guid' => :'String'
+        :'merchant' => :'Array<Merchant>',
+        :'pagination' => :'Pagination'
       }
     end
 
@@ -58,32 +38,14 @@ module Atrium
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'account_guid')
-        self.account_guid = attributes[:'account_guid']
+      if attributes.has_key?(:'merchant')
+        if (value = attributes[:'merchant']).is_a?(Array)
+          self.merchant = value
+        end
       end
 
-      if attributes.has_key?(:'account_number')
-        self.account_number = attributes[:'account_number']
-      end
-
-      if attributes.has_key?(:'institution_number')
-        self.institution_number = attributes[:'institution_number']
-      end
-
-      if attributes.has_key?(:'member_guid')
-        self.member_guid = attributes[:'member_guid']
-      end
-
-      if attributes.has_key?(:'routing_number')
-        self.routing_number = attributes[:'routing_number']
-      end
-
-      if attributes.has_key?(:'transit_number')
-        self.transit_number = attributes[:'transit_number']
-      end
-
-      if attributes.has_key?(:'user_guid')
-        self.user_guid = attributes[:'user_guid']
+      if attributes.has_key?(:'pagination')
+        self.pagination = attributes[:'pagination']
       end
     end
 
@@ -105,13 +67,8 @@ module Atrium
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          account_guid == o.account_guid &&
-          account_number == o.account_number &&
-          institution_number == o.institution_number &&
-          member_guid == o.member_guid &&
-          routing_number == o.routing_number &&
-          transit_number == o.transit_number &&
-          user_guid == o.user_guid
+          merchant == o.merchant &&
+          pagination == o.pagination
     end
 
     # @see the `==` method
@@ -123,7 +80,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [account_guid, account_number, institution_number, member_guid, routing_number, transit_number, user_guid].hash
+      [merchant, pagination].hash
     end
 
     # Builds the object from hash

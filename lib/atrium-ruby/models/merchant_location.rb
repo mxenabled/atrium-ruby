@@ -9,44 +9,56 @@
 require 'date'
 
 module Atrium
-  class AccountNumber
-    attr_accessor :account_guid
+  class MerchantLocation
+    attr_accessor :city
 
-    attr_accessor :account_number
+    attr_accessor :guid
 
-    attr_accessor :institution_number
+    attr_accessor :latitude
 
-    attr_accessor :member_guid
+    attr_accessor :longitude
 
-    attr_accessor :routing_number
+    attr_accessor :merchant_guid
 
-    attr_accessor :transit_number
+    attr_accessor :phone_number
 
-    attr_accessor :user_guid
+    attr_accessor :postal_code
+
+    attr_accessor :state
+
+    attr_accessor :store_number
+
+    attr_accessor :street_address
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'account_guid' => :'account_guid',
-        :'account_number' => :'account_number',
-        :'institution_number' => :'institution_number',
-        :'member_guid' => :'member_guid',
-        :'routing_number' => :'routing_number',
-        :'transit_number' => :'transit_number',
-        :'user_guid' => :'user_guid'
+        :'city' => :'city',
+        :'guid' => :'guid',
+        :'latitude' => :'latitude',
+        :'longitude' => :'longitude',
+        :'merchant_guid' => :'merchant_guid',
+        :'phone_number' => :'phone_number',
+        :'postal_code' => :'postal_code',
+        :'state' => :'state',
+        :'store_number' => :'store_number',
+        :'street_address' => :'street_address'
       }
     end
 
     # Attribute type mapping.
     def self.mx_types
       {
-        :'account_guid' => :'String',
-        :'account_number' => :'String',
-        :'institution_number' => :'String',
-        :'member_guid' => :'String',
-        :'routing_number' => :'String',
-        :'transit_number' => :'String',
-        :'user_guid' => :'String'
+        :'city' => :'String',
+        :'guid' => :'String',
+        :'latitude' => :'Float',
+        :'longitude' => :'Float',
+        :'merchant_guid' => :'String',
+        :'phone_number' => :'String',
+        :'postal_code' => :'String',
+        :'state' => :'String',
+        :'store_number' => :'String',
+        :'street_address' => :'String'
       }
     end
 
@@ -58,32 +70,44 @@ module Atrium
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'account_guid')
-        self.account_guid = attributes[:'account_guid']
+      if attributes.has_key?(:'city')
+        self.city = attributes[:'city']
       end
 
-      if attributes.has_key?(:'account_number')
-        self.account_number = attributes[:'account_number']
+      if attributes.has_key?(:'guid')
+        self.guid = attributes[:'guid']
       end
 
-      if attributes.has_key?(:'institution_number')
-        self.institution_number = attributes[:'institution_number']
+      if attributes.has_key?(:'latitude')
+        self.latitude = attributes[:'latitude']
       end
 
-      if attributes.has_key?(:'member_guid')
-        self.member_guid = attributes[:'member_guid']
+      if attributes.has_key?(:'longitude')
+        self.longitude = attributes[:'longitude']
       end
 
-      if attributes.has_key?(:'routing_number')
-        self.routing_number = attributes[:'routing_number']
+      if attributes.has_key?(:'merchant_guid')
+        self.merchant_guid = attributes[:'merchant_guid']
       end
 
-      if attributes.has_key?(:'transit_number')
-        self.transit_number = attributes[:'transit_number']
+      if attributes.has_key?(:'phone_number')
+        self.phone_number = attributes[:'phone_number']
       end
 
-      if attributes.has_key?(:'user_guid')
-        self.user_guid = attributes[:'user_guid']
+      if attributes.has_key?(:'postal_code')
+        self.postal_code = attributes[:'postal_code']
+      end
+
+      if attributes.has_key?(:'state')
+        self.state = attributes[:'state']
+      end
+
+      if attributes.has_key?(:'store_number')
+        self.store_number = attributes[:'store_number']
+      end
+
+      if attributes.has_key?(:'street_address')
+        self.street_address = attributes[:'street_address']
       end
     end
 
@@ -105,13 +129,16 @@ module Atrium
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          account_guid == o.account_guid &&
-          account_number == o.account_number &&
-          institution_number == o.institution_number &&
-          member_guid == o.member_guid &&
-          routing_number == o.routing_number &&
-          transit_number == o.transit_number &&
-          user_guid == o.user_guid
+          city == o.city &&
+          guid == o.guid &&
+          latitude == o.latitude &&
+          longitude == o.longitude &&
+          merchant_guid == o.merchant_guid &&
+          phone_number == o.phone_number &&
+          postal_code == o.postal_code &&
+          state == o.state &&
+          store_number == o.store_number &&
+          street_address == o.street_address
     end
 
     # @see the `==` method
@@ -123,7 +150,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [account_guid, account_number, institution_number, member_guid, routing_number, transit_number, user_guid].hash
+      [city, guid, latitude, longitude, merchant_guid, phone_number, postal_code, state, store_number, street_address].hash
     end
 
     # Builds the object from hash

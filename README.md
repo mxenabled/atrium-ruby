@@ -17,12 +17,12 @@ gem build atrium-ruby.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./atrium-ruby-2.8.5.gem
+gem install ./atrium-ruby-2.9.0.gem
 ```
 
 Finally add this to the Gemfile:
 
-    gem 'atrium-ruby', '~> 2.8.5'
+    gem 'atrium-ruby', '~> 2.9.0'
 
 ### Install from Git
 
@@ -98,7 +98,10 @@ Class | Method | HTTP request | Description
 *Atrium::MembersApi* | [**read_member_status**](docs/MembersApi.md#read_member_status) | **GET** /users/{user_guid}/members/{member_guid}/status | Read member connection status
 *Atrium::MembersApi* | [**resume_member**](docs/MembersApi.md#resume_member) | **PUT** /users/{user_guid}/members/{member_guid}/resume | Resume aggregation from MFA
 *Atrium::MembersApi* | [**update_member**](docs/MembersApi.md#update_member) | **PUT** /users/{user_guid}/members/{member_guid} | Update member
+*Atrium::MerchantsApi* | [**list_merchant_locations**](docs/MerchantsApi.md#list_merchant_locations) | **GET** /merchants/{merchant_guid}/merchant_locations | List merchant locations
+*Atrium::MerchantsApi* | [**list_merchants**](docs/MerchantsApi.md#list_merchants) | **GET** /merchants | List merchants
 *Atrium::MerchantsApi* | [**read_merchant**](docs/MerchantsApi.md#read_merchant) | **GET** /merchants/{merchant_guid} | Read merchant
+*Atrium::MerchantsApi* | [**read_merchant_location**](docs/MerchantsApi.md#read_merchant_location) | **GET** /merchants/{merchant_guid}/merchant_locations/{merchant_location_guid} | Read merchant location
 *Atrium::StatementsApi* | [**download_statement_pdf**](docs/StatementsApi.md#download_statement_pdf) | **GET** /users/{user_guid}/members/{member_guid}/statements/{statement_guid}.pdf | Download statement PDF
 *Atrium::StatementsApi* | [**fetch_statements**](docs/StatementsApi.md#fetch_statements) | **POST** /users/{user_guid}/members/{member_guid}/fetch_statements | Fetch statements
 *Atrium::StatementsApi* | [**list_member_statements**](docs/StatementsApi.md#list_member_statements) | **GET** /users/{user_guid}/members/{member_guid}/statements | List member statements
@@ -154,7 +157,11 @@ Class | Method | HTTP request | Description
  - [Atrium::MemberUpdateRequestBody](docs/MemberUpdateRequestBody.md)
  - [Atrium::MembersResponseBody](docs/MembersResponseBody.md)
  - [Atrium::Merchant](docs/Merchant.md)
+ - [Atrium::MerchantLocation](docs/MerchantLocation.md)
+ - [Atrium::MerchantLocationResponseBody](docs/MerchantLocationResponseBody.md)
+ - [Atrium::MerchantLocationsResponseBody](docs/MerchantLocationsResponseBody.md)
  - [Atrium::MerchantResponseBody](docs/MerchantResponseBody.md)
+ - [Atrium::MerchantsResponseBody](docs/MerchantsResponseBody.md)
  - [Atrium::Pagination](docs/Pagination.md)
  - [Atrium::Statement](docs/Statement.md)
  - [Atrium::StatementResponseBody](docs/StatementResponseBody.md)

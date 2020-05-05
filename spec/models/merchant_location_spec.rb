@@ -10,60 +10,78 @@ require 'spec_helper'
 require 'json'
 require 'date'
 
-# Unit tests for Atrium::AccountNumber
+# Unit tests for Atrium::MerchantLocation
 # Please update as you see appropriate
-describe 'AccountNumber' do
+describe 'MerchantLocation' do
   before do
     # run before each test
-    @instance = Atrium::AccountNumber.new
+    @instance = Atrium::MerchantLocation.new
   end
 
   after do
     # run after each test
   end
 
-  describe 'test an instance of AccountNumber' do
-    it 'should create an instance of AccountNumber' do
-      expect(@instance).to be_instance_of(Atrium::AccountNumber)
+  describe 'test an instance of MerchantLocation' do
+    it 'should create an instance of MerchantLocation' do
+      expect(@instance).to be_instance_of(Atrium::MerchantLocation)
     end
   end
-  describe 'test attribute "account_guid"' do
+  describe 'test attribute "city"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "account_number"' do
+  describe 'test attribute "guid"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "institution_number"' do
+  describe 'test attribute "latitude"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "member_guid"' do
+  describe 'test attribute "longitude"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "routing_number"' do
+  describe 'test attribute "merchant_guid"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "transit_number"' do
+  describe 'test attribute "phone_number"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
   end
 
-  describe 'test attribute "user_guid"' do
+  describe 'test attribute "postal_code"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "state"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "store_number"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "street_address"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

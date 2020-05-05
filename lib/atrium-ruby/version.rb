@@ -7,5 +7,5 @@
 =end
 
 module Atrium
-  VERSION = '2.8.5'
+  VERSION = '2.9.0'
 end

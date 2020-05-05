@@ -27,6 +27,29 @@ describe 'MerchantsApi' do
     end
   end
 
+  # unit tests for list_merchant_locations
+  # List merchant locations
+  # Returns a list of all the merchant locations associated with a merchant, including physical location, latitude, longitude, etc.
+  # @param merchant_guid The unique identifier for a &#x60;merchant&#x60;.
+  # @param [Hash] opts the optional parameters
+  # @return [MerchantLocationsResponseBody]
+  describe 'list_merchant_locations test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for list_merchants
+  # List merchants
+  # Returns a list of merchnants.
+  # @param [Hash] opts the optional parameters
+  # @return [MerchantsResponseBody]
+  describe 'list_merchants test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for read_merchant
   # Read merchant
   # Returns information about a particular merchant, such as a logo, name, and website.
@@ -34,6 +57,19 @@ describe 'MerchantsApi' do
   # @param [Hash] opts the optional parameters
   # @return [MerchantResponseBody]
   describe 'read_merchant test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for read_merchant_location
+  # Read merchant location
+  # Retuns a specific location associated with a merchant, including physical location, latitude, longitude, etc.
+  # @param merchant_guid The unique identifier for a &#x60;merchant&#x60;.
+  # @param merchant_location_guid The unique identifier for a &#x60;merchant_location&#x60;.
+  # @param [Hash] opts the optional parameters
+  # @return [MerchantLocationResponseBody]
+  describe 'read_merchant_location test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

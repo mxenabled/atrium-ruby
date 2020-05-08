@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**list_members**](MembersApi.md#list_members) | **GET** /users/{user_guid}/members | List members
 [**read_member**](MembersApi.md#read_member) | **GET** /users/{user_guid}/members/{member_guid} | Read member
 [**read_member_status**](MembersApi.md#read_member_status) | **GET** /users/{user_guid}/members/{member_guid}/status | Read member connection status
+[**read_o_auth_window_uri**](MembersApi.md#read_o_auth_window_uri) | **GET** /users/{user_guid}/members/{member_guid}/oauth_window_uri | Read OAuth Window URI
 [**resume_member**](MembersApi.md#resume_member) | **PUT** /users/{user_guid}/members/{member_guid}/resume | Resume aggregation from MFA
 [**update_member**](MembersApi.md#update_member) | **PUT** /users/{user_guid}/members/{member_guid} | Update member
 
@@ -480,6 +481,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MemberConnectionStatusResponseBody**](MemberConnectionStatusResponseBody.md)
+
+# **read_o_auth_window_uri**
+> MemberResponseBody read_o_auth_window_uri(member_guid, user_guid, , opts)
+
+Read OAuth Window URI
+
+This endpoint will generate an `oauth_window_uri` for the specified `member`.
+
+### Example
+```ruby
+# load the gem
+require 'atrium-ruby'
+
+client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
+
+member_guid = "MBR-123" # String | The unique identifier for a `member`.
+user_guid = "USR-123" # String | The unique identifier for a `user`.
+opts = { 
+  referral_source: "BROWSER", # String | Should be either BROWSER or APP depending on the implementation.
+  ui_message_webview_url_scheme: "ui_message_webview_url_scheme_example" # String | A scheme for routing the user back to the application state they were previously in.
+}
+
+begin
+  #Read OAuth Window URI
+  response = client.members.read_o_auth_window_uri(member_guid, user_guid, , opts)
+  p response
+rescue Atrium::ApiError => e
+  puts "Exception when calling MembersApi->read_o_auth_window_uri: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **member_guid** | **String**| The unique identifier for a &#x60;member&#x60;. | 
+ **user_guid** | **String**| The unique identifier for a &#x60;user&#x60;. | 
+ **referral_source** | **String**| Should be either BROWSER or APP depending on the implementation. | [optional] 
+ **ui_message_webview_url_scheme** | **String**| A scheme for routing the user back to the application state they were previously in. | [optional] 
+
+### Return type
+
+[**MemberResponseBody**](MemberResponseBody.md)
 
 # **resume_member**
 > MemberResponseBody resume_member(member_guid, user_guid, body)

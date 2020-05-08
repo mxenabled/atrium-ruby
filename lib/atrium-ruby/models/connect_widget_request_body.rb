@@ -22,6 +22,8 @@ module Atrium
 
     attr_accessor :ui_message_version
 
+    attr_accessor :ui_message_webview_url_scheme
+
     attr_accessor :update_credentials
 
     # Attribute mapping from ruby-style variable name to JSON key.
@@ -33,6 +35,7 @@ module Atrium
         :'disable_institution_search' => :'disable_institution_search',
         :'mode' => :'mode',
         :'ui_message_version' => :'ui_message_version',
+        :'ui_message_webview_url_scheme' => :'ui_message_webview_url_scheme',
         :'update_credentials' => :'update_credentials'
       }
     end
@@ -46,6 +49,7 @@ module Atrium
         :'disable_institution_search' => :'BOOLEAN',
         :'mode' => :'String',
         :'ui_message_version' => :'Float',
+        :'ui_message_webview_url_scheme' => :'String',
         :'update_credentials' => :'BOOLEAN'
       }
     end
@@ -82,6 +86,10 @@ module Atrium
         self.ui_message_version = attributes[:'ui_message_version']
       end
 
+      if attributes.has_key?(:'ui_message_webview_url_scheme')
+        self.ui_message_webview_url_scheme = attributes[:'ui_message_webview_url_scheme']
+      end
+
       if attributes.has_key?(:'update_credentials')
         self.update_credentials = attributes[:'update_credentials']
       end
@@ -111,6 +119,7 @@ module Atrium
           disable_institution_search == o.disable_institution_search &&
           mode == o.mode &&
           ui_message_version == o.ui_message_version &&
+          ui_message_webview_url_scheme == o.ui_message_webview_url_scheme &&
           update_credentials == o.update_credentials
     end
 
@@ -123,7 +132,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [is_mobile_webview, current_institution_code, current_member_guid, disable_institution_search, mode, ui_message_version, update_credentials].hash
+      [is_mobile_webview, current_institution_code, current_member_guid, disable_institution_search, mode, ui_message_version, ui_message_webview_url_scheme, update_credentials].hash
     end
 
     # Builds the object from hash

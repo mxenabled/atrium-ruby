@@ -26,6 +26,8 @@ module Atrium
 
     attr_accessor :name
 
+    attr_accessor :oauth_window_uri
+
     attr_accessor :status
 
     attr_accessor :successfully_aggregated_at
@@ -43,6 +45,7 @@ module Atrium
         :'is_being_aggregated' => :'is_being_aggregated',
         :'metadata' => :'metadata',
         :'name' => :'name',
+        :'oauth_window_uri' => :'oauth_window_uri',
         :'status' => :'status',
         :'successfully_aggregated_at' => :'successfully_aggregated_at',
         :'user_guid' => :'user_guid'
@@ -60,6 +63,7 @@ module Atrium
         :'is_being_aggregated' => :'BOOLEAN',
         :'metadata' => :'String',
         :'name' => :'String',
+        :'oauth_window_uri' => :'String',
         :'status' => :'String',
         :'successfully_aggregated_at' => :'String',
         :'user_guid' => :'String'
@@ -106,6 +110,10 @@ module Atrium
         self.name = attributes[:'name']
       end
 
+      if attributes.has_key?(:'oauth_window_uri')
+        self.oauth_window_uri = attributes[:'oauth_window_uri']
+      end
+
       if attributes.has_key?(:'status')
         self.status = attributes[:'status']
       end
@@ -145,6 +153,7 @@ module Atrium
           is_being_aggregated == o.is_being_aggregated &&
           metadata == o.metadata &&
           name == o.name &&
+          oauth_window_uri == o.oauth_window_uri &&
           status == o.status &&
           successfully_aggregated_at == o.successfully_aggregated_at &&
           user_guid == o.user_guid
@@ -159,7 +168,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [aggregated_at, connection_status, guid, identifier, institution_code, is_being_aggregated, metadata, name, status, successfully_aggregated_at, user_guid].hash
+      [aggregated_at, connection_status, guid, identifier, institution_code, is_being_aggregated, metadata, name, oauth_window_uri, status, successfully_aggregated_at, user_guid].hash
     end
 
     # Builds the object from hash

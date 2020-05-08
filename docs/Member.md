@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **is_being_aggregated** | **BOOLEAN** |  | [optional] 
 **metadata** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
+**oauth_window_uri** | **String** |  | [optional] 
 **status** | **String** |  | [optional] 
 **successfully_aggregated_at** | **String** |  | [optional] 
 **user_guid** | **String** |  | [optional] 

@@ -17,12 +17,12 @@ gem build atrium-ruby.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./atrium-ruby-2.9.0.gem
+gem install ./atrium-ruby-2.10.0.gem
 ```
 
 Finally add this to the Gemfile:
 
-    gem 'atrium-ruby', '~> 2.9.0'
+    gem 'atrium-ruby', '~> 2.10.0'
 
 ### Install from Git
 
@@ -96,6 +96,7 @@ Class | Method | HTTP request | Description
 *Atrium::MembersApi* | [**list_members**](docs/MembersApi.md#list_members) | **GET** /users/{user_guid}/members | List members
 *Atrium::MembersApi* | [**read_member**](docs/MembersApi.md#read_member) | **GET** /users/{user_guid}/members/{member_guid} | Read member
 *Atrium::MembersApi* | [**read_member_status**](docs/MembersApi.md#read_member_status) | **GET** /users/{user_guid}/members/{member_guid}/status | Read member connection status
+*Atrium::MembersApi* | [**read_o_auth_window_uri**](docs/MembersApi.md#read_o_auth_window_uri) | **GET** /users/{user_guid}/members/{member_guid}/oauth_window_uri | Read OAuth Window URI
 *Atrium::MembersApi* | [**resume_member**](docs/MembersApi.md#resume_member) | **PUT** /users/{user_guid}/members/{member_guid}/resume | Resume aggregation from MFA
 *Atrium::MembersApi* | [**update_member**](docs/MembersApi.md#update_member) | **PUT** /users/{user_guid}/members/{member_guid} | Update member
 *Atrium::MerchantsApi* | [**list_merchant_locations**](docs/MerchantsApi.md#list_merchant_locations) | **GET** /merchants/{merchant_guid}/merchant_locations | List merchant locations

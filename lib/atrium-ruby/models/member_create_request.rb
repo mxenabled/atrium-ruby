@@ -14,20 +14,29 @@ module Atrium
 
     attr_accessor :identifier
 
+    attr_accessor :is_oauth
+
     attr_accessor :institution_code
 
     attr_accessor :metadata
 
+    attr_accessor :referral_source
+
     attr_accessor :skip_aggregation
+
+    attr_accessor :ui_message_webview_url_scheme
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'credentials' => :'credentials',
         :'identifier' => :'identifier',
+        :'is_oauth' => :'is_oauth',
         :'institution_code' => :'institution_code',
         :'metadata' => :'metadata',
-        :'skip_aggregation' => :'skip_aggregation'
+        :'referral_source' => :'referral_source',
+        :'skip_aggregation' => :'skip_aggregation',
+        :'ui_message_webview_url_scheme' => :'ui_message_webview_url_scheme'
       }
     end
 
@@ -36,9 +45,12 @@ module Atrium
       {
         :'credentials' => :'Array<CredentialRequest>',
         :'identifier' => :'String',
+        :'is_oauth' => :'BOOLEAN',
         :'institution_code' => :'String',
         :'metadata' => :'String',
-        :'skip_aggregation' => :'BOOLEAN'
+        :'referral_source' => :'String',
+        :'skip_aggregation' => :'BOOLEAN',
+        :'ui_message_webview_url_scheme' => :'String'
       }
     end
 
@@ -60,6 +72,10 @@ module Atrium
         self.identifier = attributes[:'identifier']
       end
 
+      if attributes.has_key?(:'is_oauth')
+        self.is_oauth = attributes[:'is_oauth']
+      end
+
       if attributes.has_key?(:'institution_code')
         self.institution_code = attributes[:'institution_code']
       end
@@ -68,8 +84,16 @@ module Atrium
         self.metadata = attributes[:'metadata']
       end
 
+      if attributes.has_key?(:'referral_source')
+        self.referral_source = attributes[:'referral_source']
+      end
+
       if attributes.has_key?(:'skip_aggregation')
         self.skip_aggregation = attributes[:'skip_aggregation']
+      end
+
+      if attributes.has_key?(:'ui_message_webview_url_scheme')
+        self.ui_message_webview_url_scheme = attributes[:'ui_message_webview_url_scheme']
       end
     end
 
@@ -77,10 +101,6 @@ module Atrium
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @credentials.nil?
-        invalid_properties.push('invalid value for "credentials", credentials cannot be nil.')
-      end
-
       if @institution_code.nil?
         invalid_properties.push('invalid value for "institution_code", institution_code cannot be nil.')
       end
@@ -91,7 +111,6 @@ module Atrium
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @credentials.nil?
       return false if @institution_code.nil?
       true
     end
@@ -103,9 +122,12 @@ module Atrium
       self.class == o.class &&
           credentials == o.credentials &&
           identifier == o.identifier &&
+          is_oauth == o.is_oauth &&
           institution_code == o.institution_code &&
           metadata == o.metadata &&
-          skip_aggregation == o.skip_aggregation
+          referral_source == o.referral_source &&
+          skip_aggregation == o.skip_aggregation &&
+          ui_message_webview_url_scheme == o.ui_message_webview_url_scheme
     end
 
     # @see the `==` method
@@ -117,7 +139,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [credentials, identifier, institution_code, metadata, skip_aggregation].hash
+      [credentials, identifier, is_oauth, institution_code, metadata, referral_source, skip_aggregation, ui_message_webview_url_scheme].hash
     end
 
     # Builds the object from hash

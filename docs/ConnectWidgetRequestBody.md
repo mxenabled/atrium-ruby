@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **disable_institution_search** | **BOOLEAN** |  | [optional] 
 **mode** | **String** |  | [optional] 
 **ui_message_version** | **Float** |  | [optional] 
+**ui_message_webview_url_scheme** | **String** |  | [optional] 
 **update_credentials** | **BOOLEAN** |  | [optional] 
 
 

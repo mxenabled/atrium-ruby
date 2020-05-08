@@ -154,6 +154,19 @@ module Atrium
       data
     end
 
+    # Read OAuth Window URI
+    # This endpoint will generate an `oauth_window_uri` for the specified `member`.
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :referral_source Should be either BROWSER or APP depending on the implementation.
+    # @option opts [String] :ui_message_webview_url_scheme A scheme for routing the user back to the application state they were previously in.
+    # @return [MemberResponseBody]
+    def read_o_auth_window_uri(member_guid, user_guid, opts = {})
+      data, _status_code, _headers = read_o_auth_window_uri_with_http_info(member_guid, user_guid, opts)
+      data
+    end
+
     # Resume aggregation from MFA
     # This endpoint answers the challenges needed when a member has been challenged by multi-factor authentication.
     # @param member_guid The unique identifier for a &#x60;member&#x60;.
@@ -758,6 +771,57 @@ module Atrium
         :return_type => 'MemberConnectionStatusResponseBody')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: MembersApi#read_member_status\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Read OAuth Window URI
+    # This endpoint will generate an &#x60;oauth_window_uri&#x60; for the specified &#x60;member&#x60;.
+    # @param member_guid The unique identifier for a &#x60;member&#x60;.
+    # @param user_guid The unique identifier for a &#x60;user&#x60;.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :referral_source Should be either BROWSER or APP depending on the implementation.
+    # @option opts [String] :ui_message_webview_url_scheme A scheme for routing the user back to the application state they were previously in.
+    # @return [Array<(MemberResponseBody, Fixnum, Hash)>] MemberResponseBody data, response status code and response headers
+    def read_o_auth_window_uri_with_http_info(member_guid, user_guid, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: MembersApi.read_o_auth_window_uri ...'
+      end
+      # verify the required parameter 'member_guid' is set
+      if @api_client.config.client_side_validation && member_guid.nil?
+        fail ArgumentError, "Missing the required parameter 'member_guid' when calling MembersApi.read_o_auth_window_uri"
+      end
+      # verify the required parameter 'user_guid' is set
+      if @api_client.config.client_side_validation && user_guid.nil?
+        fail ArgumentError, "Missing the required parameter 'user_guid' when calling MembersApi.read_o_auth_window_uri"
+      end
+      # resource path
+      local_var_path = '/users/{user_guid}/members/{member_guid}/oauth_window_uri'.sub('{' + 'member_guid' + '}', member_guid.to_s).sub('{' + 'user_guid' + '}', user_guid.to_s)
+
+      # query parameters
+      query_params = {}
+      query_params[:'referral_source'] = opts[:'referral_source'] if !opts[:'referral_source'].nil?
+      query_params[:'ui_message_webview_url_scheme'] = opts[:'ui_message_webview_url_scheme'] if !opts[:'ui_message_webview_url_scheme'].nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/vnd.mx.atrium.v1+json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = nil
+      auth_names = ['apiKey', 'clientID']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'MemberResponseBody')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: MembersApi#read_o_auth_window_uri\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

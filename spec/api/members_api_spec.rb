@@ -190,6 +190,21 @@ describe 'MembersApi' do
     end
   end
 
+  # unit tests for read_o_auth_window_uri
+  # Read OAuth Window URI
+  # This endpoint will generate an &#x60;oauth_window_uri&#x60; for the specified &#x60;member&#x60;.
+  # @param member_guid The unique identifier for a &#x60;member&#x60;.
+  # @param user_guid The unique identifier for a &#x60;user&#x60;.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :referral_source Should be either BROWSER or APP depending on the implementation.
+  # @option opts [String] :ui_message_webview_url_scheme A scheme for routing the user back to the application state they were previously in.
+  # @return [MemberResponseBody]
+  describe 'read_o_auth_window_uri test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for resume_member
   # Resume aggregation from MFA
   # This endpoint answers the challenges needed when a member has been challenged by multi-factor authentication.

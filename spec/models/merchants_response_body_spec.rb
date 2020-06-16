@@ -27,7 +27,7 @@ describe 'MerchantsResponseBody' do
       expect(@instance).to be_instance_of(Atrium::MerchantsResponseBody)
     end
   end
-  describe 'test attribute "merchant"' do
+  describe 'test attribute "merchants"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

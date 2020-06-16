@@ -10,14 +10,14 @@ require 'date'
 
 module Atrium
   class MerchantsResponseBody
-    attr_accessor :merchant
+    attr_accessor :merchants
 
     attr_accessor :pagination
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'merchant' => :'merchant',
+        :'merchants' => :'merchants',
         :'pagination' => :'pagination'
       }
     end
@@ -25,7 +25,7 @@ module Atrium
     # Attribute type mapping.
     def self.mx_types
       {
-        :'merchant' => :'Array<Merchant>',
+        :'merchants' => :'Array<Merchant>',
         :'pagination' => :'Pagination'
       }
     end
@@ -38,9 +38,9 @@ module Atrium
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h| h[k.to_sym] = v }
 
-      if attributes.has_key?(:'merchant')
-        if (value = attributes[:'merchant']).is_a?(Array)
-          self.merchant = value
+      if attributes.has_key?(:'merchants')
+        if (value = attributes[:'merchants']).is_a?(Array)
+          self.merchants = value
         end
       end
 
@@ -67,7 +67,7 @@ module Atrium
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          merchant == o.merchant &&
+          merchants == o.merchants &&
           pagination == o.pagination
     end
 
@@ -80,7 +80,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [merchant, pagination].hash
+      [merchants, pagination].hash
     end
 
     # Builds the object from hash

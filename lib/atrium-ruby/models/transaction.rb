@@ -46,6 +46,8 @@ module Atrium
 
     attr_accessor :is_payroll_advance
 
+    attr_accessor :is_subscription
+
     attr_accessor :latitude
 
     attr_accessor :longitude
@@ -95,6 +97,7 @@ module Atrium
         :'is_international' => :'is_international',
         :'is_overdraft_fee' => :'is_overdraft_fee',
         :'is_payroll_advance' => :'is_payroll_advance',
+        :'is_subscription' => :'is_subscription',
         :'latitude' => :'latitude',
         :'longitude' => :'longitude',
         :'member_guid' => :'member_guid',
@@ -133,6 +136,7 @@ module Atrium
         :'is_international' => :'BOOLEAN',
         :'is_overdraft_fee' => :'BOOLEAN',
         :'is_payroll_advance' => :'BOOLEAN',
+        :'is_subscription' => :'BOOLEAN',
         :'latitude' => :'Float',
         :'longitude' => :'Float',
         :'member_guid' => :'String',
@@ -230,6 +234,10 @@ module Atrium
         self.is_payroll_advance = attributes[:'is_payroll_advance']
       end
 
+      if attributes.has_key?(:'is_subscription')
+        self.is_subscription = attributes[:'is_subscription']
+      end
+
       if attributes.has_key?(:'latitude')
         self.latitude = attributes[:'latitude']
       end
@@ -323,6 +331,7 @@ module Atrium
           is_international == o.is_international &&
           is_overdraft_fee == o.is_overdraft_fee &&
           is_payroll_advance == o.is_payroll_advance &&
+          is_subscription == o.is_subscription &&
           latitude == o.latitude &&
           longitude == o.longitude &&
           member_guid == o.member_guid &&
@@ -348,7 +357,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [account_guid, amount, category, check_number, check_number_string, created_at, currency_code, date, description, guid, is_bill_pay, is_direct_deposit, is_expense, is_fee, is_income, is_international, is_overdraft_fee, is_payroll_advance, latitude, longitude, member_guid, memo, merchant_category_code, merchant_guid, original_description, posted_at, status, top_level_category, transacted_at, type, updated_at, user_guid].hash
+      [account_guid, amount, category, check_number, check_number_string, created_at, currency_code, date, description, guid, is_bill_pay, is_direct_deposit, is_expense, is_fee, is_income, is_international, is_overdraft_fee, is_payroll_advance, is_subscription, latitude, longitude, member_guid, memo, merchant_category_code, merchant_guid, original_description, posted_at, status, top_level_category, transacted_at, type, updated_at, user_guid].hash
     end
 
     # Builds the object from hash

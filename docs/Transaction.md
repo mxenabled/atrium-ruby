@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **is_international** | **BOOLEAN** |  | [optional] 
 **is_overdraft_fee** | **BOOLEAN** |  | [optional] 
 **is_payroll_advance** | **BOOLEAN** |  | [optional] 
+**is_subscription** | **BOOLEAN** |  | [optional] 
 **latitude** | **Float** |  | [optional] 
 **longitude** | **Float** |  | [optional] 
 **member_guid** | **String** |  | [optional] 

@@ -40,6 +40,8 @@ module Atrium
 
     attr_accessor :holdings_value
 
+    attr_accessor :insured_name
+
     attr_accessor :institution_code
 
     attr_accessor :interest_rate
@@ -65,6 +67,10 @@ module Atrium
     attr_accessor :payment_due_at
 
     attr_accessor :payoff_balance
+
+    attr_accessor :pay_out_amount
+
+    attr_accessor :premium_amount
 
     attr_accessor :started_on
 
@@ -96,6 +102,7 @@ module Atrium
         :'death_benefit' => :'death_benefit',
         :'guid' => :'guid',
         :'holdings_value' => :'holdings_value',
+        :'insured_name' => :'insured_name',
         :'institution_code' => :'institution_code',
         :'interest_rate' => :'interest_rate',
         :'is_closed' => :'is_closed',
@@ -109,6 +116,8 @@ module Atrium
         :'original_balance' => :'original_balance',
         :'payment_due_at' => :'payment_due_at',
         :'payoff_balance' => :'payoff_balance',
+        :'pay_out_amount' => :'pay_out_amount',
+        :'premium_amount' => :'premium_amount',
         :'started_on' => :'started_on',
         :'subtype' => :'subtype',
         :'total_account_value' => :'total_account_value',
@@ -136,6 +145,7 @@ module Atrium
         :'death_benefit' => :'Float',
         :'guid' => :'String',
         :'holdings_value' => :'Float',
+        :'insured_name' => :'String',
         :'institution_code' => :'String',
         :'interest_rate' => :'Float',
         :'is_closed' => :'BOOLEAN',
@@ -149,6 +159,8 @@ module Atrium
         :'original_balance' => :'Float',
         :'payment_due_at' => :'String',
         :'payoff_balance' => :'Float',
+        :'pay_out_amount' => :'Float',
+        :'premium_amount' => :'Float',
         :'started_on' => :'String',
         :'subtype' => :'String',
         :'total_account_value' => :'Float',
@@ -226,6 +238,10 @@ module Atrium
         self.holdings_value = attributes[:'holdings_value']
       end
 
+      if attributes.has_key?(:'insured_name')
+        self.insured_name = attributes[:'insured_name']
+      end
+
       if attributes.has_key?(:'institution_code')
         self.institution_code = attributes[:'institution_code']
       end
@@ -276,6 +292,14 @@ module Atrium
 
       if attributes.has_key?(:'payoff_balance')
         self.payoff_balance = attributes[:'payoff_balance']
+      end
+
+      if attributes.has_key?(:'pay_out_amount')
+        self.pay_out_amount = attributes[:'pay_out_amount']
+      end
+
+      if attributes.has_key?(:'premium_amount')
+        self.premium_amount = attributes[:'premium_amount']
       end
 
       if attributes.has_key?(:'started_on')
@@ -336,6 +360,7 @@ module Atrium
           death_benefit == o.death_benefit &&
           guid == o.guid &&
           holdings_value == o.holdings_value &&
+          insured_name == o.insured_name &&
           institution_code == o.institution_code &&
           interest_rate == o.interest_rate &&
           is_closed == o.is_closed &&
@@ -349,6 +374,8 @@ module Atrium
           original_balance == o.original_balance &&
           payment_due_at == o.payment_due_at &&
           payoff_balance == o.payoff_balance &&
+          pay_out_amount == o.pay_out_amount &&
+          premium_amount == o.premium_amount &&
           started_on == o.started_on &&
           subtype == o.subtype &&
           total_account_value == o.total_account_value &&
@@ -366,7 +393,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [account_number, apr, apy, available_balance, available_credit, balance, cash_balance, cash_surrender_value, created_at, credit_limit, currency_code, day_payment_is_due, death_benefit, guid, holdings_value, institution_code, interest_rate, is_closed, last_payment, loan_amount, matures_on, member_guid, minimum_balance, minimum_payment, name, original_balance, payment_due_at, payoff_balance, started_on, subtype, total_account_value, type, updated_at, user_guid].hash
+      [account_number, apr, apy, available_balance, available_credit, balance, cash_balance, cash_surrender_value, created_at, credit_limit, currency_code, day_payment_is_due, death_benefit, guid, holdings_value, insured_name, institution_code, interest_rate, is_closed, last_payment, loan_amount, matures_on, member_guid, minimum_balance, minimum_payment, name, original_balance, payment_due_at, payoff_balance, pay_out_amount, premium_amount, started_on, subtype, total_account_value, type, updated_at, user_guid].hash
     end
 
     # Builds the object from hash

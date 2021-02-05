@@ -12,11 +12,15 @@ module Atrium
   class ConnectWidgetRequestBody
     attr_accessor :is_mobile_webview
 
+    attr_accessor :color_scheme
+
     attr_accessor :current_institution_code
 
     attr_accessor :current_member_guid
 
     attr_accessor :disable_institution_search
+
+    attr_accessor :include_transactions
 
     attr_accessor :mode
 
@@ -26,17 +30,22 @@ module Atrium
 
     attr_accessor :update_credentials
 
+    attr_accessor :wait_for_full_aggregation
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'is_mobile_webview' => :'is_mobile_webview',
+        :'color_scheme' => :'color_scheme',
         :'current_institution_code' => :'current_institution_code',
         :'current_member_guid' => :'current_member_guid',
         :'disable_institution_search' => :'disable_institution_search',
+        :'include_transactions' => :'include_transactions',
         :'mode' => :'mode',
         :'ui_message_version' => :'ui_message_version',
         :'ui_message_webview_url_scheme' => :'ui_message_webview_url_scheme',
-        :'update_credentials' => :'update_credentials'
+        :'update_credentials' => :'update_credentials',
+        :'wait_for_full_aggregation' => :'wait_for_full_aggregation'
       }
     end
 
@@ -44,13 +53,16 @@ module Atrium
     def self.mx_types
       {
         :'is_mobile_webview' => :'BOOLEAN',
+        :'color_scheme' => :'String',
         :'current_institution_code' => :'String',
         :'current_member_guid' => :'String',
         :'disable_institution_search' => :'BOOLEAN',
+        :'include_transactions' => :'BOOLEAN',
         :'mode' => :'String',
         :'ui_message_version' => :'Float',
         :'ui_message_webview_url_scheme' => :'String',
-        :'update_credentials' => :'BOOLEAN'
+        :'update_credentials' => :'BOOLEAN',
+        :'wait_for_full_aggregation' => :'BOOLEAN'
       }
     end
 
@@ -66,6 +78,10 @@ module Atrium
         self.is_mobile_webview = attributes[:'is_mobile_webview']
       end
 
+      if attributes.has_key?(:'color_scheme')
+        self.color_scheme = attributes[:'color_scheme']
+      end
+
       if attributes.has_key?(:'current_institution_code')
         self.current_institution_code = attributes[:'current_institution_code']
       end
@@ -76,6 +92,10 @@ module Atrium
 
       if attributes.has_key?(:'disable_institution_search')
         self.disable_institution_search = attributes[:'disable_institution_search']
+      end
+
+      if attributes.has_key?(:'include_transactions')
+        self.include_transactions = attributes[:'include_transactions']
       end
 
       if attributes.has_key?(:'mode')
@@ -92,6 +112,10 @@ module Atrium
 
       if attributes.has_key?(:'update_credentials')
         self.update_credentials = attributes[:'update_credentials']
+      end
+
+      if attributes.has_key?(:'wait_for_full_aggregation')
+        self.wait_for_full_aggregation = attributes[:'wait_for_full_aggregation']
       end
     end
 
@@ -114,13 +138,16 @@ module Atrium
       return true if self.equal?(o)
       self.class == o.class &&
           is_mobile_webview == o.is_mobile_webview &&
+          color_scheme == o.color_scheme &&
           current_institution_code == o.current_institution_code &&
           current_member_guid == o.current_member_guid &&
           disable_institution_search == o.disable_institution_search &&
+          include_transactions == o.include_transactions &&
           mode == o.mode &&
           ui_message_version == o.ui_message_version &&
           ui_message_webview_url_scheme == o.ui_message_webview_url_scheme &&
-          update_credentials == o.update_credentials
+          update_credentials == o.update_credentials &&
+          wait_for_full_aggregation == o.wait_for_full_aggregation
     end
 
     # @see the `==` method
@@ -132,7 +159,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [is_mobile_webview, current_institution_code, current_member_guid, disable_institution_search, mode, ui_message_version, ui_message_webview_url_scheme, update_credentials].hash
+      [is_mobile_webview, color_scheme, current_institution_code, current_member_guid, disable_institution_search, include_transactions, mode, ui_message_version, ui_message_webview_url_scheme, update_credentials, wait_for_full_aggregation].hash
     end
 
     # Builds the object from hash

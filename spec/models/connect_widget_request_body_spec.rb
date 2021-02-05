@@ -33,6 +33,12 @@ describe 'ConnectWidgetRequestBody' do
     end
   end
 
+  describe 'test attribute "color_scheme"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "current_institution_code"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -46,6 +52,12 @@ describe 'ConnectWidgetRequestBody' do
   end
 
   describe 'test attribute "disable_institution_search"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "include_transactions"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -70,6 +82,12 @@ describe 'ConnectWidgetRequestBody' do
   end
 
   describe 'test attribute "update_credentials"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "wait_for_full_aggregation"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

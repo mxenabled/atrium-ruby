@@ -50,6 +50,8 @@ module Atrium
 
     attr_accessor :last_payment
 
+    attr_accessor :last_payment_at
+
     attr_accessor :loan_amount
 
     attr_accessor :matures_on
@@ -107,6 +109,7 @@ module Atrium
         :'interest_rate' => :'interest_rate',
         :'is_closed' => :'is_closed',
         :'last_payment' => :'last_payment',
+        :'last_payment_at' => :'last_payment_at',
         :'loan_amount' => :'loan_amount',
         :'matures_on' => :'matures_on',
         :'member_guid' => :'member_guid',
@@ -150,6 +153,7 @@ module Atrium
         :'interest_rate' => :'Float',
         :'is_closed' => :'BOOLEAN',
         :'last_payment' => :'Float',
+        :'last_payment_at' => :'String',
         :'loan_amount' => :'Float',
         :'matures_on' => :'String',
         :'member_guid' => :'String',
@@ -256,6 +260,10 @@ module Atrium
 
       if attributes.has_key?(:'last_payment')
         self.last_payment = attributes[:'last_payment']
+      end
+
+      if attributes.has_key?(:'last_payment_at')
+        self.last_payment_at = attributes[:'last_payment_at']
       end
 
       if attributes.has_key?(:'loan_amount')
@@ -365,6 +373,7 @@ module Atrium
           interest_rate == o.interest_rate &&
           is_closed == o.is_closed &&
           last_payment == o.last_payment &&
+          last_payment_at == o.last_payment_at &&
           loan_amount == o.loan_amount &&
           matures_on == o.matures_on &&
           member_guid == o.member_guid &&
@@ -393,7 +402,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [account_number, apr, apy, available_balance, available_credit, balance, cash_balance, cash_surrender_value, created_at, credit_limit, currency_code, day_payment_is_due, death_benefit, guid, holdings_value, insured_name, institution_code, interest_rate, is_closed, last_payment, loan_amount, matures_on, member_guid, minimum_balance, minimum_payment, name, original_balance, payment_due_at, payoff_balance, pay_out_amount, premium_amount, started_on, subtype, total_account_value, type, updated_at, user_guid].hash
+      [account_number, apr, apy, available_balance, available_credit, balance, cash_balance, cash_surrender_value, created_at, credit_limit, currency_code, day_payment_is_due, death_benefit, guid, holdings_value, insured_name, institution_code, interest_rate, is_closed, last_payment, last_payment_at, loan_amount, matures_on, member_guid, minimum_balance, minimum_payment, name, original_balance, payment_due_at, payoff_balance, pay_out_amount, premium_amount, started_on, subtype, total_account_value, type, updated_at, user_guid].hash
     end
 
     # Builds the object from hash

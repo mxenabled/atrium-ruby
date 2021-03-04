@@ -17,12 +17,12 @@ gem build atrium-ruby.gemspec
 Then either install the gem locally:
 
 ```shell
-gem install ./atrium-ruby-2.10.3.gem
+gem install ./atrium-ruby-2.10.4.gem
 ```
 
 Finally add this to the Gemfile:
 
-    gem 'atrium-ruby', '~> 2.10.3'
+    gem 'atrium-ruby', '~> 2.10.4'
 
 ### Install from Git
 

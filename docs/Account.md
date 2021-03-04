@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **interest_rate** | **Float** |  | [optional] 
 **is_closed** | **BOOLEAN** |  | [optional] 
 **last_payment** | **Float** |  | [optional] 
+**last_payment_at** | **String** |  | [optional] 
 **loan_amount** | **Float** |  | [optional] 
 **matures_on** | **String** |  | [optional] 
 **member_guid** | **String** |  | [optional] 

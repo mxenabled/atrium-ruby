@@ -24,6 +24,8 @@ module Atrium
 
     attr_accessor :supports_account_verification
 
+    attr_accessor :supports_oauth
+
     attr_accessor :supports_transaction_history
 
     attr_accessor :url
@@ -38,6 +40,7 @@ module Atrium
         :'supports_account_identification' => :'supports_account_identification',
         :'supports_account_statement' => :'supports_account_statement',
         :'supports_account_verification' => :'supports_account_verification',
+        :'supports_oauth' => :'supports_oauth',
         :'supports_transaction_history' => :'supports_transaction_history',
         :'url' => :'url'
       }
@@ -53,6 +56,7 @@ module Atrium
         :'supports_account_identification' => :'BOOLEAN',
         :'supports_account_statement' => :'BOOLEAN',
         :'supports_account_verification' => :'BOOLEAN',
+        :'supports_oauth' => :'BOOLEAN',
         :'supports_transaction_history' => :'BOOLEAN',
         :'url' => :'String'
       }
@@ -94,6 +98,10 @@ module Atrium
         self.supports_account_verification = attributes[:'supports_account_verification']
       end
 
+      if attributes.has_key?(:'supports_oauth')
+        self.supports_oauth = attributes[:'supports_oauth']
+      end
+
       if attributes.has_key?(:'supports_transaction_history')
         self.supports_transaction_history = attributes[:'supports_transaction_history']
       end
@@ -128,6 +136,7 @@ module Atrium
           supports_account_identification == o.supports_account_identification &&
           supports_account_statement == o.supports_account_statement &&
           supports_account_verification == o.supports_account_verification &&
+          supports_oauth == o.supports_oauth &&
           supports_transaction_history == o.supports_transaction_history &&
           url == o.url
     end
@@ -141,7 +150,7 @@ module Atrium
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [code, medium_logo_url, name, small_logo_url, supports_account_identification, supports_account_statement, supports_account_verification, supports_transaction_history, url].hash
+      [code, medium_logo_url, name, small_logo_url, supports_account_identification, supports_account_statement, supports_account_verification, supports_oauth, supports_transaction_history, url].hash
     end
 
     # Builds the object from hash

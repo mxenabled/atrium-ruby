@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **identifier** | **String** |  | [optional] 
 **institution_code** | **String** |  | [optional] 
 **is_being_aggregated** | **BOOLEAN** |  | [optional] 
+**is_oauth** | **BOOLEAN** |  | [optional] 
 **metadata** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **oauth_window_uri** | **String** |  | [optional] 

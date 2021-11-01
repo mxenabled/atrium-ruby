@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **list_merchant_locations**
-> MerchantLocationsResponseBody list_merchant_locations(merchant_guid, )
+> MerchantLocationsResponseBody list_merchant_locations(merchant_guid, , opts)
 
 List merchant locations
 
@@ -23,10 +23,14 @@ require 'atrium-ruby'
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
 merchant_guid = "MCH-123" # String | The unique identifier for a `merchant`.
+opts = { 
+  page: 1, # Integer | Specify current page.
+  records_per_page: 12 # Integer | Specify records per page.
+}
 
 begin
   #List merchant locations
-  response = client.merchants.list_merchant_locations(merchant_guid, )
+  response = client.merchants.list_merchant_locations(merchant_guid, , opts)
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling MerchantsApi->list_merchant_locations: #{e}"
@@ -38,13 +42,15 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **merchant_guid** | **String**| The unique identifier for a &#x60;merchant&#x60;. | 
+ **page** | **Integer**| Specify current page. | [optional] 
+ **records_per_page** | **Integer**| Specify records per page. | [optional] 
 
 ### Return type
 
 [**MerchantLocationsResponseBody**](MerchantLocationsResponseBody.md)
 
 # **list_merchants**
-> MerchantsResponseBody list_merchants
+> MerchantsResponseBody list_merchants(opts)
 
 List merchants
 
@@ -57,9 +63,14 @@ require 'atrium-ruby'
 
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
+opts = { 
+  page: 1, # Integer | Specify current page.
+  records_per_page: 12 # Integer | Specify records per page.
+}
+
 begin
   #List merchants
-  response = client.merchants.list_merchants
+  response = client.merchants.list_merchants(opts)
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling MerchantsApi->list_merchants: #{e}"
@@ -67,7 +78,11 @@ end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **Integer**| Specify current page. | [optional] 
+ **records_per_page** | **Integer**| Specify records per page. | [optional] 
 
 ### Return type
 

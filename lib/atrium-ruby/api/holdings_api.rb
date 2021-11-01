@@ -19,6 +19,8 @@ module Atrium
     # Use this endpoint to read all holdings associated with a specific user.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page Specify current page.
+    # @option opts [Integer] :records_per_page Specify records per page.
     # @return [HoldingsResponseBody]
     def list_holdings(user_guid, opts = {})
       data, _status_code, _headers = list_holdings_with_http_info(user_guid, opts)
@@ -30,6 +32,8 @@ module Atrium
     # @param account_guid The unique identifier for an &#x60;account&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page Specify current page.
+    # @option opts [Integer] :records_per_page Specify records per page.
     # @return [HoldingsResponseBody]
     def list_holdings_by_account(account_guid, user_guid, opts = {})
       data, _status_code, _headers = list_holdings_by_account_with_http_info(account_guid, user_guid, opts)
@@ -41,6 +45,8 @@ module Atrium
     # @param member_guid The unique identifier for a &#x60;member&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page Specify current page.
+    # @option opts [Integer] :records_per_page Specify records per page.
     # @return [HoldingsResponseBody]
     def list_holdings_by_member(member_guid, user_guid, opts = {})
       data, _status_code, _headers = list_holdings_by_member_with_http_info(member_guid, user_guid, opts)
@@ -65,6 +71,8 @@ module Atrium
     # Use this endpoint to read all holdings associated with a specific user.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page Specify current page.
+    # @option opts [Integer] :records_per_page Specify records per page.
     # @return [Array<(HoldingsResponseBody, Fixnum, Hash)>] HoldingsResponseBody data, response status code and response headers
     def list_holdings_with_http_info(user_guid, opts = {})
       if @api_client.config.debugging
@@ -79,6 +87,8 @@ module Atrium
 
       # query parameters
       query_params = {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'records_per_page'] = opts[:'records_per_page'] if !opts[:'records_per_page'].nil?
 
       # header parameters
       header_params = {}
@@ -108,6 +118,8 @@ module Atrium
     # @param account_guid The unique identifier for an &#x60;account&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page Specify current page.
+    # @option opts [Integer] :records_per_page Specify records per page.
     # @return [Array<(HoldingsResponseBody, Fixnum, Hash)>] HoldingsResponseBody data, response status code and response headers
     def list_holdings_by_account_with_http_info(account_guid, user_guid, opts = {})
       if @api_client.config.debugging
@@ -126,6 +138,8 @@ module Atrium
 
       # query parameters
       query_params = {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'records_per_page'] = opts[:'records_per_page'] if !opts[:'records_per_page'].nil?
 
       # header parameters
       header_params = {}
@@ -155,6 +169,8 @@ module Atrium
     # @param member_guid The unique identifier for a &#x60;member&#x60;.
     # @param user_guid The unique identifier for a &#x60;user&#x60;.
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page Specify current page.
+    # @option opts [Integer] :records_per_page Specify records per page.
     # @return [Array<(HoldingsResponseBody, Fixnum, Hash)>] HoldingsResponseBody data, response status code and response headers
     def list_holdings_by_member_with_http_info(member_guid, user_guid, opts = {})
       if @api_client.config.debugging
@@ -173,6 +189,8 @@ module Atrium
 
       # query parameters
       query_params = {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'records_per_page'] = opts[:'records_per_page'] if !opts[:'records_per_page'].nil?
 
       # header parameters
       header_params = {}

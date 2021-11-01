@@ -19,6 +19,8 @@ module Atrium
     # Returns a list of all the merchant locations associated with a merchant, including physical location, latitude, longitude, etc.
     # @param merchant_guid The unique identifier for a &#x60;merchant&#x60;.
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page Specify current page.
+    # @option opts [Integer] :records_per_page Specify records per page.
     # @return [MerchantLocationsResponseBody]
     def list_merchant_locations(merchant_guid, opts = {})
       data, _status_code, _headers = list_merchant_locations_with_http_info(merchant_guid, opts)
@@ -28,6 +30,8 @@ module Atrium
     # List merchants
     # Returns a list of merchnants.
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page Specify current page.
+    # @option opts [Integer] :records_per_page Specify records per page.
     # @return [MerchantsResponseBody]
     def list_merchants(opts = {})
       data, _status_code, _headers = list_merchants_with_http_info(opts)
@@ -62,6 +66,8 @@ module Atrium
     # Returns a list of all the merchant locations associated with a merchant, including physical location, latitude, longitude, etc.
     # @param merchant_guid The unique identifier for a &#x60;merchant&#x60;.
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page Specify current page.
+    # @option opts [Integer] :records_per_page Specify records per page.
     # @return [Array<(MerchantLocationsResponseBody, Fixnum, Hash)>] MerchantLocationsResponseBody data, response status code and response headers
     def list_merchant_locations_with_http_info(merchant_guid, opts = {})
       if @api_client.config.debugging
@@ -76,6 +82,8 @@ module Atrium
 
       # query parameters
       query_params = {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'records_per_page'] = opts[:'records_per_page'] if !opts[:'records_per_page'].nil?
 
       # header parameters
       header_params = {}
@@ -103,6 +111,8 @@ module Atrium
     # List merchants
     # Returns a list of merchnants.
     # @param [Hash] opts the optional parameters
+    # @option opts [Integer] :page Specify current page.
+    # @option opts [Integer] :records_per_page Specify records per page.
     # @return [Array<(MerchantsResponseBody, Fixnum, Hash)>] MerchantsResponseBody data, response status code and response headers
     def list_merchants_with_http_info(opts = {})
       if @api_client.config.debugging
@@ -113,6 +123,8 @@ module Atrium
 
       # query parameters
       query_params = {}
+      query_params[:'page'] = opts[:'page'] if !opts[:'page'].nil?
+      query_params[:'records_per_page'] = opts[:'records_per_page'] if !opts[:'records_per_page'].nil?
 
       # header parameters
       header_params = {}

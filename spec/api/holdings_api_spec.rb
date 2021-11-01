@@ -32,6 +32,8 @@ describe 'HoldingsApi' do
   # Use this endpoint to read all holdings associated with a specific user.
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :page Specify current page.
+  # @option opts [Integer] :records_per_page Specify records per page.
   # @return [HoldingsResponseBody]
   describe 'list_holdings test' do
     it 'should work' do
@@ -45,6 +47,8 @@ describe 'HoldingsApi' do
   # @param account_guid The unique identifier for an &#x60;account&#x60;.
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :page Specify current page.
+  # @option opts [Integer] :records_per_page Specify records per page.
   # @return [HoldingsResponseBody]
   describe 'list_holdings_by_account test' do
     it 'should work' do
@@ -58,6 +62,8 @@ describe 'HoldingsApi' do
   # @param member_guid The unique identifier for a &#x60;member&#x60;.
   # @param user_guid The unique identifier for a &#x60;user&#x60;.
   # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :page Specify current page.
+  # @option opts [Integer] :records_per_page Specify records per page.
   # @return [HoldingsResponseBody]
   describe 'list_holdings_by_member test' do
     it 'should work' do

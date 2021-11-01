@@ -32,6 +32,8 @@ describe 'MerchantsApi' do
   # Returns a list of all the merchant locations associated with a merchant, including physical location, latitude, longitude, etc.
   # @param merchant_guid The unique identifier for a &#x60;merchant&#x60;.
   # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :page Specify current page.
+  # @option opts [Integer] :records_per_page Specify records per page.
   # @return [MerchantLocationsResponseBody]
   describe 'list_merchant_locations test' do
     it 'should work' do
@@ -43,6 +45,8 @@ describe 'MerchantsApi' do
   # List merchants
   # Returns a list of merchnants.
   # @param [Hash] opts the optional parameters
+  # @option opts [Integer] :page Specify current page.
+  # @option opts [Integer] :records_per_page Specify records per page.
   # @return [MerchantsResponseBody]
   describe 'list_merchants test' do
     it 'should work' do

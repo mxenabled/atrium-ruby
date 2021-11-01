@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **list_holdings**
-> HoldingsResponseBody list_holdings(user_guid, )
+> HoldingsResponseBody list_holdings(user_guid, , opts)
 
 List holdings
 
@@ -23,10 +23,14 @@ require 'atrium-ruby'
 client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
 user_guid = "USR-123" # String | The unique identifier for a `user`.
+opts = { 
+  page: 1, # Integer | Specify current page.
+  records_per_page: 12 # Integer | Specify records per page.
+}
 
 begin
   #List holdings
-  response = client.holdings.list_holdings(user_guid, )
+  response = client.holdings.list_holdings(user_guid, , opts)
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling HoldingsApi->list_holdings: #{e}"
@@ -38,13 +42,15 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_guid** | **String**| The unique identifier for a &#x60;user&#x60;. | 
+ **page** | **Integer**| Specify current page. | [optional] 
+ **records_per_page** | **Integer**| Specify records per page. | [optional] 
 
 ### Return type
 
 [**HoldingsResponseBody**](HoldingsResponseBody.md)
 
 # **list_holdings_by_account**
-> HoldingsResponseBody list_holdings_by_account(account_guid, user_guid, )
+> HoldingsResponseBody list_holdings_by_account(account_guid, user_guid, , opts)
 
 List holdings by account
 
@@ -59,10 +65,14 @@ client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
 account_guid = "ACT-123" # String | The unique identifier for an `account`.
 user_guid = "USR-123" # String | The unique identifier for a `user`.
+opts = { 
+  page: 1, # Integer | Specify current page.
+  records_per_page: 12 # Integer | Specify records per page.
+}
 
 begin
   #List holdings by account
-  response = client.holdings.list_holdings_by_account(account_guid, user_guid, )
+  response = client.holdings.list_holdings_by_account(account_guid, user_guid, , opts)
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling HoldingsApi->list_holdings_by_account: #{e}"
@@ -75,13 +85,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_guid** | **String**| The unique identifier for an &#x60;account&#x60;. | 
  **user_guid** | **String**| The unique identifier for a &#x60;user&#x60;. | 
+ **page** | **Integer**| Specify current page. | [optional] 
+ **records_per_page** | **Integer**| Specify records per page. | [optional] 
 
 ### Return type
 
 [**HoldingsResponseBody**](HoldingsResponseBody.md)
 
 # **list_holdings_by_member**
-> HoldingsResponseBody list_holdings_by_member(member_guid, user_guid, )
+> HoldingsResponseBody list_holdings_by_member(member_guid, user_guid, , opts)
 
 List holdings by member
 
@@ -96,10 +108,14 @@ client = Atrium::AtriumClient.new("YOUR_API_KEY", "YOUR_CLIENT_ID")
 
 member_guid = "MBR-123" # String | The unique identifier for a `member`.
 user_guid = "USR-123" # String | The unique identifier for a `user`.
+opts = { 
+  page: 1, # Integer | Specify current page.
+  records_per_page: 12 # Integer | Specify records per page.
+}
 
 begin
   #List holdings by member
-  response = client.holdings.list_holdings_by_member(member_guid, user_guid, )
+  response = client.holdings.list_holdings_by_member(member_guid, user_guid, , opts)
   p response
 rescue Atrium::ApiError => e
   puts "Exception when calling HoldingsApi->list_holdings_by_member: #{e}"
@@ -112,6 +128,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **member_guid** | **String**| The unique identifier for a &#x60;member&#x60;. | 
  **user_guid** | **String**| The unique identifier for a &#x60;user&#x60;. | 
+ **page** | **Integer**| Specify current page. | [optional] 
+ **records_per_page** | **Integer**| Specify records per page. | [optional] 
 
 ### Return type
 
